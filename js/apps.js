@@ -5,12 +5,12 @@ const fsData={
 'TheDustBwlDuck':{type:'dir',children:{
 'Desktop':{type:'dir',children:{}},
 'Documents':{type:'dir',children:{
-'diary_001.txt':{type:'file',content:'May 3, 2008\n\nI keep seeing it. On dustbowl. The same figure.\nEveryone says its just a bot but bots dont WATCH you.\nBots dont stand still in the corner of the map.\nBots dont know your name.\n\nI shouldnt have joined that server.'},
-'diary_002.txt':{type:'file',content:'May 10, 2008\n\nIt followed me. Different server. Different map.\nSame figure. Same spot in my peripheral vision.\nWhen I turn, nothing. When I check the scoreboard, no extra player.\n\nBut the chat logs. Oh god the chat logs.\nIt typed my real name.'},
-'diary_003.txt':{type:'file',content:'May 15, 2008\n\nI cant sleep. Every time I close my eyes\nI see dustbowl. Not the game. Like im THERE.\nThe tunnels. The dust. Its so dry.\n\nMy hands keep shaking. My wrists hurt.\nI think its getting worse.'},
-'diary_004.txt':{type:'file',content:'May 20, 2008\n\nI uninstalled TF2. Deleted everything.\nFormatted my hard drive.\n\nOpened my browser. My homepage was dustbowl.\nA screenshot. But wrong. The sky was black.\nAnd there was something in the tunnel.\nLooking at me.\n\nThrough the screen.'},
-'diary_005.txt':{type:'file',content:'May 25, 2008\n\nit speaks to me now\nnot through the game\nthrough everything\nmy phone my dreams my reflection\n\nit says i belong there\nin the dust\nin the bowl\n\nmaybe it is right'},
-'diary_006.txt':{type:'file',content:'May 27, 2008\n\ni am so tired\n\nthe dust is all i see\nthe bowl is all i know\n\ntomorrow i go home'},
+'diary_001.txt':{type:'file',content:'May 3, 2007\n\nI keep seeing it. On dustbowl. The same figure.\nEveryone says its just a bot but bots dont WATCH you.\nBots dont stand still in the corner of the map.\nBots dont know your name.\n\nI shouldnt have joined that server.'},
+'diary_002.txt':{type:'file',content:'May 10, 2007\n\nIt followed me. Different server. Different map.\nSame figure. Same spot in my peripheral vision.\nWhen I turn, nothing. When I check the scoreboard, no extra player.\n\nBut the chat logs. Oh god the chat logs.\nIt typed my real name.'},
+'diary_003.txt':{type:'file',content:'May 15, 2007\n\nI cant sleep. Every time I close my eyes\nI see dustbowl. Not the game. Like im THERE.\nThe tunnels. The dust. Its so dry.\n\nMy hands keep shaking. My wrists hurt.\nI think its getting worse.'},
+'diary_004.txt':{type:'file',content:'May 20, 2007\n\nI uninstalled TF2. Deleted everything.\nFormatted my hard drive.\n\nOpened my browser. My homepage was dustbowl.\nA screenshot. But wrong. The sky was black.\nAnd there was something in the tunnel.\nLooking at me.\n\nThrough the screen.'},
+'diary_005.txt':{type:'file',content:'May 25, 2007\n\nit speaks to me now\nnot through the game\nthrough everything\nmy phone my dreams my reflection\n\nit says i belong there\nin the dust\nin the bowl\n\nmaybe it is right'},
+'diary_006.txt':{type:'file',content:'May 27, 2007\n\ni am so tired\n\nthe dust is all i see\nthe bowl is all i know\n\ntomorrow i go home'},
 'DONT_READ.txt':{type:'file',content:'Y O U   S H O U L D N T   B E   H E R E\n\n\n\n\n\n\nI   S E E   Y O U\n\n\n\n\n\nT H E   D U S T   R E M E M B E R S'},
 'server_list.txt':{type:'file',content:'SERVERS I PLAYED ON:\n\n192.168.1.13:27015 - [REDACTED] Dustbowl 24/7\n10.0.13.1:27015 - The Bowl (DO NOT JOIN)\n0.0.0.0:27015 - ???\n\nNote: The last one appeared on its own.\nI never added it.\nIt joins ME.'}
 }},
@@ -32,13 +32,13 @@ const fsData={
 }}
 }},
 'System':{type:'dir',children:{
-'config.sys':{type:'file',content:'SOOS_VERSION=0.6.66\nKERNEL=soos-core\nINIT_PROCESS=dust\nWARNING_LEVEL=CRITICAL\nENTITY_STATUS=ACTIVE\nHOST=TheDustBwlDuck\nLAST_HEARTBEAT=2008-05-28T00:06:00'},
-'error.log':{type:'file',content:'[2008-05-27 23:41:12] ERR: Process \'dust_entity\' consuming 98% memory\n[2008-05-27 23:42:00] ERR: Unable to terminate process - access denied\n[2008-05-27 23:45:33] WARN: Network traffic to unknown destination\n[2008-05-27 23:50:01] ERR: File system corruption detected\n[2008-05-27 23:55:00] CRIT: User session anomaly\n[2008-05-28 00:00:00] CRIT: Time synchronization failed\n[2008-05-28 00:01:13] ERR: 13 processes unresponsive\n[2008-05-28 00:05:59] CRIT: =============================\n[2008-05-28 00:06:00] CRIT: SYSTEM HALTED\n[2008-05-28 00:06:00] ???: he is home now'}
+'config.sys':{type:'file',content:'SOOS_VERSION=0.6.66\nKERNEL=soos-core\nINIT_PROCESS=dust\nWARNING_LEVEL=CRITICAL\nENTITY_STATUS=ACTIVE\nHOST=TheDustBwlDuck\nLAST_HEARTBEAT=2007-05-28T00:06:00'},
+'error.log':{type:'file',content:'[2007-05-27 23:41:12] ERR: Process \'dust_entity\' consuming 98% memory\n[2007-05-27 23:42:00] ERR: Unable to terminate process - access denied\n[2007-05-27 23:45:33] WARN: Network traffic to unknown destination\n[2007-05-27 23:50:01] ERR: File system corruption detected\n[2007-05-27 23:55:00] CRIT: User session anomaly\n[2007-05-28 00:00:00] CRIT: Time synchronization failed\n[2007-05-28 00:01:13] ERR: 13 processes unresponsive\n[2007-05-28 00:05:59] CRIT: =============================\n[2007-05-28 00:06:00] CRIT: SYSTEM HALTED\n[2007-05-28 00:06:00] ???: he is home now'}
 }}
 }}};
 
 const chatData={
-'beeper_2008':[
+'beeper_2007':[
 {u:'TheDustBwlDuck',t:'11:30 PM',m:'beeper are you there'},
 {u:'beeper',t:'11:31 PM',m:'yeah whats up'},
 {u:'TheDustBwlDuck',t:'11:31 PM',m:'something is wrong with my game'},
@@ -79,11 +79,11 @@ const chatData={
 };
 
 const emailData=[
-{id:1,from:'beeper@dustbowl.net',subject:'RE: that server',date:'May 26, 2008',unread:true,body:'Dude I still cant get that server out of my head.\nMy game keeps crashing now and when it does\nfor a split second I see that map.\nThe dark one.\n\nDont connect to that server again. Please.\nIm serious.\n\n- beeper'},
-{id:2,from:'admin@community-tf2.net',subject:'Account Warning',date:'May 24, 2008',unread:true,body:'Dear TheDustBwlDuck,\n\nYour account has been flagged for unusual activity.\nMultiple connection attempts to non-existent servers\nhave been logged from your IP address.\n\nAdditionally, several players have reported\na user matching your description appearing in\nservers you are not connected to.\n\nPlease contact support immediately.\n\n- Server Administration'},
-{id:3,from:'no-reply@0.0.0.0',subject:'come home',date:'May 27, 2008',unread:true,body:'the dust is waiting\nthe bowl is ready\n\nyou know what you have to do\n\n\n\n\n\n\n\n\n\n\nwe are the same'},
-{id:4,from:'TheDustBwlDuck@dustbowl.net',subject:'[no subject]',date:'May 28, 2008',unread:true,body:'if anyone finds this\n\nim sorry\n\ni couldnt stop it\n\nthe dust took everything\n\ndont look for me on dustbowl\n\n\n\nor maybe do\n\nmaybe then youll understand'},
-{id:5,from:'system@soos.local',subject:'CRITICAL: Process cannot be terminated',date:'May 28, 2008',unread:false,body:'SYSTEM ALERT\n\nProcess: dust_entity\nPID: 13\nStatus: CANNOT BE TERMINATED\n\nThis process has root access and is\nmodifying system files.\n\nRecommended action: FULL SYSTEM WIPE\n\nWARNING: Process is aware of termination attempts.'}
+{id:1,from:'beeper@dustbowl.net',subject:'RE: that server',date:'May 26, 2007',unread:true,body:'Dude I still cant get that server out of my head.\nMy game keeps crashing now and when it does\nfor a split second I see that map.\nThe dark one.\n\nDont connect to that server again. Please.\nIm serious.\n\n- beeper'},
+{id:2,from:'admin@community-tf2.net',subject:'Account Warning',date:'May 24, 2007',unread:true,body:'Dear TheDustBwlDuck,\n\nYour account has been flagged for unusual activity.\nMultiple connection attempts to non-existent servers\nhave been logged from your IP address.\n\nAdditionally, several players have reported\na user matching your description appearing in\nservers you are not connected to.\n\nPlease contact support immediately.\n\n- Server Administration'},
+{id:3,from:'no-reply@0.0.0.0',subject:'come home',date:'May 27, 2007',unread:true,body:'the dust is waiting\nthe bowl is ready\n\nyou know what you have to do\n\n\n\n\n\n\n\n\n\n\nwe are the same'},
+{id:4,from:'TheDustBwlDuck@dustbowl.net',subject:'[no subject]',date:'May 28, 2007',unread:true,body:'if anyone finds this\n\nim sorry\n\ni couldnt stop it\n\nthe dust took everything\n\ndont look for me on dustbowl\n\n\n\nor maybe do\n\nmaybe then youll understand'},
+{id:5,from:'system@soos.local',subject:'CRITICAL: Process cannot be terminated',date:'May 28, 2007',unread:false,body:'SYSTEM ALERT\n\nProcess: dust_entity\nPID: 13\nStatus: CANNOT BE TERMINATED\n\nThis process has root access and is\nmodifying system files.\n\nRecommended action: FULL SYSTEM WIPE\n\nWARNING: Process is aware of termination attempts.'}
 ];
 
 const browserBookmarks=[
@@ -96,17 +96,17 @@ const browserBookmarks=[
 ];
 
 const browserHistory=[
-{title:'google: "dustbowl entity tf2"',date:'May 27, 2008'},
-{title:'google: "someone watching me through game"',date:'May 26, 2008'},
-{title:'google: "how to tell if youre going insane"',date:'May 25, 2008'},
-{title:'google: "0.0.0.0 server address meaning"',date:'May 22, 2008'},
-{title:'google: "can a game be haunted"',date:'May 18, 2008'},
-{title:'google: "process 13 wont close"',date:'May 15, 2008'},
-{title:'google: "i keep dreaming about the same place"',date:'May 10, 2008'}
+{title:'google: "dustbowl entity tf2"',date:'May 27, 2007'},
+{title:'google: "someone watching me through game"',date:'May 26, 2007'},
+{title:'google: "how to tell if youre going insane"',date:'May 25, 2007'},
+{title:'google: "0.0.0.0 server address meaning"',date:'May 22, 2007'},
+{title:'google: "can a game be haunted"',date:'May 18, 2007'},
+{title:'google: "process 13 wont close"',date:'May 15, 2007'},
+{title:'google: "i keep dreaming about the same place"',date:'May 10, 2007'}
 ];
 
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:openTF2,steam:openSteam};
 apps[id]?.();
 };
 
@@ -180,30 +180,30 @@ processCommand(cmd);
 const processCommand=(cmd)=>{
 const out=document.getElementById('term-out');
 if(!out)return;
-out.innerHTML+=`<span style="color:#00aa00">TheDustBwlDuck@soos:~$</span> ${cmd}\n`;
+out.innerHTML+=`<span style="color:#999">TheDustBwlDuck@soos:~$</span> ${cmd}\n`;
 const lower=cmd.toLowerCase();
 if(lower==='help'){
 out.innerHTML+='Available commands:\n  help     - show this message\n  whoami   - display current user\n  date     - show system date\n  ls       - list files\n  cat      - read a file\n  clear    - clear terminal\n  uptime   - system uptime\n  ps       - list processes\n  neofetch - system info\n\n';
 }else if(lower==='whoami'){
 out.innerHTML+='TheDustBwlDuck\n\n';
 }else if(lower==='date'){
-out.innerHTML+='Wed May 28 00:06:00 UTC 2008\n\n';
+out.innerHTML+='Wed May 28 00:06:00 UTC 2007\n\n';
 }else if(lower==='clear'){
 out.innerHTML='';
 }else if(lower==='ls'){
 out.innerHTML+='Desktop/  Documents/  Pictures/  Music/  Videos/\n\n';
 }else if(lower==='uptime'){
-out.innerHTML+='up 0 days, 0:06, load average: <span style="color:#ff3333">13.00, 13.00, 13.00</span>\n\n';
+out.innerHTML+='up 0 days, 0:06, load average: <span style="color:#fff">13.00, 13.00, 13.00</span>\n\n';
 }else if(lower==='ps'){
-out.innerHTML+='  PID  STAT  COMMAND\n    1  S     init\n    2  S     soos-core\n    7  S     dust_renderer\n   13  R     <span style="color:#ff3333">dust_entity [CANNOT TERMINATE]</span>\n   14  Z     user_session (zombie)\n   28  S     soos-shell\n\n';
+out.innerHTML+='  PID  STAT  COMMAND\n    1  S     init\n    2  S     soos-core\n    7  S     dust_renderer\n   13  R     <span style="color:#fff">dust_entity [CANNOT TERMINATE]</span>\n   14  Z     user_session (zombie)\n   28  S     soos-shell\n\n';
 }else if(lower==='neofetch'){
-out.innerHTML+='<span style="color:#cc0000">  ___  ___  ___  ___\n / __||   || _ \\/ __|\n \\__ \\| | ||  _/\\__ \\\n |___/|___||_|  |___/</span>\n\n  OS: SoOS 0.6.66\n  Host: TheDustBwlDuck\n  Kernel: dust-core 2.6.13\n  Uptime: 6 minutes\n  Shell: soos-sh\n  Terminal: soos-term\n  CPU: CORRUPTED\n  Memory: 256MB (98% used)\n\n';
+out.innerHTML+='<span style="color:#fff">  ___  ___  ___  ___\n / __||   || _ \\/ __|\n \\__ \\| | ||  _/\\__ \\\n |___/|___||_|  |___/</span>\n\n  OS: SoOS 0.6.66\n  Host: TheDustBwlDuck\n  Uptime: 6 minutes\n  Shell: soos-sh\n  Terminal: soos-term\n  CPU: CORRUPTED\n  Memory: 256MB (98% used)\n\n';
 }else if(lower.startsWith('cat ')){
-out.innerHTML+='<span style="color:#ff3333">Permission denied: files can only be accessed through the File Explorer</span>\n\n';
+out.innerHTML+='<span style="color:#fff">Permission denied: files can only be accessed through the File Explorer</span>\n\n';
 }else if(lower==='exit'){
 closeWindow('terminal');return;
 }else if(cmd!==''){
-out.innerHTML+=`<span style="color:#ff3333">Unknown command: ${cmd}</span>\n\n`;
+out.innerHTML+=`<span style="color:#fff">Unknown command: ${cmd}</span>\n\n`;
 }
 out.scrollTop=out.scrollHeight;
 };
@@ -273,7 +273,7 @@ el.innerHTML='';
 msgs.forEach((m)=>{
 const d=document.createElement('div');
 d.className='chat-msg';
-d.innerHTML=`<span class="chat-msg-time">[${m.t}]</span> <span class="chat-msg-user" style="color:${m.u==='TheDustBwlDuck'?'#cc0000':'#557799'}">${m.u}</span><div class="chat-msg-text">${m.m}</div>`;
+d.innerHTML=`<span class="chat-msg-time">[${m.t}]</span> <span class="chat-msg-user" style="color:${m.u==='TheDustBwlDuck'?'#fff':'#999'}">${m.u}</span><div class="chat-msg-text">${m.m}</div>`;
 el.appendChild(d);
 });
 el.scrollTop=el.scrollHeight;
@@ -299,7 +299,7 @@ document.getElementById('email-back').addEventListener('click',()=>openEmail());
 };
 
 const openSettings=()=>{
-const h='<div class="app-settings"><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-row"><span class="settings-label">OS Version</span><span class="settings-value">SoOS 0.6.66</span></div><div class="settings-row"><span class="settings-label">Kernel</span><span class="settings-value">dust-core 2.6.13</span></div><div class="settings-row"><span class="settings-label">User</span><span class="settings-value">TheDustBwlDuck</span></div><div class="settings-row"><span class="settings-label">Hostname</span><span class="settings-value">dustbowl-pc</span></div></div><div class="settings-section"><div class="settings-section-title">Hardware</div><div class="settings-row"><span class="settings-label">CPU</span><span class="settings-value">Unknown (corrupted)</span></div><div class="settings-row"><span class="settings-label">RAM</span><span class="settings-value">256 MB (98% used)</span></div><div class="settings-row"><span class="settings-label">HDD</span><span class="settings-value">80 GB - 13 bad sectors</span></div><div class="settings-row"><span class="settings-label">Audio</span><span class="settings-value" style="color:#ff3333">DEVICE NOT RECOGNIZED</span></div></div><div class="settings-section"><div class="settings-section-title">Network</div><div class="settings-row"><span class="settings-label">Status</span><span class="settings-value">Connected</span></div><div class="settings-row"><span class="settings-label">Last Connection</span><span class="settings-value" style="color:#ff3333">0.0.0.0:27015</span></div></div></div>';
+const h='<div class="app-settings"><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-row"><span class="settings-label">OS Version</span><span class="settings-value">SoOS 0.6.66</span></div><div class="settings-row"><span class="settings-label">User</span><span class="settings-value">TheDustBwlDuck</span></div><div class="settings-row"><span class="settings-label">Hostname</span><span class="settings-value">dustbowl-pc</span></div></div><div class="settings-section"><div class="settings-section-title">Hardware</div><div class="settings-row"><span class="settings-label">CPU</span><span class="settings-value">Unknown (corrupted)</span></div><div class="settings-row"><span class="settings-label">RAM</span><span class="settings-value">256 MB (98% used)</span></div><div class="settings-row"><span class="settings-label">HDD</span><span class="settings-value">80 GB - 13 bad sectors</span></div><div class="settings-row"><span class="settings-label">Audio</span><span class="settings-value" style="color:#fff">DEVICE NOT RECOGNIZED</span></div></div><div class="settings-section"><div class="settings-section-title">Network</div><div class="settings-row"><span class="settings-label">Status</span><span class="settings-value">Connected</span></div><div class="settings-row"><span class="settings-label">Last Connection</span><span class="settings-value" style="color:#fff">0.0.0.0:27015</span></div></div></div>';
 createWindow('settings','Settings',400,420,h);
 };
 
@@ -353,4 +353,40 @@ document.querySelectorAll('.paint-size-btn').forEach((btn)=>{
 btn.addEventListener('click',()=>{document.querySelectorAll('.paint-size-btn').forEach((b)=>b.classList.remove('active'));btn.classList.add('active');size=parseInt(btn.dataset.size)});
 });
 document.getElementById('paint-clear').addEventListener('click',()=>{ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,canvas.width,canvas.height)});
+};
+const openTF2=()=>{
+const h=`<div style="padding:16px;height:100%;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:16px;color:#fff;border-bottom:1px solid #222;padding-bottom:8px">Team Fortress 2</div>
+<div style="color:#888;font-size:13px">Status: <span style="color:#fff">Installed</span></div>
+<div style="color:#888;font-size:13px">Last Played: <span style="color:#fff">May 27, 2007 - 11:48 PM</span></div>
+<div style="color:#888;font-size:13px">Hours Played: <span style="color:#fff">2,013</span></div>
+<div style="color:#888;font-size:13px">Favorite Map: <span style="color:#fff">cp_dustbowl</span></div>
+<div style="color:#888;font-size:13px">Last Server: <span style="color:#fff">0.0.0.0:27015</span></div>
+<div style="margin-top:auto;padding:12px;background:#111;border:1px solid #222;color:#555;font-size:12px;line-height:1.5">
+> Connection to server 0.0.0.0:27015 was never terminated.<br>
+> Session still active.<br>
+> Player "TheDustBwlDuck" is still in-game.<br>
+> Time elapsed: 6,939 days, 0 hours, 18 minutes<br>
+> ...<br>
+> He never left dustbowl.</div>
+</div>`;
+createWindow('tf2','Team Fortress 2',420,380,h);
+};
+
+const openSteam=()=>{
+document.getElementById('desktop').classList.add('hidden');
+document.getElementById('taskbar').classList.add('hidden');
+document.getElementById('start-menu').classList.add('hidden');
+const crash=document.createElement('div');
+crash.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99990;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Share Tech Mono,monospace';
+crash.innerHTML=`<div style="color:#fff;font-size:16px;text-align:center;max-width:600px;line-height:2">
+<div style="font-size:24px;margin-bottom:20px">:( </div>
+<div>SoOS ran into a problem and needs to restart.</div>
+<div style="color:#555;font-size:13px;margin-top:20px">FATAL_ERROR: steam.exe attempted to access restricted memory</div>
+<div style="color:#555;font-size:13px">Process: dust_entity (PID 13) blocked termination</div>
+<div style="color:#555;font-size:13px">Stop code: ENTITY_CORRUPTION</div>
+<div style="color:#333;font-size:12px;margin-top:30px">Restarting in 5 seconds...</div>
+</div>`;
+document.body.appendChild(crash);
+setTimeout(()=>{crash.remove();document.getElementById('desktop').classList.remove('hidden');document.getElementById('taskbar').classList.remove('hidden')},5000);
 };

@@ -2,13 +2,13 @@
 @keyframes loginFadeIn{from{opacity:0}to{opacity:1}}
 #login-box{display:flex;flex-direction:column;align-items:center;gap:20px;padding:40px;background:rgba(15,15,15,0.9);border:1px solid #1a1a1a;width:320px}
 #login-avatar{width:80px;height:80px;border-radius:50%;background:#111;border:2px solid #333;position:relative;overflow:hidden}
-#login-avatar::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,#220000 0%,#110000 50%,transparent 70%);animation:avatarPulse 3s ease-in-out infinite}
+#login-avatar::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,#222 0%,#111 50%,transparent 70%);animation:avatarPulse 3s ease-in-out infinite}
 @keyframes avatarPulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
 #login-fields{display:flex;flex-direction:column;gap:12px;width:100%}
-#login-username-display{text-align:center;color:#00ff00;font-family:'VT323',monospace;font-size:18px;letter-spacing:2px;padding:6px 0}
-#login-fields input{width:100%;padding:10px 12px;background:#0d0d0d;border:1px solid #222;color:#00ff00;font-family:'VT323',monospace;font-size:16px;outline:none;transition:border-color 0.2s}
-#login-fields input:focus{border-color:#005500}
+#login-username-display{text-align:center;color:#fff;font-family:'VT323',monospace;font-size:18px;letter-spacing:2px;padding:6px 0}
+#login-fields input{width:100%;padding:10px 12px;background:#0d0d0d;border:1px solid #222;color:#fff;font-family:'VT323',monospace;font-size:16px;outline:none;transition:border-color 0.2s}
+#login-fields input:focus{border-color:#555}
 #login-fields input::placeholder{color:#333}
-#login-btn{width:100%;padding:10px;background:#111;border:1px solid #333;color:#00ff00;font-family:'VT323',monospace;font-size:16px;cursor:pointer;transition:all 0.2s}
-#login-btn:hover{background:#1a1a1a;border-color:#00ff00;text-shadow:0 0 8px rgba(0,255,0,0.5)}
-#login-error{color:#ff3333;font-size:14px;text-align:center;min-height:20px}
+#login-btn{width:100%;padding:10px;background:#111;border:1px solid #333;color:#fff;font-family:'VT323',monospace;font-size:16px;cursor:pointer;transition:all 0.2s}
+#login-btn:hover{background:#1a1a1a;border-color:#fff;text-shadow:0 0 8px rgba(255,255,255,0.3)}
+#login-error{color:#888;font-size:14px;text-align:center;min-height:20px}

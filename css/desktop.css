@@ -3,7 +3,8 @@
 .desktop-icon{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;width:80px;cursor:pointer;border:1px solid transparent;border-radius:3px;transition:background 0.15s}
 .desktop-icon:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1)}
 .desktop-icon:active{background:rgba(255,255,255,0.08)}
-.desktop-icon-img{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:28px;filter:brightness(0.8)}
+.desktop-icon-img{width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#999}
+.desktop-icon-img svg{width:32px;height:32px}
 .desktop-icon-label{font-family:'Share Tech Mono',monospace;font-size:11px;color:#aaa;text-align:center;text-shadow:1px 1px 2px rgba(0,0,0,0.8);word-break:break-word;line-height:1.2}
 #windows-area{position:absolute;top:0;left:0;width:100%;height:calc(100% - 36px);z-index:50}
 #shutdown-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:10000;display:flex;align-items:center;justify-content:center}
