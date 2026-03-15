@@ -10,10 +10,15 @@
 <link rel="stylesheet" href="css/apps.css">
 <link rel="stylesheet" href="css/taskbar.css">
 <link rel="stylesheet" href="css/windows.css">
-<link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="bios">
+<div id="dell-splash">
+<div id="dell-logo">DELL</div>
+<div id="dell-model">XPS 420</div>
+<div id="dell-hint">Press F2 for Setup, F12 for Boot Menu</div>
+</div>
+<div id="bios" class="hidden">
 <div id="bios-content"></div>
 </div>
 <div id="post" class="hidden">
@@ -63,6 +68,7 @@
 <div id="shutdown-screen" class="hidden">
 <span id="shutdown-text">Shutting down...</span>
 </div>
+<div id="jumpscare-overlay" class="hidden"></div>
 <div id="scanlines"></div>
 <div id="flicker"></div>
 <script src="js/auth.js"></script>
@@ -70,6 +76,8 @@
 <script src="js/desktop.js"></script>
 <script src="js/windows.js"></script>
 <script src="js/apps.js"></script>
+<script src="js/state.js"></script>
+<script src="js/home.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

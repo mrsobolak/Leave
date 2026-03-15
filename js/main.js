@@ -1,1 +1,1 @@
-document.addEventListener('DOMContentLoaded',()=>biosPhase());
+document.addEventListener('DOMContentLoaded',()=>dellSplash());
