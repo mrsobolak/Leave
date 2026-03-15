@@ -5,6 +5,7 @@
 #login-avatar::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,#220000 0%,#110000 50%,transparent 70%);animation:avatarPulse 3s ease-in-out infinite}
 @keyframes avatarPulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
 #login-fields{display:flex;flex-direction:column;gap:12px;width:100%}
+#login-username-display{text-align:center;color:#00ff00;font-family:'VT323',monospace;font-size:18px;letter-spacing:2px;padding:6px 0}
 #login-fields input{width:100%;padding:10px 12px;background:#0d0d0d;border:1px solid #222;color:#00ff00;font-family:'VT323',monospace;font-size:16px;outline:none;transition:border-color 0.2s}
 #login-fields input:focus{border-color:#005500}
 #login-fields input::placeholder{color:#333}
