@@ -1,0 +1,19 @@
+.app-window{position:absolute;background:#0d0d0d;border:1px solid #2a2a2a;display:flex;flex-direction:column;min-width:320px;min-height:200px;box-shadow:0 4px 20px rgba(0,0,0,0.8);z-index:100}
+.app-window.focused{z-index:200;border-color:#333}
+.window-titlebar{display:flex;align-items:center;height:28px;background:linear-gradient(180deg,#1e1e1e 0%,#141414 100%);padding:0 8px;cursor:move;flex-shrink:0;border-bottom:1px solid #222}
+.focused .window-titlebar{background:linear-gradient(180deg,#252525 0%,#1a1a1a 100%)}
+.window-title{flex:1;font-family:'Share Tech Mono',monospace;font-size:12px;color:#666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.focused .window-title{color:#999}
+.window-controls{display:flex;gap:4px}
+.window-ctrl-btn{width:18px;height:18px;border:1px solid #333;background:#151515;color:#555;font-size:11px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.1s;font-family:'VT323',monospace;line-height:1}
+.window-ctrl-btn:hover{background:#222;color:#aaa}
+.window-ctrl-btn.close-btn:hover{background:#330000;border-color:#660000;color:#ff3333}
+.window-body{flex:1;overflow:auto;position:relative;font-family:'Share Tech Mono',monospace;font-size:13px;color:#aaa}
+.window-body::-webkit-scrollbar{width:8px}
+.window-body::-webkit-scrollbar-track{background:#0a0a0a}
+.window-body::-webkit-scrollbar-thumb{background:#222;border:1px solid #1a1a1a}
+.window-body::-webkit-scrollbar-thumb:hover{background:#333}
+.window-resize-handle{position:absolute;bottom:0;right:0;width:14px;height:14px;cursor:nwse-resize;z-index:10}
+.window-resize-handle::after{content:'';position:absolute;bottom:2px;right:2px;width:8px;height:8px;border-right:2px solid #333;border-bottom:2px solid #333}
+.window-maximized{top:0!important;left:0!important;width:100%!important;height:calc(100% - 36px)!important;border:none}
+.window-maximized .window-resize-handle{display:none}
