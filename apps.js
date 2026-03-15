@@ -35,7 +35,7 @@ var fsData={
 'config.sys':{type:'file',content:'SOOS_VERSION=0.6.66\nKERNEL=soos-core\nINIT_PROCESS=dust\nWARNING_LEVEL=CRITICAL\nENTITY_STATUS=ACTIVE\nHOST=TheDustBwlDuck\nLAST_HEARTBEAT=2008-05-28T00:06:00'},
 'error.log':{type:'file',content:'[2008-05-27 23:41:12] ERR: Process \'dust_entity\' consuming 98% memory\n[2008-05-27 23:42:00] ERR: Unable to terminate process - access denied\n[2008-05-27 23:45:33] WARN: Network traffic to unknown destination\n[2008-05-27 23:50:01] ERR: File system corruption detected\n[2008-05-27 23:55:00] CRIT: User session anomaly\n[2008-05-28 00:00:00] CRIT: Time synchronization failed\n[2008-05-28 00:01:13] ERR: 13 processes unresponsive\n[2008-05-28 00:05:59] CRIT: =============================\n[2008-05-28 00:06:00] CRIT: SYSTEM HALTED\n[2008-05-28 00:06:00] ???: he is home now'}
 }}
-}};
+}}};
 
 var chatData={
 'beeper_2008':[
