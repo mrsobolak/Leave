@@ -5,104 +5,118 @@ const fsData={
 'TheDustBwlDuck':{type:'dir',children:{
 'Desktop':{type:'dir',children:{}},
 'Documents':{type:'dir',children:{
-'diary_001.txt':{type:'file',content:'May 3, 2007\n\nI keep seeing it. On dustbowl. The same figure.\nEveryone says its just a bot but bots dont WATCH you.\nBots dont stand still in the corner of the map.\nBots dont know your name.\n\nI shouldnt have joined that server.'},
-'diary_002.txt':{type:'file',content:'May 10, 2007\n\nIt followed me. Different server. Different map.\nSame figure. Same spot in my peripheral vision.\nWhen I turn, nothing. When I check the scoreboard, no extra player.\n\nBut the chat logs. Oh god the chat logs.\nIt typed my real name.'},
-'diary_003.txt':{type:'file',content:'May 15, 2007\n\nI cant sleep. Every time I close my eyes\nI see dustbowl. Not the game. Like im THERE.\nThe tunnels. The dust. Its so dry.\n\nMy hands keep shaking. My wrists hurt.\nI think its getting worse.'},
-'diary_004.txt':{type:'file',content:'May 20, 2007\n\nI uninstalled TF2. Deleted everything.\nFormatted my hard drive.\n\nOpened my browser. My homepage was dustbowl.\nA screenshot. But wrong. The sky was black.\nAnd there was something in the tunnel.\nLooking at me.\n\nThrough the screen.'},
-'diary_005.txt':{type:'file',content:'May 25, 2007\n\nit speaks to me now\nnot through the game\nthrough everything\nmy phone my dreams my reflection\n\nit says i belong there\nin the dust\nin the bowl\n\nmaybe it is right'},
-'diary_006.txt':{type:'file',content:'May 27, 2007\n\ni am so tired\n\nthe dust is all i see\nthe bowl is all i know\n\ntomorrow i go home'},
-'DONT_READ.txt':{type:'file',content:'Y O U   S H O U L D N T   B E   H E R E\n\n\n\n\n\n\nI   S E E   Y O U\n\n\n\n\n\nT H E   D U S T   R E M E M B E R S'},
-'server_list.txt':{type:'file',content:'SERVERS I PLAYED ON:\n\n192.168.1.13:27015 - [REDACTED] Dustbowl 24/7\n10.0.13.1:27015 - The Bowl (DO NOT JOIN)\n0.0.0.0:27015 - ???\n\nNote: The last one appeared on its own.\nI never added it.\nIt joins ME.'}
+'school_essay.txt':{type:'file',content:'The American Revolution - by TheDustBwlDuck\n\nThe American Revolution was a war fought between\nthe American colonies and Great Britain from 1775 to 1783.\n\nI still need to finish this. Due friday.\n\nActually im gonna play tf2 first.'},
+'tf2_binds.txt':{type:'file',content:'TF2 CUSTOM BINDS:\n\nbind f "voicemenu 0 1" (MEDIC!)\nbind g "voicemenu 2 1" (Nice Shot)\nbind h "say GET DUSTBOWLED"\nbind j "say UBERSAW TIME"\nbind mouse4 "+jump"\n\nNote to self: stop spamming the medic bind\npeople are getting mad'},
+'server_favorites.txt':{type:'file',content:'MY FAVORITE SERVERS:\n\n192.168.1.13:27015 - Dustbowl 24/7 (THE BEST ONE)\n74.91.113.73:27015 - 2Fort Unlimited\n208.100.45.21:27015 - cp_granary tryhard server\n\nDustbowl 24/7 has the best regulars\nIm there pretty much every night'},
+'grocery_list.txt':{type:'file',content:'Mom said to get:\n- milk\n- bread\n- cereal (the good kind not the healthy one)\n- hot pockets\n- mountain dew\n\ni keep forgetting this list so im putting it on the computer'},
+'todo.txt':{type:'file',content:'TODO:\n- finish essay (FRIDAY)\n- clean room (mom keeps asking)\n- update steam profile pic\n- ask mike about half life 2 episode 2\n- practice scout movement on dustbowl\n- fix microphone buzzing'}
 }},
 'Pictures':{type:'dir',children:{
 'dustbowl_screenshot1.png':{type:'img',src:`${mediaBasePath}img/dustbowl1.png`},
 'dustbowl_screenshot2.png':{type:'img',src:`${mediaBasePath}img/dustbowl2.png`},
-'face_distorted.png':{type:'img',src:`${mediaBasePath}img/face1.png`},
-'UNKNOWN_001.png':{type:'img',src:`${mediaBasePath}img/unknown1.png`},
-'UNKNOWN_002.png':{type:'img',src:`${mediaBasePath}img/unknown2.png`}
+'funny_spray.png':{type:'img',src:`${mediaBasePath}img/spray1.png`},
+'my_scout_loadout.png':{type:'img',src:`${mediaBasePath}img/scout1.png`},
+'desktop_wallpaper_backup.png':{type:'img',src:`${mediaBasePath}img/wallpaper1.png`}
 }},
 'Music':{type:'dir',children:{
-'recording_052808.mp3':{type:'audio',src:`${mediaBasePath}audio/recording1.mp3`},
-'server_audio_rip.mp3':{type:'audio',src:`${mediaBasePath}audio/server_audio.mp3`}
+'song1.mp3':{type:'audio',src:`${mediaBasePath}audio/song1.mp3`},
+'song2.mp3':{type:'audio',src:`${mediaBasePath}audio/song2.mp3`}
 }},
 'Videos':{type:'dir',children:{
-'last_session.mp4':{type:'video',src:`${mediaBasePath}video/last_session.mp4`},
-'footage_corrupted.mp4':{type:'video',src:`${mediaBasePath}video/corrupted.mp4`}
+'dustbowl_gameplay.mp4':{type:'video',src:`${mediaBasePath}video/gameplay1.mp4`},
+'funny_kill.mp4':{type:'video',src:`${mediaBasePath}video/funnykill.mp4`}
 }}
 }}
 }},
 'System':{type:'dir',children:{
-'config.sys':{type:'file',content:'SOOS_VERSION=0.6.66\nKERNEL=soos-core\nINIT_PROCESS=dust\nWARNING_LEVEL=CRITICAL\nENTITY_STATUS=ACTIVE\nHOST=TheDustBwlDuck\nLAST_HEARTBEAT=2007-05-28T00:06:00'},
-'error.log':{type:'file',content:'[2007-05-27 23:41:12] ERR: Process \'dust_entity\' consuming 98% memory\n[2007-05-27 23:42:00] ERR: Unable to terminate process - access denied\n[2007-05-27 23:45:33] WARN: Network traffic to unknown destination\n[2007-05-27 23:50:01] ERR: File system corruption detected\n[2007-05-27 23:55:00] CRIT: User session anomaly\n[2007-05-28 00:00:00] CRIT: Time synchronization failed\n[2007-05-28 00:01:13] ERR: 13 processes unresponsive\n[2007-05-28 00:05:59] CRIT: =============================\n[2007-05-28 00:06:00] CRIT: SYSTEM HALTED\n[2007-05-28 00:06:00] ???: he is home now'}
+'config.sys':{type:'file',content:'SOOS_VERSION=1.0.2\nINIT_PROCESS=soos-init\nHOST=TheDustBwlDuck\nLAST_BOOT=2007-05-27T18:32:00\nUPTIME=5h34m'},
+'error.log':{type:'file',content:'[2007-05-27 18:32:15] INFO: System boot completed successfully\n[2007-05-27 18:32:20] INFO: Network adapter connected\n[2007-05-27 18:33:01] INFO: Audio driver loaded - SigmaTel STAC 9227\n[2007-05-27 19:15:42] WARN: High CPU usage detected (Steam.exe)\n[2007-05-27 20:01:13] INFO: Application launched: hl2.exe (Team Fortress 2)\n[2007-05-27 23:45:00] INFO: Application closed: hl2.exe\n[2007-05-28 00:04:22] INFO: System idle'}
 }}
 }}};
 
 const chatData={
-'beeper_2007':[
-{u:'TheDustBwlDuck',t:'11:30 PM',m:'beeper are you there'},
-{u:'beeper',t:'11:31 PM',m:'yeah whats up'},
-{u:'TheDustBwlDuck',t:'11:31 PM',m:'something is wrong with my game'},
-{u:'beeper',t:'11:32 PM',m:'what do you mean'},
-{u:'TheDustBwlDuck',t:'11:32 PM',m:'theres someone on dustbowl. same server every time'},
-{u:'TheDustBwlDuck',t:'11:32 PM',m:'but theyre not on the scoreboard'},
-{u:'beeper',t:'11:33 PM',m:'probably just a spectator or something'},
-{u:'TheDustBwlDuck',t:'11:34 PM',m:'no. they typed my real name in chat'},
-{u:'beeper',t:'11:34 PM',m:'...what?'},
-{u:'TheDustBwlDuck',t:'11:35 PM',m:'i need to show you something'},
-{u:'TheDustBwlDuck',t:'11:35 PM',m:'can you join the server'},
-{u:'beeper',t:'11:36 PM',m:'which one'},
-{u:'TheDustBwlDuck',t:'11:36 PM',m:'0.0.0.0:27015'},
-{u:'beeper',t:'11:37 PM',m:'that doesnt look like a real ip'},
-{u:'TheDustBwlDuck',t:'11:38 PM',m:'just try it please'},
-{u:'beeper',t:'11:42 PM',m:'it connected me somewhere. but the map is wrong'},
-{u:'beeper',t:'11:42 PM',m:'this isnt dustbowl'},
-{u:'beeper',t:'11:43 PM',m:'or it is but everything is dark'},
-{u:'TheDustBwlDuck',t:'11:43 PM',m:'do you see him'},
-{u:'beeper',t:'11:44 PM',m:'see who'},
-{u:'TheDustBwlDuck',t:'11:45 PM',m:'the duck'},
-{u:'beeper',t:'11:45 PM',m:'im leaving this server'},
-{u:'TheDustBwlDuck',t:'11:46 PM',m:'you cant'},
-{u:'beeper',t:'11:46 PM',m:'what do you mean i cant'},
-{u:'beeper',t:'11:47 PM',m:'the disconnect button isnt working'},
-{u:'beeper',t:'11:47 PM',m:'dude what the hell'},
-{u:'TheDustBwlDuck',t:'11:48 PM',m:'im sorry'},
-{u:'TheDustBwlDuck',t:'11:48 PM',m:'i just didnt want to be alone with it'}
+'mikeloveshalflife':[
+{u:'mikeloveshalflife',t:'6:45 PM',m:'yo duck you see the new update?'},
+{u:'TheDustBwlDuck',t:'6:46 PM',m:'YEAH the new maps look sick'},
+{u:'mikeloveshalflife',t:'6:46 PM',m:'we gotta try them this weekend'},
+{u:'TheDustBwlDuck',t:'6:47 PM',m:'for sure. but honestly nothing beats dustbowl'},
+{u:'mikeloveshalflife',t:'6:47 PM',m:'bro you are OBSESSED with dustbowl'},
+{u:'TheDustBwlDuck',t:'6:48 PM',m:'its the perfect map mike. the chokepoints. the tunnels. the CHAOS'},
+{u:'mikeloveshalflife',t:'6:48 PM',m:'its literally just a hallway simulator'},
+{u:'TheDustBwlDuck',t:'6:49 PM',m:'you take that back'},
+{u:'mikeloveshalflife',t:'6:49 PM',m:'lmaooo'},
+{u:'TheDustBwlDuck',t:'6:50 PM',m:'anyway how was your day'},
+{u:'mikeloveshalflife',t:'6:50 PM',m:'not bad. school was whatever. got a new gpu coming friday'},
+{u:'TheDustBwlDuck',t:'6:51 PM',m:'nice what card'},
+{u:'mikeloveshalflife',t:'6:51 PM',m:'hd 2600 xt'},
+{u:'TheDustBwlDuck',t:'6:52 PM',m:'solid. i got the 3870 its a beast'},
+{u:'mikeloveshalflife',t:'6:52 PM',m:'showoff'},
+{u:'TheDustBwlDuck',t:'6:53 PM',m:'haha nah the xps 420 came with it. dell hooked it up'},
+{u:'mikeloveshalflife',t:'6:53 PM',m:'rich kid'},
+{u:'TheDustBwlDuck',t:'6:54 PM',m:'birthday present dude cmon'},
+{u:'mikeloveshalflife',t:'6:54 PM',m:'im kidding. see you on dustbowl later?'},
+{u:'TheDustBwlDuck',t:'6:55 PM',m:'always'},
+{u:'mikeloveshalflife',t:'7:12 PM',m:'btw have you played episode 2 yet'},
+{u:'TheDustBwlDuck',t:'7:13 PM',m:'not yet i keep meaning to'},
+{u:'mikeloveshalflife',t:'7:13 PM',m:'DUDE you have to. the ending is insane'},
+{u:'TheDustBwlDuck',t:'7:14 PM',m:'no spoilers!!'},
+{u:'mikeloveshalflife',t:'7:14 PM',m:'i would never'},
+{u:'TheDustBwlDuck',t:'7:15 PM',m:'ill play it after i finish this essay. maybe this weekend'},
+{u:'mikeloveshalflife',t:'7:15 PM',m:'the revolution one?'},
+{u:'TheDustBwlDuck',t:'7:16 PM',m:'yeah mrs. hendersons class'},
+{u:'mikeloveshalflife',t:'7:16 PM',m:'i did mine in like 20 minutes lol'},
+{u:'TheDustBwlDuck',t:'7:17 PM',m:'yeah and you got a C'},
+{u:'mikeloveshalflife',t:'7:17 PM',m:'...fair'}
 ],
-'unknown_user':[
-{u:'???',t:'00:01',m:'you found the machine'},
-{u:'???',t:'00:02',m:'good'},
-{u:'???',t:'00:03',m:'he tried to delete everything'},
-{u:'???',t:'00:04',m:'but the dust remembers'},
-{u:'???',t:'00:05',m:'it always remembers'},
-{u:'???',t:'00:06',m:'welcome home'}
+'48291637':[
+{u:'48291637',t:'00:00',m:'13'},
+{u:'48291637',t:'00:00',m:'13'},
+{u:'48291637',t:'00:00',m:'13'},
+{u:'48291637',t:'00:01',m:'201'},
+{u:'48291637',t:'00:01',m:'201'},
+{u:'48291637',t:'00:01',m:'201'},
+{u:'48291637',t:'00:02',m:'0.0.0.0'},
+{u:'48291637',t:'00:02',m:'0.0.0.0'},
+{u:'48291637',t:'00:02',m:'0.0.0.0'},
+{u:'48291637',t:'00:03',m:'52 75 6E'},
+{u:'48291637',t:'00:03',m:'48 6F 6D 65'},
+{u:'48291637',t:'00:04',m:'13 13 13 13 13 13 13'},
+{u:'48291637',t:'00:04',m:'13 13 13 13 13 13 13 13 13 13 13 13 13'},
+{u:'48291637',t:'00:05',m:'201201201201201201201201'},
+{u:'48291637',t:'00:05',m:'000000000000000000000000'},
+{u:'48291637',t:'00:06',m:'h e  i s  h e r e'},
+{u:'48291637',t:'00:06',m:'13'}
 ]
 };
 
 const emailData=[
-{id:1,from:'beeper@dustbowl.net',subject:'RE: that server',date:'May 26, 2007',unread:true,body:'Dude I still cant get that server out of my head.\nMy game keeps crashing now and when it does\nfor a split second I see that map.\nThe dark one.\n\nDont connect to that server again. Please.\nIm serious.\n\n- beeper'},
-{id:2,from:'admin@community-tf2.net',subject:'Account Warning',date:'May 24, 2007',unread:true,body:'Dear TheDustBwlDuck,\n\nYour account has been flagged for unusual activity.\nMultiple connection attempts to non-existent servers\nhave been logged from your IP address.\n\nAdditionally, several players have reported\na user matching your description appearing in\nservers you are not connected to.\n\nPlease contact support immediately.\n\n- Server Administration'},
-{id:3,from:'no-reply@0.0.0.0',subject:'come home',date:'May 27, 2007',unread:true,body:'the dust is waiting\nthe bowl is ready\n\nyou know what you have to do\n\n\n\n\n\n\n\n\n\n\nwe are the same'},
-{id:4,from:'TheDustBwlDuck@dustbowl.net',subject:'[no subject]',date:'May 28, 2007',unread:true,body:'if anyone finds this\n\nim sorry\n\ni couldnt stop it\n\nthe dust took everything\n\ndont look for me on dustbowl\n\n\n\nor maybe do\n\nmaybe then youll understand'},
-{id:5,from:'system@soos.local',subject:'CRITICAL: Process cannot be terminated',date:'May 28, 2007',unread:false,body:'SYSTEM ALERT\n\nProcess: dust_entity\nPID: 13\nStatus: CANNOT BE TERMINATED\n\nThis process has root access and is\nmodifying system files.\n\nRecommended action: FULL SYSTEM WIPE\n\nWARNING: Process is aware of termination attempts.'}
+{id:1,from:'mikeloveshalflife@yahoo.com',subject:'RE: dustbowl tonight?',date:'May 26, 2007',unread:true,body:'Yeah im down for tonight. Ill be on around 8.\n\nAlso did you finish the essay yet? Im not\ngonna lie I totally copied some of mine from\nwikipedia lol. Dont tell henderson.\n\nSee you on dustbowl\n- mike'},
+{id:2,from:'admin@dustbowl247.com',subject:'Welcome to Dustbowl 24/7!',date:'May 20, 2007',unread:false,body:'Hey TheDustBwlDuck,\n\nWelcome to the Dustbowl 24/7 community server!\n\nYou have been added to our regulars list.\nEnjoy your stay and remember:\n- No cheating\n- No mic spam\n- Have fun!\n\nSee you on the battlefield,\n- Server Admin Team'},
+{id:3,from:'steampowered@steampowered.com',subject:'Your receipt for Team Fortress 2',date:'Oct 10, 2007',unread:false,body:'Thank you for your purchase!\n\nTeam Fortress 2\nThe Orange Box\nPrice: $49.99\n\nThis game has been added to your Steam library.\n\nEnjoy!\n- The Steam Team'},
+{id:4,from:'mom',subject:'dinner',date:'May 27, 2007',unread:true,body:'Hey sweetie,\n\nDinner is at 7. Please come down on time\nthis time and not 20 minutes late because\nyoure playing your game.\n\nAlso please clean your room this weekend.\n\nLove,\nMom'},
+{id:5,from:'newsletter@valvesoftware.com',subject:'TF2 Update - New Maps!',date:'May 25, 2007',unread:false,body:'Team Fortress 2 has been updated!\n\nChanges include:\n- New community maps added\n- Fixed backstab hit detection\n- Improved server browser performance\n- Various bug fixes\n\nSee the full patch notes on our website.\n\n- Valve'}
 ];
 
 const browserBookmarks=[
 {title:'Dustbowl 24/7 - Community Server',url:'http://dustbowl247.community-tf2.net'},
 {title:'TF2 Wiki - Dustbowl',url:'http://wiki.teamfortress.com/wiki/Dustbowl'},
 {title:'Steam Community :: TheDustBwlDuck',url:'http://steamcommunity.com/id/thedustbwlduck'},
-{title:'what is following me on dustbowl?? - Forum Post',url:'http://forums.community-tf2.net/thread/48291'},
-{title:'how to remove unknown process from pc',url:'http://answers.com/q/remove-unknown-process'},
-{title:'entity attachment to video games real?',url:'http://paranormal-forums.net/thread/gaming-entities'}
+{title:'YouTube',url:'http://youtube.com'},
+{title:'Newgrounds',url:'http://newgrounds.com'},
+{title:'GameFAQs - TF2 Board',url:'http://gamefaqs.com/boards/tf2'},
+{title:'MySpace',url:'http://myspace.com'}
 ];
 
 const browserHistory=[
-{title:'google: "dustbowl entity tf2"',date:'May 27, 2007'},
-{title:'google: "someone watching me through game"',date:'May 26, 2007'},
-{title:'google: "how to tell if youre going insane"',date:'May 25, 2007'},
-{title:'google: "0.0.0.0 server address meaning"',date:'May 22, 2007'},
-{title:'google: "can a game be haunted"',date:'May 18, 2007'},
-{title:'google: "process 13 wont close"',date:'May 15, 2007'},
-{title:'google: "i keep dreaming about the same place"',date:'May 10, 2007'}
+{title:'google: "tf2 dustbowl tips"',date:'May 27, 2007'},
+{title:'google: "best tf2 medic loadout"',date:'May 27, 2007'},
+{title:'youtube.com - TF2 Spy Frag Movie',date:'May 26, 2007'},
+{title:'google: "half life 2 episode 2 release date"',date:'May 25, 2007'},
+{title:'newgrounds.com - Flash Games',date:'May 24, 2007'},
+{title:'google: "how to make tf2 spray"',date:'May 22, 2007'},
+{title:'gamefaqs.com - tf2 best class for beginners',date:'May 20, 2007'},
+{title:'google: "dell xps 420 specs"',date:'May 18, 2007'},
+{title:'myspace.com',date:'May 15, 2007'}
 ];
 
 const openApp=(id)=>{
@@ -165,7 +179,7 @@ createWindow('browser','SoOS Browser',600,450,h);
 };
 
 const openTerminal=()=>{
-const h='<div class="app-terminal"><div class="terminal-output" id="term-out">SoOS Terminal v0.6.66\nType "help" for available commands.\n\n</div><div class="terminal-input-line"><span class="terminal-prompt">TheDustBwlDuck@soos:~$</span><input class="terminal-input" id="term-in" autofocus spellcheck="false"></div></div>';
+const h='<div class="app-terminal"><div class="terminal-output" id="term-out">SoOS Terminal v1.0.2\nType "help" for available commands.\n\n</div><div class="terminal-input-line"><span class="terminal-prompt">TheDustBwlDuck@soos:~$</span><input class="terminal-input" id="term-in" autofocus spellcheck="false"></div></div>';
 createWindow('terminal','Terminal',550,350,h);
 const inp=document.getElementById('term-in');
 if(inp){inp.focus();inp.addEventListener('keydown',(e)=>{
@@ -187,19 +201,19 @@ out.innerHTML+='Available commands:\n  help     - show this message\n  whoami   
 }else if(lower==='whoami'){
 out.innerHTML+='TheDustBwlDuck\n\n';
 }else if(lower==='date'){
-out.innerHTML+='Wed May 28 00:06:00 UTC 2007\n\n';
+out.innerHTML+='Sun May 27 23:58:00 UTC 2007\n\n';
 }else if(lower==='clear'){
 out.innerHTML='';
 }else if(lower==='ls'){
 out.innerHTML+='Desktop/  Documents/  Pictures/  Music/  Videos/\n\n';
 }else if(lower==='uptime'){
-out.innerHTML+='up 0 days, 0:06, load average: <span style="color:#fff">13.00, 13.00, 13.00</span>\n\n';
+out.innerHTML+='up 0 days, 5:34, load average: 0.42, 0.38, 0.35\n\n';
 }else if(lower==='ps'){
-out.innerHTML+='  PID  STAT  COMMAND\n    1  S     init\n    2  S     soos-core\n    7  S     dust_renderer\n   13  R     <span style="color:#fff">dust_entity [CANNOT TERMINATE]</span>\n   14  Z     user_session (zombie)\n   28  S     soos-shell\n\n';
+out.innerHTML+='  PID  STAT  COMMAND\n    1  S     init\n    2  S     soos-core\n    7  S     display-server\n   14  S     soos-shell\n   28  S     Steam.exe\n   31  S     hl2.exe\n\n';
 }else if(lower==='neofetch'){
-out.innerHTML+='<span style="color:#fff">  ___  ___  ___  ___\n / __||   || _ \\/ __|\n \\__ \\| | ||  _/\\__ \\\n |___/|___||_|  |___/</span>\n\n  OS: SoOS 0.6.66\n  Host: TheDustBwlDuck\n  Uptime: 6 minutes\n  Shell: soos-sh\n  Terminal: soos-term\n  CPU: CORRUPTED\n  Memory: 256MB (98% used)\n\n';
+out.innerHTML+='<span style="color:#fff">  ___  ___  ___  ___\n / __||   || _ \\/ __|\n \\__ \\| | ||  _/\\__ \\\n |___/|___||_|  |___/</span>\n\n  OS: SoOS 1.0.2\n  Host: TheDustBwlDuck\n  Uptime: 5 hours, 34 minutes\n  Shell: soos-sh\n  Terminal: soos-term\n  CPU: Intel Core 2 Quad Q6600 @ 2.40GHz\n  GPU: ATI Radeon HD 3870 512 MB\n  Memory: 4096 MB DDR2 (43% used)\n\n';
 }else if(lower.startsWith('cat ')){
-out.innerHTML+='<span style="color:#fff">Permission denied: files can only be accessed through the File Explorer</span>\n\n';
+out.innerHTML+='<span style="color:#fff">Use the File Explorer to open files.</span>\n\n';
 }else if(lower==='exit'){
 closeWindow('terminal');return;
 }else if(cmd!==''){
@@ -299,7 +313,7 @@ document.getElementById('email-back').addEventListener('click',()=>openEmail());
 };
 
 const openSettings=()=>{
-const h='<div class="app-settings"><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-row"><span class="settings-label">OS Version</span><span class="settings-value">SoOS 0.6.66</span></div><div class="settings-row"><span class="settings-label">User</span><span class="settings-value">TheDustBwlDuck</span></div><div class="settings-row"><span class="settings-label">Hostname</span><span class="settings-value">dustbowl-pc</span></div></div><div class="settings-section"><div class="settings-section-title">Hardware</div><div class="settings-row"><span class="settings-label">CPU</span><span class="settings-value">Unknown (corrupted)</span></div><div class="settings-row"><span class="settings-label">RAM</span><span class="settings-value">256 MB (98% used)</span></div><div class="settings-row"><span class="settings-label">HDD</span><span class="settings-value">80 GB - 13 bad sectors</span></div><div class="settings-row"><span class="settings-label">Audio</span><span class="settings-value" style="color:#fff">DEVICE NOT RECOGNIZED</span></div></div><div class="settings-section"><div class="settings-section-title">Network</div><div class="settings-row"><span class="settings-label">Status</span><span class="settings-value">Connected</span></div><div class="settings-row"><span class="settings-label">Last Connection</span><span class="settings-value" style="color:#fff">0.0.0.0:27015</span></div></div></div>';
+const h='<div class="app-settings"><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-row"><span class="settings-label">OS Version</span><span class="settings-value">SoOS 1.0.2</span></div><div class="settings-row"><span class="settings-label">User</span><span class="settings-value">TheDustBwlDuck</span></div><div class="settings-row"><span class="settings-label">Hostname</span><span class="settings-value">dustbowl-pc</span></div></div><div class="settings-section"><div class="settings-section-title">Hardware</div><div class="settings-row"><span class="settings-label">CPU</span><span class="settings-value">Intel Core 2 Quad Q6600</span></div><div class="settings-row"><span class="settings-label">RAM</span><span class="settings-value">4096 MB DDR2</span></div><div class="settings-row"><span class="settings-label">GPU</span><span class="settings-value">ATI Radeon HD 3870 512 MB</span></div><div class="settings-row"><span class="settings-label">HDD</span><span class="settings-value">320 GB</span></div><div class="settings-row"><span class="settings-label">Audio</span><span class="settings-value">SigmaTel STAC 9227</span></div></div><div class="settings-section"><div class="settings-section-title">Network</div><div class="settings-row"><span class="settings-label">Status</span><span class="settings-value">Connected</span></div><div class="settings-row"><span class="settings-label">Adapter</span><span class="settings-value">Intel 82566DC Gigabit</span></div></div></div>';
 createWindow('settings','Settings',400,420,h);
 };
 
@@ -354,23 +368,18 @@ btn.addEventListener('click',()=>{document.querySelectorAll('.paint-size-btn').f
 });
 document.getElementById('paint-clear').addEventListener('click',()=>{ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,canvas.width,canvas.height)});
 };
+
 const openTF2=()=>{
 const h=`<div style="padding:16px;height:100%;display:flex;flex-direction:column;gap:12px">
 <div style="font-size:16px;color:#fff;border-bottom:1px solid #222;padding-bottom:8px">Team Fortress 2</div>
 <div style="color:#888;font-size:13px">Status: <span style="color:#fff">Installed</span></div>
-<div style="color:#888;font-size:13px">Last Played: <span style="color:#fff">May 27, 2007 - 11:48 PM</span></div>
-<div style="color:#888;font-size:13px">Hours Played: <span style="color:#fff">2,013</span></div>
+<div style="color:#888;font-size:13px">Last Played: <span style="color:#fff">May 27, 2007 - 11:45 PM</span></div>
+<div style="color:#888;font-size:13px">Hours Played: <span style="color:#fff">347</span></div>
 <div style="color:#888;font-size:13px">Favorite Map: <span style="color:#fff">cp_dustbowl</span></div>
-<div style="color:#888;font-size:13px">Last Server: <span style="color:#fff">0.0.0.0:27015</span></div>
-<div style="margin-top:auto;padding:12px;background:#111;border:1px solid #222;color:#555;font-size:12px;line-height:1.5">
-> Connection to server 0.0.0.0:27015 was never terminated.<br>
-> Session still active.<br>
-> Player "TheDustBwlDuck" is still in-game.<br>
-> Time elapsed: 6,939 days, 0 hours, 18 minutes<br>
-> ...<br>
-> He never left dustbowl.</div>
+<div style="color:#888;font-size:13px">Favorite Class: <span style="color:#fff">Medic</span></div>
+<div style="color:#888;font-size:13px">Last Server: <span style="color:#fff">Dustbowl 24/7 (192.168.1.13:27015)</span></div>
 </div>`;
-createWindow('tf2','Team Fortress 2',420,380,h);
+createWindow('tf2','Team Fortress 2',420,320,h);
 };
 
 const openSteam=()=>{
@@ -383,8 +392,7 @@ crash.innerHTML=`<div style="color:#fff;font-size:16px;text-align:center;max-wid
 <div style="font-size:24px;margin-bottom:20px">:( </div>
 <div>SoOS ran into a problem and needs to restart.</div>
 <div style="color:#555;font-size:13px;margin-top:20px">FATAL_ERROR: steam.exe attempted to access restricted memory</div>
-<div style="color:#555;font-size:13px">Process: dust_entity (PID 13) blocked termination</div>
-<div style="color:#555;font-size:13px">Stop code: ENTITY_CORRUPTION</div>
+<div style="color:#555;font-size:13px">Stop code: UNEXPECTED_CRASH</div>
 <div style="color:#333;font-size:12px;margin-top:30px">Restarting in 5 seconds...</div>
 </div>`;
 document.body.appendChild(crash);
