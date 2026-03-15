@@ -1,1 +1,1 @@
-document.addEventListener('DOMContentLoaded',function(){biosPhase()});
+document.addEventListener('DOMContentLoaded',()=>biosPhase());
