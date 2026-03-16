@@ -1,14 +1,12 @@
-#login-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,#0a0a18 0%,#0f0f22 50%,#0a0a15 100%);z-index:900;display:flex;align-items:center;justify-content:center;animation:loginFadeIn 0.5s}
-@keyframes loginFadeIn{from{opacity:0}to{opacity:1}}
-#login-box{display:flex;flex-direction:column;align-items:center;gap:20px;padding:40px;background:rgba(20,20,35,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.1);border-radius:12px;width:340px;box-shadow:0 16px 48px rgba(0,0,0,0.5)}
-#login-avatar{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.15);position:relative;overflow:hidden}
-#login-avatar::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);animation:avatarPulse 3s ease-in-out infinite}
-@keyframes avatarPulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
-#login-fields{display:flex;flex-direction:column;gap:12px;width:100%}
-#login-username-display{text-align:center;color:#fff;font-family:'Share Tech Mono',monospace;font-size:18px;letter-spacing:2px;padding:6px 0}
-#login-fields input{width:100%;padding:10px 14px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:#fff;font-family:'VT323',monospace;font-size:16px;outline:none;transition:all 0.2s}
-#login-fields input:focus{border-color:rgba(255,255,255,0.3);box-shadow:0 0 12px rgba(255,255,255,0.05)}
-#login-fields input::placeholder{color:#444}
-#login-btn{width:100%;padding:10px;background:linear-gradient(180deg,rgba(255,255,255,0.1) 0%,rgba(255,255,255,0.04) 100%);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:#fff;font-family:'VT323',monospace;font-size:16px;cursor:pointer;transition:all 0.2s}
-#login-btn:hover{background:linear-gradient(180deg,rgba(255,255,255,0.16) 0%,rgba(255,255,255,0.08) 100%);border-color:rgba(255,255,255,0.25);box-shadow:0 0 12px rgba(255,255,255,0.05)}
-#login-error{color:#999;font-size:14px;text-align:center;min-height:20px}
+#login-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#3a6ea5;z-index:900;display:flex;align-items:center;justify-content:center}
+#login-box{display:flex;flex-direction:column;align-items:center;gap:16px;padding:30px;background:#ece9d8;border:2px outset #fff;width:300px}
+#login-avatar{width:64px;height:64px;border-radius:4px;background:#d4d0c8;border:1px solid #808080;position:relative;overflow:hidden}
+#login-avatar::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:#808080}
+#login-fields{display:flex;flex-direction:column;gap:8px;width:100%}
+#login-username-display{text-align:center;color:#000;font-family:Tahoma,sans-serif;font-size:13px;font-weight:bold;padding:4px 0}
+#login-fields input{width:100%;padding:4px 6px;background:#fff;border:2px inset #808080;color:#000;font-family:Tahoma,sans-serif;font-size:12px;outline:none}
+#login-fields input::placeholder{color:#808080}
+#login-btn{width:100%;padding:4px;background:#ece9d8;border:2px outset #fff;color:#000;font-family:Tahoma,sans-serif;font-size:12px;cursor:pointer}
+#login-btn:hover{background:#d4d0c8}
+#login-btn:active{border-style:inset}
+#login-error{color:#cc0000;font-family:Tahoma,sans-serif;font-size:11px;text-align:center;min-height:16px}

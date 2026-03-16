@@ -1,93 +1,96 @@
 .app-explorer{padding:0;display:flex;flex-direction:column;height:100%}
-.explorer-toolbar{display:flex;align-items:center;padding:6px 10px;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);gap:8px;flex-shrink:0}
-.explorer-path{flex:1;padding:5px 10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#aaa;font-family:'Share Tech Mono',monospace;font-size:12px}
-.explorer-back-btn{padding:5px 10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#888;font-family:'Share Tech Mono',monospace;font-size:12px;cursor:pointer;transition:all 0.15s}
-.explorer-back-btn:hover{background:rgba(255,255,255,0.12);color:#ccc}
-.explorer-content{flex:1;padding:10px;overflow-y:auto;display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start}
-.explorer-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;width:90px;cursor:pointer;border:1px solid transparent;border-radius:6px;transition:all 0.12s}
-.explorer-item:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1)}
-.explorer-item-icon{font-size:28px}
-.explorer-item-name{font-size:11px;color:#999;text-align:center;word-break:break-all;line-height:1.2}
+.explorer-toolbar{display:flex;align-items:center;padding:2px 4px;background:#ece9d8;border-bottom:1px solid #808080;gap:4px;flex-shrink:0}
+.explorer-path{flex:1;padding:2px 4px;background:#fff;border:2px inset #808080;color:#000;font-family:Tahoma,sans-serif;font-size:11px}
+.explorer-back-btn{padding:2px 8px;background:#ece9d8;border:2px outset #fff;color:#000;font-family:Tahoma,sans-serif;font-size:11px;cursor:pointer}
+.explorer-back-btn:hover{background:#d4d0c8}
+.explorer-back-btn:active{border-style:inset}
+.explorer-content{flex:1;padding:8px;overflow-y:auto;display:flex;flex-wrap:wrap;gap:2px;align-content:flex-start;background:#fff}
+.explorer-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px;width:80px;cursor:pointer;border:1px solid transparent}
+.explorer-item:hover{background:#316ac5;border-color:#316ac5}
+.explorer-item:hover .explorer-item-name{color:#fff}
+.explorer-item-icon{font-size:24px}
+.explorer-item-name{font-family:Tahoma,sans-serif;font-size:11px;color:#000;text-align:center;word-break:break-all;line-height:1.2}
 .app-browser{display:flex;flex-direction:column;height:100%}
-.browser-toolbar{display:flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0}
-.browser-url{flex:1;padding:5px 10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#888;font-family:'Share Tech Mono',monospace;font-size:12px}
-.browser-go-btn{padding:5px 12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#888;font-size:12px;font-family:'Share Tech Mono',monospace;cursor:pointer;transition:all 0.15s}
-.browser-go-btn:hover{background:rgba(255,255,255,0.12);color:#ccc}
-.browser-content{flex:1;padding:16px;overflow-y:auto;background:rgba(0,0,0,0.2)}
-.browser-bookmarks{display:flex;flex-direction:column;gap:2px;padding:8px 0}
-.browser-bookmark{padding:6px 12px;color:#aaa;cursor:pointer;font-size:13px;transition:all 0.1s;border-radius:4px}
-.browser-bookmark:hover{background:rgba(255,255,255,0.06);text-decoration:underline}
-.browser-history-item{padding:4px 12px;color:#666;font-size:12px;border-left:2px solid rgba(255,255,255,0.06);margin:2px 0}
-.app-terminal{padding:0;display:flex;flex-direction:column;height:100%;background:rgba(0,0,0,0.6)}
-.terminal-output{flex:1;padding:12px;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;font-size:13px;color:#ccc;line-height:1.5}
-.terminal-input-line{display:flex;align-items:center;padding:6px 12px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3)}
-.terminal-prompt{color:#999;font-size:13px;margin-right:6px;white-space:nowrap}
-.terminal-input{flex:1;background:transparent;border:none;color:#fff;font-family:'VT323',monospace;font-size:13px;outline:none;caret-color:#fff}
+.browser-toolbar{display:flex;align-items:center;gap:4px;padding:2px 4px;background:#ece9d8;border-bottom:1px solid #808080;flex-shrink:0}
+.browser-url{flex:1;padding:2px 4px;background:#fff;border:2px inset #808080;color:#000;font-family:Tahoma,sans-serif;font-size:11px}
+.browser-go-btn{padding:2px 8px;background:#ece9d8;border:2px outset #fff;color:#000;font-size:11px;font-family:Tahoma,sans-serif;cursor:pointer}
+.browser-go-btn:hover{background:#d4d0c8}
+.browser-content{flex:1;padding:12px;overflow-y:auto;background:#fff}
+.browser-bookmarks{display:flex;flex-direction:column;gap:1px;padding:4px 0}
+.browser-bookmark{padding:3px 8px;color:#0000ee;cursor:pointer;font-size:12px;font-family:Tahoma,sans-serif;text-decoration:underline}
+.browser-bookmark:hover{color:#cc0000}
+.browser-history-item{padding:2px 8px;color:#808080;font-size:11px;font-family:Tahoma,sans-serif;border-left:2px solid #d4d0c8;margin:1px 0}
+.app-terminal{padding:0;display:flex;flex-direction:column;height:100%;background:#000}
+.terminal-output{flex:1;padding:8px;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;font-size:14px;color:#c0c0c0;line-height:1.4;font-family:'VT323',monospace}
+.terminal-input-line{display:flex;align-items:center;padding:2px 8px;background:#000}
+.terminal-prompt{color:#c0c0c0;font-size:14px;margin-right:4px;white-space:nowrap;font-family:'VT323',monospace}
+.terminal-input{flex:1;background:transparent;border:none;color:#c0c0c0;font-family:'VT323',monospace;font-size:14px;outline:none;caret-color:#c0c0c0}
 .app-texteditor{display:flex;flex-direction:column;height:100%}
-.texteditor-toolbar{display:flex;align-items:center;padding:6px 10px;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0}
-.texteditor-filename{font-size:12px;color:#888}
-.texteditor-content{flex:1;padding:14px;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;font-size:13px;color:#bbb;line-height:1.7;background:rgba(0,0,0,0.2)}
-.app-mediaplayer{display:flex;flex-direction:column;height:100%;background:rgba(0,0,0,0.3)}
-.mediaplayer-display{flex:1;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);position:relative;overflow:hidden}
+.texteditor-toolbar{display:flex;align-items:center;padding:2px 4px;background:#ece9d8;border-bottom:1px solid #808080;flex-shrink:0}
+.texteditor-filename{font-size:11px;color:#000;font-family:Tahoma,sans-serif}
+.texteditor-content{flex:1;padding:8px;overflow-y:auto;white-space:pre-wrap;word-wrap:break-word;font-size:12px;color:#000;line-height:1.5;background:#fff;font-family:'Courier New',monospace}
+.app-mediaplayer{display:flex;flex-direction:column;height:100%;background:#000}
+.mediaplayer-display{flex:1;display:flex;align-items:center;justify-content:center;background:#000}
 .mediaplayer-display video,.mediaplayer-display audio{max-width:100%;max-height:100%}
-.mediaplayer-placeholder{color:#555;font-size:14px;text-align:center}
-.mediaplayer-controls{display:flex;align-items:center;gap:8px;padding:8px 12px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0}
-.mediaplayer-btn{padding:4px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#888;font-family:'Share Tech Mono',monospace;font-size:12px;cursor:pointer;transition:all 0.15s}
-.mediaplayer-btn:hover{background:rgba(255,255,255,0.12);color:#ccc}
-.app-imageviewer{display:flex;flex-direction:column;height:100%;background:rgba(0,0,0,0.3)}
-.imageviewer-display{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.mediaplayer-placeholder{color:#808080;font-size:12px;text-align:center;font-family:Tahoma,sans-serif}
+.mediaplayer-controls{display:flex;align-items:center;gap:4px;padding:4px 8px;background:#ece9d8;border-top:1px solid #808080;flex-shrink:0}
+.mediaplayer-btn{padding:2px 8px;background:#ece9d8;border:2px outset #fff;color:#000;font-family:Tahoma,sans-serif;font-size:11px;cursor:pointer}
+.mediaplayer-btn:hover{background:#d4d0c8}
+.app-imageviewer{display:flex;flex-direction:column;height:100%;background:#fff}
+.imageviewer-display{flex:1;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff}
 .imageviewer-display img{max-width:100%;max-height:100%;object-fit:contain}
-.imageviewer-nav{display:flex;align-items:center;justify-content:center;gap:10px;padding:8px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.06);flex-shrink:0}
-.imageviewer-nav-btn{padding:4px 18px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#888;font-family:'Share Tech Mono',monospace;font-size:14px;cursor:pointer;transition:all 0.15s}
-.imageviewer-nav-btn:hover{background:rgba(255,255,255,0.12);color:#ccc}
-.imageviewer-counter{color:#777;font-size:12px}
-.app-chat{display:flex;flex-direction:column;height:100%;background:rgba(0,0,0,0.15)}
-.chat-sidebar{width:100%;padding:8px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;gap:4px;overflow-x:auto;flex-shrink:0}
-.chat-contact{padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:4px;color:#777;font-size:11px;cursor:pointer;white-space:nowrap;font-family:'Share Tech Mono',monospace;transition:all 0.15s}
-.chat-contact:hover,.chat-contact.active{background:rgba(255,255,255,0.1);color:#ccc;border-color:rgba(255,255,255,0.15)}
-.chat-messages{flex:1;padding:12px;overflow-y:auto}
-.chat-msg{margin-bottom:8px;line-height:1.4}
-.chat-msg-user{font-size:12px}
-.chat-msg-text{color:#999;font-size:13px;padding-left:8px}
-.chat-msg-time{color:#444;font-size:10px}
+.imageviewer-nav{display:flex;align-items:center;justify-content:center;gap:8px;padding:4px;background:#ece9d8;border-top:1px solid #808080;flex-shrink:0}
+.imageviewer-nav-btn{padding:2px 12px;background:#ece9d8;border:2px outset #fff;color:#000;font-family:Tahoma,sans-serif;font-size:12px;cursor:pointer}
+.imageviewer-nav-btn:hover{background:#d4d0c8}
+.imageviewer-counter{color:#000;font-size:11px;font-family:Tahoma,sans-serif}
+.app-chat{display:flex;flex-direction:column;height:100%;background:#fff}
+.chat-sidebar{width:100%;padding:4px;border-bottom:1px solid #808080;display:flex;gap:2px;overflow-x:auto;flex-shrink:0;background:#ece9d8}
+.chat-contact{padding:3px 8px;background:#ece9d8;border:1px solid #808080;color:#000;font-size:11px;cursor:pointer;white-space:nowrap;font-family:Tahoma,sans-serif}
+.chat-contact:hover,.chat-contact.active{background:#316ac5;color:#fff;border-color:#316ac5}
+.chat-messages{flex:1;padding:8px;overflow-y:auto;background:#fff}
+.chat-msg{margin-bottom:4px;line-height:1.3;font-family:Tahoma,sans-serif}
+.chat-msg-user{font-size:11px;font-weight:bold}
+.chat-msg-text{color:#000;font-size:12px;padding-left:6px}
+.chat-msg-time{color:#808080;font-size:10px}
 .app-email{display:flex;flex-direction:column;height:100%}
-.email-list{flex:1;overflow-y:auto;padding:4px}
-.email-item{display:flex;align-items:center;gap:12px;padding:10px 14px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.04);transition:all 0.1s;border-radius:4px;margin:1px 4px}
-.email-item:hover{background:rgba(255,255,255,0.05)}
-.email-item.unread .email-subject{color:#fff}
-.email-unread-dot{width:6px;height:6px;border-radius:50%;background:#fff;flex-shrink:0}
+.email-list{flex:1;overflow-y:auto;padding:0;background:#fff}
+.email-item{display:flex;align-items:center;gap:8px;padding:4px 8px;cursor:pointer;border-bottom:1px solid #ece9d8;font-family:Tahoma,sans-serif}
+.email-item:hover{background:#316ac5;color:#fff}
+.email-item:hover .email-subject,.email-item:hover .email-from,.email-item:hover .email-date{color:#fff}
+.email-item.unread .email-subject{font-weight:bold}
+.email-unread-dot{width:6px;height:6px;border-radius:50%;background:#0000ee;flex-shrink:0}
 .email-unread-dot.read{background:transparent}
 .email-info{flex:1;overflow:hidden}
-.email-subject{font-size:13px;color:#888;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.email-from{font-size:11px;color:#666}
-.email-date{font-size:11px;color:#555;flex-shrink:0}
+.email-subject{font-size:12px;color:#000;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.email-from{font-size:11px;color:#808080}
+.email-date{font-size:11px;color:#808080;flex-shrink:0}
 .email-view{display:flex;flex-direction:column;height:100%}
-.email-view-header{padding:14px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.03)}
-.email-view-subject{font-size:15px;color:#fff;margin-bottom:4px}
-.email-view-meta{font-size:11px;color:#666}
-.email-view-body{flex:1;padding:14px;overflow-y:auto;font-size:13px;color:#bbb;line-height:1.7;white-space:pre-wrap}
-.email-view-back{padding:6px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#888;font-size:12px;cursor:pointer;margin:8px 14px;width:fit-content;font-family:'Share Tech Mono',monospace;transition:all 0.15s}
-.email-view-back:hover{background:rgba(255,255,255,0.12);color:#ccc}
-.app-settings{padding:16px;display:flex;flex-direction:column;gap:16px}
-.settings-section{border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px;background:rgba(0,0,0,0.2)}
-.settings-section-title{font-size:13px;color:#888;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:6px}
-.settings-row{display:flex;align-items:center;justify-content:space-between;padding:4px 0}
-.settings-label{font-size:12px;color:#777}
-.settings-value{font-size:12px;color:#aaa}
-.app-calculator{padding:12px;display:flex;flex-direction:column;gap:8px;height:100%}
-.calc-display{width:100%;padding:14px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:6px;color:#fff;font-family:'VT323',monospace;font-size:24px;text-align:right;min-height:48px;display:flex;align-items:center;justify-content:flex-end}
-.calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;flex:1}
-.calc-btn{padding:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:6px;color:#bbb;font-family:'Share Tech Mono',monospace;font-size:16px;cursor:pointer;transition:all 0.1s;display:flex;align-items:center;justify-content:center}
-.calc-btn:hover{background:rgba(255,255,255,0.12);color:#fff}
-.calc-btn.op{color:#fff}
+.email-view-header{padding:8px;border-bottom:1px solid #808080;background:#ece9d8}
+.email-view-subject{font-size:13px;color:#000;font-weight:bold;margin-bottom:2px;font-family:Tahoma,sans-serif}
+.email-view-meta{font-size:11px;color:#808080;font-family:Tahoma,sans-serif}
+.email-view-body{flex:1;padding:8px;overflow-y:auto;font-size:12px;color:#000;line-height:1.5;white-space:pre-wrap;font-family:Tahoma,sans-serif;background:#fff}
+.email-view-back{padding:3px 8px;background:#ece9d8;border:2px outset #fff;color:#000;font-size:11px;cursor:pointer;margin:4px 8px;width:fit-content;font-family:Tahoma,sans-serif}
+.email-view-back:hover{background:#d4d0c8}
+.app-settings{padding:8px;display:flex;flex-direction:column;gap:8px;background:#fff}
+.settings-section{border:1px solid #808080;padding:8px;background:#fff}
+.settings-section-title{font-size:12px;color:#0a246a;font-weight:bold;margin-bottom:6px;border-bottom:1px solid #d4d0c8;padding-bottom:4px;font-family:Tahoma,sans-serif}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:2px 0;font-family:Tahoma,sans-serif}
+.settings-label{font-size:11px;color:#000}
+.settings-value{font-size:11px;color:#808080}
+.app-calculator{padding:8px;display:flex;flex-direction:column;gap:4px;height:100%;background:#ece9d8}
+.calc-display{width:100%;padding:6px 8px;background:#fff;border:2px inset #808080;color:#000;font-family:'Courier New',monospace;font-size:20px;text-align:right;min-height:36px;display:flex;align-items:center;justify-content:flex-end}
+.calc-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;flex:1}
+.calc-btn{padding:8px;background:#ece9d8;border:2px outset #fff;color:#000;font-family:Tahoma,sans-serif;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.calc-btn:hover{background:#d4d0c8}
+.calc-btn:active{border-style:inset}
+.calc-btn.op{color:#0000ee}
 .app-paint{display:flex;flex-direction:column;height:100%}
-.paint-toolbar{display:flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.06);flex-shrink:0;flex-wrap:wrap}
-.paint-color-btn{width:22px;height:22px;border:2px solid rgba(255,255,255,0.1);border-radius:4px;cursor:pointer;transition:all 0.1s}
-.paint-color-btn:hover{transform:scale(1.15)}
-.paint-color-btn.active{border-color:#fff;transform:scale(1.15);box-shadow:0 0 6px rgba(255,255,255,0.2)}
-.paint-size-btn{padding:3px 10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#888;font-size:11px;cursor:pointer;font-family:'Share Tech Mono',monospace;transition:all 0.15s}
-.paint-size-btn:hover,.paint-size-btn.active{background:rgba(255,255,255,0.12);color:#ccc;border-color:rgba(255,255,255,0.2)}
-.paint-clear-btn{padding:3px 12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:4px;color:#999;font-size:11px;cursor:pointer;font-family:'Share Tech Mono',monospace;margin-left:auto;transition:all 0.15s}
-.paint-clear-btn:hover{background:rgba(255,255,255,0.12)}
-.paint-canvas-wrap{flex:1;overflow:hidden;cursor:crosshair;background:rgba(0,0,0,0.3)}
+.paint-toolbar{display:flex;align-items:center;gap:2px;padding:2px 4px;background:#ece9d8;border-bottom:1px solid #808080;flex-shrink:0;flex-wrap:wrap}
+.paint-color-btn{width:18px;height:18px;border:1px solid #808080;cursor:pointer}
+.paint-color-btn.active{border:2px solid #000}
+.paint-size-btn{padding:1px 6px;background:#ece9d8;border:1px solid #808080;color:#000;font-size:11px;cursor:pointer;font-family:Tahoma,sans-serif}
+.paint-size-btn.active{background:#fff;border-style:inset}
+.paint-clear-btn{padding:1px 8px;background:#ece9d8;border:2px outset #fff;color:#000;font-size:11px;cursor:pointer;font-family:Tahoma,sans-serif;margin-left:auto}
+.paint-clear-btn:hover{background:#d4d0c8}
+.paint-canvas-wrap{flex:1;overflow:hidden;cursor:crosshair;background:#fff}
 .paint-canvas-wrap canvas{display:block}
