@@ -7,7 +7,20 @@ overlay.innerHTML='';
 overlay.style.background='#000';
 overlay.style.cursor='none';
 
-// custom video player - no controls, fullscreen, looks like the game is running
+// Bring Cubey above the overlay so player can see him panic
+const cubey=document.getElementById('cubey');
+if(cubey)cubey.style.zIndex='100002';
+
+// Cubey panics as TF2 loads
+if(typeof cubeyQ==='function'){
+cubeyQ("No...",true);
+setTimeout(()=>cubeyQ("NO NO NO! I TOLD YOU NOT TO!",true),1500);
+setTimeout(()=>cubeyQ(cubeyUserName+" CLOSE IT! PLEASE!",true),3500);
+setTimeout(()=>cubeyQ("SOMETHING IS WRONG! I CAN FEEL IT!",true),6000);
+setTimeout(()=>cubeyQ("WHATS HAPPENING TO ME?!",true),9000);
+}
+
+// custom video player
 const video=document.createElement('video');
 video.src='intro.mp4';
 video.style.cssText='width:100%;height:100%;object-fit:cover;display:block';
@@ -19,7 +32,6 @@ video.setAttribute('playsinline','');
 overlay.appendChild(video);
 
 video.play().catch(()=>{
-// if autoplay blocked, add click to play
 const clickOverlay=document.createElement('div');
 clickOverlay.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2';
 clickOverlay.innerHTML='<div style="font-family:Tahoma,sans-serif;font-size:13px;color:#555">Click to continue</div>';
@@ -30,12 +42,10 @@ clickOverlay.remove();
 overlay.appendChild(clickOverlay);
 });
 
-// when video ends, show face
 video.addEventListener('ended',()=>{
 triggerFace();
 });
 
-// fallback if video fails to load
 video.addEventListener('error',()=>{
 triggerFace();
 });
@@ -46,6 +56,21 @@ const overlay=document.getElementById('jumpscare-overlay');
 overlay.innerHTML='';
 overlay.style.background='#000';
 overlay.style.cursor='none';
+
+// Cubey screams
+if(typeof cubeyQ==='function'){
+cubeyQ("AAAAAAA!",true);
+}
+// Make Cubey glitch during face
+const cubey=document.getElementById('cubey');
+if(cubey){
+const body=document.getElementById('cubey-body');
+if(body){body.style.background='#4a0a0a';body.style.borderColor='#800'}
+const eyes=document.querySelectorAll('.cubey-eye');
+eyes.forEach(e=>{e.style.background='#f00'});
+const pupils=document.querySelectorAll('.cubey-pupil');
+pupils.forEach(p=>{p.style.background='#000'});
+}
 
 // inject melt animation
 const style=document.createElement('style');
@@ -87,6 +112,16 @@ overlay.appendChild(container);
 setTimeout(()=>{
 overlay.style.cursor='default';
 overlay.innerHTML='';
+// Cubey goes silent and disappears during BSOD
+const cubey=document.getElementById('cubey');
+if(cubey){
+const bubble=document.getElementById('cubey-bubble');
+if(bubble)bubble.classList.add('cubey-hidden');
+cubey.style.transition='opacity 0.5s';
+cubey.style.opacity='0';
+setTimeout(()=>{cubey.style.display='none'},500);
+}
+if(typeof cubeyQueue!=='undefined'){cubeyQueue=[];cubeyProcessing=false;cubeySpeaking=false}
 showBSOD();
 setTimeout(()=>corruptedReboot(),5000);
 },600);
