@@ -12,22 +12,54 @@ const base={
 'grocery_list.txt':{type:'file',content:'mom said get:\n- milk\n- bread\n- cereal (the good kind NOT the helthy one)\n- hot pockets (pepperoni)\n- mountain dew (code red)\n\ni keep forgeting so im puting it here\nwatch me forget 2 check this lol'},
 'todo_list.txt':{type:'file',content:'STUFF I GOTA DO:\n- finish essay (FRIDAY OMG)\n- clean room (moms gona flip)\n- update steam profle pic\n- ask mike abt hl2 ep 2\n- practice scout movment on dustbowl\n- fix mic buzzing\n- get better at spy (backstabMASTA keeps killin me)\n- figure out mann co store thing'},
 'mann_co_update.txt':{type:'file',content:'MANN-CONOMY UPDATE NOTES (4 me):\n\nOK SO U CAN TRADE HATS NOW??\nand theres a STORE??\nthis is insane\n\ni got like 3 hats so far:\n- ghastly gibus (evry1 has this lol)\n- pyros beanie thing\n- the scout 1 w the headphones\n\nhatcollector3000 has like 50 hats\nhow does he DO that'},
-'band_name_ideas.txt':{type:'file',content:'BAND NAMES (w drumz guy):\n- The Dustbowl Destroyers\n- Critical Hit\n- Ubercharged\n- The Payload Pushers\n- Bonk Energy\n\ndrumz guy says these all suck\nbut hes the 1 who cant even play drums right'}
-}},
+'band_name_ideas.txt':{type:'file',content:'BAND NAMES (w drumz guy):\n- The Dustbowl Destroyers\n- Critical Hit\n- Ubercharged\n- The Payload Pushers\n- Bonk Energy\n\ndrumz guy says these all suck\nbut hes the 1 who cant even play drums right'},
+'my_website.html':{type:'file',content:'<html>\n<body bgcolor="black" text="green">\n<h1>WELCOME 2 MY WEBSITE</h1>\n<marquee>TheDustBwlDuck\'s EPIC SITE</marquee>\n<p>this site is under construcion</p>\n<p>come back l8r 4 cool stuff</p>\n<br>\n<p>LINKS:</p>\n<p>- my steam profle (coming soon)</p>\n<p>- dustbowl tips (coming soon)</p>\n<p>- my fav songs (coming soon)</p>\n<br>\n<p>visitor counter: 3 (its just me lol)</p>\n<br>\n<p>made by me in notepad im basicaly a hacker now</p>\n</body>\n</html>'},
+'autoexec.cfg':{type:'file',content:'// MY TF2 CONFIG - DO NOT TOUCH\n// copied from some guy on gamefaqs\n\ncl_interp 0.033\ncl_interp_ratio 1\ncl_cmdrate 66\ncl_updaterate 66\nrate 60000\nfps_max 120\n\n// my custom stuff\nhud_combattext 1\nhud_combattext_healing 1\ntf_dingaling_volume 0.75\n\n// spray stuff\ncl_spraydisable 0\n\n// idk what this does but ppl said its good\nmat_phong 0'},
+'cool_ascii_art.txt':{type:'file',content:'check out this sick ascii art i found:\n\n    __  __          _ _      \n   |  \\/  | ___  __| (_) ___ \n   | |\\/| |/ _ \\/ _` | |/ __|\n   | |  | |  __/ (_| | | (__ \n   |_|  |_|\\___|\\__,_|_|\\___|\n\nim a medic main and proud of it\n\nalso heres a sentry:\n   ___\n  |   |\n  |   |---pew pew\n  |___|\n   /|\\\n\nok that doesnt realy look like a sentry\nbut u get the idea'},
+'SUPER_SECRET_DO_NOT_READ.txt':{type:'file',content:'ok so i kinda have a crush on sparkles\nbut she likes twilight and i like tf2\nso idk how thats gona work\n\nIF ANYONE IS READING THIS I WILL END U\n\nespecialy u mike\ni kno ur on my pc sometimes'},
+'class_schedule.txt':{type:'file',content:'MY SCHEDULE (fall 2010):\n\n1st period - English (mrs henderson) UGH\n2nd period - Math (mr kowalski) DOUBLE UGH\n3rd period - History (mrs chen) ok i guess\n4th period - LUNCH (best period)\n5th period - Bio (mr peterson) boring\n6th period - Gym (coach davis) ugh running\n\ni skip 6th period a lot lol\ncoach davis hasnt noticed yet\n...or has he (the attendence email)'},
+'jokes.txt':{type:'file',content:'JOKES 2 USE IN GAME CHAT:\n\n"why did the scout cross the road? 2 get BONKED"\n"knock knock" "whos there" "UBER" "uber who" "UBERCHARGE ACTIVATED"\n"what does a spy eat 4 breakfast? BACKSTAB-con" \n\nok these r terrible but ppl laughed at the spy 1\n\nactualey they were laughing AT me not WITH me'},
+'pc_specs.txt':{type:'file',content:'MY PC SPECS (bragging rights):\n\nDell XPS 420 (birthday present 2007 BEST DAY EVER)\n\nCPU: Intel Core 2 Quad Q6600 @ 2.40GHz\nRAM: 4GB DDR2 800MHz\nGPU: ATI Radeon HD 3870 512MB\nHDD: 320GB Western Digital\nDVD: TSSTcorp DVD+-RW\nMonitor: Dell 19" LCD\nMouse: some logitech thing\nKeyboard: dell keyboard (its ok)\n\nthis thing CRUSHES tf2 at max settings\nwell mostly max\nok medium-high\nit runs tf2 thats whats importnt'},
+'dream_loadouts.txt':{type:'file',content:'LOADOUTS I WANT:\n\nMedic (my main):\n- Kritzkrieg (need 2 find someone 2 trade)\n- Ubersaw (ALREADY HAVE IT LETS GO)\n- Blutsauger (need this 2)\n\nScout (my backup):\n- Force-A-Nature (looks SO fun)\n- Sandman (BONK)\n- Flying Guillotine (wait is that out yet)\n\nSpy (im terrible but its fun):\n- Ambassador (cant aim but i pretend i can)\n- Dead Ringer (4 trolling)'},
+'NEW_FOLDER':{type:'dir',children:{
+'New Text Document.txt':{type:'file',content:''},
+'New Text Document (2).txt':{type:'file',content:''},
+'New Text Document (3).txt':{type:'file',content:'test'}
+}}}},
+'Downloads':{type:'dir',children:{
+'linkin_park_numb.mp3.exe':{type:'file',content:'[SUSPICIOUS FILE]\nThis is definitely not a virus.\nSize: 847 KB\n\n(it was a virus)'},
+'FREE_MINECRAFT.exe':{type:'file',content:'[SUSPICIOUS FILE]\nMinecraft_FREE_2010_no_virus_trust_me.exe\nSize: 2.1 MB\n\n(mike told me not 2 open this)'},
+'tf2_wallpaper_pack.zip':{type:'file',content:'[ARCHIVE]\ntf2_wallpaper_pack.zip\n47 files, 23.4 MB\n\ndownloaded from deviantart'},
+'Dragonforce_Through_The_Fire.mp3':{type:'file',content:'[AUDIO FILE]\nDragonforce - Through the Fire and Flames\nBitrate: 128kbps (limewire quality lol)\nDuration: 7:21'},
+'naruto_amv_hd.avi':{type:'file',content:'[VIDEO FILE]\nNaruto AMV - Bring Me To Life\nResolution: 480p\nSize: 84 MB\nDuration: 4:12\n\nthis took 6 hours 2 download'},
+'coolest_spray_ever.vtf':{type:'file',content:'[TF2 SPRAY FILE]\ncoolest_spray_ever.vtf\nits the trollface\n128x128'},
+'Flash_Game_Collection':{type:'dir',children:{
+'N_game.swf':{type:'file',content:'[FLASH FILE] N Game - from newgrounds'},
+'fancy_pants.swf':{type:'file',content:'[FLASH FILE] Fancy Pants Adventure'},
+'stick_arena.swf':{type:'file',content:'[FLASH FILE] Stick Arena Ballistick'}
+}}}},
 'Pictures':{type:'dir',children:{
 'dustbowl_screenshot1.png':{type:'img',src:`${mediaBasePath}img/dustbowl1.png`},
 'dustbowl_screenshot2.png':{type:'img',src:`${mediaBasePath}img/dustbowl2.png`},
+'dustbowl_screenshot3.png':{type:'img',src:`${mediaBasePath}img/dustbowl3.png`},
 'funny_spray.png':{type:'img',src:`${mediaBasePath}img/spray1.png`},
 'my_scout_loadout.png':{type:'img',src:`${mediaBasePath}img/scout1.png`},
-'screenshot_2fort.png':{type:'img',src:`${mediaBasePath}img/2fort1.png`}
+'screenshot_2fort.png':{type:'img',src:`${mediaBasePath}img/2fort1.png`},
+'epic_kill_cam.png':{type:'img',src:`${mediaBasePath}img/killcam1.png`},
+'my_pc_setup.png':{type:'img',src:`${mediaBasePath}img/setup1.png`},
+'me_and_mike_lan.png':{type:'img',src:`${mediaBasePath}img/lan1.png`},
+'trollface.png':{type:'img',src:`${mediaBasePath}img/trollface.png`}
 }},
 'Music':{type:'dir',children:{
 'epic_song.mp3':{type:'audio',src:`${mediaBasePath}audio/song1.mp3`},
-'limewire_download.mp3':{type:'audio',src:`${mediaBasePath}audio/song2.mp3`}
+'limewire_download.mp3':{type:'audio',src:`${mediaBasePath}audio/song2.mp3`},
+'tf2_remix_by_n00dles.mp3':{type:'audio',src:`${mediaBasePath}audio/song3.mp3`},
+'rick_astley_lol.mp3':{type:'audio',src:`${mediaBasePath}audio/song4.mp3`}
 }},
 'Videos':{type:'dir',children:{
 'dustbowl_gameplay.mp4':{type:'video',src:`${mediaBasePath}video/gameplay1.mp4`},
-'funny_kill.mp4':{type:'video',src:`${mediaBasePath}video/funnykill.mp4`}
+'funny_kill.mp4':{type:'video',src:`${mediaBasePath}video/funnykill.mp4`},
+'my_first_airshot.mp4':{type:'video',src:`${mediaBasePath}video/airshot.mp4`}
 }}
 }}
 }},
@@ -1064,11 +1096,173 @@ const h=`<div class="app-paint"><div class="paint-toolbar">${cb}<button class="p
 createWindow('paint','Paint',550,400,h);
 setTimeout(()=>{const wrap=document.getElementById('paint-wrap');const canvas=document.getElementById('paint-canvas');if(!wrap||!canvas)return;const ctx=canvas.getContext('2d');canvas.width=wrap.offsetWidth;canvas.height=wrap.offsetHeight;ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,canvas.width,canvas.height);let drawing=false;let color='#ffffff';let size=2;canvas.addEventListener('mousedown',(e)=>{drawing=true;ctx.beginPath();ctx.moveTo(e.offsetX,e.offsetY)});canvas.addEventListener('mousemove',(e)=>{if(!drawing)return;ctx.strokeStyle=color;ctx.lineWidth=size;ctx.lineCap='round';ctx.lineTo(e.offsetX,e.offsetY);ctx.stroke()});canvas.addEventListener('mouseup',()=>{drawing=false});canvas.addEventListener('mouseleave',()=>{drawing=false});document.querySelectorAll('.paint-color-btn').forEach((btn)=>{btn.addEventListener('click',()=>{document.querySelectorAll('.paint-color-btn').forEach((b)=>b.classList.remove('active'));btn.classList.add('active');color=btn.dataset.color})});document.querySelectorAll('.paint-size-btn').forEach((btn)=>{btn.addEventListener('click',()=>{document.querySelectorAll('.paint-size-btn').forEach((b)=>b.classList.remove('active'));btn.classList.add('active');size=parseInt(btn.dataset.size)})});document.getElementById('paint-clear').addEventListener('click',()=>{ctx.fillStyle='#0a0a0a';ctx.fillRect(0,0,canvas.width,canvas.height)})},50);
 };
-const openLimeWire=()=>{createWindow('limewire','LimeWire PRO',400,300,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">LimeWire PRO 5.5.10</div><div>Status: <span style="color:#fff">Connected (247 sources)</span></div><div style="margin-top:8px">Downloads: <span style="color:#fff">3 complete</span></div><div style="margin-top:8px">Shared: <span style="color:#fff">12 files</span></div><div style="margin-top:16px;color:#555;font-size:11px">definitely not downloading anything illegal lol</div></div>')};
-const openFraps=()=>{createWindow('fraps','Fraps',350,250,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">Fraps 3.4.7</div><div>FPS: <span style="color:#fff">60</span></div><div style="margin-top:8px">Recording: <span style="color:#fff">OFF</span></div><div style="margin-top:8px">Screenshots saved: <span style="color:#fff">C:/Users/TheDustBwlDuck/Pictures</span></div><div style="margin-top:12px;color:#555;font-size:11px">UNREGISTERED - pls buy it dad</div></div>')};
-const openWinRAR=()=>{createWindow('winrar','WinRAR',350,200,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">WinRAR 3.93</div><div style="color:#555;margin-top:12px">Your 40-day trial has expired.</div><div style="color:#555;margin-top:4px">Days since expiration: <span style="color:#fff">1,094</span></div><div style="color:#555;margin-top:4px">Will you ever buy it: <span style="color:#fff">No</span></div></div>')};
-const openAudacity=()=>{createWindow('audacity','Audacity',450,300,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">Audacity 1.3.12</div><div>Project: <span style="color:#fff">untitled</span></div><div style="margin-top:8px">Sample Rate: <span style="color:#fff">44100 Hz</span></div><div style="margin-top:12px;color:#555;font-size:11px">i use this 2 make tf2 remixes w dj_n00dles</div></div>')};
-const openMirc=()=>{createWindow('mirc','mIRC',450,300,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">mIRC 7.19</div><div>Server: <span style="color:#fff">irc.gamesurge.net</span></div><div style="margin-top:8px">Channel: <span style="color:#fff">#tf2-dustbowl</span></div><div style="margin-top:8px">Users online: <span style="color:#fff">23</span></div><div style="margin-top:12px;color:#555;font-size:11px">i mostly just lurk lol</div></div>')};
+const openLimeWire=()=>{
+const files=[
+{name:'linkin_park_numb.mp3',size:'4.2 MB',status:'Complete',sources:247},
+{name:'System_Of_A_Down_-_Chop_Suey.mp3',size:'3.8 MB',status:'Complete',sources:189},
+{name:'Dragonforce_-_Through_Fire.mp3',size:'7.1 MB',status:'Complete',sources:312},
+{name:'Green_Day_-_Holiday.mp3',size:'3.5 MB',status:'Downloading... 78%',sources:94},
+{name:'Blink_182_-_All_The_Small_Things.mp3',size:'3.1 MB',status:'Queued',sources:156},
+{name:'DEFINITELY_NOT_A_VIRUS.exe',size:'847 KB',status:'Complete',sources:2},
+{name:'naruto_opening_4.mp3',size:'4.0 MB',status:'Complete',sources:88}
+];
+let rows='';files.forEach(f=>{
+const color=f.status==='Complete'?'#0a0':'#888';
+rows+=`<div style="display:flex;gap:8px;padding:3px 6px;border-bottom:1px solid #d4d0c8;font-size:11px"><div style="flex:2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.name}</div><div style="width:60px;text-align:right">${f.size}</div><div style="width:110px;color:${color}">${f.status}</div><div style="width:50px;text-align:right">${f.sources}</div></div>`;
+});
+const h=`<div style="display:flex;flex-direction:column;height:100%;background:#fff;font-family:Tahoma,sans-serif;font-size:12px;color:#000">
+<div style="background:#e8f5e8;padding:4px 8px;border-bottom:1px solid #808080;display:flex;align-items:center;gap:8px">
+<span style="font-weight:bold;color:#2d7a2d">LimeWire PRO</span>
+<span style="color:#808080;font-size:10px">5.5.10</span>
+<span style="margin-left:auto;color:#2d7a2d;font-size:10px">● Connected (247 sources)</span>
+</div>
+<div style="padding:4px 8px;background:#ece9d8;border-bottom:1px solid #808080;display:flex;gap:4px">
+<input style="flex:1;padding:2px 4px;border:2px inset #808080;font-size:11px;font-family:Tahoma" value="tf2 soundtrack" readonly>
+<button style="padding:2px 12px;background:#2d7a2d;color:#fff;border:2px outset #5cb85c;font-size:11px;font-family:Tahoma">Search</button>
+</div>
+<div style="display:flex;gap:8px;padding:3px 6px;border-bottom:2px solid #808080;font-size:10px;font-weight:bold;background:#d4d0c8">
+<div style="flex:2">Filename</div><div style="width:60px;text-align:right">Size</div><div style="width:110px">Status</div><div style="width:50px;text-align:right">Sources</div>
+</div>
+<div style="flex:1;overflow-y:auto">${rows}</div>
+<div style="padding:4px 8px;background:#ece9d8;border-top:1px solid #808080;font-size:10px;color:#808080;display:flex;justify-content:space-between">
+<span>Downloads: 7 files</span><span>Upload Speed: 12 KB/s</span><span>Shared: 12 files</span>
+</div></div>`;
+createWindow('limewire','LimeWire PRO 5.5.10',520,340,h);
+};
+
+const openFraps=()=>{
+const h=`<div style="display:flex;flex-direction:column;height:100%;background:#2b2b2b;font-family:Tahoma,sans-serif;color:#fff">
+<div style="display:flex;border-bottom:1px solid #444">
+<div style="padding:6px 14px;background:#3a3a3a;font-size:11px;border-bottom:2px solid #f0ad4e;color:#f0ad4e;font-weight:bold">FPS</div>
+<div style="padding:6px 14px;font-size:11px;color:#888">Movies</div>
+<div style="padding:6px 14px;font-size:11px;color:#888">Screenshots</div>
+</div>
+<div style="padding:16px;flex:1">
+<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px">
+<span style="font-size:48px;color:#f0ad4e;font-weight:bold">60</span>
+<span style="font-size:14px;color:#888">FPS</span>
+</div>
+<div style="margin-bottom:12px;font-size:12px">
+<div style="color:#888;margin-bottom:4px">Overlay Corner</div>
+<div style="display:flex;gap:4px">
+<button style="padding:3px 10px;background:#444;border:1px solid #555;color:#f0ad4e;font-size:11px;font-family:Tahoma">Top Left</button>
+<button style="padding:3px 10px;background:#333;border:1px solid #555;color:#888;font-size:11px;font-family:Tahoma">Top Right</button>
+<button style="padding:3px 10px;background:#333;border:1px solid #555;color:#888;font-size:11px;font-family:Tahoma">Bottom</button>
+</div></div>
+<div style="font-size:12px">
+<div style="color:#888;margin-bottom:4px">Overlay Hotkey</div>
+<div style="padding:4px 8px;background:#333;border:1px solid #555;display:inline-block;font-size:11px">F11</div>
+</div>
+</div>
+<div style="padding:8px 16px;background:#222;border-top:1px solid #444;font-size:10px;color:#f00">UNREGISTERED VERSION - www.fraps.com</div>
+</div>`;
+createWindow('fraps','Fraps 3.4.7 (unregistered)',380,300,h);
+};
+
+const openWinRAR=()=>{
+const h=`<div style="display:flex;flex-direction:column;height:100%;background:#ece9d8;font-family:Tahoma,sans-serif;font-size:12px">
+<div style="padding:20px;text-align:center;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+<div style="font-size:14px;font-weight:bold;margin-bottom:12px">WinRAR</div>
+<div style="font-size:12px;color:#000;margin-bottom:4px">Your evaluation copy of WinRAR has expired.</div>
+<div style="font-size:11px;color:#808080;margin-bottom:16px">Days since expiration: <b style="color:#cc0000">1,094</b></div>
+<div style="border:1px solid #808080;padding:12px;background:#fff;margin-bottom:16px;font-size:11px;text-align:left;width:280px">
+<div style="margin-bottom:4px">WinRAR 3.93 - Evaluation Copy</div>
+<div style="color:#808080">Please purchase a license at www.rarlab.com</div>
+<div style="color:#808080;margin-top:8px">This is not free software. After a 40 day trial period you must either buy a license or remove it from your computer.</div>
+</div>
+<div style="display:flex;gap:6px">
+<button onclick="closeWindow('winrar')" style="padding:4px 20px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer">Close</button>
+<button style="padding:4px 20px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer;color:#808080">Buy Now</button>
+</div>
+</div></div>`;
+createWindow('winrar','WinRAR - Evaluation Copy',340,280,h);
+};
+
+const openAudacity=()=>{
+const h=`<div style="display:flex;flex-direction:column;height:100%;background:#c0c0c0;font-family:Tahoma,sans-serif;font-size:11px;color:#000">
+<div style="display:flex;gap:2px;padding:2px 4px;background:#ece9d8;border-bottom:1px solid #808080;font-size:11px">
+<span style="padding:1px 6px">File</span><span style="padding:1px 6px">Edit</span><span style="padding:1px 6px">View</span><span style="padding:1px 6px">Transport</span><span style="padding:1px 6px">Tracks</span><span style="padding:1px 6px">Generate</span><span style="padding:1px 6px">Effect</span><span style="padding:1px 6px">Help</span>
+</div>
+<div style="display:flex;gap:4px;padding:4px 8px;background:#ece9d8;border-bottom:1px solid #808080;align-items:center">
+<button style="padding:2px 6px;background:#ece9d8;border:2px outset #fff;font-size:14px;cursor:pointer">⏮</button>
+<button style="padding:2px 8px;background:#ece9d8;border:2px outset #fff;font-size:14px;cursor:pointer;color:#0a0">▶</button>
+<button style="padding:2px 8px;background:#ece9d8;border:2px outset #fff;font-size:14px;cursor:pointer;color:#c00">●</button>
+<button style="padding:2px 6px;background:#ece9d8;border:2px outset #fff;font-size:14px;cursor:pointer">⏹</button>
+<button style="padding:2px 6px;background:#ece9d8;border:2px outset #fff;font-size:14px;cursor:pointer">⏭</button>
+<span style="margin-left:12px;color:#808080">Volume:</span>
+<div style="width:60px;height:8px;background:#fff;border:1px inset #808080"><div style="width:75%;height:100%;background:#316ac5"></div></div>
+</div>
+<div style="flex:1;background:#333;position:relative;overflow:hidden;margin:4px">
+<div style="position:absolute;top:0;left:0;width:100%;height:16px;background:#444;font-size:9px;color:#aaa;display:flex;align-items:center;padding:0 4px">0.0 &nbsp;&nbsp; 1.0 &nbsp;&nbsp; 2.0 &nbsp;&nbsp; 3.0 &nbsp;&nbsp; 4.0 &nbsp;&nbsp; 5.0 &nbsp;&nbsp; 6.0 &nbsp;&nbsp; 7.0</div>
+<div style="position:absolute;top:20px;left:4px;right:4px;height:35%;background:#1a1a2a;border:1px solid #555">
+<div style="color:#88f;font-size:9px;padding:2px 4px">1 Audio Track (Stereo, 44100Hz, 32-bit)</div>
+<canvas id="aud-wave" width="400" height="40" style="width:100%;height:30px"></canvas>
+</div>
+<div style="position:absolute;top:52%;left:4px;right:4px;height:35%;background:#1a2a1a;border:1px solid #555">
+<div style="color:#8f8;font-size:9px;padding:2px 4px">2 Audio Track (Stereo, 44100Hz, 32-bit)</div>
+<canvas id="aud-wave2" width="400" height="40" style="width:100%;height:30px"></canvas>
+</div>
+</div>
+<div style="padding:2px 8px;background:#ece9d8;border-top:1px solid #808080;font-size:10px;color:#808080;display:flex;justify-content:space-between">
+<span>Project Rate: 44100 Hz</span><span>Selection: 0.000 - 7.234</span><span>Audacity 1.3.12-beta</span>
+</div></div>`;
+createWindow('audacity','Audacity - tf2_remix_v47_FINAL_FINAL2',550,350,h);
+setTimeout(()=>{
+['aud-wave','aud-wave2'].forEach(id=>{
+const c=document.getElementById(id);if(!c)return;const ctx=c.getContext('2d');
+ctx.fillStyle=id==='aud-wave'?'#1a1a2a':'#1a2a1a';ctx.fillRect(0,0,400,40);
+const col=id==='aud-wave'?'#4444cc':'#44cc44';
+ctx.strokeStyle=col;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,20);
+for(let x=0;x<400;x++){const a=Math.sin(x*0.05)*Math.sin(x*0.02)*(8+Math.random()*8);ctx.lineTo(x,20+a)}
+ctx.stroke();
+});
+},100);
+};
+
+const openMirc=()=>{
+const msgs=[
+{t:'19:30',u:'dustbowlBOSS_admin',m:'welcome everyone to dustbowl 24/7'},
+{t:'19:31',u:'xX_SC0UT_RULEZ_Xx',m:'BONK'},
+{t:'19:31',u:'hevy_sandvich_man',m:'sandvich time'},
+{t:'19:32',u:'PYROMANIAC_99',m:'FIRE FIRE FIRE'},
+{t:'19:32',u:'cr1tical_h1t',m:'anyone wanna do mge after this?'},
+{t:'19:33',u:'spycrab_lol',m:'*does spycrab*'},
+{t:'19:33',u:'M3DIC_OR_RIOT',m:'MEDIC MEDIC MEDIC'},
+{t:'19:34',u:'TheDustBwlDuck',m:'hey guys'},
+{t:'19:34',u:'sENTRY_gUY_420',m:'hEY dUCK'},
+{t:'19:35',u:'hatcollector3000',m:'anyone have a vintage merryweather for trade?'},
+{t:'19:35',u:'BONKBONKBONK',m:'BONK'},
+{t:'19:36',u:'TheDustBwlDuck',m:'whos on red team rn'},
+{t:'19:36',u:'xX_SC0UT_RULEZ_Xx',m:'ME IM DOMINATING EVERYONE'},
+{t:'19:37',u:'cr1tical_h1t',m:'you went 2 and 9 last round'},
+{t:'19:37',u:'xX_SC0UT_RULEZ_Xx',m:'THOSE WERE TACTICAL'},
+{t:'19:38',u:'dustbowlBOSS_admin',m:'play nice everyone'},
+{t:'19:38',u:'PYROMANIAC_99',m:'no'},
+{t:'19:39',u:'TheDustBwlDuck',m:'lmaooo'},
+{t:'19:39',u:'n00bkillaXD',m:'IM THE BEST PLAYER HERE'},
+{t:'19:40',u:'TheDustBwlDuck',m:'u literally just joined'},
+{t:'19:40',u:'spycrab_lol',m:'gentlemen'},
+{t:'19:41',u:'backstabMASTA',m:'FYI going spy next round'},
+{t:'19:41',u:'cloakedNdaggerd',m:'oh no not again'}
+];
+let log='';msgs.forEach(m=>{log+=`<div style="font-size:11px;line-height:1.4;padding:1px 0"><span style="color:#808080">[${m.t}]</span> <span style="color:${m.u==='TheDustBwlDuck'?'#00c':'#c00'};font-weight:bold">&lt;${m.u}&gt;</span> ${m.m}</div>`});
+const users=['@dustbowlBOSS_admin','+TheDustBwlDuck','xX_SC0UT_RULEZ_Xx','PYROMANIAC_99','cr1tical_h1t','M3DIC_OR_RIOT','BONKBONKBONK','hevy_sandvich_man','spycrab_lol','sENTRY_gUY_420','hatcollector3000','n00bkillaXD','backstabMASTA','cloakedNdaggerd','2FORT_4EVER','xx_FRAGZ_xx','sn1p3r_n0_sc0p3','ROCKETLAUNCHER69','PAYLOAD_PUSHR','I_MAIN_EVERYTHING','iiiiillllllllll','dj_n00dles','_______'];
+let userList='';users.forEach(u=>{const col=u.startsWith('@')?'#c00':u.startsWith('+')?'#00c':'#000';userList+=`<div style="font-size:10px;color:${col};padding:1px 4px">${u}</div>`});
+const h=`<div style="display:flex;flex-direction:column;height:100%;background:#fff;font-family:Tahoma,sans-serif;font-size:12px;color:#000">
+<div style="padding:2px 6px;background:#ece9d8;border-bottom:1px solid #808080;font-size:10px;color:#808080">#tf2-dustbowl on irc.gamesurge.net</div>
+<div style="flex:1;display:flex;overflow:hidden">
+<div style="flex:1;overflow-y:auto;padding:4px 8px;border-right:1px solid #808080;background:#fff">${log}</div>
+<div style="width:140px;overflow-y:auto;padding:4px 0;background:#f8f8f8">
+<div style="font-size:10px;font-weight:bold;padding:2px 4px;border-bottom:1px solid #d4d0c8;color:#808080">${users.length} users</div>
+${userList}
+</div>
+</div>
+<div style="display:flex;padding:2px 4px;background:#ece9d8;border-top:1px solid #808080;gap:4px">
+<input style="flex:1;padding:2px 4px;border:2px inset #808080;font-size:11px;font-family:Tahoma" value="" placeholder="Type a message...">
+<button style="padding:2px 10px;background:#ece9d8;border:2px outset #fff;font-size:11px;font-family:Tahoma">Send</button>
+</div></div>`;
+createWindow('mirc','mIRC - #tf2-dustbowl',520,380,h);
+};
 
 // Recycle Bin
 const openRecycleBin=()=>{
