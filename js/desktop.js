@@ -84,6 +84,7 @@ document.getElementById('start-btn').onclick=(e)=>{e.stopPropagation();toggleSta
 document.onclick=(e)=>{if(startOpen&&!document.getElementById('start-menu').contains(e.target)&&e.target!==document.getElementById('start-btn')){toggleStart(false)}};
 document.getElementById('start-shutdown').onclick=doShutdown;
 if(typeof pcState!=='undefined'&&pcState===2){document.getElementById('desktop').classList.add('corrupted-flicker')}
+if(typeof initCubey==='function')initCubey();
 };
 const toggleStart=(show)=>{
 startOpen=show;
