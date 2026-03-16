@@ -39,7 +39,7 @@ const pl=document.getElementById('cubey-pupil-l'),pr=document.getElementById('cu
 if(pl)pl.style.transform='translate('+Math.min(mx,Math.max(-mx,(dx/dist)*mx))+'px,'+Math.min(mx,Math.max(-mx,(dy/dist)*mx))+'px)';
 if(pr)pr.style.transform=pl.style.transform;
 });
-cubeyEl.addEventListener('click',(e)=>{if(e.target.id==='cubey-input'||e.target.id==='cubey-input-btn')return;const isC=typeof pcState!=='undefined'&&pcState===2;if(isC&&cubeyIntroDone){cubeyCorruptedClick();return}if(cubeyIntroDone&&cubeyGamesWon<1&&!cubeySpeaking){cubeyQ("Let's play a game, "+cubeyUserName+"! You haven't played with me yet!",true);cubeyOfferGame();return}cubeyDismiss()});
+cubeyEl.addEventListener('click',(e)=>{if(e.target.id==='cubey-input'||e.target.id==='cubey-input-btn'||e.target.classList?.contains('cubey-menu-btn'))return;const isC=typeof pcState!=='undefined'&&pcState===2;if(isC&&cubeyIntroDone){cubeyCorruptedClick();return}if(!cubeyIntroDone)return;showCubeyMenu()});
 cubeyBlinkTimer=setInterval(()=>{const eyes=document.querySelectorAll('.cubey-eye');eyes.forEach(e=>{e.style.height='2px';e.style.borderRadius='1px'});setTimeout(()=>eyes.forEach(e=>{e.style.height='10px';e.style.borderRadius='50%'}),150)},4000+Math.random()*3000);
 cubeyWanderTimer=setInterval(cubeyWander,8000+Math.random()*7000);
 cubeyMoodTimer=setInterval(()=>{cubeyMood=['happy','happy','happy','hyper','sleepy','bored'][Math.floor(Math.random()*6)]},60000);
@@ -81,7 +81,8 @@ else{setTimeout(cubeyStartIntro,2500);}
 // Wire beeper tray icon
 const beeperIcon=document.getElementById('tray-beeper');
 if(beeperIcon){
-beeperIcon.addEventListener('click',()=>{
+beeperIcon.addEventListener('click',(e)=>{
+e.stopPropagation();
 if(cubeyKilled)return;
 beeperClicks++;
 if(beeperClicks===1){
@@ -151,7 +152,42 @@ const dur=duration||Math.max(7000,text.length*120);
 setTimeout(()=>{b.classList.add('cubey-hidden');cubeySpeaking=false;setTimeout(cubeyNext,800)},dur);
 };
 
-const cubeyDismiss=()=>{const b=document.getElementById('cubey-bubble');const inp=document.getElementById('cubey-input-area');if(b)b.classList.add('cubey-hidden');if(inp)inp.classList.add('cubey-hidden');cubeySpeaking=false;cubeyQueue=[];cubeyProcessing=false};
+const cubeyDismiss=()=>{const b=document.getElementById('cubey-bubble');const inp=document.getElementById('cubey-input-area');const menu=document.getElementById('cubey-menu');if(b)b.classList.add('cubey-hidden');if(inp)inp.classList.add('cubey-hidden');if(menu)menu.remove();cubeySpeaking=false;cubeyQueue=[];cubeyProcessing=false};
+
+const showCubeyMenu=()=>{
+cubeyDismiss();
+const old=document.getElementById('cubey-menu');if(old)old.remove();
+const menu=document.createElement('div');
+menu.id='cubey-menu';
+menu.style.cssText='position:absolute;bottom:65px;right:-10px;width:180px;background:#ffffcc;border:2px solid #cca;border-radius:6px;padding:6px;box-shadow:2px 2px 6px rgba(0,0,0,0.2);z-index:710';
+const items=[
+{label:'🎮 Play a game!',fn:()=>{menu.remove();cubeyQ("GAME TIME!",true);cubeyOfferGame()}},
+{label:'❓ Ask me questions!',fn:()=>{menu.remove();cubeyQ("Ooh! Let's do the questions again!",true);cubeyIntroStep=0;setTimeout(()=>cubeyAskIntro('name'),3000)}},
+{label:'😂 Tell me a joke!',fn:()=>{menu.remove();cubeyTellJoke()}},
+{label:'📖 Tell me a story!',fn:()=>{menu.remove();cubeyTellStory()}},
+{label:'🎵 Sing a song!',fn:()=>{menu.remove();cubeySingSong()}},
+{label:'🎨 Talk about painting!',fn:()=>{menu.remove();const lines=["PAINTING! Did I mention I love painting?!","If I had legs I would run to Paint RIGHT NOW!","Every pixel is a tiny painting if you think about it!","I wish I could paint a painting of me painting a painting!","OPEN PAINT! Please! For me! "+cubeyUserName+"!"];cubeyQ(lines[Math.floor(Math.random()*lines.length)],true)}},
+{label:'👋 Never mind',fn:()=>{menu.remove();cubeyQ("OK! I'll be right here if you need me!",true)}}
+];
+items.forEach(item=>{
+const btn=document.createElement('button');
+btn.className='cubey-menu-btn';
+btn.textContent=item.label;
+btn.style.cssText='display:block;width:100%;padding:4px 6px;margin:2px 0;background:transparent;border:1px solid transparent;font-family:Tahoma;font-size:11px;cursor:pointer;text-align:left;border-radius:3px;color:#333';
+btn.addEventListener('mouseenter',()=>{btn.style.background='#ffeebb';btn.style.borderColor='#cca'});
+btn.addEventListener('mouseleave',()=>{btn.style.background='transparent';btn.style.borderColor='transparent'});
+btn.addEventListener('click',(e)=>{e.stopPropagation();item.fn()});
+menu.appendChild(btn);
+});
+// Close menu arrow
+const arrow=document.createElement('div');
+arrow.style.cssText='position:absolute;bottom:-8px;right:20px;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #ffffcc';
+menu.appendChild(arrow);
+cubeyEl.appendChild(menu);
+// Close on click outside
+const closeMenu=(ev)=>{if(!menu.contains(ev.target)&&!cubeyEl.contains(ev.target)){menu.remove();document.removeEventListener('click',closeMenu)}};
+setTimeout(()=>document.addEventListener('click',closeMenu),100);
+};
 
 const cubeyWander=()=>{if(!cubeyEl)return;const mx=window.innerWidth-80,my=window.innerHeight-120;cubeyEl.style.transition='left 3s ease-in-out,top 3s ease-in-out';cubeyEl.style.right='auto';cubeyEl.style.bottom='auto';cubeyEl.style.left=(60+Math.floor(Math.random()*(mx-60)))+'px';cubeyEl.style.top=(60+Math.floor(Math.random()*(my-60)))+'px';const body=document.getElementById('cubey-body');if(body){body.classList.add('cubey-wobble');setTimeout(()=>body.classList.remove('cubey-wobble'),3000)}};
 
