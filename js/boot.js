@@ -100,13 +100,8 @@ setTimeout(next,500);
 const bootSplash=()=>{
 document.getElementById('post').classList.add('hidden');
 document.getElementById('boot-splash').classList.remove('hidden');
-const bar=document.getElementById('boot-loader-bar');
-let pct=0;
-const iv=setInterval(()=>{
-pct+=Math.random()*6+2;
-if(pct>=100){pct=100;clearInterval(iv);setTimeout(showLogin,800)}
-bar.style.width=pct+'%';
-},250);
+// XP-style bar auto-animates via CSS, just wait
+setTimeout(showLogin,4000);
 };
 
 const showLogin=()=>{
