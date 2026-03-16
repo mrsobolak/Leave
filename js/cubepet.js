@@ -23,7 +23,7 @@ cubeyEl.innerHTML=`
 document.body.appendChild(cubeyEl);
 
 // SAM TTS
-try{if(typeof SamJs!=='undefined'){cubeySam=new SamJs({speed:62,pitch:80,mouth:128,throat:128});cubeyReady=true;}}catch(e){}
+try{if(typeof SamJs!=='undefined'){cubeySam=new SamJs({speed:58,pitch:120,mouth:140,throat:110});cubeyReady=true;}}catch(e){}
 
 // Eye tracking (normal only)
 document.addEventListener('mousemove',(e)=>{
@@ -133,7 +133,7 @@ if(body){body.classList.add('cubey-bounce');setTimeout(()=>body.classList.remove
 if(cubeyReady&&cubeySam){try{cubeySam.speak(text);}catch(e){}}
 
 // Auto-hide
-const dur=duration||Math.max(4000,text.length*80);
+const dur=duration||Math.max(7000,text.length*120);
 setTimeout(()=>{if(b)b.classList.add('cubey-hidden');cubeySpeaking=false;},dur);
 };
 
@@ -245,8 +245,8 @@ const cubeyTellJoke=()=>{
 if(cubeySpeaking)return;
 const joke=cubeyJokes[cubeyJokeIdx%cubeyJokes.length];
 cubeyJokeIdx++;
-cubeySay(joke[0],true,4000);
-setTimeout(()=>cubeySay(joke[1],true),5000);
+cubeySay(joke[0],true,6000);
+setTimeout(()=>cubeySay(joke[1],true),7000);
 };
 
 // ============ MINI GAMES ============
@@ -515,6 +515,94 @@ tf2:["No.","Don't.","Please."],
 steam:["Nothing opens anymore."]
 };
 
+// ============ CHAT REACTIONS ============
+const cubeyReactToChat=(contactId)=>{
+if(!cubeyEl)return;
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const c=contactId.toLowerCase();
+
+if(isC){
+// Corrupted chat reactions
+if(c.includes('mike'))cubeySay("Mike was the last one who cared. Was.",false);
+else if(c.includes('sc0ut')||c.includes('scout'))cubeySay("He saw it in the tunnel. He shouldn't have looked.",false);
+else if(c.includes('pyro'))cubeySay("Pyro uninstalled everything. Smart.",false);
+else if(c.includes('admin')||c.includes('boss'))cubeySay("The admin tried to stop it. You can't stop it.",false);
+else if(c.includes('hevy')||c.includes('sandvich'))cubeySay("He saw Duck's name in the killfeed. Duck wasn't playing.",false);
+else if(c.includes('bonk'))cubeySay("He stopped bonking. That's when you know it's real.",false);
+else if(c.includes('hatcollector'))cubeySay("The corrupted trade offer. Don't accept it.",false);
+else if(c.includes('noodle')||c.includes('n00dle'))cubeySay("The demo file at 2:01. The voice.",false);
+else if(c.includes('backstab')||c.includes('cloak'))cubeySay("Spies can hide. But not from this.",false);
+else if(c.includes('48291637')||c.includes('?????'))cubeySay("Don't. Don't read this one.",false);
+else if(c.includes('sentry')||c.includes('sENTRY'))cubeySay("His game crashed. Something was in his spawn.",false);
+else cubeySay("These are the last things they said to each other.",false);
+return;
+}
+
+// Normal chat reactions
+if(c.includes('mike'))cubeySay(`Mike and Duck are best friends! Like me and ${cubeyUserName}! Right? RIGHT?`,true);
+else if(c.includes('sc0ut')||c.includes('scout'))cubeySay("Scout Rulez! He's Duck's dustbowl buddy! BONK!",true);
+else if(c.includes('pyro'))cubeySay("PYROMANIAC! Fire fire fire! He's crazy! I love it!",true);
+else if(c.includes('admin')||c.includes('boss'))cubeySay("The server admin! Very important person! Don't make him mad!",true);
+else if(c.includes('medic')||c.includes('M3DIC'))cubeySay("A fellow medic enthusiast! UBERSAW GANG!",true);
+else if(c.includes('bonk'))cubeySay("BONK BONK BONK! This person is very enthusiastic!",true);
+else if(c.includes('hevy')||c.includes('sandvich'))cubeySay("The sandvich man! Heavy is credit to team!",true);
+else if(c.includes('spycrab'))cubeySay("Spycrab! You must let the spycrab live! It's the LAW!",true);
+else if(c.includes('sentry')||c.includes('sENTRY'))cubeySay("The sentry guy! He types weird but he's cool!",true);
+else if(c.includes('cr1tical')||c.includes('critical'))cubeySay("Critical hit! BOOM! Right in the face!",true);
+else if(c.includes('hatcollector'))cubeySay("The hat guy! He has SO many hats! I only have ONE hat but it's the BEST hat!",true);
+else if(c.includes('n00dle')||c.includes('noodle'))cubeySay("DJ Noodles! He makes remixes! They're getting better!",true);
+else if(c.includes('backstab'))cubeySay("The spy main! Watch your back around this one!",true);
+else if(c.includes('cloak'))cubeySay("Cloak and dagger! Invisible! Sneaky!",true);
+else if(c.includes('fragz')||c.includes('FRAGZ'))cubeySay("Fragz! Pew pew! Shooting things!",true);
+else if(c.includes('n00bkilla'))cubeySay("Noob killa! What a scary name! I'm a noob! Don't kill me!",true);
+else if(c.includes('MAIN_EVERYTHING'))cubeySay("This person mains EVERYTHING! Pick a class and stick with it!",true);
+else if(c.includes('2FORT'))cubeySay("A 2fort fan! Duck would say dustbowl is better though!",true);
+else if(c.includes('PAYLOAD'))cubeySay("PUSH THE CART! The payload moves!",true);
+else if(c.includes('sn1p3r')||c.includes('sniper'))cubeySay("A sniper! Standing still and clicking heads!",true);
+else if(c.includes('ROCKET'))cubeySay("Rockets! Explosions! Soldier stuff!",true);
+else if(c.includes('lolwut'))cubeySay("Lolwut! They seem fun! A good friend!",true);
+else if(c.includes('BATSWING'))cubeySay("Batswingin! What a name! Sounds sporty!",true);
+else if(c.includes('dRuMz')||c.includes('drumz'))cubeySay("The drummer! Duck's future bandmate! The Payload Pushers!",true);
+else if(c.includes('g4m3r'))cubeySay("A gamer dude! We're ALL gamers here!",true);
+else if(c.includes('sparkle'))cubeySay("Sparkles! She's cool but likes Twilight so minus one point apparently!",true);
+else if(c.includes('sk8r'))cubeySay("Skater boy! Does he actually skate? Probably not!",true);
+else if(c.includes('d4rkn3ss')||c.includes('darkness'))cubeySay("Darkness! Very edgy! I respect the commitment!",true);
+else if(c.includes('LOLxDDD'))cubeySay("LOL XD! That's basically their whole personality!",true);
+else if(c.includes('_______'))cubeySay("This person has no name! How mysterious!",true);
+else if(c.includes('48291637'))cubeySay("That's... just numbers? Weird contact. Hmm.",true);
+else cubeySay("Ooh who's this? Let me read! I love reading other people's chats!",true);
+};
+
+// ============ EMAIL REACTIONS ============
+const cubeyReactToEmail=(subject,from)=>{
+if(!cubeyEl)return;
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const s=(subject||'').toLowerCase();
+const f=(from||'').toLowerCase();
+
+if(isC){
+if(f.includes('0.0.0.0'))cubeySay("That email isn't from a person.",false);
+else if(f.includes('mom'))cubeySay("His mom is looking for him. She won't find him.",false);
+else if(s.includes('vac')||s.includes('ban'))cubeySay("Banned for something he didn't do.",false);
+else if(f.includes('mike'))cubeySay("Mike kept trying. Until he couldn't.",false);
+else if(f.includes('pyro'))cubeySay("Pyro saw it too. In CSS.",false);
+else if(f.includes('admin'))cubeySay("The admin saw the connections. 0.0.0.0.",false);
+else if(s.includes('critical')||s.includes('recovered'))cubeySay("The system recovered files that shouldn't exist.",false);
+else cubeySay("Old emails. From a different time.",false);
+return;
+}
+if(f.includes('mom'))cubeySay("Aww it's from Duck's mom! Moms are the best!",true);
+else if(f.includes('mike'))cubeySay("Email from Mike! Best friend mail!",true);
+else if(s.includes('free')||s.includes('congratulations')||s.includes('won'))cubeySay("That's DEFINITELY spam! Don't click anything!",true);
+else if(f.includes('steam')||s.includes('steam'))cubeySay("Steam email! Probably about a sale or something!",true);
+else if(f.includes('pyro'))cubeySay("FIRE FIRE FIRE! That's all Pyro ever says in emails too!",true);
+else if(s.includes('mann')||s.includes('tf2'))cubeySay("TF2 news! Ooh what's the update?",true);
+else if(f.includes('newgrounds'))cubeySay("Newgrounds! Flash games! Good times!",true);
+else if(s.includes('horoscope'))cubeySay("Horoscopes! I'm a Cubricorn! That's not real but it should be!",true);
+else if(f.includes('school')||s.includes('attendance'))cubeySay("School email! Uh oh! Is Duck in trouble?",true);
+else cubeySay("Email! I love reading other people's mail! ...is that weird?",true);
+};
+
 // ============ CSS ============
 const cubeyStyle=document.createElement('style');
 cubeyStyle.textContent=`
@@ -545,5 +633,7 @@ document.head.appendChild(cubeyStyle);
 
 window._cubeyReactToFile=cubeyReactToFile;
 window._cubeyReactToApp=cubeyReactToApp;
+window._cubeyReactToChat=cubeyReactToChat;
+window._cubeyReactToEmail=cubeyReactToEmail;
 window._cubeyShutdownReact=cubeyShutdownReact;
 window._cubeyTF2Warn=cubeyTF2Warn;
