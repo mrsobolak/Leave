@@ -884,7 +884,7 @@ return[
 ];
 };
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>triggerTF2Launch(),steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>triggerTF2Launch(),steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake};
 if(apps[id])apps[id]();
 };
 const openExplorer=(path)=>{
@@ -1236,4 +1236,104 @@ if(score>=coins.length&&!dead){ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(0,0,
 requestAnimationFrame(loop);
 };
 loop();
+};
+
+const openSnake=()=>{
+const h=`<div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column"><canvas id="snake-canvas" width="300" height="300" style="border:2px solid #333;image-rendering:pixelated;background:#0a0a0a"></canvas><div id="snake-hud" style="font-family:'Press Start 2P',monospace;font-size:9px;color:#0f0;margin-top:6px">Arrow Keys to move</div></div>`;
+createWindow('snake','Snake',340,380,h);
+setTimeout(()=>initSnake(),100);
+};
+const initSnake=()=>{
+const canvas=document.getElementById('snake-canvas');
+if(!canvas)return;
+const ctx=canvas.getContext('2d');
+const G=15,C=300/G;
+let snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];
+let dir={x:1,y:0};
+let nextDir={x:1,y:0};
+let food=spawnFood();
+let score=0;
+let dead=false;
+let speed=120;
+let lastTime=0;
+function spawnFood(){
+let f;
+do{f={x:Math.floor(Math.random()*C),y:Math.floor(Math.random()*C)}}
+while(snake.some(s=>s.x===f.x&&s.y===f.y));
+return f;
+}
+document.addEventListener('keydown',(e)=>{
+if(e.key==='ArrowUp'&&dir.y===0){nextDir={x:0,y:-1};e.preventDefault()}
+else if(e.key==='ArrowDown'&&dir.y===0){nextDir={x:0,y:1};e.preventDefault()}
+else if(e.key==='ArrowLeft'&&dir.x===0){nextDir={x:-1,y:0};e.preventDefault()}
+else if(e.key==='ArrowRight'&&dir.x===0){nextDir={x:1,y:0};e.preventDefault()}
+else if(e.key===' '&&dead){snake=[{x:10,y:10},{x:9,y:10},{x:8,y:10}];dir={x:1,y:0};nextDir={x:1,y:0};food=spawnFood();score=0;dead=false;speed=120}
+});
+const loop=(t)=>{
+if(!document.getElementById('snake-canvas'))return;
+if(t-lastTime>speed&&!dead){
+lastTime=t;
+dir=nextDir;
+const head={x:snake[0].x+dir.x,y:snake[0].y+dir.y};
+if(head.x<0||head.x>=C||head.y<0||head.y>=C||snake.some(s=>s.x===head.x&&s.y===head.y)){
+dead=true;
+}else{
+snake.unshift(head);
+if(head.x===food.x&&head.y===food.y){
+score++;
+food=spawnFood();
+if(speed>60)speed-=3;
+}else{
+snake.pop();
+}
+}
+}
+ctx.fillStyle='#0a0a0a';
+ctx.fillRect(0,0,300,300);
+// grid
+ctx.strokeStyle='#111';
+ctx.lineWidth=0.5;
+for(let i=0;i<=C;i++){
+ctx.beginPath();ctx.moveTo(i*G,0);ctx.lineTo(i*G,300);ctx.stroke();
+ctx.beginPath();ctx.moveTo(0,i*G);ctx.lineTo(300,i*G);ctx.stroke();
+}
+// food
+ctx.fillStyle='#ff0000';
+ctx.fillRect(food.x*G+1,food.y*G+1,G-2,G-2);
+ctx.fillStyle='#ff4444';
+ctx.fillRect(food.x*G+3,food.y*G+2,G-6,G-5);
+// snake
+snake.forEach((s,i)=>{
+ctx.fillStyle=i===0?'#00ff00':'#00cc00';
+ctx.fillRect(s.x*G+1,s.y*G+1,G-2,G-2);
+if(i===0){
+ctx.fillStyle='#000';
+const ex=dir.x===1?9:dir.x===-1?2:3;
+const ey=dir.y===1?9:dir.y===-1?2:3;
+ctx.fillRect(s.x*G+ex,s.y*G+ey,3,3);
+ctx.fillRect(s.x*G+ex+(dir.y!==0?6:0),s.y*G+ey+(dir.x!==0?6:0),3,3);
+}
+});
+// score
+ctx.fillStyle='#0f0';
+ctx.font='10px Press Start 2P';
+ctx.textAlign='left';
+ctx.fillText('SCORE: '+score,6,14);
+// dead
+if(dead){
+ctx.fillStyle='rgba(0,0,0,0.7)';
+ctx.fillRect(0,0,300,300);
+ctx.fillStyle='#f00';
+ctx.font='14px Press Start 2P';
+ctx.textAlign='center';
+ctx.fillText('GAME OVER',150,140);
+ctx.fillStyle='#0f0';
+ctx.font='9px Press Start 2P';
+ctx.fillText('Score: '+score,150,165);
+ctx.fillStyle='#888';
+ctx.fillText('SPACE to retry',150,190);
+}
+requestAnimationFrame(loop);
+};
+requestAnimationFrame(loop);
 };

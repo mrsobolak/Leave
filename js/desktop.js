@@ -18,7 +18,8 @@ const desktopApps=[
 {id:'audacity',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h2l2-4 2 8 2-6 2 4 2-2 2 6 2-8 2 4h2"/></svg>',label:'Audacity',desk:true,menu:true},
 {id:'mirc',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9 9 9 0 019 9z"/><path d="M8 12h8M12 8v8"/></svg>',label:'mIRC',desk:true,menu:true},
 {id:'recyclebin',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>',label:'Recycle Bin',desk:true,menu:false},
-{id:'platformer',icon:'<span style="font-size:24px;color:#ff0">&#9733;</span>',label:'SUPER DUST MAN',desk:true,menu:true}
+{id:'platformer',icon:'<span style="font-size:24px;color:#ff0">&#9733;</span>',label:'SUPER DUST MAN',desk:true,menu:true},
+{id:'snake',icon:'<span style="font-size:24px;color:#0f0">&#9632;</span>',label:'Snake',desk:true,menu:true}
 ];
 let startOpen=false;
 const initDesktop=()=>{
