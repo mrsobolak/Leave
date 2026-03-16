@@ -10,6 +10,7 @@ let cubeyMoodTimer=null;
 let cubeyAppCounts={};
 let cubeyClickTimes=[];
 let cubeyTF2Attempts=0;
+let cubeyGamesWon=0;
 let cubeyQueue=[];
 let cubeyProcessing=false;
 
@@ -36,7 +37,7 @@ const pl=document.getElementById('cubey-pupil-l'),pr=document.getElementById('cu
 if(pl)pl.style.transform='translate('+Math.min(mx,Math.max(-mx,(dx/dist)*mx))+'px,'+Math.min(mx,Math.max(-mx,(dy/dist)*mx))+'px)';
 if(pr)pr.style.transform=pl.style.transform;
 });
-cubeyEl.addEventListener('click',(e)=>{if(e.target.id==='cubey-input'||e.target.id==='cubey-input-btn')return;const isC=typeof pcState!=='undefined'&&pcState===2;if(isC&&cubeyIntroDone){cubeyCorruptedClick();return}cubeyDismiss()});
+cubeyEl.addEventListener('click',(e)=>{if(e.target.id==='cubey-input'||e.target.id==='cubey-input-btn')return;const isC=typeof pcState!=='undefined'&&pcState===2;if(isC&&cubeyIntroDone){cubeyCorruptedClick();return}if(cubeyIntroDone&&cubeyGamesWon<1&&!cubeySpeaking){cubeyQ("Let's play a game, "+cubeyUserName+"! You haven't played with me yet!",true);cubeyOfferGame();return}cubeyDismiss()});
 cubeyBlinkTimer=setInterval(()=>{const eyes=document.querySelectorAll('.cubey-eye');eyes.forEach(e=>{e.style.height='2px';e.style.borderRadius='1px'});setTimeout(()=>eyes.forEach(e=>{e.style.height='10px';e.style.borderRadius='50%'}),150)},4000+Math.random()*3000);
 cubeyWanderTimer=setInterval(cubeyWander,8000+Math.random()*7000);
 cubeyMoodTimer=setInterval(()=>{cubeyMood=['happy','happy','happy','hyper','sleepy','bored'][Math.floor(Math.random()*6)]},60000);
@@ -227,34 +228,46 @@ const cubeyGameWin=(title,w,inner,id)=>{const old=document.getElementById(id);if
 
 const cubeyPaintGame=()=>{
 cubeyQ("PAINTING TIME "+cubeyUserName+"!",true);
-setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff','#00cccc','#ff69b4'];let g='',p='';for(let i=0;i<36;i++)g+='<div class="cp-c" style="width:28px;height:28px;background:#eee;border:1px solid #ccc;cursor:pointer"></div>';cs.forEach(c=>p+='<div class="cp-p" data-c="'+c+'" style="width:16px;height:16px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:2px"></div>');const w=cubeyGameWin("Cubey's Paint!",240,'<div style="font-size:10px;margin-bottom:4px">Click to paint!</div><div style="display:grid;grid-template-columns:repeat(6,28px);gap:1px;justify-content:center">'+g+'</div><div style="margin-top:6px;display:flex;gap:3px;justify-content:center">'+p+'</div>','cg-paint');let cl=cs[0];w.querySelectorAll('.cp-p').forEach(e=>e.addEventListener('click',()=>{cl=e.dataset.c;w.querySelectorAll('.cp-p').forEach(x=>x.style.borderColor='#888');e.style.borderColor='#fff'}));w.querySelectorAll('.cp-c').forEach(e=>e.addEventListener('click',()=>e.style.background=cl))},8000);
+setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff','#00cccc','#ff69b4'];let g='',p='';for(let i=0;i<36;i++)g+='<div class="cp-c" style="width:28px;height:28px;background:#eee;border:1px solid #ccc;cursor:pointer"></div>';cs.forEach(c=>p+='<div class="cp-p" data-c="'+c+'" style="width:16px;height:16px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:2px"></div>');const w=cubeyGameWin("Cubey's Paint!",240,'<div style="font-size:10px;margin-bottom:4px">Click to paint!</div><div style="display:grid;grid-template-columns:repeat(6,28px);gap:1px;justify-content:center">'+g+'</div><div style="margin-top:6px;display:flex;gap:3px;justify-content:center">'+p+'</div>','cg-paint');let cl=cs[0];w.querySelectorAll('.cp-p').forEach(e=>e.addEventListener('click',()=>{cl=e.dataset.c;w.querySelectorAll('.cp-p').forEach(x=>x.style.borderColor='#888');e.style.borderColor='#fff'}));w.querySelectorAll('.cp-c').forEach(e=>e.addEventListener('click',()=>{e.style.background=cl;if(cubeyGamesWon<1)cubeyGamesWon++}))},8000);
 };
 
 const cubeyMemoryGame=()=>{
 cubeyQ("Memory game! Watch the pattern!",true);
-setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00'];const seq=[];for(let i=0;i<4;i++)seq.push(Math.floor(Math.random()*4));let bt='';cs.forEach((c,i)=>bt+='<div class="cm-b" data-i="'+i+'" style="width:60px;height:60px;background:'+c+';opacity:0.4;border:2px solid #888;border-radius:6px;cursor:pointer"></div>');const w=cubeyGameWin("Memory!",180,'<div id="cm-s" style="font-size:10px;margin-bottom:6px">Watch!</div><div style="display:grid;grid-template-columns:repeat(2,60px);gap:6px;justify-content:center">'+bt+'</div>','cg-mem');let si=0;const sh=setInterval(()=>{if(si>=seq.length){clearInterval(sh);document.getElementById('cm-s').textContent='Your turn!';let ii=0;w.querySelectorAll('.cm-b').forEach(b=>{b.style.opacity='0.4';b.addEventListener('click',()=>{b.style.opacity='1';setTimeout(()=>b.style.opacity='0.4',300);if(parseInt(b.dataset.i)===seq[ii]){ii++;if(ii>=seq.length){w.remove();cubeyQ("CORRECT! GENIUS "+cubeyUserName+"!",true)}}else{w.remove();cubeyQ("Oops! Let's paint instead!",true)}})});return}w.querySelectorAll('.cm-b').forEach(b=>b.style.opacity='0.4');w.querySelectorAll('.cm-b')[seq[si]].style.opacity='1';si++},800);
+setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00'];const seq=[];for(let i=0;i<4;i++)seq.push(Math.floor(Math.random()*4));let bt='';cs.forEach((c,i)=>bt+='<div class="cm-b" data-i="'+i+'" style="width:60px;height:60px;background:'+c+';opacity:0.4;border:2px solid #888;border-radius:6px;cursor:pointer"></div>');const w=cubeyGameWin("Memory!",180,'<div id="cm-s" style="font-size:10px;margin-bottom:6px">Watch!</div><div style="display:grid;grid-template-columns:repeat(2,60px);gap:6px;justify-content:center">'+bt+'</div>','cg-mem');let si=0;const sh=setInterval(()=>{if(si>=seq.length){clearInterval(sh);document.getElementById('cm-s').textContent='Your turn!';let ii=0;w.querySelectorAll('.cm-b').forEach(b=>{b.style.opacity='0.4';b.addEventListener('click',()=>{b.style.opacity='1';setTimeout(()=>b.style.opacity='0.4',300);if(parseInt(b.dataset.i)===seq[ii]){ii++;if(ii>=seq.length){w.remove();cubeyGamesWon++;cubeyQ("CORRECT! GENIUS "+cubeyUserName+"!",true)}}else{w.remove();cubeyQ("Oops! Let's paint instead!",true)}})});return}w.querySelectorAll('.cm-b').forEach(b=>b.style.opacity='0.4');w.querySelectorAll('.cm-b')[seq[si]].style.opacity='1';si++},800);
 },8000);
 };
 
 const cubeyColorMatchGame=()=>{
 cubeyQ("Match the color!",true);
-setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff'];const t=cs[Math.floor(Math.random()*cs.length)];let o='';[...cs].sort(()=>Math.random()-0.5).forEach(c=>o+='<div class="cmatch" data-c="'+c+'" style="width:40px;height:40px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:4px"></div>');const w=cubeyGameWin("Match!",280,'<div style="font-size:10px;margin-bottom:4px">Which one matches?</div><div style="width:50px;height:50px;background:'+t+';border:3px solid #000;margin:6px auto;border-radius:4px"></div><div style="display:flex;gap:4px;justify-content:center;margin-top:6px">'+o+'</div>','cg-match');w.querySelectorAll('.cmatch').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(e.dataset.c===t?"CORRECT! Amazing eyes "+cubeyUserName+"!":"Nope! Painting doesn't need matching tho!",true)}))},8000);
+setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff'];const t=cs[Math.floor(Math.random()*cs.length)];let o='';[...cs].sort(()=>Math.random()-0.5).forEach(c=>o+='<div class="cmatch" data-c="'+c+'" style="width:40px;height:40px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:4px"></div>');const w=cubeyGameWin("Match!",280,'<div style="font-size:10px;margin-bottom:4px">Which one matches?</div><div style="width:50px;height:50px;background:'+t+';border:3px solid #000;margin:6px auto;border-radius:4px"></div><div style="display:flex;gap:4px;justify-content:center;margin-top:6px">'+o+'</div>','cg-match');w.querySelectorAll('.cmatch').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(e.dataset.c===t?(cubeyGamesWon++,"CORRECT! Amazing eyes "+cubeyUserName+"!"):"Nope! Painting doesn't need matching tho!",true)}))},8000);
 };
 
 const cubeyWordGuessGame=()=>{
 const words=['PAINTING','CUBEY','DUSTBOWL','MEDIC','UBERSAW','TOPHAT'];const word=words[Math.floor(Math.random()*words.length)];let rev=word.split('').map(()=>'_');let guesses=0;
 cubeyQ("Word guess! "+word.length+" letters!",true);
-setTimeout(()=>{const w=cubeyGameWin("Word Guess!",260,'<div id="cwg-w" style="font-size:18px;letter-spacing:6px;font-weight:bold;margin:8px 0">'+rev.join(' ')+'</div><div style="font-size:10px;margin-bottom:4px">Type a letter!</div><input id="cwg-i" maxlength="1" style="width:30px;text-align:center;font-size:16px;border:2px inset #808080;text-transform:uppercase"> <button id="cwg-b" style="padding:2px 8px;background:#ece9d8;border:2px outset #fff;font-size:11px;cursor:pointer">Guess</button><div id="cwg-s" style="font-size:9px;color:#888;margin-top:4px"></div>','cg-wg');const dg=()=>{const l=document.getElementById('cwg-i').value.toUpperCase();document.getElementById('cwg-i').value='';if(!l)return;guesses++;let f=false;word.split('').forEach((c,i)=>{if(c===l){rev[i]=c;f=true}});document.getElementById('cwg-w').textContent=rev.join(' ');document.getElementById('cwg-s').textContent=f?'Found!':'Nope!';if(!rev.includes('_')){w.remove();cubeyQ(word+"! "+guesses+" guesses! "+cubeyUserName+" you're AMAZING!",true)}};document.getElementById('cwg-b').addEventListener('click',dg);document.getElementById('cwg-i').addEventListener('keydown',(e)=>{if(e.key==='Enter')dg()})},8000);
+setTimeout(()=>{const w=cubeyGameWin("Word Guess!",260,'<div id="cwg-w" style="font-size:18px;letter-spacing:6px;font-weight:bold;margin:8px 0">'+rev.join(' ')+'</div><div style="font-size:10px;margin-bottom:4px">Type a letter!</div><input id="cwg-i" maxlength="1" style="width:30px;text-align:center;font-size:16px;border:2px inset #808080;text-transform:uppercase"> <button id="cwg-b" style="padding:2px 8px;background:#ece9d8;border:2px outset #fff;font-size:11px;cursor:pointer">Guess</button><div id="cwg-s" style="font-size:9px;color:#888;margin-top:4px"></div>','cg-wg');const dg=()=>{const l=document.getElementById('cwg-i').value.toUpperCase();document.getElementById('cwg-i').value='';if(!l)return;guesses++;let f=false;word.split('').forEach((c,i)=>{if(c===l){rev[i]=c;f=true}});document.getElementById('cwg-w').textContent=rev.join(' ');document.getElementById('cwg-s').textContent=f?'Found!':'Nope!';if(!rev.includes('_')){w.remove();cubeyGamesWon++;cubeyQ(word+"! "+guesses+" guesses! "+cubeyUserName+" you're AMAZING!",true)}};document.getElementById('cwg-b').addEventListener('click',dg);document.getElementById('cwg-i').addEventListener('keydown',(e)=>{if(e.key==='Enter')dg()})},8000);
 };
 
 const cubeyDuckQuiz=()=>{
 const qs=[{q:"Duck's favorite class?",a:['Medic','Scout','Spy','Heavy'],c:0},{q:"Duck's favorite map?",a:['2Fort','Dustbowl','Badlands','Gravel Pit'],c:1},{q:"Duck's TF2 hours?",a:['500','1,200','2,847','100'],c:2},{q:"PC year?",a:['2005','2007','2010','2003'],c:1},{q:"Duck's best weapon?",a:['Scattergun','Ubersaw','Minigun','Rifle'],c:1}];const q=qs[Math.floor(Math.random()*qs.length)];
 cubeyQ("QUIZ! How well do you know Duck?",true);
-setTimeout(()=>{let o='';q.a.forEach((a,i)=>o+='<button class="cqz" data-i="'+i+'" style="display:block;width:100%;padding:4px;margin:3px 0;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer;text-align:left">'+a+'</button>');const w=cubeyGameWin("Duck Trivia!",250,'<div style="font-size:11px;font-weight:bold;margin-bottom:8px">'+q.q+'</div>'+o,'cg-quiz');w.querySelectorAll('.cqz').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(parseInt(e.dataset.i)===q.c?"CORRECT!! "+cubeyUserName+" you KNOW Duck!":"Nope! It was "+q.a[q.c]+"!",true)}))},8000);
+setTimeout(()=>{let o='';q.a.forEach((a,i)=>o+='<button class="cqz" data-i="'+i+'" style="display:block;width:100%;padding:4px;margin:3px 0;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer;text-align:left">'+a+'</button>');const w=cubeyGameWin("Duck Trivia!",250,'<div style="font-size:11px;font-weight:bold;margin-bottom:8px">'+q.q+'</div>'+o,'cg-quiz');w.querySelectorAll('.cqz').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(parseInt(e.dataset.i)===q.c?(cubeyGamesWon++,"CORRECT!! "+cubeyUserName+" you KNOW Duck!"):"Nope! It was "+q.a[q.c]+"!",true)}))},8000);
 };
 
 // TF2
 const cubeyTF2Warn=()=>new Promise((resolve)=>{
+// Block entirely if intro not done
+if(!cubeyIntroDone){
+cubeyQ("Hey! We're not done talking yet! Finish answering my questions first!",true);
+resolve(false);return;
+}
+// Block if no games beaten
+if(cubeyGamesWon<1){
+cubeyQ("Nuh uh! You haven't played ANY of my games yet, "+cubeyUserName+"!",true);
+cubeyQ("Play at least ONE game with me first! Click on me!",true);
+cubeyQ("Paint! Memory! Trivia! ANYTHING! Just play with me!",true);
+resolve(false);return;
+}
 cubeyTF2Attempts++;
 if(cubeyTF2Attempts===1){cubeyQ("Nope! Not that one! Let's open something else, "+cubeyUserName+"!",true);resolve(false);return}
 const msgs=["Are you SURE? I have a REALLY bad feeling about this.","PLEASE "+cubeyUserName+" don't open that! I'm BEGGING you!",cubeyUserName+"! STOP! Something terrible will happen!","NO! Why won't you LISTEN?! DON'T!"];
