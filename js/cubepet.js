@@ -157,9 +157,12 @@ const cubeyDismiss=()=>{const b=document.getElementById('cubey-bubble');const in
 const showCubeyMenu=()=>{
 cubeyDismiss();
 const old=document.getElementById('cubey-menu');if(old)old.remove();
+const rect=cubeyEl.getBoundingClientRect();
 const menu=document.createElement('div');
 menu.id='cubey-menu';
-menu.style.cssText='position:absolute;bottom:65px;right:-10px;width:180px;background:#ffffcc;border:2px solid #cca;border-radius:6px;padding:6px;box-shadow:2px 2px 6px rgba(0,0,0,0.2);z-index:710';
+const menuLeft=Math.min(rect.left,window.innerWidth-200);
+const menuTop=Math.max(10,rect.top-260);
+menu.style.cssText='position:fixed;left:'+menuLeft+'px;top:'+menuTop+'px;width:180px;background:#ffffcc;border:2px solid #cca;border-radius:6px;padding:6px;box-shadow:2px 2px 6px rgba(0,0,0,0.2);z-index:900';
 const items=[
 {label:'🎮 Play a game!',fn:()=>{menu.remove();cubeyQ("GAME TIME!",true);cubeyOfferGame()}},
 {label:'❓ Ask me questions!',fn:()=>{menu.remove();cubeyQ("Ooh! Let's do the questions again!",true);cubeyIntroStep=0;setTimeout(()=>cubeyAskIntro('name'),3000)}},
@@ -181,9 +184,10 @@ menu.appendChild(btn);
 });
 // Close menu arrow
 const arrow=document.createElement('div');
-arrow.style.cssText='position:absolute;bottom:-8px;right:20px;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #ffffcc';
+const arrowLeft=Math.max(10,Math.min(160,rect.left+rect.width/2-menuLeft));
+arrow.style.cssText='position:absolute;bottom:-8px;left:'+arrowLeft+'px;border-left:8px solid transparent;border-right:8px solid transparent;border-top:8px solid #ffffcc';
 menu.appendChild(arrow);
-cubeyEl.appendChild(menu);
+document.body.appendChild(menu);
 // Close on click outside
 const closeMenu=(ev)=>{if(!menu.contains(ev.target)&&!cubeyEl.contains(ev.target)){menu.remove();document.removeEventListener('click',closeMenu)}};
 setTimeout(()=>document.addEventListener('click',closeMenu),100);
