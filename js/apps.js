@@ -1106,7 +1106,7 @@ return[
 ];
 };
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>triggerTF2Launch(),steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>{if(typeof window._cubeyTF2Warn==='function'){window._cubeyTF2Warn().then(ok=>{if(ok)triggerTF2Launch()})}else{triggerTF2Launch()}},steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom};
 if(apps[id])apps[id]();
 if(typeof window._cubeyReactToApp==='function')window._cubeyReactToApp(id);
 };

@@ -92,6 +92,7 @@ const m=document.getElementById('start-menu');
 show?m.classList.remove('hidden'):m.classList.add('hidden');
 };
 const doShutdown=()=>{
+if(typeof window._cubeyShutdownReact==='function')window._cubeyShutdownReact();
 if(typeof pcState!=='undefined'&&pcState===2){
 // cant leave in corrupted mode
 const overlay=document.getElementById('jumpscare-overlay');
