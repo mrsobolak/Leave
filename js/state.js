@@ -66,30 +66,30 @@ container.style.cssText='position:relative;width:100%;height:100%;overflow:hidde
 // face.png fills entire screen, melts
 const img=document.createElement('img');
 img.src='face.png';
-img.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;animation:fastMelt 2s ease-in forwards;transform-origin:center top';
+img.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;animation:fastMelt 0.6s ease-in forwards;transform-origin:center top';
 container.appendChild(img);
 
 // drip streaks
 for(let i=0;i<15;i++){
 const streak=document.createElement('div');
-streak.style.cssText=`position:absolute;top:${15+Math.random()*40}%;left:${Math.random()*100}%;width:${1+Math.random()*5}px;height:0;background:rgba(0,0,0,${0.5+Math.random()*0.5});z-index:4;animation:fastDrip ${1+Math.random()*1.5}s ease-in ${Math.random()*0.5}s forwards`;
+streak.style.cssText=`position:absolute;top:${15+Math.random()*40}%;left:${Math.random()*100}%;width:${1+Math.random()*5}px;height:0;background:rgba(0,0,0,${0.5+Math.random()*0.5});z-index:4;animation:fastDrip 0.5s ease-in forwards`;
 container.appendChild(streak);
 }
 
 // fog from bottom
 const fog=document.createElement('div');
-fog.style.cssText='position:absolute;bottom:0;left:0;width:100%;height:0%;background:linear-gradient(0deg,#000 0%,rgba(0,0,0,0.85) 50%,transparent 100%);z-index:5;animation:fastRise 2s ease-in forwards';
+fog.style.cssText='position:absolute;bottom:0;left:0;width:100%;height:0%;background:linear-gradient(0deg,#000 0%,rgba(0,0,0,0.85) 50%,transparent 100%);z-index:5;animation:fastRise 0.6s ease-in forwards';
 container.appendChild(fog);
 
 overlay.appendChild(container);
 
-// 2 seconds of face then BSOD
+// flash of face then BSOD
 setTimeout(()=>{
 overlay.style.cursor='default';
 overlay.innerHTML='';
 showBSOD();
 setTimeout(()=>corruptedReboot(),5000);
-},2000);
+},600);
 };
 
 const triggerSteamCrash=()=>{
