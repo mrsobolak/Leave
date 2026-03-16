@@ -122,11 +122,27 @@ const u='\x54\x68\x65\x44\x75\x73\x74\x42\x77\x6c\x44\x75\x63\x6b';
 const p=document.getElementById('login-pass').value;
 if(_v(u,p)){
 document.getElementById('login-screen').classList.add('hidden');
-initDesktop();
+showWelcome();
 }else{
 const err=document.getElementById('login-error');
 err.textContent='The password is incorrect.';
 document.getElementById('login-pass').value='';
 setTimeout(()=>{err.textContent=''},2500);
 }
+};
+
+const showWelcome=()=>{
+const w=document.createElement('div');
+w.id='welcome-screen';
+w.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:#3a6ea5;z-index:950;display:flex;align-items:center;justify-content:center;flex-direction:column';
+w.innerHTML='<div style="font-family:Tahoma,sans-serif;font-size:24px;color:#fff">Welcome</div><div style="font-family:Tahoma,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);margin-top:8px">TheDustBwlDuck</div>';
+document.body.appendChild(w);
+setTimeout(()=>{
+w.style.transition='opacity 0.5s';
+w.style.opacity='0';
+setTimeout(()=>{
+w.remove();
+initDesktop();
+},500);
+},2000);
 };
