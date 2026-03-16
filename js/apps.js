@@ -70,18 +70,18 @@ const base={
 }}};
 if(typeof pcState!=='undefined'&&pcState===2){
 const docs=base['C:'].children['Users'].children['TheDustBwlDuck'].children['Documents'].children;
-const newFiles={'why_am_i_here.txt':{type:'file',content:'i dont undrstnd waht happend\nthe game crashed and now evrythings diffrent\n\nwhy does my pc feel wrong\nwhy does the clock say may\nits september\n\nits SEPTEMBER'},'the_hard_drive.txt':{type:'file',content:'i bought this hard drive from sum guy on craigslist\nit was cheap like 20 bucks\nhe said it was from an old gamers pc\n\ni put my games on it\nand thats when stuff started geting weird\n\nthe demos. the files. they wernt mine.\nsomebody elses tf2 was on here.'},'i_see_him.txt':{type:'file',content:'theres a player on dustbowl\nhes not on the scorboard\nhes not on any team\nhes just STANDING THERE\n\ni asked mike and he said he doesnt see any1\nbut HES RIGHT THERE\n\nhes looking at me\nthru the screen\ni swear hes looking at me'},'dont_open_tf2.txt':{type:'file',content:'DO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2'},'dreams.txt':{type:'file',content:'i keep dreming abt dustbowl\nnot the game\nlike im THERE\nthe tunels the dust\nits so dry i can feel it\n\nand hes there 2\nthe figure\nhe says i belong there\nhe says i never left'},'what_is_happening.txt':{type:'file',content:'my pc restarted on its own\nnew files evrywhre\na whole new DRIVE??\nLOCALDRIVED??\n\ni didnt put that there\ni didnt make these files\n\nwhos writing these'},'to_mom.txt':{type:'file',content:'hey mom\nim sorry i didnt clean my room\nim sorry i didnt do the grocerys\nim sorry i was always late 4 dinner\nim sorry i played tf2 insted of doing hw\n\ni luv u mom\n\ni dont think i can stop whats hapening'},'to_mike.txt':{type:'file',content:'mike if ur reading this\nur my best frend dude\nrember when we playd dustbowl all nite\nand u got that sick airshot\nand i ubered that random heavy who just ate a sandvich\n\nthat was the best nite\n\ni wish things stayed like that'},'server_0000.txt':{type:'file',content:'0.0.0.0:27015\n\ni didnt add this server\nit added itself\nit joins ME\n\nwhen i connect theres no map\njust dark\njust nothng\n\nand him'},'last_entry.txt':{type:'file',content:'5/28/2010\n\nim so tired\n\ni cant do this anymore\n\ntomrow i go home'},'note001.txt':{type:'file',content:'13 13 13 13 13 13 13'},'note002.txt':{type:'file',content:'the number 13. its evrywhere. my pid. the bad sectors. the server port ends in 13 if u add the digits. am i going crazy'},'note003.txt':{type:'file',content:'201. thats the number. i dont kno what it means but its importnt. its the key 2 somthing.'},'admin_ban_appeal.txt':{type:'file',content:'APPEAL TO DUSTBOWLBOSS_ADMIN:\n\nDUDE pls unban me i WASNT cheating\ni dont kno why my movment looked weird\nthe game has been glichy lately ok\n\nmy character moved on its own dude\nIM NOT LYING\nsomthing is wrong w my game\n\n...he didnt respond'},'the_demos.txt':{type:'file',content:'found these demo files on the hard drive:\n\ndemo001.dem - normal dustbowl game\ndemo002.dem - normal but... theres some1 extra\ndemo003.dem - the extra player is closer\ndemo004.dem - hes right behind the camera\ndemo005.dem - CORRUPTED\n\ni shudnt have watched them\ni shudnt have ported them to sfm\n\nhe saw me watching'},
+const newFiles={'why_am_i_here.txt':{type:'file',content:'i dont undrstnd waht happend\nthe game crashed and now evrythings diffrent\n\nwhy does my pc feel wrong\nwhy does the clock say may\nits september\n\nits SEPTEMBER'},'the_hard_drive.txt':{type:'file',content:'i bought this hard drive from sum guy on craigslist\nit was cheap like 20 bucks\nhe said it was from an old gamers pc\n\ni put my games on it\nand thats when stuff started geting weird\n\nthe demos. the files. they wernt mine.\nsomebody elses tf2 was on here.'},'i_see_him.txt':{type:'file',content:'theres a player on dustbowl\nhes not on the scorboard\nhes not on any team\nhes just STANDING THERE\n\ni asked mike and he said he doesnt see any1\nbut HES RIGHT THERE\n\nhes looking at me\nthru the screen\ni swear hes looking at me'},'dont_open_tf2.txt':{type:'file',content:'DO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2'},'dreams.txt':{type:'file',content:'i keep dreming abt dustbowl\nnot the game\nlike im THERE\nthe tunels the dust\nits so dry i can feel it\n\nand hes there 2\nthe figure\nhe says i belong there\nhe says i never left'},'what_is_happening.txt':{type:'file',content:'my pc restarted on its own\nnew files evrywhre\na whole new DRIVE??\nLOCALDRIVED??\n\ni didnt put that there\ni didnt make these files\n\nwhos writing these'},'to_mom.txt':{type:'file',content:'hey mom\nim sorry i didnt clean my room\nim sorry i didnt do the grocerys\nim sorry i was always late 4 dinner\nim sorry i played tf2 insted of doing hw\n\ni luv u mom\n\ni dont think i can stop whats hapening'},'to_mike.txt':{type:'file',content:'mike if ur reading this\nur my best frend dude\nrember when we playd dustbowl all nite\nand u got that sick airshot\nand i ubered that random heavy who just ate a sandvich\n\nthat was the best nite\n\ni wish things stayed like that'},'server_0000.txt':{type:'file',content:'0.0.0.0:27015\n\ni didnt add this server\nit added itself\nit joins ME\n\nwhen i connect theres no map\njust dark\njust nothng\n\nand him'},'last_entry.txt':{type:'file',content:'5/28/2010\n\nim so tired\n\ni cant do this anymore\n\ntomrow i go home'},'note001.txt':{type:'file',content:'201 201 201 201 201 201 201'},'note002.txt':{type:'file',content:'the number 201. its evrywhere. the files. the server. the password. am i going crazy'},'note003.txt':{type:'file',content:'201. thats the number. i dont kno what it means but its importnt. its the key 2 somthing.'},'admin_ban_appeal.txt':{type:'file',content:'APPEAL TO DUSTBOWLBOSS_ADMIN:\n\nDUDE pls unban me i WASNT cheating\ni dont kno why my movment looked weird\nthe game has been glichy lately ok\n\nmy character moved on its own dude\nIM NOT LYING\nsomthing is wrong w my game\n\n...he didnt respond'},'the_demos.txt':{type:'file',content:'found these demo files on the hard drive:\n\ndemo001.dem - normal dustbowl game\ndemo002.dem - normal but... theres some1 extra\ndemo003.dem - the extra player is closer\ndemo004.dem - hes right behind the camera\ndemo005.dem - CORRUPTED\n\ni shudnt have watched them\ni shudnt have ported them to sfm\n\nhe saw me watching'},
 'timeline.txt':{type:'file',content:'TIMELNE OF EVRYTHNG (so i dont forget)\n\nmarch 2009 - bought hard drive from craigslist guy ($20)\napril 2009 - instaled tf2 on new drive. found old demo files.\nmay 2009 - first time i see the extra player on dustbowl\njune 2009 - admin bans me becuz my character "moved weird"\njuly 2009 - i see him on 2fort. and goldrush. and gravel pit.\naugust 2009 - hes in css now. HOW IS HE IN CSS\nseptember 2009 - my steam frends say my profle pic changed. i didnt change it.\noctober 2009 - 3 ppl on my frends list got the same weird .dem file from "me". i didnt send it.\nnovember 2009 - mike says he sees the player 2 now. on HIS pc.\ndecember 2009 - the craigslist guy deleted his account\njanuary 2010 - tried to format the drive. files came back.\nfebruary 2010 - im hearing things when i play now. thru my headphones.\nmarch 2010 - VAC banned. for somthng i didnt do.\napril 2010 - havent been to school in 2 weeks\nmay 2010 -'},
 'craigslist_screenshot.txt':{type:'file',content:'CRAIGSLIST LISTING (i copyed the text b4 it was deleted)\n\n---\nFOR SALE: 320GB SATA Hard Drive - $20\n\nUsed. Works fine. Has some old game files on it\nthat i couldnt delete but u can just format it.\n\nPICKUP ONLY - west side\n\nDO NOT EMAIL ME ABOUT THE FILES.\nDO NOT PLAY THE DEMOS.\n---\n\ni shud have listend'},
 'its_spreading.txt':{type:'file',content:'ppl who have seen him:\n\n- me (dustbowl)\n- mike (dustbowl)\n- sc0ut rulez (dustbowl)\n- pyro99 (dustbowl, css, gmod)\n- hevy (dustbowl)\n- admin (server logs)\n- 3 random ppl on 2fort\n- some1 on a trade server??\n\nits spreading\nfrom server to server\nfrom game to game\nfrom pc to pc\n\nand it started w me\nit started w that hard drive'},
 'im_sorry.txt':{type:'file',content:'im sorry to evry1\n\nim sorry i brought this thing into the comunity\nim sorry it spread to ur games\nim sorry pyro had to uninstall\nim sorry admin had to shut down the server\nim sorry mike has 2 deal w this\nim sorry mom\n\ni just wanted to play dustbowl\nthats all i ever wanted\njust me and my frends on dustbowl\n\nand now its ruind'},
 'DO_NOT_DELETE.txt':{type:'file',content:'i tried deleting these files 14 times\nthey always come back\n\ni tried formatting the drive\nthey come back\n\ni tried smashing the drive w a hammer\nmom stopped me\n\nthe files r not on the drive\ntheyre somwhere else\ntheyre in the game\ntheyre in the network\ntheyre in me'},
-'hex_dump.txt':{type:'file',content:'48 65 20 69 73 20 73 74 69 6C 6C 20 68 65 72 65\n41 74 20 68 6F 6D 65\n31 33\n\ni found this in the memory dump\nidk what it means\nif any1 finds this pls help me decode it'},
+'hex_dump.txt':{type:'file',content:'48 65 20 69 73 20 73 74 69 6C 6C 20 68 65 72 65\n41 74 20 68 6F 6D 65\n32 30 31\n\ni found this in the memory dump\nidk what it means\nif any1 finds this pls help me decode it'},
 'missing_ppl.txt':{type:'file',content:'frends who stoped talking 2 me:\n\nlolwut07 - last msg: "ur acting weird duck"\nBATSWINGIN55 - last msg: "dude chill"\nLOLxDDDD - just vanished\nxX_sparkles_Xx - blocked me??\nsk8rboi_2003 - "i dont wanna be involvd"\ng4m3rDUD3_07 - nvr respondid\n\nall of them in the last 2 months\n1 by 1 they left\n\nonly mike stayed'}};
 
 for(let i=1;i<=35;i++){
 const rnd=Math.floor(Math.random()*9999);
-newFiles[`corrupted_${String(i).padStart(3,'0')}.dat`]={type:'file',content:`[CORRUPTED FILE]\n\n${'0'.repeat(20+Math.floor(Math.random()*40))}\n${'1'.repeat(10+Math.floor(Math.random()*30))}\n\nFILE RECOVERY FAILED\nORIGINAL: ${['essay','screenshot','chat_log','save_game','config','bookmark','download'][Math.floor(Math.random()*7)]}_${rnd}\nCORRUPTED BY: UNKNOWN PROCESS (PID 13)`};
+newFiles[`corrupted_${String(i).padStart(3,'0')}.dat`]={type:'file',content:`[CORRUPTED FILE]\n\n${'0'.repeat(20+Math.floor(Math.random()*40))}\n${'1'.repeat(10+Math.floor(Math.random()*30))}\n\nFILE RECOVERY FAILED\nORIGINAL: ${['essay','screenshot','chat_log','save_game','config','bookmark','download'][Math.floor(Math.random()*7)]}_${rnd}\nCORRUPTED BY: UNKNOWN PROCESS (PID 201)`};
 }
 Object.assign(docs,newFiles);
 base['D:'||'LOCALDRIVED']={type:'dir',children:{
@@ -460,9 +460,9 @@ const normal={
 {u:'hatcollector3000',t:'8:33 PM',m:'ur missing out. hats are the real endgame'}
 ],
 '48291637':[
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
 {u:'48291637',t:'00:01',m:'201'},
 {u:'48291637',t:'00:01',m:'201'},
 {u:'48291637',t:'00:01',m:'201'},
@@ -471,12 +471,12 @@ const normal={
 {u:'48291637',t:'00:02',m:'0.0.0.0'},
 {u:'48291637',t:'00:03',m:'52 75 6E'},
 {u:'48291637',t:'00:03',m:'48 6F 6D 65'},
-{u:'48291637',t:'00:04',m:'13 13 13 13 13 13 13'},
-{u:'48291637',t:'00:04',m:'13 13 13 13 13 13 13 13 13 13 13 13 13'},
+{u:'48291637',t:'00:04',m:'48291637 48291637 48291637'},
+{u:'48291637',t:'00:04',m:'48291637 48291637 48291637 48291637 48291637'},
 {u:'48291637',t:'00:05',m:'201201201201201201201201'},
 {u:'48291637',t:'00:05',m:'000000000000000000000000'},
 {u:'48291637',t:'00:06',m:'48291637'},
-{u:'48291637',t:'00:06',m:'13'}
+{u:'48291637',t:'00:06',m:'48291637'}
 ]
 ,
 'xXx_DARK_ANGEL_xXx':[
@@ -763,7 +763,7 @@ const normal={
 {u:'WEEDM4STER',t:'11:01 PM',m:'sleep is for the weak'},
 {u:'TheDustBwlDuck',t:'11:01 PM',m:'how old r u'},
 {u:'WEEDM4STER',t:'11:02 PM',m:'old enuf'},
-{u:'TheDustBwlDuck',t:'11:02 PM',m:'so 13'},
+{u:'TheDustBwlDuck',t:'11:02 PM',m:'so weird'},
 {u:'WEEDM4STER',t:'11:03 PM',m:'...shut up'}
 ],
 'im_12_and_what_is_this':[
@@ -908,25 +908,25 @@ corrupted['hatcollector3000']=[
 {u:'hatcollector3000',t:'5:03 PM',m:'im not accepting trades anymore.'}
 ];
 corrupted['48291637']=[
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'},
-{u:'48291637',t:'00:00',m:'13'}
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'},
+{u:'48291637',t:'00:00',m:'48291637'}
 ];
 corrupted['??????????']=[
 {u:'??????????',t:'00:06',m:'you turned it on.'},
 {u:'??????????',t:'00:06',m:'i knew you would.'},
 {u:'??????????',t:'00:06',m:'you always do.'},
-{u:'??????????',t:'00:06',m:'13'},
+
 {u:'??????????',t:'00:06',m:'im still here.'},
 {u:'??????????',t:'00:06',m:'at home.'},
 {u:'??????????',t:'00:06',m:''},
@@ -974,16 +974,16 @@ const normal=[
 {id:32,from:'leeroy_jenkins_IRL@yahoo.com',subject:'LEEROY',date:'Sep 4, 2010',unread:false,body:'LEEEEEEEEEEEEROY\n\nJENKINNNNNNNNNNNNS\n\n\n\n\n\nat least i got chicken'},
 {id:33,from:'no-reply@miniclip.com',subject:'New Games on Miniclip!',date:'Sep 3, 2010',unread:false,body:'Check out the latest games on Miniclip.com!\n\n- 8 Ball Pool\n- Agar.io\n- Commando 2\n\nPlay for FREE!'},
 {id:34,from:'xX_SC0UT_RULEZ_Xx@yahoo.com',subject:'CHECK THIS FRAG VIDEO',date:'Sep 2, 2010',unread:false,body:'BRO I MADE A FRAG VIDEO\n\nits me getting kills on dustbowl\n\nonly 2 of them are mine the rest i stole from youtube\n\nBUT STILL\n\n- SCOUT RULEZ'},
-{id:35,from:'your-horoscope@dailystars.com',subject:'Your daily horoscope - Libra',date:'Sep 1, 2010',unread:false,body:'Libra (Sep 23 - Oct 22)\n\nToday the stars suggest you should go outside and touch grass.\n\nJust kidding play more TF2.\n\nLucky numbers: 13, 201'}
+{id:35,from:'your-horoscope@dailystars.com',subject:'Your daily horoscope - Libra',date:'Sep 1, 2010',unread:false,body:'Libra (Sep 23 - Oct 22)\n\nToday the stars suggest you should go outside and touch grass.\n\nJust kidding play more TF2.\n\nLucky numbers: 7, 201'}
 ];
 if(typeof pcState!=='undefined'&&pcState===2){
 const corrupted=[
-{id:100,from:'??????????@0.0.0.0',subject:'y̷o̸u̵ ̴t̵u̸r̷n̶e̵d̷ ̶i̸t̵ ̷o̸n̵',date:'May 28, 2010',unread:true,body:'i knew you would come back.\nyou always do.\n\n13'},
-{id:101,from:'system@soos.local',subject:'CRITICAL: 50 files recovered',date:'May 28, 2010',unread:true,body:'SYSTEM ALERT\n\n50 files recovered from corrupted sectors\nDrive D: (LOCALDRIVED) mounted\nUnknown process detected (PID 13)\n\nWARNING: Process cannot be terminated\nWARNING: Process is modifying system files\n'},
+{id:100,from:'??????????@0.0.0.0',subject:'y̷o̸u̵ ̴t̵u̸r̷n̶e̵d̷ ̶i̸t̵ ̷o̸n̵',date:'May 28, 2010',unread:true,body:'i knew you would come back.\nyou always do.'},
+{id:101,from:'system@soos.local',subject:'CRITICAL: 50 files recovered',date:'May 28, 2010',unread:true,body:'SYSTEM ALERT\n\n50 files recovered from corrupted sectors\nDrive D: (LOCALDRIVED) mounted\nUnknown process detected (PID 201)\n\nWARNING: Process cannot be terminated\nWARNING: Process is modifying system files\n'},
 {id:102,from:'mikeloveshalflife@yahoo.com',subject:'pls answer ur phone',date:'May 27, 2010',unread:true,body:'duck im seriously worried about you\nyour mom called my mom\nshe says you havent left your room in 2 days\n\npls just call me back\nor get on steam\nor something\n\n- mike'},
 {id:103,from:'dustbowlBOSS_admin@gmail.com',subject:'RE: RE: RE: server issue',date:'May 26, 2010',unread:true,body:'TheDustBwlDuck,\n\nI shut the server down.\n\nWhatever was on there followed to 3 other\nservers on the same box. Players are reporting\nthe same thing - unscored player, no name,\njust standing there.\n\nI traced the connections. They all come from\n0.0.0.0. That is not a valid source address.\n\nI dont know what you did but something came\noff that hard drive of yours.\n\n- Admin'},
 {id:104,from:'xX_SC0UT_RULEZ_Xx@yahoo.com',subject:'dude WTF',date:'May 25, 2010',unread:true,body:'duck i saw u in game today\n\nbut u werent in game\n\nur steam said offline since may 20\nbut there u were on dustbowl\nstanding in the tunnel\nnot moving\n\ni tried to talk to u and my game crashed\n\nwhat is happening'},
-{id:105,from:'??????????@0.0.0.0',subject:'',date:'May 28, 2010',unread:true,body:'13\n13\n13\n13\n13\n13\n13\n13\n13\n13\n13\n13\n13'},
+{id:105,from:'??????????@0.0.0.0',subject:'',date:'May 28, 2010',unread:true,body:'201\n201\n201\n201\n201\n201\n201\n201\n201\n201\n201\n201\n201'},
 {id:106,from:'noreply@steampowered.com',subject:'VAC Ban Notification',date:'May 22, 2010',unread:true,body:'Dear TheDustBwlDuck,\n\nYour account has been flagged by our\nanti-cheat system for abnormal behavior.\n\nReason: Unauthorized memory access\nGame: Team Fortress 2\nServer: 0.0.0.0:27015\n\nNote: Our team has flagged this ban as\nunusual. The behavior detected does not\nmatch any known cheat software.\n\n- Valve Anti-Cheat Team'},
 {id:107,from:'PYROMANIAC_99@hotmail.com',subject:'im done',date:'May 24, 2010',unread:false,body:'duck i uninstalled tf2\n\nthe thing on the server followed me to\ncss and then to gmod\n\ni dont know how thats possible\nthey are different games\n\nim done with source games\nmaybe forever\n\nstay safe\n- pyro99'},
 {id:108,from:'??????????@0.0.0.0',subject:'0.0.0.0:27015',date:'May 28, 2010',unread:true,body:'connect.\n\nyou know the address.'},
@@ -1115,7 +1115,7 @@ const out=document.getElementById('term-out');if(!out)return;
 out.innerHTML+=`<span style="color:#999">TheDustBwlDuck@soos:~$</span> ${cmd}\n`;
 const lower=cmd.toLowerCase();
 if(typeof pcState!=='undefined'&&pcState===2){
-const responses=['i see you.','13.','why did you turn it on?','im still here.','at home.','you cant help him.','0.0.0.0','i knew you would come back.','you always do.','BACK','201','stop.','leave.'];
+const responses=['i see you.','why did you turn it on?','im still here.','at home.','you cant help him.','0.0.0.0','i knew you would come back.','you always do.','BACK','201','stop.','leave.'];
 out.innerHTML+=`${responses[Math.floor(Math.random()*responses.length)]}\n\n`;
 out.scrollTop=out.scrollHeight;return;
 }
@@ -1127,7 +1127,7 @@ else if(lower==='ls'){out.innerHTML+='Desktop/  Documents/  Pictures/  Music/  V
 else if(lower==='uptime'){out.innerHTML+='up 0 days, 0:32, load average: 0.42, 0.38, 0.35\n\n'}
 else if(lower==='ps'){out.innerHTML+='  PID  STAT  COMMAND\n    1  S     init\n    2  S     soos-core\n    7  S     display-server\n   14  S     soos-shell\n   28  S     Steam.exe\n   31  S     hl2.exe\n\n'}
 else if(lower==='neofetch'){out.innerHTML+='<span style="color:#fff">  ___  ___  ___  ___\n / __||   || _ \\/ __|\n \\__ \\| | ||  _/\\__ \\\n |___/|___||_|  |___/</span>\n\n  OS: SoOS 1.0.2\n  Host: TheDustBwlDuck\n  Uptime: 32 minutes\n  Shell: soos-sh\n  CPU: Intel Core 2 Quad Q6600 @ 2.40GHz\n  GPU: ATI Radeon HD 3870 512 MB\n  Memory: 4096 MB DDR2 (43% used)\n\n'}
-else if(lower==='13'){out.innerHTML+='\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n13\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'}
+
 else if(lower==='201'){out.innerHTML+='you know the password.\n\n'}
 else if(lower==='exit'){closeWindow('terminal');return}
 else if(cmd!==''){out.innerHTML+=`<span style="color:#fff">Unknown command: ${cmd}</span>\n\n`}
@@ -1377,7 +1377,7 @@ const openRecycleBin=()=>{
 const items=typeof pcState!=='undefined'&&pcState===2?[
 {name:'its_not_real.txt',content:'i keep telling myself its not real\nits just a game\nits just pixels\n\nbut then y does he kno my name'},
 {name:'DELETED_photo_001.png',content:'[IMAGE FILE - CORRUPTED]\n[Cannot display]'},
-{name:'uninstall_tf2.bat',content:'@echo off\necho Uninstalling Team Fortress 2...\necho ERROR: Access denied\necho ERROR: File in use by process (PID 13)\necho Uninstall failed.'},
+{name:'uninstall_tf2.bat',content:'@echo off\necho Uninstalling Team Fortress 2...\necho ERROR: Access denied\necho ERROR: File in use by process (PID 201)\necho Uninstall failed.'},
 {name:'help_me.txt',content:'somebody pls help me\ni dont kno who 2 ask\nmy friends think im crazy\nmaybe i am crazy\n\nbut hes real\nhes real hes real hes real'}
 ]:[
 {name:'essay_draft_OLD.txt',content:'ok so the american revoltion\n\nu kno what forget it im starting over'},

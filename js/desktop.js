@@ -75,7 +75,7 @@ document.getElementById('tray-clock').textContent=clockText;
 document.getElementById('tray-clock').style.cursor='pointer';
 document.getElementById('tray-clock').onclick=()=>{
 if(typeof pcState!=='undefined'&&pcState===2){
-document.getElementById('tray-clock').textContent='13:13  0/0/0000';
+document.getElementById('tray-clock').textContent='00:00  5/28/2010';
 setTimeout(()=>{document.getElementById('tray-clock').textContent='12:06 AM  5/28/2010'},3000);
 }
 };

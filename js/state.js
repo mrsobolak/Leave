@@ -161,7 +161,7 @@ Mounting drives .................... Drive D: (LOCALDRIVED) detected
 
 WARNING: Unrecognized files in user directory
 WARNING: System clock discrepancy detected
-WARNING: Unknown process running (PID 13)
+WARNING: Unknown process running (PID 201)
 
 Loading SoOS in recovery mode...`;
 overlay.appendChild(recovery);
