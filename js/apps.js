@@ -847,7 +847,7 @@ corrupted['PYROMANIAC_99']=[
 {u:'PYROMANIAC_99',t:'1:01 AM',m:'the fire isnt working right'},
 {u:'PYROMANIAC_99',t:'1:01 AM',m:'like literally the particles are wrong'},
 {u:'PYROMANIAC_99',t:'1:02 AM',m:'and theres this guy just standing at spawn'},
-{u:'PYROMANIAC_99',t:'1:03 AM',m:'he doesnt have a name above his head'},
+{u:'PYROMANIAC_99',t:'1:03 AM',m:'i pressed tab and hes not on the scoreboard at all'},
 {u:'PYROMANIAC_99',t:'1:03 AM',m:'i tried to airblast him and my game froze for 10 seconds'},
 {u:'PYROMANIAC_99',t:'1:15 AM',m:'duck r u there'},
 {u:'PYROMANIAC_99',t:'1:30 AM',m:'ok im uninstalling. something is seriously wrong.'}
