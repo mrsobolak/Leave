@@ -14,6 +14,15 @@ let cubeyQueue=[];
 let cubeyProcessing=false;
 
 const initCubey=()=>{
+// Remove existing Cubey if re-initializing (e.g. after TF2 reboot)
+const oldCubey=document.getElementById('cubey');
+if(oldCubey)oldCubey.remove();
+if(cubeyTimer)clearInterval(cubeyTimer);
+if(cubeyBlinkTimer)clearInterval(cubeyBlinkTimer);
+if(cubeyWanderTimer)clearInterval(cubeyWanderTimer);
+if(cubeyMoodTimer)clearInterval(cubeyMoodTimer);
+if(cubeyTimeTimer)clearInterval(cubeyTimeTimer);
+cubeyQueue=[];cubeyProcessing=false;cubeySpeaking=false;
 cubeyEl=document.createElement('div');
 cubeyEl.id='cubey';
 cubeyEl.innerHTML='<div id="cubey-body"><div id="cubey-hat"></div><div id="cubey-hat-brim"></div><div id="cubey-face"><div class="cubey-eye" id="cubey-eye-l"><div class="cubey-pupil" id="cubey-pupil-l"></div></div><div class="cubey-eye" id="cubey-eye-r"><div class="cubey-pupil" id="cubey-pupil-r"></div></div></div></div><div id="cubey-bubble" class="cubey-hidden"></div><div id="cubey-input-area" class="cubey-hidden"><input id="cubey-input" type="text" maxlength="40"><button id="cubey-input-btn">OK</button></div>';
