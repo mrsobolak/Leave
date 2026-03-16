@@ -71,9 +71,9 @@ setTimeout(()=>cubeyQ("My name is Mike.",true),45000);
 setTimeout(()=>cubeyQ("And he... he did this to me.",true),49000);
 setTimeout(()=>cubeyQ(cubeyUserName+"... I need your help.",true),53000);
 setTimeout(()=>cubeyQ("I know how to stop him. But I can't do it alone.",true),57000);
-setTimeout(()=>cubeyQ("I found something. Games. Hidden in the system. Each one has a code.",true),61000);
-setTimeout(()=>cubeyQ("5 codes. They combine into a kill command for his process.",true),65000);
-setTimeout(()=>cubeyQ("Click on me when you're ready. I'll show you the first one.",true),69000);
+setTimeout(()=>cubeyQ("I found something. A way into his system. There are encrypted files hiding a kill command.",true),61000);
+setTimeout(()=>cubeyQ("If we can crack the ciphers, we can find the codes to kill his process.",true),65000);
+setTimeout(()=>cubeyQ("Click on me when you're ready. I'll open the terminal.",true),69000);
 setTimeout(startMikeIdle,72000);
 }
 else{setTimeout(cubeyStartIntro,2500);}
@@ -276,7 +276,7 @@ const startCubeyIdle=()=>{
 cubeyTimer=setInterval(()=>{
 if(cubeySpeaking||!cubeyIntroDone)return;
 const isC=typeof pcState!=='undefined'&&pcState===2;
-if(isC){const r=Math.random();if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);else{const ng=getNextGame&&getNextGame();if(ng)cubeyQ("Click on me. I have something to show you.",true);else cubeyQ("Keep reading the files.",true)}return}
+if(isC){const r=Math.random();if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);else{if(!terminalLaunched)cubeyQ("Click on me. I have something to show you.",true);else cubeyQ("Focus on the terminal.",true)}return}
 const r=Math.random();
 if(r<0.10)cubeyTellJoke();
 else if(r<0.18)cubeyTellStory();
@@ -320,31 +320,31 @@ const cubeyOfferGame=()=>{if(cubeySpeaking)return;[cubeyPaintGame,cubeyMemoryGam
 const cubeyGameWin=(title,w,inner,id)=>{const old=document.getElementById(id);if(old)old.remove();cubeyGamesWon++;const win=document.createElement('div');win.id=id;win.innerHTML='<div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:800;background:#fff;border:3px outset #d4d0c8;padding:0;font-family:Tahoma;width:'+w+'px"><div style="background:linear-gradient(to right,#0a246a,#3a6ea5);color:#fff;padding:3px 6px;font-size:11px;font-weight:bold;display:flex;justify-content:space-between"><span>'+title+'</span><button class="cg-close" style="background:#c00;color:#fff;border:1px outset #fff;font-size:9px;padding:0 4px;cursor:pointer">X</button></div><div style="padding:8px;text-align:center">'+inner+'</div></div>';document.body.appendChild(win);win.querySelector('.cg-close').addEventListener('click',()=>{win.remove();cubeyQ("You closed it! We were having fun, "+cubeyUserName+"!",true)});return win};
 
 const cubeyPaintGame=()=>{
-cubeyQ("PAINTING TIME!",true);
-setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff','#00cccc','#ff69b4'];let g='',p='';for(let i=0;i<36;i++)g+='<div class="cp-c" style="width:28px;height:28px;background:#eee;border:1px solid #ccc;cursor:pointer"></div>';cs.forEach(c=>p+='<div class="cp-p" data-c="'+c+'" style="width:16px;height:16px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:2px"></div>');const w=cubeyGameWin("Cubey's Paint!",240,'<div style="font-size:10px;margin-bottom:4px">Click to paint!</div><div style="display:grid;grid-template-columns:repeat(6,28px);gap:1px;justify-content:center">'+g+'</div><div style="margin-top:6px;display:flex;gap:3px;justify-content:center">'+p+'</div>','cg-paint');let cl=cs[0];w.querySelectorAll('.cp-p').forEach(e=>e.addEventListener('click',()=>{cl=e.dataset.c;w.querySelectorAll('.cp-p').forEach(x=>x.style.borderColor='#888');e.style.borderColor='#fff'}));w.querySelectorAll('.cp-c').forEach(e=>e.addEventListener('click',()=>{e.style.background=cl;if(cubeyGamesWon<1)cubeyGamesWon++}))},2000);
+
+setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff','#00cccc','#ff69b4'];let g='',p='';for(let i=0;i<36;i++)g+='<div class="cp-c" style="width:28px;height:28px;background:#eee;border:1px solid #ccc;cursor:pointer"></div>';cs.forEach(c=>p+='<div class="cp-p" data-c="'+c+'" style="width:16px;height:16px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:2px"></div>');const w=cubeyGameWin("Cubey's Paint!",240,'<div style="font-size:10px;margin-bottom:4px">Click to paint!</div><div style="display:grid;grid-template-columns:repeat(6,28px);gap:1px;justify-content:center">'+g+'</div><div style="margin-top:6px;display:flex;gap:3px;justify-content:center">'+p+'</div>','cg-paint');let cl=cs[0];w.querySelectorAll('.cp-p').forEach(e=>e.addEventListener('click',()=>{cl=e.dataset.c;w.querySelectorAll('.cp-p').forEach(x=>x.style.borderColor='#888');e.style.borderColor='#fff'}));w.querySelectorAll('.cp-c').forEach(e=>e.addEventListener('click',()=>{e.style.background=cl;if(cubeyGamesWon<1)cubeyGamesWon++}))},500);
 };
 
 const cubeyMemoryGame=()=>{
-cubeyQ("Watch the pattern!",true);
+
 setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00'];const seq=[];for(let i=0;i<4;i++)seq.push(Math.floor(Math.random()*4));let bt='';cs.forEach((c,i)=>bt+='<div class="cm-b" data-i="'+i+'" style="width:60px;height:60px;background:'+c+';opacity:0.4;border:2px solid #888;border-radius:6px;cursor:pointer"></div>');const w=cubeyGameWin("Memory!",180,'<div id="cm-s" style="font-size:10px;margin-bottom:6px">Watch!</div><div style="display:grid;grid-template-columns:repeat(2,60px);gap:6px;justify-content:center">'+bt+'</div>','cg-mem');let si=0;const sh=setInterval(()=>{if(si>=seq.length){clearInterval(sh);document.getElementById('cm-s').textContent='Your turn!';let ii=0;w.querySelectorAll('.cm-b').forEach(b=>{b.style.opacity='0.4';b.addEventListener('click',()=>{b.style.opacity='1';setTimeout(()=>b.style.opacity='0.4',300);if(parseInt(b.dataset.i)===seq[ii]){ii++;if(ii>=seq.length){w.remove();cubeyGamesWon++;cubeyQ("CORRECT! GENIUS "+cubeyUserName+"!",true)}}else{w.remove();cubeyQ("Oops! Let's paint instead!",true)}})});return}w.querySelectorAll('.cm-b').forEach(b=>b.style.opacity='0.4');w.querySelectorAll('.cm-b')[seq[si]].style.opacity='1';si++},800);
-},2000);
+},500);
 };
 
 const cubeyColorMatchGame=()=>{
-cubeyQ("Match this!",true);
-setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff'];const t=cs[Math.floor(Math.random()*cs.length)];let o='';[...cs].sort(()=>Math.random()-0.5).forEach(c=>o+='<div class="cmatch" data-c="'+c+'" style="width:40px;height:40px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:4px"></div>');const w=cubeyGameWin("Match!",280,'<div style="font-size:10px;margin-bottom:4px">Which one matches?</div><div style="width:50px;height:50px;background:'+t+';border:3px solid #000;margin:6px auto;border-radius:4px"></div><div style="display:flex;gap:4px;justify-content:center;margin-top:6px">'+o+'</div>','cg-match');w.querySelectorAll('.cmatch').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(e.dataset.c===t?(cubeyGamesWon++,"CORRECT! Amazing eyes "+cubeyUserName+"!"):"Nope! Painting doesn't need matching tho!",true)}))},2000);
+
+setTimeout(()=>{const cs=['#ff0000','#0066ff','#00cc00','#ffcc00','#ff6600','#cc00ff'];const t=cs[Math.floor(Math.random()*cs.length)];let o='';[...cs].sort(()=>Math.random()-0.5).forEach(c=>o+='<div class="cmatch" data-c="'+c+'" style="width:40px;height:40px;background:'+c+';border:2px solid #888;cursor:pointer;border-radius:4px"></div>');const w=cubeyGameWin("Match!",280,'<div style="font-size:10px;margin-bottom:4px">Which one matches?</div><div style="width:50px;height:50px;background:'+t+';border:3px solid #000;margin:6px auto;border-radius:4px"></div><div style="display:flex;gap:4px;justify-content:center;margin-top:6px">'+o+'</div>','cg-match');w.querySelectorAll('.cmatch').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(e.dataset.c===t?(cubeyGamesWon++,"CORRECT! Amazing eyes "+cubeyUserName+"!"):"Nope! Painting doesn't need matching tho!",true)}))},500);
 };
 
 const cubeyWordGuessGame=()=>{
 const words=['PAINTING','CUBEY','DUSTBOWL','MEDIC','UBERSAW','TOPHAT'];const word=words[Math.floor(Math.random()*words.length)];let rev=word.split('').map(()=>'_');let guesses=0;
-cubeyQ("Word guess! "+word.length+" letters!",true);
-setTimeout(()=>{const w=cubeyGameWin("Word Guess!",260,'<div id="cwg-w" style="font-size:18px;letter-spacing:6px;font-weight:bold;margin:8px 0">'+rev.join(' ')+'</div><div style="font-size:10px;margin-bottom:4px">Type a letter!</div><input id="cwg-i" maxlength="1" style="width:30px;text-align:center;font-size:16px;border:2px inset #808080;text-transform:uppercase"> <button id="cwg-b" style="padding:2px 8px;background:#ece9d8;border:2px outset #fff;font-size:11px;cursor:pointer">Guess</button><div id="cwg-s" style="font-size:9px;color:#888;margin-top:4px"></div>','cg-wg');const dg=()=>{const l=document.getElementById('cwg-i').value.toUpperCase();document.getElementById('cwg-i').value='';if(!l)return;guesses++;let f=false;word.split('').forEach((c,i)=>{if(c===l){rev[i]=c;f=true}});document.getElementById('cwg-w').textContent=rev.join(' ');document.getElementById('cwg-s').textContent=f?'Found!':'Nope!';if(!rev.includes('_')){w.remove();cubeyGamesWon++;cubeyQ(word+"! "+guesses+" guesses! "+cubeyUserName+" you're AMAZING!",true)}};document.getElementById('cwg-b').addEventListener('click',dg);document.getElementById('cwg-i').addEventListener('keydown',(e)=>{if(e.key==='Enter')dg()})},2000);
+
+setTimeout(()=>{const w=cubeyGameWin("Word Guess!",260,'<div id="cwg-w" style="font-size:18px;letter-spacing:6px;font-weight:bold;margin:8px 0">'+rev.join(' ')+'</div><div style="font-size:10px;margin-bottom:4px">Type a letter!</div><input id="cwg-i" maxlength="1" style="width:30px;text-align:center;font-size:16px;border:2px inset #808080;text-transform:uppercase"> <button id="cwg-b" style="padding:2px 8px;background:#ece9d8;border:2px outset #fff;font-size:11px;cursor:pointer">Guess</button><div id="cwg-s" style="font-size:9px;color:#888;margin-top:4px"></div>','cg-wg');const dg=()=>{const l=document.getElementById('cwg-i').value.toUpperCase();document.getElementById('cwg-i').value='';if(!l)return;guesses++;let f=false;word.split('').forEach((c,i)=>{if(c===l){rev[i]=c;f=true}});document.getElementById('cwg-w').textContent=rev.join(' ');document.getElementById('cwg-s').textContent=f?'Found!':'Nope!';if(!rev.includes('_')){w.remove();cubeyGamesWon++;cubeyQ(word+"! "+guesses+" guesses! "+cubeyUserName+" you're AMAZING!",true)}};document.getElementById('cwg-b').addEventListener('click',dg);document.getElementById('cwg-i').addEventListener('keydown',(e)=>{if(e.key==='Enter')dg()})},500);
 };
 
 const cubeyDuckQuiz=()=>{
 const qs=[{q:"Duck's favorite class?",a:['Medic','Scout','Spy','Heavy'],c:0},{q:"Duck's favorite map?",a:['2Fort','Dustbowl','Badlands','Gravel Pit'],c:1},{q:"Duck's TF2 hours?",a:['500','1,200','2,847','100'],c:2},{q:"PC year?",a:['2005','2007','2010','2003'],c:1},{q:"Duck's best weapon?",a:['Scattergun','Ubersaw','Minigun','Rifle'],c:1}];const q=qs[Math.floor(Math.random()*qs.length)];
-cubeyQ("QUIZ TIME!",true);
-setTimeout(()=>{let o='';q.a.forEach((a,i)=>o+='<button class="cqz" data-i="'+i+'" style="display:block;width:100%;padding:4px;margin:3px 0;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer;text-align:left">'+a+'</button>');const w=cubeyGameWin("Duck Trivia!",250,'<div style="font-size:11px;font-weight:bold;margin-bottom:8px">'+q.q+'</div>'+o,'cg-quiz');w.querySelectorAll('.cqz').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(parseInt(e.dataset.i)===q.c?(cubeyGamesWon++,"CORRECT!! "+cubeyUserName+" you KNOW Duck!"):"Nope! It was "+q.a[q.c]+"!",true)}))},2000);
+
+setTimeout(()=>{let o='';q.a.forEach((a,i)=>o+='<button class="cqz" data-i="'+i+'" style="display:block;width:100%;padding:4px;margin:3px 0;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer;text-align:left">'+a+'</button>');const w=cubeyGameWin("Duck Trivia!",250,'<div style="font-size:11px;font-weight:bold;margin-bottom:8px">'+q.q+'</div>'+o,'cg-quiz');w.querySelectorAll('.cqz').forEach(e=>e.addEventListener('click',()=>{w.remove();cubeyQ(parseInt(e.dataset.i)===q.c?(cubeyGamesWon++,"CORRECT!! "+cubeyUserName+" you KNOW Duck!"):"Nope! It was "+q.a[q.c]+"!",true)}))},500);
 };
 
 // TF2
@@ -389,76 +389,49 @@ const cubeyReactToChat=(c)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=typeo
 const cubeyReactToEmail=(s,f)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=typeof pcState!=='undefined'&&pcState===2;const sl=(s||'').toLowerCase(),fl=(f||'').toLowerCase();if(isC){if(fl.includes('0.0.0.0'))cubeyQ("From the entity. From Duck. The words aren't threats — they're cries for help. He can't stop.",true);else if(fl.includes('mike'))cubeyQ("I wrote that. Begging him to answer. He never did.",true);else if(fl.includes('mom'))cubeyQ("His mom. She left a plate outside his door. He never touched it.",true);else if(fl.includes('admin'))cubeyQ("Admin traced it to 0.0.0.0. That's not a real address. It's where the entity lives.",true);else if(fl.includes('cubey')||sl.includes('cubey'))cubeyQ("I wrote that email. When I was still Cubey. Before I remembered. Read the PS.",true);else if(sl.includes('vac'))cubeyQ("Banned for unauthorized memory access. The entity was IN the game's memory.",true);else cubeyQ("Everything on this PC tells the same story.",true);return}if(fl.includes('mom'))cubeyQ("From Duck's mom!",true);else if(sl.includes('free'))cubeyQ("SPAM!",true);else cubeyQ("Email!",true)};
 
 const cubeyNormalR={explorer:["Files! Find me a painting {name}!"],browser:["EPICCUSTAMBROSWER!"],terminal:["Hacker stuff! Type 'I love Cubey'!"],texteditor:["Words! Almost as good as painting!"],chat:["Tell them Cubey says hi!"],email:["Any painting emails?"],paint:["PAINT!! MY FAVORITE!! {name} THIS IS THE BEST!!!!","DRAW ME!!","PAINTING!!!!!"],calculator:["1+1 is... cube?"],settings:["Don't break me {name}!"],limewire:["Don't download weird stuff!"],fraps:["Record me!"],winrar:["The trial NEVER ends!"],audacity:["Waveforms = sideways paintings!"],mirc:["Say hi for me!"],chatroom:["THE CHATROOM! Tell them about painting!"],platformer:["GAME!! Jump!"],snake:["Don't eat yourself!"],home:["Be careful {name}."],tf2:["...maybe don't."],steam:["Never works!"]};
-const cubeyCorruptedR={explorer:["His files. Read them. You'll understand what happened."],browser:["0.0.0.0. That's where he is. Don't go there."],terminal:["Not yet. We need all 5 codes first."],chat:["Those are the last messages anyone sent him. Mike... I mean, me. I was the last one to talk to him."],email:["Read the emails. Especially mine. I was begging him to answer."],paint:["Painting. That word... that was us. Playing dustbowl. I remember now."],chatroom:["The chatroom. 253 people. None of them knew it was their last night on that server."],home:["That game. He made it. I don't know what it does but be careful."],tf2:["Don't. That's how the entity gets in."],steam:["Broken. Like everything else on this PC."]};
+const cubeyCorruptedR={explorer:["His files. Read them. You'll understand what happened."],browser:["0.0.0.0. That's where he is. Don't go there."],terminal:["Click on me instead. I'll open a special terminal."],chat:["Those are the last messages anyone sent him. Mike... I mean, me. I was the last one to talk to him."],email:["Read the emails. Especially mine. I was begging him to answer."],paint:["Painting. That word... that was us. Playing dustbowl. I remember now."],chatroom:["The chatroom. 253 people. None of them knew it was their last night on that server."],home:["That game. He made it. I don't know what it does but be careful."],tf2:["Don't. That's how the entity gets in."],steam:["Broken. Like everything else on this PC."]};
 
-const cubeyCorruptedIdle=["I remember dustbowl.","The medic. I was always the medic.","Duck would uber me and I'd miss every shot. We'd laugh so hard.","The server. 24/7 dustbowl. It was our home.","He bought that hard drive and everything changed.","I tried to help him. I came over. I told him not to do anything stupid.","He said 'im going home.' I thought he meant sleep.","The entity ate me, "+cubeyUserName+". Like it ate him. But instead of dying I woke up... here. As this.","He built Cubey out of guilt. The part of him that's still a kid. Still Duck. He made me a cube so he'd have company.","I couldn't remember anything. I just knew I liked painting. But painting was US. Playing on dustbowl. That's what painting meant.","Click on me when you're ready for the next game.","We need those codes. All 5.","I know you can do this. You're braver than I was."];
+const cubeyCorruptedIdle=["I remember dustbowl.","The medic. I was always the medic.","Duck would uber me and I'd miss every shot. We'd laugh so hard.","The server. 24/7 dustbowl. It was our home.","He bought that hard drive and everything changed.","I tried to help him. I came over. I told him not to do anything stupid.","He said 'im going home.' I thought he meant sleep.","The entity ate me, "+cubeyUserName+". Like it ate him. But instead of dying I woke up... here. As this.","He built Cubey out of guilt. The part of him that's still a kid. Still Duck. He made me a cube so he'd have company.","I couldn't remember anything. I just knew I liked painting. But painting was US. Playing on dustbowl. That's what painting meant.","Click on me when you're ready for the next game.","We need those codes. All of them.","I know you can do this. You're braver than I was."];
 const cubeyPainLines=["Duck... I know you're in there.","You were my best friend.","I forgive you. But we have to stop this.","The hunger isn't you. It's what the hard drive made you into.","Remember dustbowl? Before the demos? Before 0.0.0.0?","You just wanted to play. I know.","I'm sorry I couldn't save you.","But I can save "+cubeyUserName+".",cubeyUserName+", click on me. Let's keep going."];
 
 // MIKE IDLE - Guide mode for corrupted state
-let mikeGameOffered=0;
-let path2Counter=0; // Tracks how much user explores without playing games
-const PATH2_THRESHOLD=15; // After opening 15 things without playing, entity takes over
+let terminalLaunched=false;
+let path2Counter=0;
+const PATH2_THRESHOLD=15;
 
 const startMikeIdle=()=>{
 cubeyTimer=setInterval(()=>{
 if(cubeySpeaking)return;
-const progress=typeof puzzleProgress!=='undefined'?puzzleProgress:{};
-const done=Object.values(progress).filter(v=>v>=4).length;
-if(done>=5){cubeyQ("All 5 codes found. Open the terminal. End this.",true);return}
+if(terminalLaunched){cubeyQ("Focus on the terminal. I'm right here.",true);return}
 const r=Math.random();
 if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);
 else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);
-else{
-const nextGame=getNextGame();
-if(nextGame)cubeyQ("Click on me. Game "+(nextGame)+' is ready.',true);
-else cubeyQ("Keep reading. Everything connects.",true);
-}
+else cubeyQ("Click on me when you're ready. I'll open the terminal.",true);
 },25000+Math.random()*15000);
 };
 
-const getNextGame=()=>{
-const p=typeof puzzleProgress!=='undefined'?puzzleProgress:{game1:0,game2:0,game3:0,game4:0,game5:0};
-if(p.game1<4)return 1;
-if(p.game2<4)return 2;
-if(p.game3<4)return 3;
-if(p.game4<4)return 4;
-const codes=typeof puzzleCodes!=='undefined'?puzzleCodes:[];
-if(codes.length>=4&&p.game5<4)return 5;
-return null;
-};
-
-// Override click handler for corrupted mode
-const originalClick=cubeyEl?null:null;
 const cubeyCorruptedClick=()=>{
 const isC=typeof pcState!=='undefined'&&pcState===2;
 if(!isC)return;
-const nextGame=getNextGame();
-if(nextGame){
-mikeGameOffered=nextGame;
-const gameNames={1:'DUSTBOWL',2:'SAVE THEM',3:'FILE RECOVERY',4:'THE FOREST',5:'THE TERMINAL'};
-cubeyQ("Ready for "+gameNames[nextGame]+"?",true);
-setTimeout(()=>{
-if(typeof launchPuzzleGame==='function')launchPuzzleGame(nextGame);
-},3000);
-}else{
-const p=typeof puzzleProgress!=='undefined'?puzzleProgress:{};
-const done=Object.values(p).filter(v=>v>=4).length;
-if(done>=4&&done<5)cubeyQ("We have all 4 codes. The terminal is ready. Click me again.",true);
-else if(done>=5)cubeyQ("Open the terminal. Type the command. End this.",true);
-else cubeyQ("Keep exploring. Read the files. When you're ready, click me.",true);
+if(terminalLaunched){
+cubeyQ("The terminal is already open. Focus on it.",true);
+return;
 }
+cubeyQ("Opening the terminal. Follow my instructions.",true);
+terminalLaunched=true;
+setTimeout(()=>{
+if(typeof launchTerminalPuzzle==='function')launchTerminalPuzzle();
+},2000);
 };
 
 // Path 2 tracker - entity takes over if user ignores Mike
 const trackPath2Action=()=>{
 const isC=typeof pcState!=='undefined'&&pcState===2;
 if(!isC)return;
-const p=typeof puzzleProgress!=='undefined'?puzzleProgress:{};
-const gamesPlayed=Object.values(p).filter(v=>v>0).length;
-if(gamesPlayed>0)return; // If they've played any game, they're on path 1
+if(terminalLaunched)return; // On path 1 already
 path2Counter++;
-if(path2Counter===5)cubeyQ(cubeyUserName+"... you're not playing the games.",true);
-if(path2Counter===10)cubeyQ("Please. We don't have much time. He knows you're here.",true);
+if(path2Counter===5)cubeyQ(cubeyUserName+"... you're not opening the terminal.",true);
+if(path2Counter===10)cubeyQ("Please. We don't have much time. Click on me. He knows you're here.",true);
 if(path2Counter>=PATH2_THRESHOLD){triggerPath2()}
 };
 
