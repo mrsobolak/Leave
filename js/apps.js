@@ -6,30 +6,30 @@ const base={
 'TheDustBwlDuck':{type:'dir',children:{
 'Desktop':{type:'dir',children:{}},
 'Documents':{type:'dir',children:{
-'school_essay_draft.txt':{type:'file',content:'The Amercan Revoltion - by me\n\nok so basicaly the colonies were mad at britan\nbc of taxes and stuff and they were like\nno way dude we r leaving\n\nand then gorge washington was like lets goooo\n\ni need to actualy finish this lol\ndue friday mrs henderson is gona kill me\n\nupdate: played dustbowl instead oops'},
-'tf2_binds.txt':{type:'file',content:'MY EPIC BINDS:\n\nbind f "voicemenu 0 1" (MEDIC!)\nbind g "voicemenu 2 1" (Nice Shot)\nbind h "say GET DUSTBOWLED LMAO"\nbind j "say UBERSAW TIME BABY"\nbind mouse4 "+jump"\n\nnote 2 self: stop spaming medic bind\nppl r geting mad at me again lol'},
-'server_favorites.txt':{type:'file',content:'MY SERVERS (BEST 2 WORST):\n\n1. Dustbowl 24/7 - THE GOAT SERVER\n2. epicdustbowlguys - BANNED (stupid admin)\n3. 2Fort Unlimited - 4 when dustbowl is ded\n4. cp_granary tryhard - 2 sweaty 4 me\n\ndustbowl 24/7 has the best ppl\nim on evry night basicaly'},
+'school_essay_draft.txt':{type:'file',content:'The Amercan Revoltion - by me\n\nok so basicly the colonees were mad at britan\nbc of taxes and stuf and they were like\nno way dude we r leving\n\nand then gorge washington was like lets goooo\n\ni need to actualy finish this lol\ndue friday mrs henderson is gona kill me\n\nupdate: playd dustbowl insted oops'},
+'tf2_binds.txt':{type:'file',content:'MY EPIC BINDS:\n\nbind f "voicemenu 0 1" (MEDIC!)\nbind g "voicemenu 2 1" (Nice Shot)\nbind h "say GET DUSTBOWLED LMAO"\nbind j "say UBERSAW TIME BABY"\nbind mouse4 "+jump"\n\nnote 2 self: stop spamming medic bind\nppl r geting mad at me again lol'},
+'server_favs.txt':{type:'file',content:'MY SERVERS (BEST 2 WORST):\n\n1. Dustbowl 24/7 - THE GOAT SERVER\n2. epicdustbowlguys - BANNED (stupid admin)\n3. 2Fort Unlimited - 4 when dustbowl is ded\n4. cp_granary tryhard - 2 sweaty 4 me\n\ndustbowl 24/7 has the best ppl\nim on evry night basicly'},
 'grocery_list.txt':{type:'file',content:'mom said get:\n- milk\n- bread\n- cereal (the good kind NOT the helthy one)\n- hot pockets (pepperoni)\n- mountain dew (code red)\n\ni keep forgeting so im puting it here\nwatch me forget 2 check this lol'},
-'todo_list.txt':{type:'file',content:'STUFF I GOTA DO:\n- finish essay (FRIDAY OMG)\n- clean room (moms gona flip)\n- update steam profle pic\n- ask mike abt hl2 ep 2\n- practice scout movment on dustbowl\n- fix mic buzzing\n- get better at spy (backstabMASTA keeps killin me)\n- figure out mann co store thing'},
+'todo_list.txt':{type:'file',content:'STUFF I GOTA DO:\n- finish essay (FRIDAY OMG)\n- clean room (moms gona flip)\n- upd8 steam profle pic\n- ask mike abt hl2 ep 2\n- practise scout movment on dustbowl\n- fix mic buzzing\n- get better at spy (backstabMASTA keeps killin me)\n- figur out mann co store thing'},
 'mann_co_update.txt':{type:'file',content:'MANN-CONOMY UPDATE NOTES (4 me):\n\nOK SO U CAN TRADE HATS NOW??\nand theres a STORE??\nthis is insane\n\ni got like 3 hats so far:\n- ghastly gibus (evry1 has this lol)\n- pyros beanie thing\n- the scout 1 w the headphones\n\nhatcollector3000 has like 50 hats\nhow does he DO that'},
 'band_name_ideas.txt':{type:'file',content:'BAND NAMES (w drumz guy):\n- The Dustbowl Destroyers\n- Critical Hit\n- Ubercharged\n- The Payload Pushers\n- Bonk Energy\n\ndrumz guy says these all suck\nbut hes the 1 who cant even play drums right'},
-'my_website.html':{type:'file',content:'<html>\n<body bgcolor="black" text="green">\n<h1>WELCOME 2 MY WEBSITE</h1>\n<marquee>TheDustBwlDuck\'s EPIC SITE</marquee>\n<p>this site is under construcion</p>\n<p>come back l8r 4 cool stuff</p>\n<br>\n<p>LINKS:</p>\n<p>- my steam profle (coming soon)</p>\n<p>- dustbowl tips (coming soon)</p>\n<p>- my fav songs (coming soon)</p>\n<br>\n<p>visitor counter: 3 (its just me lol)</p>\n<br>\n<p>made by me in notepad im basicaly a hacker now</p>\n</body>\n</html>'},
-'autoexec.cfg':{type:'file',content:'// MY TF2 CONFIG - DO NOT TOUCH\n// copied from some guy on gamefaqs\n\ncl_interp 0.033\ncl_interp_ratio 1\ncl_cmdrate 66\ncl_updaterate 66\nrate 60000\nfps_max 120\n\n// my custom stuff\nhud_combattext 1\nhud_combattext_healing 1\ntf_dingaling_volume 0.75\n\n// spray stuff\ncl_spraydisable 0\n\n// idk what this does but ppl said its good\nmat_phong 0'},
+'my_websight.html':{type:'file',content:'<html>\n<body bgcolor="black" text="green">\n<h1>WELCOME 2 MY WEBSITE</h1>\n<marquee>TheDustBwlDuck\'s EPIC SITE</marquee>\n<p>this site is under construcsion</p>\n<p>come back l8r 4 cool stuff</p>\n<br>\n<p>LINKS:</p>\n<p>- my steam profle (comming soon)</p>\n<p>- dustbowl tips (comming soon)</p>\n<p>- my fav songs (comming soon)</p>\n<br>\n<p>vistor countr: 3 (its just me lol)</p>\n<br>\n<p>made by me in notepad im basicly a hacker now</p>\n</body>\n</html>'},
+'autoexec.cfg':{type:'file',content:'// MY TF2 CONFIG - DO NOT TOUCH\n// copyed from some guy on gamefaqs\n\ncl_interp 0.033\ncl_interp_ratio 1\ncl_cmdrate 66\ncl_updaterate 66\nrate 60000\nfps_max 120\n\n// my custom stuff\nhud_combattext 1\nhud_combattext_healing 1\ntf_dingaling_volume 0.75\n\n// spray stuff\ncl_spraydisable 0\n\n// idk what this does but ppl said its good\nmat_phong 0'},
 'cool_ascii_art.txt':{type:'file',content:'check out this sick ascii art i found:\n\n    __  __          _ _      \n   |  \\/  | ___  __| (_) ___ \n   | |\\/| |/ _ \\/ _` | |/ __|\n   | |  | |  __/ (_| | | (__ \n   |_|  |_|\\___|\\__,_|_|\\___|\n\nim a medic main and proud of it\n\nalso heres a sentry:\n   ___\n  |   |\n  |   |---pew pew\n  |___|\n   /|\\\n\nok that doesnt realy look like a sentry\nbut u get the idea'},
 'SUPER_SECRET_DO_NOT_READ.txt':{type:'file',content:'ok so i kinda have a crush on sparkles\nbut she likes twilight and i like tf2\nso idk how thats gona work\n\nIF ANYONE IS READING THIS I WILL END U\n\nespecialy u mike\ni kno ur on my pc sometimes'},
-'class_schedule.txt':{type:'file',content:'MY SCHEDULE (fall 2010):\n\n1st period - English (mrs henderson) UGH\n2nd period - Math (mr kowalski) DOUBLE UGH\n3rd period - History (mrs chen) ok i guess\n4th period - LUNCH (best period)\n5th period - Bio (mr peterson) boring\n6th period - Gym (coach davis) ugh running\n\ni skip 6th period a lot lol\ncoach davis hasnt noticed yet\n...or has he (the attendence email)'},
+'class_skedule.txt':{type:'file',content:'MY SCHEDULE (fall 2010):\n\n1st peroid - English (mrs henderson) UGH\n2nd peroid - Math (mr kowalski) DOUBLE UGH\n3rd peroid - History (mrs chen) ok i guess\n4th peroid - LUNCH (best peroid)\n5th peroid - Bio (mr peterson) boring\n6th peroid - Gym (coach davis) ugh running\n\ni skip 6th peroid a lot lol\ncoach davis hasnt noticsd yet\n...or has he (the attendence email)'},
 'jokes.txt':{type:'file',content:'JOKES 2 USE IN GAME CHAT:\n\n"why did the scout cross the road? 2 get BONKED"\n"knock knock" "whos there" "UBER" "uber who" "UBERCHARGE ACTIVATED"\n"what does a spy eat 4 breakfast? BACKSTAB-con" \n\nok these r terrible but ppl laughed at the spy 1\n\nactualey they were laughing AT me not WITH me'},
 'pc_specs.txt':{type:'file',content:'MY PC SPECS (bragging rights):\n\nDell XPS 420 (birthday present 2007 BEST DAY EVER)\n\nCPU: Intel Core 2 Quad Q6600 @ 2.40GHz\nRAM: 4GB DDR2 800MHz\nGPU: ATI Radeon HD 3870 512MB\nHDD: 320GB Western Digital\nDVD: TSSTcorp DVD+-RW\nMonitor: Dell 19" LCD\nMouse: some logitech thing\nKeyboard: dell keyboard (its ok)\n\nthis thing CRUSHES tf2 at max settings\nwell mostly max\nok medium-high\nit runs tf2 thats whats importnt'},
-'dream_loadouts.txt':{type:'file',content:'LOADOUTS I WANT:\n\nMedic (my main):\n- Kritzkrieg (need 2 find someone 2 trade)\n- Ubersaw (ALREADY HAVE IT LETS GO)\n- Blutsauger (need this 2)\n\nScout (my backup):\n- Force-A-Nature (looks SO fun)\n- Sandman (BONK)\n- Flying Guillotine (wait is that out yet)\n\nSpy (im terrible but its fun):\n- Ambassador (cant aim but i pretend i can)\n- Dead Ringer (4 trolling)'},
+'dream_loadouts.txt':{type:'file',content:'LOADOUTS I WANT:\n\nMedic (my main):\n- Kritzkrieg (need 2 find some1 2 trade)\n- Ubersaw (ALREADY HAVE IT LETS GO)\n- Blutsauger (need this 2)\n\nScout (my backup):\n- Force-A-Nature (looks SO fun)\n- Sandman (BONK)\n- Flying Guillotine (wait is that out yet)\n\nSpy (im terrible but its fun):\n- Ambassador (cant aim but i pretend i can)\n- Dead Ringer (4 trolling)'},
 'NEW_FOLDER':{type:'dir',children:{
 'New Text Document.txt':{type:'file',content:''},
 'New Text Document (2).txt':{type:'file',content:''},
 'New Text Document (3).txt':{type:'file',content:'test'}
 }}}},
 'Downloads':{type:'dir',children:{
-'linkin_park_numb.mp3.exe':{type:'file',content:'[SUSPICIOUS FILE]\nThis is definitely not a virus.\nSize: 847 KB\n\n(it was a virus)'},
+'linkin_park_numb.mp3.exe':{type:'file',content:'[SUSPICIOUS FILE]\nThis is definatly not a virus.\nSize: 847 KB\n\n(it was a virus)'},
 'FREE_MINECRAFT.exe':{type:'file',content:'[SUSPICIOUS FILE]\nMinecraft_FREE_2010_no_virus_trust_me.exe\nSize: 2.1 MB\n\n(mike told me not 2 open this)'},
-'tf2_wallpaper_pack.zip':{type:'file',content:'[ARCHIVE]\ntf2_wallpaper_pack.zip\n47 files, 23.4 MB\n\ndownloaded from deviantart'},
+'tf2_wallpaper_pack.zip':{type:'file',content:'[ARCHIVE]\ntf2_wallpaper_pack.zip\n47 files, 23.4 MB\n\ndownladed from deviantart'},
 'Dragonforce_Through_The_Fire.mp3':{type:'file',content:'[AUDIO FILE]\nDragonforce - Through the Fire and Flames\nBitrate: 128kbps (limewire quality lol)\nDuration: 7:21'},
 'naruto_amv_hd.avi':{type:'file',content:'[VIDEO FILE]\nNaruto AMV - Bring Me To Life\nResolution: 480p\nSize: 84 MB\nDuration: 4:12\n\nthis took 6 hours 2 download'},
 'coolest_spray_ever.vtf':{type:'file',content:'[TF2 SPRAY FILE]\ncoolest_spray_ever.vtf\nits the trollface\n128x128'},
@@ -70,7 +70,7 @@ const base={
 }}};
 if(typeof pcState!=='undefined'&&pcState===2){
 const docs=base['C:'].children['Users'].children['TheDustBwlDuck'].children['Documents'].children;
-const newFiles={'why_am_i_here.txt':{type:'file',content:'i dont undrstnd waht happend\nthe game crashed and now evrythings diffrent\n\nwhy does my pc feel wrong\nwhy does the clock say may\nits september\n\nits SEPTEMBER'},'the_hard_drive.txt':{type:'file',content:'i bought this hard drive from sum guy on craigslist\nit was cheap like 20 bucks\nhe said it was from an old gamers pc\n\ni put my games on it\nand thats when stuff started geting weird\n\nthe demos. the files. they wernt mine.\nsomebody elses tf2 was on here.'},'i_see_him.txt':{type:'file',content:'theres a player on dustbowl\nhes not on the scorboard\nhes not on any team\nhes just STANDING THERE\n\ni asked mike and he said he doesnt see anyone\nbut HES RIGHT THERE\n\nhes looking at me\nthrough the screen\ni swear hes looking at me'},'dont_open_tf2.txt':{type:'file',content:'DO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2'},'dreams.txt':{type:'file',content:'i keep dreming abt dustbowl\nnot the game\nlike im THERE\nthe tunels the dust\nits so dry i can feel it\n\nand hes there 2\nthe figure\nhe says i belong there\nhe says i never left'},'what_is_happening.txt':{type:'file',content:'my pc restarted on its own\nnew files evrywhre\na whole new DRIVE??\nLOCALDRIVED??\n\ni didnt put that there\ni didnt make these files\n\nwhos writing these'},'to_mom.txt':{type:'file',content:'hey mom\nim sorry i didnt clean my room\nim sorry i didnt do the grocerys\nim sorry i was always late 4 dinner\nim sorry i played tf2 instead of doing hw\n\ni luv u mom\n\ni dont think i can stop whats hapening'},'to_mike.txt':{type:'file',content:'mike if ur reading this\nur my best frend dude\nremember when we played dustbowl all nite\nand u got that sick airshot\nand i ubered that random heavy who just ate a sandvich\n\nthat was the best nite\n\ni wish things stayed like that'},'server_0000.txt':{type:'file',content:'0.0.0.0:27015\n\ni didnt add this server\nit added itself\nit joins ME\n\nwhen i connect theres no map\njust dark\njust nothing\n\nand him'},'last_entry.txt':{type:'file',content:'5/28/2010\n\nim so tired\n\ni cant do this anymore\n\ntomrow i go home'},'note001.txt':{type:'file',content:'13 13 13 13 13 13 13'},'note002.txt':{type:'file',content:'the number 13. its evrywhere. my pid. the bad sectors. the server port ends in 13 if u add the digits. am i going crazy'},'note003.txt':{type:'file',content:'201. thats the number. i dont kno what it means but its important. its the key 2 somthing.'},'admin_ban_appeal.txt':{type:'file',content:'APPEAL TO DUSTBOWLBOSS_ADMIN:\n\nDUDE pls unban me i WASNT cheating\ni dont kno why my movment looked weird\nthe game has been glichy lately ok\n\nmy character moved on its own dude\nIM NOT LYING\nsomthing is wrong w my game\n\n...he didnt respond'},'the_demos.txt':{type:'file',content:'found these demo files on the hard drive:\n\ndemo001.dem - normal dustbowl game\ndemo002.dem - normal but... theres someone extra\ndemo003.dem - the extra player is closer\ndemo004.dem - hes right behind the camera\ndemo005.dem - CORRUPTED\n\ni shouldnt have watched them\ni shouldnt have ported them to sfm\n\nhe saw me watching'}};
+const newFiles={'why_am_i_here.txt':{type:'file',content:'i dont undrstnd waht happend\nthe game crashed and now evrythings diffrent\n\nwhy does my pc feel wrong\nwhy does the clock say may\nits september\n\nits SEPTEMBER'},'the_hard_drive.txt':{type:'file',content:'i bought this hard drive from sum guy on craigslist\nit was cheap like 20 bucks\nhe said it was from an old gamers pc\n\ni put my games on it\nand thats when stuff started geting weird\n\nthe demos. the files. they wernt mine.\nsomebody elses tf2 was on here.'},'i_see_him.txt':{type:'file',content:'theres a player on dustbowl\nhes not on the scorboard\nhes not on any team\nhes just STANDING THERE\n\ni asked mike and he said he doesnt see any1\nbut HES RIGHT THERE\n\nhes looking at me\nthru the screen\ni swear hes looking at me'},'dont_open_tf2.txt':{type:'file',content:'DO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2'},'dreams.txt':{type:'file',content:'i keep dreming abt dustbowl\nnot the game\nlike im THERE\nthe tunels the dust\nits so dry i can feel it\n\nand hes there 2\nthe figure\nhe says i belong there\nhe says i never left'},'what_is_happening.txt':{type:'file',content:'my pc restarted on its own\nnew files evrywhre\na whole new DRIVE??\nLOCALDRIVED??\n\ni didnt put that there\ni didnt make these files\n\nwhos writing these'},'to_mom.txt':{type:'file',content:'hey mom\nim sorry i didnt clean my room\nim sorry i didnt do the grocerys\nim sorry i was always late 4 dinner\nim sorry i played tf2 insted of doing hw\n\ni luv u mom\n\ni dont think i can stop whats hapening'},'to_mike.txt':{type:'file',content:'mike if ur reading this\nur my best frend dude\nrember when we playd dustbowl all nite\nand u got that sick airshot\nand i ubered that random heavy who just ate a sandvich\n\nthat was the best nite\n\ni wish things stayed like that'},'server_0000.txt':{type:'file',content:'0.0.0.0:27015\n\ni didnt add this server\nit added itself\nit joins ME\n\nwhen i connect theres no map\njust dark\njust nothng\n\nand him'},'last_entry.txt':{type:'file',content:'5/28/2010\n\nim so tired\n\ni cant do this anymore\n\ntomrow i go home'},'note001.txt':{type:'file',content:'13 13 13 13 13 13 13'},'note002.txt':{type:'file',content:'the number 13. its evrywhere. my pid. the bad sectors. the server port ends in 13 if u add the digits. am i going crazy'},'note003.txt':{type:'file',content:'201. thats the number. i dont kno what it means but its importnt. its the key 2 somthing.'},'admin_ban_appeal.txt':{type:'file',content:'APPEAL TO DUSTBOWLBOSS_ADMIN:\n\nDUDE pls unban me i WASNT cheating\ni dont kno why my movment looked weird\nthe game has been glichy lately ok\n\nmy character moved on its own dude\nIM NOT LYING\nsomthing is wrong w my game\n\n...he didnt respond'},'the_demos.txt':{type:'file',content:'found these demo files on the hard drive:\n\ndemo001.dem - normal dustbowl game\ndemo002.dem - normal but... theres some1 extra\ndemo003.dem - the extra player is closer\ndemo004.dem - hes right behind the camera\ndemo005.dem - CORRUPTED\n\ni shudnt have watched them\ni shudnt have ported them to sfm\n\nhe saw me watching'}};
 for(let i=1;i<=35;i++){
 const rnd=Math.floor(Math.random()*9999);
 newFiles[`corrupted_${String(i).padStart(3,'0')}.dat`]={type:'file',content:`[CORRUPTED FILE]\n\n${'0'.repeat(20+Math.floor(Math.random()*40))}\n${'1'.repeat(10+Math.floor(Math.random()*30))}\n\nFILE RECOVERY FAILED\nORIGINAL: ${['essay','screenshot','chat_log','save_game','config','bookmark','download'][Math.floor(Math.random()*7)]}_${rnd}\nCORRUPTED BY: UNKNOWN PROCESS (PID 13)`};
@@ -78,13 +78,13 @@ newFiles[`corrupted_${String(i).padStart(3,'0')}.dat`]={type:'file',content:`[CO
 Object.assign(docs,newFiles);
 base['D:'||'LOCALDRIVED']={type:'dir',children:{
 'demos':{type:'dir',children:{
-'demo001.dem':{type:'file',content:'[DEMO FILE - Cannot preview]\nMap: cp_dustbowl\nDate: 2007-03-15\nPlayers: 24/24\nDuration: 00:32:14\nNotes: normal game. nothing unusual.'},
-'demo002.dem':{type:'file',content:'[DEMO FILE - Cannot preview]\nMap: cp_dustbowl\nDate: 2007-04-02\nPlayers: 24/24... 25?\nDuration: 00:28:41\nNotes: player count flickered. probably a bug.'},
+'demo001.dem':{type:'file',content:'[DEMO FILE - Cannot preview]\nMap: cp_dustbowl\nDate: 2007-03-15\nPlayers: 24/24\nDuration: 00:32:14\nNotes: normal game. nothng unusual.'},
+'demo002.dem':{type:'file',content:'[DEMO FILE - Cannot preview]\nMap: cp_dustbowl\nDate: 2007-04-02\nPlayers: 24/24... 25?\nDuration: 00:28:41\nNotes: player count flickered. prolly a bug.'},
 'demo003.dem':{type:'file',content:'[DEMO FILE - Cannot preview]\nMap: cp_dustbowl\nDate: 2007-06-19\nPlayers: 25/24\nDuration: 00:15:00\nNotes: the extra player. hes in every frame now. standing still. watching.'},
 'demo005.dem':{type:'file',content:'[DEMO FILE - CORRUPTED]\nMap: ???\nDate: ???\nPlayers: 1/?\nDuration: 99:99:99\n\n[FILE UNREADABLE]'}
 }},
 'old_files':{type:'dir',children:{
-'readme.txt':{type:'file',content:'if your reading this, the hard drive found a new owner.\n\ni tried to delete everything but it keeps coming back.\n\ndo NOT install tf2 on this drive.\ndo NOT open the demos.\ndo NOT connect to 0.0.0.0\n\nim sorry. i couldnt stop it.\n\n- previous owner'},
+'readme.txt':{type:'file',content:'if your reading this, the hard drive found a new owner.\n\ni tried to delete evrythng but it keeps coming back.\n\ndo NOT install tf2 on this drive.\ndo NOT open the demos.\ndo NOT connect to 0.0.0.0\n\nim sorry. i cudnt stop it.\n\n- previous owner'},
 'photo_corrupted.png':{type:'img',src:`${mediaBasePath}img/corrupted1.png`}
 }},
 'home.exe':{type:'file',content:'[EXECUTABLE - Click to run]\nhome.exe\nSize: 201 KB\nCreated: 5/28/2010 12:06 AM\nModified: NEVER'}
@@ -110,7 +110,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'6:51 PM',m:'dustbowl is more importnt then homework and thats a FACT'},
 {u:'mikeloveshalflife',t:'6:51 PM',m:'youre gonna fail'},
 {u:'TheDustBwlDuck',t:'6:52 PM',m:'cant fail if i dont turn it in *taps head*'},
-{u:'mikeloveshalflife',t:'6:52 PM',m:'thats literally failing'},
+{u:'mikeloveshalflife',t:'6:52 PM',m:'thats literaly failing'},
 {u:'TheDustBwlDuck',t:'6:53 PM',m:'ANYWAY u wana play dustbowl l8r??'},
 {u:'mikeloveshalflife',t:'6:53 PM',m:'always. btw have u played hl2 ep2 yet'},
 {u:'TheDustBwlDuck',t:'6:54 PM',m:'not yet i keep meaning 2'},
@@ -130,7 +130,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'4:18 PM',m:'a tactical decision 2 die 5 times lmaoo'},
 {u:'xX_SC0UT_RULEZ_Xx',t:'4:19 PM',m:'whatever bro 1v1 me'},
 {u:'TheDustBwlDuck',t:'4:19 PM',m:'im a medic main u WANT me 2 ubersaw u??'},
-{u:'xX_SC0UT_RULEZ_Xx',t:'4:20 PM',m:'...actually nvm'},
+{u:'xX_SC0UT_RULEZ_Xx',t:'4:20 PM',m:'...actualy nvm'},
 {u:'TheDustBwlDuck',t:'4:20 PM',m:'thats waht i thoght lol'}
 ],
 'PYROMANIAC_99':[
@@ -143,7 +143,7 @@ const normal={
 {u:'PYROMANIAC_99',t:'8:33 PM',m:'pyro is the best class and u cant change my mind'},
 {u:'TheDustBwlDuck',t:'8:33 PM',m:'medic > evrything but ok bro'},
 {u:'PYROMANIAC_99',t:'8:34 PM',m:'MMPH MMPH'},
-{u:'TheDustBwlDuck',t:'8:34 PM',m:'ur literally typing mmph right now i cant w u'}
+{u:'TheDustBwlDuck',t:'8:34 PM',m:'ur literaly typing mmph right now i cant w u'}
 ],
 'lolwut07':[
 {u:'lolwut07',t:'3:22 PM',m:'hey did u do the math homework?'},
@@ -184,7 +184,7 @@ const normal={
 {u:'sENTRY_gUY_420',t:'9:04 PM',m:'sHUT uP iT wORKS'}
 ],
 'cr1tical_h1t':[
-{u:'cr1tical_h1t',t:'7:30 PM',m:'im literally the best soldier on this server'},
+{u:'cr1tical_h1t',t:'7:30 PM',m:'im literaly the best soldier on this server'},
 {u:'TheDustBwlDuck',t:'7:30 PM',m:'u went 5 and 12 last game'},
 {u:'cr1tical_h1t',t:'7:31 PM',m:'those were tactical deaths'},
 {u:'TheDustBwlDuck',t:'7:31 PM',m:'u rocketed urself 3 times'},
@@ -215,7 +215,7 @@ const normal={
 {u:'BONKBONKBONK',t:'5:33 PM',m:'hey duck do u think scout is the fastest class'},
 {u:'TheDustBwlDuck',t:'5:33 PM',m:'yes?? thats literaly his thing'},
 {u:'BONKBONKBONK',t:'5:34 PM',m:'what if there was a class faster than scout'},
-{u:'TheDustBwlDuck',t:'5:34 PM',m:'then it would be broken lol'},
+{u:'TheDustBwlDuck',t:'5:34 PM',m:'then it wud be broken lol'},
 {u:'BONKBONKBONK',t:'5:35 PM',m:'BONK'},
 {u:'TheDustBwlDuck',t:'5:35 PM',m:'ok ur back 2 bonk mode i see'}
 ],
@@ -227,7 +227,7 @@ const normal={
 {u:'dustbowlBOSS_admin',t:'10:17 PM',m:'Multiple players reported you. I reviewed the demo myself.'},
 {u:'TheDustBwlDuck',t:'10:17 PM',m:'dude pls i play on ur server evry nite u kno me'},
 {u:'dustbowlBOSS_admin',t:'10:18 PM',m:'I know. Which is why this is strange. Your character was in places you shouldnt have been able to reach.'},
-{u:'TheDustBwlDuck',t:'10:18 PM',m:'my game has been glichy lately ok something is wrong w it'},
+{u:'TheDustBwlDuck',t:'10:18 PM',m:'my game has been glichy lately ok somthng is wrong w it'},
 {u:'dustbowlBOSS_admin',t:'10:19 PM',m:'Im sorry but I have to ban you. The evidence is clear.'},
 {u:'TheDustBwlDuck',t:'10:19 PM',m:'DUDE COME ON'},
 {u:'TheDustBwlDuck',t:'10:20 PM',m:'this is so unfar i wasnt doing anythng'},
@@ -246,7 +246,7 @@ const normal={
 {u:'hevy_sandvich_man',t:'7:04 PM',m:'sandVICH not sandWICH'},
 {u:'TheDustBwlDuck',t:'7:04 PM',m:'my mistake'},
 {u:'hevy_sandvich_man',t:'7:05 PM',m:'heavy would be proud of me'},
-{u:'TheDustBwlDuck',t:'7:05 PM',m:'heavy would eat that in 1 bite'},
+{u:'TheDustBwlDuck',t:'7:05 PM',m:'heavy wud eat that in 1 bite'},
 {u:'hevy_sandvich_man',t:'7:06 PM',m:'that is a fair point. hey do u wanna play dustbowl i go heavy u go medic'},
 {u:'TheDustBwlDuck',t:'7:06 PM',m:'dud ALWAYS im always down 4 dustbowl'},
 {u:'hevy_sandvich_man',t:'7:07 PM',m:'the dream team'},
@@ -280,7 +280,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'8:48 PM',m:'wait do u even DO anythng worth reporting'},
 {u:'iiiiillllllllll',t:'8:49 PM',m:'no'},
 {u:'TheDustBwlDuck',t:'8:49 PM',m:'so the name is pointles'},
-{u:'iiiiillllllllll',t:'8:50 PM',m:'its about the principle'}
+{u:'iiiiillllllllll',t:'8:50 PM',m:'its abt the principle'}
 ],
 'ROCKETLAUNCHER69':[
 {u:'ROCKETLAUNCHER69',t:'4:00 PM',m:'ROCKET LAUNCHER IS THE BEST WEAPON'},
@@ -288,7 +288,7 @@ const normal={
 {u:'ROCKETLAUNCHER69',t:'4:01 PM',m:'14'},
 {u:'TheDustBwlDuck',t:'4:01 PM',m:'ya that checks out lol'},
 {u:'ROCKETLAUNCHER69',t:'4:02 PM',m:'HEY WHATS THAT SUPPOSED TO MEAN'},
-{u:'TheDustBwlDuck',t:'4:02 PM',m:'nothing nothing lmao'}
+{u:'TheDustBwlDuck',t:'4:02 PM',m:'nothng nothng lmao'}
 ],
 'sn1p3r_n0_sc0p3':[
 {u:'sn1p3r_n0_sc0p3',t:'9:30 PM',m:'DUDE I ALMOST HIT A NOSCOPE'},
@@ -304,7 +304,7 @@ const normal={
 {u:'sk8rboi_2003',t:'3:01 PM',m:'then i fell on my face'},
 {u:'TheDustBwlDuck',t:'3:01 PM',m:'lmaoo classic dud'},
 {u:'sk8rboi_2003',t:'3:02 PM',m:'u should come skating sometime'},
-{u:'TheDustBwlDuck',t:'3:02 PM',m:'i would but dustbowl is calling me'},
+{u:'TheDustBwlDuck',t:'3:02 PM',m:'i wud but dustbowl is calling me'},
 {u:'sk8rboi_2003',t:'3:03 PM',m:'u and that game bro'}
 ],
 'xX_sparkles_Xx':[
@@ -320,7 +320,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'5:15 PM',m:'r we actualy gona start the band this time'},
 {u:'xXdRuMzXx',t:'5:16 PM',m:'YES BRO THIS TIME FOR REAL'},
 {u:'TheDustBwlDuck',t:'5:16 PM',m:'u said that last month'},
-{u:'xXdRuMzXx',t:'5:17 PM',m:'this time is different i can almost play one song'},
+{u:'xXdRuMzXx',t:'5:17 PM',m:'this time is diffrent i can almost play one song'},
 {u:'TheDustBwlDuck',t:'5:17 PM',m:'ALMOST one song lmaooo'}
 ],
 'g4m3rDUD3_07':[
@@ -328,32 +328,32 @@ const normal={
 {u:'TheDustBwlDuck',t:'4:30 PM',m:'nm just dustbowl'},
 {u:'g4m3rDUD3_07',t:'4:31 PM',m:'nice. i just got cod'},
 {u:'TheDustBwlDuck',t:'4:31 PM',m:'cod is ok but tf2 is beter'},
-{u:'g4m3rDUD3_07',t:'4:32 PM',m:'everything is better than tf2 according to you wait i mean tf2 is better than everything to you'},
+{u:'g4m3rDUD3_07',t:'4:32 PM',m:'evrythng is better than tf2 according to you wait i mean tf2 is better than evrythng to you'},
 {u:'TheDustBwlDuck',t:'4:32 PM',m:'EXACTLY'}
 ],
 'BATSWINGIN55':[
 {u:'BATSWINGIN55',t:'6:30 PM',m:'dude check this out'},
 {u:'BATSWINGIN55',t:'6:30 PM',m:'[link to funny video]'},
 {u:'TheDustBwlDuck',t:'6:31 PM',m:'lmaoooo'},
-{u:'BATSWINGIN55',t:'6:31 PM',m:'right?? anyway practice went good today'},
-{u:'TheDustBwlDuck',t:'6:32 PM',m:'nice. i had practice 2. on dustbowl. lol'},
+{u:'BATSWINGIN55',t:'6:31 PM',m:'right?? anyway practise went good today'},
+{u:'TheDustBwlDuck',t:'6:32 PM',m:'nice. i had practise 2. on dustbowl. lol'},
 {u:'BATSWINGIN55',t:'6:33 PM',m:'thats not the same as actual exercise bro'},
 {u:'TheDustBwlDuck',t:'6:33 PM',m:'u dont kno how hard medic is. my fingers get a workout'},
 {u:'BATSWINGIN55',t:'6:34 PM',m:'youre hopeless lol'},
-{u:'TheDustBwlDuck',t:'6:34 PM',m:'hey u should come watch me play sometime'},
+{u:'TheDustBwlDuck',t:'6:34 PM',m:'hey u shud come watch me play sometime'},
 {u:'BATSWINGIN55',t:'6:35 PM',m:'watch you play a video game'},
 {u:'TheDustBwlDuck',t:'6:35 PM',m:'its like watching baseball but cooler'},
-{u:'BATSWINGIN55',t:'6:36 PM',m:'nothing is cooler than baseball'},
+{u:'BATSWINGIN55',t:'6:36 PM',m:'nothng is cooler than baseball'},
 {u:'TheDustBwlDuck',t:'6:36 PM',m:'DUSTBOWL is cooler then baseball'},
 {u:'BATSWINGIN55',t:'6:37 PM',m:'we cant be friends anymore'},
 {u:'TheDustBwlDuck',t:'6:37 PM',m:'lol'},
-{u:'BATSWINGIN55',t:'6:38 PM',m:'jk but seriously come outside sometime its nice out'},
+{u:'BATSWINGIN55',t:'6:38 PM',m:'jk but srsly come outside sometime its nice out'},
 {u:'TheDustBwlDuck',t:'6:38 PM',m:'the sun is my enemy'}
 ],
 'LOLxDDDD':[
 {u:'LOLxDDDD',t:'7:45 PM',m:'LOL'},
 {u:'TheDustBwlDuck',t:'7:45 PM',m:'what'},
-{u:'LOLxDDDD',t:'7:46 PM',m:'nothing just LOL'},
+{u:'LOLxDDDD',t:'7:46 PM',m:'nothng just LOL'},
 {u:'TheDustBwlDuck',t:'7:46 PM',m:'ok dud'},
 {u:'LOLxDDDD',t:'7:47 PM',m:'LOL did u see what happened in bio today'},
 {u:'TheDustBwlDuck',t:'7:47 PM',m:'i wasnt there lol'},
@@ -373,10 +373,10 @@ const normal={
 {u:'TheDustBwlDuck',t:'11:07 PM',m:'u ok dud? u dont msg me much'},
 {u:'_______',t:'11:12 PM',m:'yeah im ok'},
 {u:'_______',t:'11:12 PM',m:'just bored'},
-{u:'TheDustBwlDuck',t:'11:13 PM',m:'u should play tf2 w us some time'},
+{u:'TheDustBwlDuck',t:'11:13 PM',m:'u shud play tf2 w us some time'},
 {u:'_______',t:'11:18 PM',m:'maybe'},
 {u:'TheDustBwlDuck',t:'11:18 PM',m:'no pressure dud just saying ur always welcome'},
-{u:'_______',t:'11:25 PM',m:'thanks duck'},
+{u:'_______',t:'11:25 PM',m:'thnx duck'},
 {u:'_______',t:'11:25 PM',m:'ur nice'},
 {u:'TheDustBwlDuck',t:'11:26 PM',m:'lol thnx dud'}
 ],
@@ -385,16 +385,16 @@ const normal={
 {u:'TheDustBwlDuck',t:'10:00 PM',m:'u ok?'},
 {u:'xX_d4rkn3ss_Xx',t:'10:01 PM',m:'yeah just listening to mcr'},
 {u:'TheDustBwlDuck',t:'10:01 PM',m:'oh ok lol carry on'},
-{u:'xX_d4rkn3ss_Xx',t:'10:02 PM',m:'do u ever feel like nothings real'},
+{u:'xX_d4rkn3ss_Xx',t:'10:02 PM',m:'do u ever feel like nothngs real'},
 {u:'TheDustBwlDuck',t:'10:02 PM',m:'only when my team loses on dustbowl'},
-{u:'xX_d4rkn3ss_Xx',t:'10:03 PM',m:'ur impossible lol'}
+{u:'xX_d4rkn3ss_Xx',t:'10:03 PM',m:'ur imposible lol'}
 ],
 'xx_FRAGZ_xx':[
 {u:'xx_FRAGZ_xx',t:'8:15 PM',m:'gg that dustbowl match was insane'},
-{u:'TheDustBwlDuck',t:'8:15 PM',m:'dud u were destroying everyone'},
-{u:'xx_FRAGZ_xx',t:'8:16 PM',m:'thats what happens when u actually try'},
+{u:'TheDustBwlDuck',t:'8:15 PM',m:'dud u were destroying evry1'},
+{u:'xx_FRAGZ_xx',t:'8:16 PM',m:'thats what happens when u actualy try'},
 {u:'TheDustBwlDuck',t:'8:16 PM',m:'teach me ur ways sensei'},
-{u:'xx_FRAGZ_xx',t:'8:17 PM',m:'step 1 dont play medic step 2 actually shoot people'},
+{u:'xx_FRAGZ_xx',t:'8:17 PM',m:'step 1 dont play medic step 2 actualy shoot peeple'},
 {u:'TheDustBwlDuck',t:'8:17 PM',m:'i feel personaly attacked'}
 ],
 'n00bkillaXD':[
@@ -407,15 +407,15 @@ const normal={
 'I_MAIN_EVERYTHING':[
 {u:'I_MAIN_EVERYTHING',t:'7:00 PM',m:'today im a spy main'},
 {u:'TheDustBwlDuck',t:'7:00 PM',m:'u were a scout main yesterday'},
-{u:'I_MAIN_EVERYTHING',t:'7:01 PM',m:'and tomorrow ill be a heavy main'},
+{u:'I_MAIN_EVERYTHING',t:'7:01 PM',m:'and tomrow ill be a heavy main'},
 {u:'TheDustBwlDuck',t:'7:01 PM',m:'u cant main evrything thats not how it works'},
 {u:'I_MAIN_EVERYTHING',t:'7:02 PM',m:'watch me'}
 ],
 '2FORT_4EVER':[
 {u:'2FORT_4EVER',t:'6:15 PM',m:'come play 2fort'},
 {u:'TheDustBwlDuck',t:'6:15 PM',m:'no'},
-{u:'2FORT_4EVER',t:'6:16 PM',m:'please'},
-{u:'TheDustBwlDuck',t:'6:16 PM',m:'dustbowl or nothing'},
+{u:'2FORT_4EVER',t:'6:16 PM',m:'pls'},
+{u:'TheDustBwlDuck',t:'6:16 PM',m:'dustbowl or nothng'},
 {u:'2FORT_4EVER',t:'6:17 PM',m:'dustbowl is just hallways'},
 {u:'TheDustBwlDuck',t:'6:17 PM',m:'2fort is just a bridge'},
 {u:'2FORT_4EVER',t:'6:18 PM',m:'...touche'}
@@ -423,9 +423,9 @@ const normal={
 'PAYLOAD_PUSHR':[
 {u:'PAYLOAD_PUSHR',t:'5:45 PM',m:'have u tried payload maps'},
 {u:'TheDustBwlDuck',t:'5:45 PM',m:'dustbowl IS kinda payload-ish'},
-{u:'PAYLOAD_PUSHR',t:'5:46 PM',m:'its attack defend thats different'},
+{u:'PAYLOAD_PUSHR',t:'5:46 PM',m:'its attack defend thats diffrent'},
 {u:'TheDustBwlDuck',t:'5:46 PM',m:'close enuf'},
-{u:'PAYLOAD_PUSHR',t:'5:47 PM',m:'its really not but ok'}
+{u:'PAYLOAD_PUSHR',t:'5:47 PM',m:'its realy not but ok'}
 ],
 'backstabMASTA':[
 {u:'backstabMASTA',t:'9:45 PM',m:'FYI im going spy next round'},
@@ -537,7 +537,7 @@ const normal={
 {u:'headshot_harry',t:'6:45 PM',m:'just headshot u from across the map lol'},
 {u:'TheDustBwlDuck',t:'6:45 PM',m:'I SAW THAT i was in the MIDDLE of an uber'},
 {u:'headshot_harry',t:'6:46 PM',m:'shouldnt have peeked'},
-{u:'TheDustBwlDuck',t:'6:46 PM',m:'i was HEALING someone'},
+{u:'TheDustBwlDuck',t:'6:46 PM',m:'i was HEALING some1'},
 {u:'headshot_harry',t:'6:47 PM',m:'heal better lol'},
 {u:'TheDustBwlDuck',t:'6:47 PM',m:'i hate snipers so much'}
 ],
@@ -569,7 +569,7 @@ const normal={
 {u:'randomcrits_are_fair',t:'7:30 PM',m:'RANDOM CRITS ARE A FAIR AND BALANCED GAME MECHANIC'},
 {u:'TheDustBwlDuck',t:'7:30 PM',m:'u just killed me w a random crit didnt u'},
 {u:'randomcrits_are_fair',t:'7:31 PM',m:'...yes'},
-{u:'TheDustBwlDuck',t:'7:31 PM',m:'thought so'}
+{u:'TheDustBwlDuck',t:'7:31 PM',m:'thoght so'}
 ],
 'teh_pwnerer':[
 {u:'teh_pwnerer',t:'5:50 PM',m:'BOOM HEADSHOT'},
@@ -612,7 +612,7 @@ const normal={
 {u:'trollface_inc',t:'7:00 PM',m:'problem?'},
 {u:'TheDustBwlDuck',t:'7:00 PM',m:'oh no'},
 {u:'trollface_inc',t:'7:01 PM',m:'u mad bro?'},
-{u:'TheDustBwlDuck',t:'7:01 PM',m:'did u seriously just umad me in 2010'},
+{u:'TheDustBwlDuck',t:'7:01 PM',m:'did u srsly just umad me in 2010'},
 {u:'trollface_inc',t:'7:02 PM',m:'TROLOLOLOLOL'},
 {u:'TheDustBwlDuck',t:'7:02 PM',m:'im blocking u'},
 {u:'trollface_inc',t:'7:03 PM',m:'u cant block the troll'},
@@ -683,7 +683,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'7:45 PM',m:'dud?'},
 {u:'TheDustBwlDuck',t:'8:00 PM',m:'hes afk again isnt he'},
 {u:'AFK_247',t:'8:30 PM',m:'sorry was afk'},
-{u:'TheDustBwlDuck',t:'8:30 PM',m:'ya i noticed'},
+{u:'TheDustBwlDuck',t:'8:30 PM',m:'ya i noticsd'},
 {u:'AFK_247',t:'8:31 PM',m:'brb'},
 {u:'TheDustBwlDuck',t:'8:31 PM',m:'HELLO??'}
 ],
@@ -698,11 +698,11 @@ const normal={
 {u:'TheDustBwlDuck',t:'9:03 PM',m:'hes doing it again'}
 ],
 'mp3_pirate_2010':[
-{u:'mp3_pirate_2010',t:'4:15 PM',m:'dude i just downloaded like 200 songs on limewire'},
+{u:'mp3_pirate_2010',t:'4:15 PM',m:'dude i just downladed like 200 songs on limewire'},
 {u:'TheDustBwlDuck',t:'4:15 PM',m:'nice which ones'},
 {u:'mp3_pirate_2010',t:'4:16 PM',m:'all of linkin park and green day'},
 {u:'TheDustBwlDuck',t:'4:16 PM',m:'solid choices'},
-{u:'mp3_pirate_2010',t:'4:17 PM',m:'half of them are actually bill clinton speeches'},
+{u:'mp3_pirate_2010',t:'4:17 PM',m:'half of them are actualy bill clinton speeches'},
 {u:'TheDustBwlDuck',t:'4:17 PM',m:'lmaooo classic limewire'},
 {u:'mp3_pirate_2010',t:'4:18 PM',m:'one of them was a virus'},
 {u:'TheDustBwlDuck',t:'4:18 PM',m:'also classic limewire'}
@@ -736,7 +736,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'7:45 PM',m:'waht happened'},
 {u:'NOOB_TUBE_lol',t:'7:46 PM',m:'where is the noob tube'},
 {u:'TheDustBwlDuck',t:'7:46 PM',m:'this isnt call of duty lol'},
-{u:'NOOB_TUBE_lol',t:'7:47 PM',m:'then what do i shoot people with'},
+{u:'NOOB_TUBE_lol',t:'7:47 PM',m:'then what do i shoot peeple with'},
 {u:'TheDustBwlDuck',t:'7:47 PM',m:'pick a class. any class. they all shoot things'},
 {u:'NOOB_TUBE_lol',t:'7:48 PM',m:'which one has the noob tube'},
 {u:'TheDustBwlDuck',t:'7:48 PM',m:'i give up'}
@@ -754,7 +754,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'11:00 PM',m:'its 11 pm go 2 sleep'},
 {u:'WEEDM4STER',t:'11:01 PM',m:'sleep is for the weak'},
 {u:'TheDustBwlDuck',t:'11:01 PM',m:'how old r u'},
-{u:'WEEDM4STER',t:'11:02 PM',m:'old enough'},
+{u:'WEEDM4STER',t:'11:02 PM',m:'old enuf'},
 {u:'TheDustBwlDuck',t:'11:02 PM',m:'so 13'},
 {u:'WEEDM4STER',t:'11:03 PM',m:'...shut up'}
 ],
@@ -821,7 +821,7 @@ delete corrupted['sk8rboi_2003'];
 delete corrupted['g4m3rDUD3_07'];
 corrupted['xX_SC0UT_RULEZ_Xx']=[
 {u:'xX_SC0UT_RULEZ_Xx',t:'2:00 AM',m:'yo duck somthing weird happened on dustbowl'},
-{u:'xX_SC0UT_RULEZ_Xx',t:'2:01 AM',m:'i saw someone standing in the tunnel and they werent on the scoreboard'},
+{u:'xX_SC0UT_RULEZ_Xx',t:'2:01 AM',m:'i saw some1 standing in the tunnel and they werent on the scoreboard'},
 {u:'xX_SC0UT_RULEZ_Xx',t:'2:01 AM',m:'is this some kind of prank'},
 {u:'xX_SC0UT_RULEZ_Xx',t:'2:15 AM',m:'duck??'},
 {u:'xX_SC0UT_RULEZ_Xx',t:'2:30 AM',m:'ok im kinda freaked out ngl'}
@@ -840,19 +840,19 @@ return normal;
 };
 const getEmails=()=>{
 const normal=[
-{id:1,from:'mom',subject:'dinner tonight',date:'Sep 30, 2010',unread:true,body:'Hey sweetie,\n\nDinner is at 7. Please come down on time\nthis time and not 20 minutes late because\nyoure playing your game.\n\nAlso please clean your room this weekend.\nI mean it this time.\n\nLove,\nMom'},
-{id:2,from:'mikeloveshalflife@yahoo.com',subject:'RE: dustbowl tonight?',date:'Sep 30, 2010',unread:true,body:'Yeah im down for tonight. Ill be on around 8.\n\nAlso did you finish the essay yet? Im not\ngonna lie I totally copied some of mine from\nwikipedia lol. Dont tell henderson.\n\nSee you on dustbowl\n- mike'},
+{id:1,from:'mom',subject:'dinner 2nite',date:'Sep 30, 2010',unread:true,body:'Hey sweetie,\n\nDinner is at 7. Please come down on time\nthis time and not 20 minutes late becuz\nyoure playing your game.\n\nAlso pls clean your room this weekend.\nI mean it this time.\n\nLove,\nMom'},
+{id:2,from:'mikeloveshalflife@yahoo.com',subject:'RE: dustbowl 2nite?',date:'Sep 30, 2010',unread:true,body:'Yeah im down for 2nite. Ill be on around 8.\n\nAlso did you finish the essay yet? Im not\ngonna lie I totally copied some of mine from\nwikipedia lol. Dont tell henderson.\n\nSee you on dustbowl\n- mike'},
 {id:3,from:'admin@dustbowl247.com',subject:'Welcome to Dustbowl 24/7!',date:'Mar 15, 2008',unread:false,body:'Hey TheDustBwlDuck,\n\nWelcome to the Dustbowl 24/7 community server!\nYou have been added to our regulars list.\n\n- Server Admin Team'},
 {id:4,from:'steampowered@steampowered.com',subject:'Your receipt for The Orange Box',date:'Oct 10, 2007',unread:false,body:'Thank you for your purchase!\n\nThe Orange Box\nPrice: $49.99\n\nThis game has been added to your Steam library.'},
 {id:5,from:'newsletter@valvesoftware.com',subject:'TF2 Mann-Conomy Update!',date:'Sep 30, 2010',unread:true,body:'The Mann-Conomy Update is here!\n\nNew features:\n- Trading system\n- Mann Co. Store\n- New community items\n- Polycount Pack weapons\n\nSee full details at teamfortress.com'},
 {id:6,from:'lolwut07@gmail.com',subject:'math hw??',date:'Sep 29, 2010',unread:true,body:'hey did u do the math homework\nif u did can i see it lol\n\n- dud'},
-{id:7,from:'no-reply@facebook.com',subject:'xXdRuMzXx tagged you in a post',date:'Sep 28, 2010',unread:false,body:'Drumz guy tagged you in a post:\n"band practice this weekend!! me and @TheDustBwlDuck gonna be LEGENDS"\n\nView on Facebook'},
+{id:7,from:'no-reply@facebook.com',subject:'xXdRuMzXx tagged you in a post',date:'Sep 28, 2010',unread:false,body:'Drumz guy tagged you in a post:\n"band practise this weekend!! me and @TheDustBwlDuck gonna be LEGENDS"\n\nView on Facebook'},
 {id:8,from:'deals@bestbuy.com',subject:'HUGE SAVINGS on Electronics!',date:'Sep 27, 2010',unread:false,body:'BEST BUY WEEKLY DEALS\n\nXbox 360 - $199.99\nPS3 Slim - $299.99\nNew laptops starting at $399\n\nVisit your local Best Buy today!'},
 {id:9,from:'info@gamestop.com',subject:'Pre-order Call of Duty: Black Ops',date:'Sep 26, 2010',unread:false,body:'Call of Duty: Black Ops\nReleases November 9, 2010\n\nPre-order now and get exclusive bonuses!\n\n$59.99'},
 {id:10,from:'dustbowlBOSS_admin@gmail.com',subject:'RE: ban appeal',date:'Sep 25, 2010',unread:true,body:'TheDustBwlDuck,\n\nI reviewed the demo footage again.\nYour movement was not normal. I dont know\nhow to explain what I saw but characters\ndont move like that.\n\nThe ban stands. Im sorry.\n\n- Admin'},
-{id:11,from:'no-reply@myspace.com',subject:'You have 3 new friend requests!',date:'Sep 24, 2010',unread:false,body:'You have new friend requests on MySpace!\n\nLog in to accept or deny them.\n\n(lol does anyone still use myspace)'},
+{id:11,from:'no-reply@myspace.com',subject:'You have 3 new friend requests!',date:'Sep 24, 2010',unread:false,body:'You have new friend requests on MySpace!\n\nLog in to accept or deny them.\n\n(lol does any1 still use myspace)'},
 {id:12,from:'free-ipod@totallylegit.com',subject:'YOU WON A FREE IPOD!!!',date:'Sep 23, 2010',unread:false,body:'CONGRATULATIONS!!!!\n\nYou have been selected to receive a FREE iPod Nano!\n\nClick here to claim your prize!\n\n(this is definately not a scam)'},
-{id:13,from:'PYROMANIAC_99@hotmail.com',subject:'FIRE',date:'Sep 22, 2010',unread:false,body:'dude check out this sick airblast i did\ni saved it in fraps\n\nill send it when i figure out how to upload stuff\n\nFIRE FIRE FIRE\n- pyro99'},
+{id:13,from:'PYROMANIAC_99@hotmail.com',subject:'FIRE',date:'Sep 22, 2010',unread:false,body:'dude check out this sick airblast i did\ni saved it in fraps\n\nill send it when i figur out how to upload stuff\n\nFIRE FIRE FIRE\n- pyro99'},
 {id:14,from:'ringtones@2010ringtones.com',subject:'Download the HOTTEST ringtones!',date:'Sep 21, 2010',unread:false,body:'Get the latest ringtones for your phone!\n\nTop hits:\n- Tik Tok by Ke$ha\n- Bad Romance by Lady Gaga\n- Airplanes by B.o.B\n\nOnly $2.99 each!'},
 {id:15,from:'dj_n00dles@gmail.com',subject:'my new song',date:'Sep 20, 2010',unread:false,body:'yo check this out i made a new remix\n\nits the tf2 theme but dubstep\n\nattachment: tf2_dubstep_remix_v47_FINAL_FINAL2.mp3\n\n- dj n00dles'},
 {id:16,from:'school@lincolnhigh.edu',subject:'Attendance Warning',date:'Sep 19, 2010',unread:true,body:'Dear Parent/Guardian,\n\nThis is to inform you that your student\nhas accumulated 5 unexcused absences this semester.\n\nPlease contact the school office.\n\n- Lincoln High School'},
@@ -865,10 +865,10 @@ const normal=[
 {id:23,from:'no-reply@ebay.com',subject:'Your bid on "TF2 Strategy Guide" has been outbid',date:'Sep 12, 2010',unread:false,body:'Another buyer has outbid you on:\n\nTeam Fortress 2 Official Strategy Guide\nCurrent bid: $12.50\nYour max bid: $8.00\n\nBid again before time runs out!'},
 {id:24,from:'printer-deals@inkexpress.com',subject:'PRINTER INK 50% OFF!!!',date:'Sep 11, 2010',unread:false,body:'AMAZING PRINTER INK DEALS!!!\n\nBlack ink cartridge - ONLY $29.99 (was $59.99)\nColor ink cartridge - ONLY $39.99 (was $79.99)\n\nFREE SHIPPING on orders over $50!'},
 {id:25,from:'enlarge@totallylegitpills.com',subject:'Make your COMPUTER faster with this ONE trick',date:'Sep 10, 2010',unread:false,body:'Is your PC running slow?\n\nDownload our FREE tool to make your computer 500% faster!\n\n(this is 100% not a virus we promise)'},
-{id:26,from:'dustbowl_newbie@yahoo.com',subject:'thanks for the help!',date:'Sep 10, 2010',unread:false,body:'hey duck thanks for teaching me how to play dustbowl today. i actually had fun! i might stick with medic like u said.\n\n- the newbie'},
+{id:26,from:'dustbowl_newbie@yahoo.com',subject:'thnx for the help!',date:'Sep 10, 2010',unread:false,body:'hey duck thnx for teaching me how to play dustbowl today. i actualy had fun! i might stick with medic like u said.\n\n- the newbie'},
 {id:27,from:'no-reply@pizza-hut.com',subject:'$5.99 Large Pizza Deal!',date:'Sep 9, 2010',unread:false,body:'HUNGRY? Get a large 1-topping pizza for only $5.99!\n\nOrder online at pizzahut.com\n\nOffer expires September 30, 2010'},
 {id:28,from:'nigerian.prince@email.ng',subject:'URGENT: I need your help (CONFIDENTIAL)',date:'Sep 8, 2010',unread:false,body:'Dear Friend,\n\nI am Prince Emeka of Nigeria and I need your help transferring $15,000,000 USD.\n\nYou will receive 30% of the total.\n\nPlease send your bank details.\n\nYours truly,\nPrince Emeka'},
-{id:29,from:'trollface_inc@gmail.com',subject:'important message',date:'Sep 7, 2010',unread:false,body:'hey duck open this link\n\nhttps://youtube.com/watch?v=dQw4w9WgXcQ\n\ntrust me its not a rickroll\n\n(it was a rickroll)'},
+{id:29,from:'trollface_inc@gmail.com',subject:'importnt message',date:'Sep 7, 2010',unread:false,body:'hey duck open this link\n\nhttps://youtube.com/watch?v=dQw4w9WgXcQ\n\ntrust me its not a rickroll\n\n(it was a rickroll)'},
 {id:30,from:'BONKBONKBONK@hotmail.com',subject:'BONK',date:'Sep 6, 2010',unread:false,body:'BONK\n\n- BONK'},
 {id:31,from:'weekly-deals@walmart.com',subject:'Back to School SAVINGS!',date:'Sep 5, 2010',unread:false,body:'BACK TO SCHOOL DEALS!\n\nBackpacks starting at $14.99\nNotebooks 5 for $3.00\nCalculators from $9.99\n\nVisit your local Walmart!'},
 {id:32,from:'leeroy_jenkins_IRL@yahoo.com',subject:'LEEROY',date:'Sep 4, 2010',unread:false,body:'LEEEEEEEEEEEEROY\n\nJENKINNNNNNNNNNNNS\n\n\n\n\n\nat least i got chicken'},
@@ -1168,7 +1168,7 @@ const h=`<div style="display:flex;flex-direction:column;height:100%;background:#
 <div style="border:1px solid #808080;padding:12px;background:#fff;margin-bottom:16px;font-size:11px;text-align:left;width:280px">
 <div style="margin-bottom:4px">WinRAR 3.93 - Evaluation Copy</div>
 <div style="color:#808080">Please purchase a license at www.rarlab.com</div>
-<div style="color:#808080;margin-top:8px">This is not free software. After a 40 day trial period you must either buy a license or remove it from your computer.</div>
+<div style="color:#808080;margin-top:8px">This is not free software. After a 40 day trial peroid you must either buy a license or remove it from your computer.</div>
 </div>
 <div style="display:flex;gap:6px">
 <button onclick="closeWindow('winrar')" style="padding:4px 20px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer">Close</button>
@@ -1221,26 +1221,26 @@ ctx.stroke();
 
 const openMirc=()=>{
 const msgs=[
-{t:'19:30',u:'dustbowlBOSS_admin',m:'welcome everyone to dustbowl 24/7'},
+{t:'19:30',u:'dustbowlBOSS_admin',m:'welcome evry1 to dustbowl 24/7'},
 {t:'19:31',u:'xX_SC0UT_RULEZ_Xx',m:'BONK'},
 {t:'19:31',u:'hevy_sandvich_man',m:'sandvich time'},
 {t:'19:32',u:'PYROMANIAC_99',m:'FIRE FIRE FIRE'},
-{t:'19:32',u:'cr1tical_h1t',m:'anyone wanna do mge after this?'},
+{t:'19:32',u:'cr1tical_h1t',m:'any1 wanna do mge after this?'},
 {t:'19:33',u:'spycrab_lol',m:'*does spycrab*'},
 {t:'19:33',u:'M3DIC_OR_RIOT',m:'MEDIC MEDIC MEDIC'},
 {t:'19:34',u:'TheDustBwlDuck',m:'hey guys'},
 {t:'19:34',u:'sENTRY_gUY_420',m:'hEY dUCK'},
-{t:'19:35',u:'hatcollector3000',m:'anyone have a vintage merryweather for trade?'},
+{t:'19:35',u:'hatcollector3000',m:'any1 have a vintage merryweather for trade?'},
 {t:'19:35',u:'BONKBONKBONK',m:'BONK'},
 {t:'19:36',u:'TheDustBwlDuck',m:'whos on red team rn'},
 {t:'19:36',u:'xX_SC0UT_RULEZ_Xx',m:'ME IM DOMINATING EVERYONE'},
 {t:'19:37',u:'cr1tical_h1t',m:'you went 2 and 9 last round'},
 {t:'19:37',u:'xX_SC0UT_RULEZ_Xx',m:'THOSE WERE TACTICAL'},
-{t:'19:38',u:'dustbowlBOSS_admin',m:'play nice everyone'},
+{t:'19:38',u:'dustbowlBOSS_admin',m:'play nice evry1'},
 {t:'19:38',u:'PYROMANIAC_99',m:'no'},
 {t:'19:39',u:'TheDustBwlDuck',m:'lmaooo'},
 {t:'19:39',u:'n00bkillaXD',m:'IM THE BEST PLAYER HERE'},
-{t:'19:40',u:'TheDustBwlDuck',m:'u literally just joined'},
+{t:'19:40',u:'TheDustBwlDuck',m:'u literaly just joined'},
 {t:'19:40',u:'spycrab_lol',m:'gentlemen'},
 {t:'19:41',u:'backstabMASTA',m:'FYI going spy next round'},
 {t:'19:41',u:'cloakedNdaggerd',m:'oh no not again'}
@@ -1270,7 +1270,7 @@ const items=typeof pcState!=='undefined'&&pcState===2?[
 {name:'its_not_real.txt',content:'i keep telling myself its not real\nits just a game\nits just pixels\n\nbut then y does he kno my name'},
 {name:'DELETED_photo_001.png',content:'[IMAGE FILE - CORRUPTED]\n[Cannot display]'},
 {name:'uninstall_tf2.bat',content:'@echo off\necho Uninstalling Team Fortress 2...\necho ERROR: Access denied\necho ERROR: File in use by process (PID 13)\necho Uninstall failed.'},
-{name:'help_me.txt',content:'somebody please help me\ni dont kno who 2 ask\nmy friends think im crazy\nmaybe i am crazy\n\nbut hes real\nhes real hes real hes real'}
+{name:'help_me.txt',content:'somebody pls help me\ni dont kno who 2 ask\nmy friends think im crazy\nmaybe i am crazy\n\nbut hes real\nhes real hes real hes real'}
 ]:[
 {name:'essay_draft_OLD.txt',content:'ok so the american revoltion\n\nu kno what forget it im starting over'},
 {name:'screenshot_003.png',content:'[IMAGE FILE]\n[dustbowl screenshot - bad quality]'},
