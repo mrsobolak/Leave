@@ -884,7 +884,7 @@ return[
 ];
 };
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>triggerTF2Launch(),steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>triggerTF2Launch(),steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer};
 if(apps[id])apps[id]();
 };
 const openExplorer=(path)=>{
@@ -1136,4 +1136,104 @@ const browserPages={
 <div style="margin-top:8px">i play on dustbowl 24/7 server evry nite. come say hi.</div>
 </div>
 </div>`}
+};
+
+const openPlatformer=()=>{
+const h=`<div style="width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column"><canvas id="plat-canvas" width="480" height="320" style="border:1px solid #333;image-rendering:pixelated;background:#1a0a2e"></canvas><div id="plat-hud" style="font-family:'Press Start 2P',monospace;font-size:9px;color:#ff0;margin-top:4px;text-align:center">Arrow Keys to move. Space to jump.</div></div>`;
+createWindow('platformer','SUPER DUST MAN v2.1 (FREE)',520,400,h);
+setTimeout(()=>initPlatformer(),100);
+};
+const initPlatformer=()=>{
+const canvas=document.getElementById('plat-canvas');
+if(!canvas)return;
+const ctx=canvas.getContext('2d');
+const W=480,H=320;
+let px=40,py=200,pvx=0,pvy=0,onGround=false,score=0,dead=false,frame=0;
+const gravity=0.5,jumpForce=-8,speed=3;
+const keys={};
+document.addEventListener('keydown',(e)=>{keys[e.key]=true;if(e.key===' ')e.preventDefault()});
+document.addEventListener('keyup',(e)=>{keys[e.key]=false});
+const platforms=[
+{x:0,y:280,w:480,h:40},
+{x:80,y:230,w:80,h:10},
+{x:200,y:190,w:100,h:10},
+{x:340,y:220,w:80,h:10},
+{x:50,y:150,w:70,h:10},
+{x:180,y:120,w:90,h:10},
+{x:320,y:100,w:80,h:10},
+{x:420,y:150,w:60,h:10},
+{x:100,y:80,w:80,h:10},
+{x:250,y:50,w:100,h:10}
+];
+const coins=[
+{x:110,y:210,w:10,h:10,got:false},
+{x:240,y:170,w:10,h:10,got:false},
+{x:370,y:200,w:10,h:10,got:false},
+{x:80,y:130,w:10,h:10,got:false},
+{x:210,y:100,w:10,h:10,got:false},
+{x:350,y:80,w:10,h:10,got:false},
+{x:440,y:130,w:10,h:10,got:false},
+{x:130,y:60,w:10,h:10,got:false},
+{x:290,y:30,w:10,h:10,got:false}
+];
+const enemies=[
+{x:150,y:268,w:14,h:12,sx:150,ex:260,dir:1,spd:1},
+{x:200,y:178,w:14,h:12,sx:200,ex:290,dir:1,spd:0.8},
+{x:100,y:68,w:14,h:12,sx:100,ex:170,dir:1,spd:1.2}
+];
+const collide=(ax,ay,aw,ah,bx,by,bw,bh)=>ax<bx+bw&&ax+aw>bx&&ay<by+bh&&ay+ah>by;
+const restart=()=>{px=40;py=200;pvx=0;pvy=0;dead=false;score=0;coins.forEach(c=>c.got=false);enemies.forEach(e=>{e.x=e.sx;e.dir=1})};
+const loop=()=>{
+if(!document.getElementById('plat-canvas'))return;
+frame++;
+if(!dead){
+if(keys['ArrowLeft']||keys['a'])pvx=-speed;
+else if(keys['ArrowRight']||keys['d'])pvx=speed;
+else pvx*=0.7;
+if((keys[' ']||keys['ArrowUp']||keys['w'])&&onGround){pvy=jumpForce;onGround=false}
+pvy+=gravity;
+px+=pvx;py+=pvy;
+onGround=false;
+platforms.forEach(p=>{
+if(pvy>=0&&py+14<=p.y+pvy+1&&py+14+pvy>=p.y&&px+12>p.x&&px<p.x+p.w){
+py=p.y-14;pvy=0;onGround=true;
+}
+});
+if(px<0)px=0;if(px>W-12)px=W-12;
+if(py>H+20)restart();
+coins.forEach(c=>{if(!c.got&&collide(px,py,12,14,c.x,c.y,c.w,c.h)){c.got=true;score++}});
+enemies.forEach(e=>{
+e.x+=e.spd*e.dir;
+if(e.x<=e.sx||e.x>=e.ex)e.dir*=-1;
+if(collide(px,py,12,14,e.x,e.y,e.w,e.h)){
+if(pvy>0&&py+14<e.y+6){e.y=-100;score+=3;pvy=-5}
+else{dead=true}
+}
+});
+}else{
+if(keys[' '])restart();
+}
+// draw
+ctx.fillStyle='#1a0a2e';ctx.fillRect(0,0,W,H);
+// stars
+if(frame%2===0){for(let i=0;i<3;i++){ctx.fillStyle='rgba(255,255,255,0.3)';ctx.fillRect(Math.random()*W,Math.random()*H,1,1)}}
+// platforms
+platforms.forEach((p,i)=>{ctx.fillStyle=i===0?'#2d5a1e':'#4a2a6e';ctx.fillRect(p.x,p.y,p.w,p.h);if(i>0){ctx.fillStyle='#5a3a8e';ctx.fillRect(p.x,p.y,p.w,2)}});
+// coins
+coins.forEach(c=>{if(!c.got){ctx.fillStyle=frame%20<10?'#ffcc00':'#ff9900';ctx.fillRect(c.x+1,c.y+1,8,8);ctx.fillStyle='#ffee88';ctx.fillRect(c.x+3,c.y+2,3,4)}});
+// enemies
+enemies.forEach(e=>{if(e.y>-50){ctx.fillStyle='#cc2222';ctx.fillRect(e.x,e.y,e.w,e.h);ctx.fillStyle='#fff';ctx.fillRect(e.x+2,e.y+2,3,3);ctx.fillRect(e.x+8,e.y+2,3,3)}});
+// player
+ctx.fillStyle=dead?'#666':'#44aaff';ctx.fillRect(px,py,12,14);
+ctx.fillStyle='#fff';ctx.fillRect(px+2,py+2,3,3);ctx.fillRect(px+7,py+2,3,3);
+ctx.fillStyle='#ffcc00';ctx.fillRect(px+1,py-3,10,3);
+// hud
+ctx.fillStyle='#ff0';ctx.font='10px Press Start 2P';ctx.textAlign='left';
+ctx.fillText('COINS: '+score+'/'+coins.length,8,16);
+ctx.textAlign='right';ctx.fillText('SUPER DUST MAN',W-8,16);
+if(dead){ctx.fillStyle='rgba(0,0,0,0.6)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#f00';ctx.font='16px Press Start 2P';ctx.textAlign='center';ctx.fillText('GAME OVER',W/2,H/2-10);ctx.fillStyle='#fff';ctx.font='9px Press Start 2P';ctx.fillText('Press SPACE to retry',W/2,H/2+15)}
+if(score>=coins.length&&!dead){ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#0f0';ctx.font='14px Press Start 2P';ctx.textAlign='center';ctx.fillText('YOU WIN!!',W/2,H/2-10);ctx.fillStyle='#fff';ctx.font='9px Press Start 2P';ctx.fillText('Press SPACE to play again',W/2,H/2+15);if(keys[' '])restart()}
+requestAnimationFrame(loop);
+};
+loop();
 };

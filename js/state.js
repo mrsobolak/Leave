@@ -93,27 +93,51 @@ setTimeout(()=>corruptedReboot(),5000);
 };
 
 const triggerSteamCrash=()=>{
+// open as a real XP window on the desktop
+const h=`<div style="padding:16px;background:#f0f0f0;font-family:Tahoma,sans-serif;font-size:12px;color:#000;display:flex;flex-direction:column;height:100%">
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+<div style="width:32px;height:32px;background:#1b2838;border-radius:2px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;font-size:14px">S</div>
+<div>
+<div style="font-weight:bold;font-size:13px">Updating Steam</div>
+<div style="color:#808080;font-size:11px" id="steam-update-status">Downloading update...</div>
+</div>
+</div>
+<div style="width:100%;height:18px;background:#fff;border:1px solid #808080;overflow:hidden;position:relative">
+<div id="steam-update-bar" style="width:0%;height:100%;background:linear-gradient(180deg,#3cad3c 0%,#2d8e2d 50%,#3cad3c 100%);transition:width 0.3s"></div>
+</div>
+<div style="color:#808080;font-size:11px;margin-top:6px" id="steam-update-pct">0% complete</div>
+<div style="flex:1"></div>
+<div style="color:#808080;font-size:10px;margin-top:8px">Verifying installation...</div>
+</div>`;
+createWindow('steam','Steam - Updating',340,200,h);
+// animate progress bar
+let pct=0;
+const bar=document.getElementById('steam-update-bar');
+const pctEl=document.getElementById('steam-update-pct');
+const statusEl=document.getElementById('steam-update-status');
+const iv=setInterval(()=>{
+pct+=Math.random()*8+2;
+if(pct>65)pct=65;
+if(bar)bar.style.width=pct+'%';
+if(pctEl)pctEl.textContent=Math.floor(pct)+'% complete';
+if(pct>30&&statusEl)statusEl.textContent='Installing update...';
+},300);
+// crash after a few seconds
+setTimeout(()=>{
+clearInterval(iv);
+if(bar)bar.style.width='100%';
+if(pctEl)pctEl.textContent='100% complete';
+if(statusEl)statusEl.textContent='Verifying...';
+setTimeout(()=>{
+closeWindow('steam');
 const overlay=document.getElementById('jumpscare-overlay');
 overlay.classList.remove('hidden');
 overlay.innerHTML='';
-overlay.style.background='#1b2838';
-
-const steam=document.createElement('div');
-steam.style.cssText='width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column';
-steam.innerHTML=`
-<div style="font-family:Arial,sans-serif;font-size:28px;color:#c7d5e0;font-weight:bold;letter-spacing:3px;margin-bottom:8px">STEAM</div>
-<div style="font-family:Arial,sans-serif;font-size:12px;color:#66c0f4;margin-bottom:30px">Updating Steam...</div>
-<div style="width:200px;height:3px;background:#1a1a2e;overflow:hidden">
-<div style="width:35%;height:100%;background:#66c0f4"></div>
-</div>
-`;
-overlay.appendChild(steam);
-
-setTimeout(()=>{
-overlay.innerHTML='';
+overlay.style.background='#000';
 showBSOD();
 setTimeout(()=>corruptedReboot(),5000);
-},2500);
+},800);
+},3500);
 };
 
 const showBSOD=()=>{

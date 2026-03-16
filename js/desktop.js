@@ -10,67 +10,52 @@ const desktopApps=[
 {id:'settings',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>',label:'Settings',desk:false,menu:true},
 {id:'calculator',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><rect x="7" y="5" width="10" height="5"/><circle cx="8" cy="14" r=".5" fill="currentColor"/><circle cx="12" cy="14" r=".5" fill="currentColor"/><circle cx="16" cy="14" r=".5" fill="currentColor"/><circle cx="8" cy="18" r=".5" fill="currentColor"/><circle cx="12" cy="18" r=".5" fill="currentColor"/><circle cx="16" cy="18" r=".5" fill="currentColor"/></svg>',label:'Calc',desk:false,menu:true},
 {id:'paint',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>',label:'Paint',desk:false,menu:true},
-{id:'tf2',icon:'<span style="font-size:28px;color:#999">?</span>',label:'TF2',desk:true,menu:true},
-{id:'steam',icon:'<span style="font-size:28px;color:#999">?</span>',label:'Steam',desk:true,menu:true},
-{id:'recyclebin',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>',label:'Recycle Bin',desk:true,menu:false},
+{id:'tf2',icon:'<span style="font-size:24px;color:#999">?</span>',label:'TF2',desk:true,menu:true},
+{id:'steam',icon:'<span style="font-size:24px;color:#999">?</span>',label:'Steam',desk:true,menu:true},
 {id:'limewire',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>',label:'LimeWire',desk:true,menu:true},
 {id:'fraps',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="3"/></svg>',label:'Fraps',desk:true,menu:true},
 {id:'winrar',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M10 2v20M10 6h4M10 10h4M10 14h4"/></svg>',label:'WinRAR',desk:true,menu:true},
 {id:'audacity',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h2l2-4 2 8 2-6 2 4 2-2 2 6 2-8 2 4h2"/></svg>',label:'Audacity',desk:true,menu:true},
-{id:'mirc',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9 9 9 0 019 9z"/><path d="M8 12h8M12 8v8"/></svg>',label:'mIRC',desk:true,menu:true}
+{id:'mirc',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9 9 9 0 019 9z"/><path d="M8 12h8M12 8v8"/></svg>',label:'mIRC',desk:true,menu:true},
+{id:'recyclebin',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>',label:'Recycle Bin',desk:true,menu:false},
+{id:'platformer',icon:'<span style="font-size:24px;color:#ff0">&#9733;</span>',label:'SUPER DUST MAN',desk:true,menu:true}
 ];
 let startOpen=false;
-// Konami code easter egg
-let konamiSeq=[];
-const konamiCode=[38,38,40,40,37,39,37,39,66,65];
-document.addEventListener('keydown',(e)=>{
-konamiSeq.push(e.keyCode);
-if(konamiSeq.length>10)konamiSeq.shift();
-if(konamiSeq.join(',')==konamiCode.join(',')){
-konamiSeq=[];
-const msg=typeof pcState!=='undefined'&&pcState===2?'i know that code too.':'KONAMI CODE ACTIVATED\n\njk nothing happens lol\n- TheDustBwlDuck';
-alert(msg);
-}
-});
-
 const initDesktop=()=>{
 document.getElementById('desktop').classList.remove('hidden');
 const iconsEl=document.getElementById('desktop-icons');
 iconsEl.innerHTML='';
-iconsEl.style.position='relative';
-const appsToShow=typeof pcState!=='undefined'&&pcState===2?[...desktopApps,{id:'home',icon:'<span style="font-size:28px;color:#999">&#9751;</span>',label:'home',desk:true,menu:true}]:desktopApps;
-let col=0,row=0;
-const maxRows=Math.floor((window.innerHeight-60)/82);
+const appsToShow=typeof pcState!=='undefined'&&pcState===2?[...desktopApps,{id:'home',icon:'<span style="font-size:24px;color:#999">&#9751;</span>',label:'home',desk:true,menu:true}]:desktopApps;
 appsToShow.forEach((app)=>{
 if(!app.desk)return;
 const d=document.createElement('div');
 d.className='desktop-icon';
-d.style.position='absolute';
-d.style.left=(8+col*82)+'px';
-d.style.top=(8+row*82)+'px';
 d.innerHTML=`<div class="desktop-icon-img">${app.icon}</div><div class="desktop-icon-label">${app.label}</div>`;
-// drag support
-let dragging=false,hasMoved=false,ox,oy,sx,sy;
+d.addEventListener('click',()=>openApp(app.id));
+// draggable
+let dragging=false,ox,oy,sx,sy;
 d.addEventListener('mousedown',(e)=>{
-dragging=true;hasMoved=false;
-ox=e.clientX;oy=e.clientY;
+dragging=false;ox=e.clientX;oy=e.clientY;
 sx=d.offsetLeft;sy=d.offsetTop;
-e.preventDefault();
-});
-document.addEventListener('mousemove',(e)=>{
-if(!dragging)return;
-const dx=e.clientX-ox,dy=e.clientY-oy;
-if(Math.abs(dx)>3||Math.abs(dy)>3)hasMoved=true;
+const move=(ev)=>{
+const dx=ev.clientX-ox,dy=ev.clientY-oy;
+if(Math.abs(dx)>4||Math.abs(dy)>4){
+dragging=true;
+d.style.position='absolute';
 d.style.left=(sx+dx)+'px';
 d.style.top=(sy+dy)+'px';
-});
-document.addEventListener('mouseup',()=>{
-if(dragging&&!hasMoved){openApp(app.id)}
-dragging=false;
+d.style.zIndex='12';
+}
+};
+const up=()=>{
+document.removeEventListener('mousemove',move);
+document.removeEventListener('mouseup',up);
+if(dragging){e.preventDefault();e.stopPropagation()}
+};
+document.addEventListener('mousemove',move);
+document.addEventListener('mouseup',up);
 });
 iconsEl.appendChild(d);
-row++;
-if(row>=maxRows){row=0;col++}
 });
 const menuEl=document.getElementById('start-menu-apps');
 menuEl.innerHTML='';
@@ -85,10 +70,12 @@ menuEl.appendChild(b);
 document.getElementById('start-menu-user').textContent='TheDustBwlDuck';
 const clockText=typeof pcState!=='undefined'&&pcState===2?'12:06 AM  5/28/2010':'7:42 PM  9/30/2010';
 document.getElementById('tray-clock').textContent=clockText;
-// clock easter egg
+// easter egg: click clock
+document.getElementById('tray-clock').style.cursor='pointer';
 document.getElementById('tray-clock').onclick=()=>{
 if(typeof pcState!=='undefined'&&pcState===2){
-alert('Time stopped at 12:06 AM.\n5/28/2010.');
+document.getElementById('tray-clock').textContent='13:13  0/0/0000';
+setTimeout(()=>{document.getElementById('tray-clock').textContent='12:06 AM  5/28/2010'},3000);
 }
 };
 document.getElementById('start-btn').onclick=(e)=>{e.stopPropagation();toggleStart(!startOpen)};
@@ -103,7 +90,13 @@ show?m.classList.remove('hidden'):m.classList.add('hidden');
 };
 const doShutdown=()=>{
 if(typeof pcState!=='undefined'&&pcState===2){
-alert("you can't leave.");
+// cant leave in corrupted mode
+const overlay=document.getElementById('jumpscare-overlay');
+overlay.classList.remove('hidden');
+overlay.innerHTML='<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:Tahoma,sans-serif;font-size:14px;color:#fff;text-align:center">you can\'t leave.</div>';
+overlay.style.background='#000';
+setTimeout(()=>{overlay.classList.add('hidden');overlay.innerHTML=''},2500);
+toggleStart(false);
 return;
 }
 toggleStart(false);
@@ -111,3 +104,14 @@ closeAllWindows();
 document.getElementById('desktop').classList.add('hidden');
 document.getElementById('shutdown-screen').classList.remove('hidden');
 };
+// konami code easter egg
+let konamiSeq=[];
+const konamiCode=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+document.addEventListener('keydown',(e)=>{
+konamiSeq.push(e.key);
+if(konamiSeq.length>10)konamiSeq.shift();
+if(konamiSeq.join(',')=== konamiCode.join(',')){
+konamiSeq=[];
+openTextEditor('you found it.\n\n201\n\nthe password is the key to everything.\n\n- TheDustBwlDuck','secret.txt');
+}
+});
