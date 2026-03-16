@@ -11,6 +11,8 @@ let cubeyAppCounts={};
 let cubeyClickTimes=[];
 let cubeyTF2Attempts=0;
 let cubeyGamesWon=0;
+let cubeyKilled=false;
+let beeperClicks=0;
 let cubeyQueue=[];
 let cubeyProcessing=false;
 
@@ -75,6 +77,57 @@ setTimeout(()=>cubeyQ("Click on me when you're ready. I'll show you the first on
 setTimeout(startMikeIdle,72000);
 }
 else{setTimeout(cubeyStartIntro,2500);}
+
+// Wire beeper tray icon
+const beeperIcon=document.getElementById('tray-beeper');
+if(beeperIcon){
+beeperIcon.addEventListener('click',()=>{
+if(cubeyKilled)return;
+beeperClicks++;
+if(beeperClicks===1){
+cubeyQ("WHAT IS THAT.",true);
+cubeyQ("Is that... BEEPER?!",true);
+cubeyQ("WHY IS BEEPER ON THIS PC?!",true);
+cubeyQ("GET RID OF IT! RIGHT NOW!",true);
+cubeyQ("If you click that again I swear to CUBE I will LOSE IT!",true);
+cubeyQ("I'm SERIOUS "+cubeyUserName+"! DO NOT CLICK BEEPER AGAIN!",true);
+}else if(beeperClicks>=2){
+// Cubey dies
+cubeyKilled=true;
+cubeyQueue=[];cubeyProcessing=false;cubeySpeaking=false;
+const bubble=document.getElementById('cubey-bubble');
+if(bubble){bubble.classList.remove('cubey-hidden');bubble.textContent='...'}
+setTimeout(()=>{
+if(bubble){bubble.textContent='You chose Beeper over me.'}
+},1500);
+setTimeout(()=>{
+if(bubble){bubble.textContent='Fine.'}
+},3500);
+setTimeout(()=>{
+if(bubble){bubble.textContent='Goodbye, '+cubeyUserName+'.'}
+},5000);
+setTimeout(()=>{
+// Kill Cubey
+const cubey=document.getElementById('cubey');
+if(cubey){
+cubey.style.transition='opacity 1s, transform 1s';
+cubey.style.opacity='0';
+cubey.style.transform='translateY(50px) scale(0.5)';
+setTimeout(()=>{cubey.remove()},1000);
+}
+// Clear all cubey timers
+if(cubeyTimer)clearInterval(cubeyTimer);
+if(cubeyBlinkTimer)clearInterval(cubeyBlinkTimer);
+if(cubeyWanderTimer)clearInterval(cubeyWanderTimer);
+if(cubeyMoodTimer)clearInterval(cubeyMoodTimer);
+if(cubeyTimeTimer)clearInterval(cubeyTimeTimer);
+// Beeper icon goes full opacity
+beeperIcon.style.opacity='1';
+beeperIcon.title='beeper.exe (running)';
+},7000);
+}
+});
+}
 };
 
 // QUEUE
@@ -256,6 +309,8 @@ setTimeout(()=>{let o='';q.a.forEach((a,i)=>o+='<button class="cqz" data-i="'+i+
 
 // TF2
 const cubeyTF2Warn=()=>new Promise((resolve)=>{
+// Beeper killed Cubey - no warnings, straight to beeper ending
+if(cubeyKilled){resolve('beeper');return}
 // Block entirely if intro not done
 if(!cubeyIntroDone){
 cubeyQ("Hey! We're not done talking yet! Finish answering my questions first!",true);

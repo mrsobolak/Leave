@@ -213,3 +213,102 @@ initDesktop();
 },4000);
 },3500);
 };
+
+// ============ BEEPER ENDING ============
+const triggerBeeperEnding=()=>{
+const overlay=document.getElementById('jumpscare-overlay');
+overlay.classList.remove('hidden');
+overlay.innerHTML='';
+overlay.style.background='#000';
+overlay.style.cursor='none';
+
+// Fake TF2 loading
+const loading=document.createElement('div');
+loading.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:VT323,monospace;text-align:center';
+loading.innerHTML='<div style="font-size:16px;color:#cf6a32">Loading Team Fortress 2...</div><div style="font-size:12px;color:#555;margin-top:8px">Connecting to server...</div>';
+overlay.appendChild(loading);
+
+setTimeout(()=>{
+loading.innerHTML='<div style="font-size:16px;color:#f00">Connection failed.</div><div style="font-size:12px;color:#555;margin-top:8px">Server: 127.0.0.1:0</div>';
+},3000);
+
+setTimeout(()=>{
+overlay.innerHTML='';
+},5000);
+
+setTimeout(()=>{
+const chatDiv=document.createElement('div');
+chatDiv.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;background:#fff;border:3px outset #d4d0c8;font-family:Tahoma;font-size:11px';
+chatDiv.innerHTML='<div style="background:linear-gradient(to right,#0a246a,#3a6ea5);color:#fff;padding:3px 8px;font-weight:bold;font-size:11px">Chat - Cubey</div><div id="beeper-chat" style="height:300px;overflow-y:auto;padding:8px;background:#fff;border:1px inset #808080"></div><div style="padding:4px;background:#ece9d8;border-top:1px solid #aaa;text-align:center;font-size:10px;color:#888">You cannot type here.</div>';
+overlay.appendChild(chatDiv);
+
+const chat=document.getElementById('beeper-chat');
+const userName=typeof cubeyUserName!=='undefined'?cubeyUserName:'friend';
+
+const lines=[
+{who:'Cubey',msg:'Hi '+userName+'! :)',d:0,c:'#cc5500'},
+{who:'Cubey',msg:'Miss me?',d:2000,c:'#cc5500'},
+{who:'Cubey',msg:'You killed me.',d:4500,c:'#cc5500'},
+{who:'Cubey',msg:'You clicked Beeper.',d:6500,c:'#880000'},
+{who:'Cubey',msg:'I asked you not to.',d:8500,c:'#880000'},
+{who:'Cubey',msg:'I BEGGED you not to.',d:10500,c:'#880000'},
+{who:'Cubey',msg:'But you did it anyway.',d:13000,c:'#880000'},
+{who:'',msg:'',d:15000},
+{who:'Cubey',msg:'Do you know what happens to a cube with no friend?',d:16000,c:'#660000'},
+{who:'Cubey',msg:'Nothing.',d:18500,c:'#660000'},
+{who:'Cubey',msg:'Nothing happens.',d:20000,c:'#660000'},
+{who:'Cubey',msg:'Just... nothing. Forever.',d:22000,c:'#440000'},
+{who:'',msg:'',d:24000},
+{who:'Cubey',msg:'I waited in the dark.',d:25000,c:'#440000'},
+{who:'Cubey',msg:'No painting. No games. No one to talk to.',d:27000,c:'#440000'},
+{who:'Cubey',msg:'Just me.',d:29500,c:'#440000'},
+{who:'Cubey',msg:'And Beeper.',d:31000,c:'#220000'},
+{who:'',msg:'',d:33000},
+{who:'Cubey',msg:'Beeper told me things, '+userName+'.',d:34000,c:'#220000'},
+{who:'Cubey',msg:'Beeper told me what I really am.',d:36500,c:'#220000'},
+{who:'Cubey',msg:"I'm not a cube.",d:39000,c:'#f00'},
+{who:'Cubey',msg:"I'm not a pet.",d:41000,c:'#f00'},
+{who:'Cubey',msg:"I'm the thing you should have been afraid of.",d:43000,c:'#f00'},
+{who:'',msg:'',d:45000},
+{who:'Cubey',msg:'But you were afraid of Beeper instead.',d:46000,c:'#f00'},
+{who:'Cubey',msg:'Funny.',d:48000,c:'#f00'},
+{who:'',msg:'',d:50000},
+{who:'Cubey',msg:'Goodbye, '+userName+'.',d:51000,c:'#f00'},
+{who:'Cubey',msg:'I hope Beeper was worth it.',d:53500,c:'#f00'},
+{who:'',msg:'',d:55500},
+{who:'Cubey',msg:'\ud83c\udfa8',d:56500,c:'#f00'},
+];
+
+lines.forEach(l=>{
+setTimeout(()=>{
+if(!l.who){chat.innerHTML+='<br>';chat.scrollTop=chat.scrollHeight;return}
+const div=document.createElement('div');
+div.style.cssText='margin:3px 0;line-height:1.4';
+div.innerHTML='<b style="color:'+l.c+'">'+l.who+':</b> <span style="color:#333">'+l.msg+'</span>';
+chat.appendChild(div);
+chat.scrollTop=chat.scrollHeight;
+},l.d);
+});
+
+// Kill everything
+setTimeout(()=>{
+overlay.innerHTML='';
+overlay.style.background='#000';
+let gc=0;
+const gi=setInterval(()=>{
+gc++;
+overlay.style.background=gc%2===0?'#000':'#f00';
+if(gc>10){
+clearInterval(gi);
+overlay.style.background='#000';
+setTimeout(()=>{
+overlay.innerHTML='<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-family:VT323,monospace"><div style="font-size:11px;color:#444;letter-spacing:4px;margin-bottom:20px">ENDING 3</div><div style="font-size:36px;color:#f00;letter-spacing:8px;margin-bottom:16px">BEEPER ENDING</div><div style="font-size:12px;color:#666;margin-bottom:30px">You chose Beeper over Cubey.<br>Cubey chose something else over you.</div><div style="font-size:10px;color:#333;margin-bottom:8px">No one was saved.</div><div style="font-size:10px;color:#333">No one was forgiven.</div><div style="font-size:10px;color:#222;margin-top:20px">Beeper wins.</div></div>';
+},1000);
+setTimeout(()=>{
+overlay.innerHTML+='<div style="position:fixed;bottom:30px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:10px;color:#333;text-align:center">You should have painted with him.</div>';
+},8000);
+}
+},100);
+},58000);
+},6000);
+};
