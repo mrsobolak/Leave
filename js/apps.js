@@ -438,6 +438,329 @@ const normal={
 {u:'48291637',t:'00:06',m:'48291637'},
 {u:'48291637',t:'00:06',m:'13'}
 ]
+,
+'xXx_DARK_ANGEL_xXx':[
+{u:'xXx_DARK_ANGEL_xXx',t:'11:30 PM',m:'the darkness within me grows'},
+{u:'TheDustBwlDuck',t:'11:30 PM',m:'dud its 11 pm on a tuesday'},
+{u:'xXx_DARK_ANGEL_xXx',t:'11:31 PM',m:'you wouldnt understand my pain'},
+{u:'TheDustBwlDuck',t:'11:31 PM',m:'is this abt that sniper that killed u 6 times'},
+{u:'xXx_DARK_ANGEL_xXx',t:'11:32 PM',m:'...maybe'}
+],
+'DEMOMAN_DRUNK_247':[
+{u:'DEMOMAN_DRUNK_247',t:'9:00 PM',m:'KABOOOOOM'},
+{u:'TheDustBwlDuck',t:'9:00 PM',m:'hello 2 u 2'},
+{u:'DEMOMAN_DRUNK_247',t:'9:01 PM',m:'i just got a 4 man sticky trap on dustbowl tunnel'},
+{u:'TheDustBwlDuck',t:'9:01 PM',m:'ok thats actualy sick'},
+{u:'DEMOMAN_DRUNK_247',t:'9:02 PM',m:'they were all bunched up like christmas'},
+{u:'TheDustBwlDuck',t:'9:02 PM',m:'demo mains r scary ngl'}
+],
+'pwnag3_king':[
+{u:'pwnag3_king',t:'4:45 PM',m:'yo duck i just pwned the entire server'},
+{u:'TheDustBwlDuck',t:'4:45 PM',m:'nobody says pwned anymore'},
+{u:'pwnag3_king',t:'4:46 PM',m:'I DO'},
+{u:'TheDustBwlDuck',t:'4:46 PM',m:'ok boomer'},
+{u:'pwnag3_king',t:'4:47 PM',m:'IM 15'},
+{u:'TheDustBwlDuck',t:'4:47 PM',m:'ok boomer'}
+],
+'iLiKeTuRtLeS':[
+{u:'iLiKeTuRtLeS',t:'3:30 PM',m:'i like turtles'},
+{u:'TheDustBwlDuck',t:'3:30 PM',m:'cool?'},
+{u:'iLiKeTuRtLeS',t:'3:31 PM',m:'do u like turtles'},
+{u:'TheDustBwlDuck',t:'3:31 PM',m:'i like dustbowl'},
+{u:'iLiKeTuRtLeS',t:'3:32 PM',m:'turtles r better'},
+{u:'TheDustBwlDuck',t:'3:32 PM',m:'agree 2 disagree'}
+],
+'xX_N0SC0PE_360_Xx':[
+{u:'xX_N0SC0PE_360_Xx',t:'10:15 PM',m:'360 NOSCOPE BABYYY'},
+{u:'TheDustBwlDuck',t:'10:15 PM',m:'this isnt cod'},
+{u:'xX_N0SC0PE_360_Xx',t:'10:16 PM',m:'DOESNT MATTER I STILL HIT IT'},
+{u:'TheDustBwlDuck',t:'10:16 PM',m:'u play sniper on dustbowl and u have 2 kills'},
+{u:'xX_N0SC0PE_360_Xx',t:'10:17 PM',m:'QUALITY OVER QUANTITY'}
+],
+'TURRET_TOWN':[
+{u:'TURRET_TOWN',t:'7:15 PM',m:'i have 4 sentries up right now'},
+{u:'TheDustBwlDuck',t:'7:15 PM',m:'thats not possible u can only have 1'},
+{u:'TURRET_TOWN',t:'7:16 PM',m:'i convinced 3 other engies to build next to me'},
+{u:'TheDustBwlDuck',t:'7:16 PM',m:'thats the most evil thing ive ever heard'},
+{u:'TURRET_TOWN',t:'7:17 PM',m:'the tunnel is MINE'},
+{u:'TheDustBwlDuck',t:'7:17 PM',m:'ur the reason ppl quit this game'}
+],
+'mario64fan':[
+{u:'mario64fan',t:'5:30 PM',m:'have u played mario 64'},
+{u:'TheDustBwlDuck',t:'5:30 PM',m:'ya when i was like 8 y'},
+{u:'mario64fan',t:'5:31 PM',m:'its better than tf2'},
+{u:'TheDustBwlDuck',t:'5:31 PM',m:'get out'},
+{u:'mario64fan',t:'5:32 PM',m:'lol jk but u should play it again its a classic'},
+{u:'TheDustBwlDuck',t:'5:32 PM',m:'maybe when im not busy being a dustbowl legend'}
+],
+'shadow_the_hedgehog_fan':[
+{u:'shadow_the_hedgehog_fan',t:'8:00 PM',m:'shadow the hedgehog is the coolest character ever made'},
+{u:'TheDustBwlDuck',t:'8:00 PM',m:'thats a weird way 2 spell scout'},
+{u:'shadow_the_hedgehog_fan',t:'8:01 PM',m:'scout wishes he was as cool as shadow'},
+{u:'TheDustBwlDuck',t:'8:01 PM',m:'scout has a bat. shadow has... angst'},
+{u:'shadow_the_hedgehog_fan',t:'8:02 PM',m:'AND A GUN'},
+{u:'TheDustBwlDuck',t:'8:02 PM',m:'ok fair point'}
+],
+'headshot_harry':[
+{u:'headshot_harry',t:'6:45 PM',m:'just headshot u from across the map lol'},
+{u:'TheDustBwlDuck',t:'6:45 PM',m:'I SAW THAT i was in the MIDDLE of an uber'},
+{u:'headshot_harry',t:'6:46 PM',m:'shouldnt have peeked'},
+{u:'TheDustBwlDuck',t:'6:46 PM',m:'i was HEALING someone'},
+{u:'headshot_harry',t:'6:47 PM',m:'heal better lol'},
+{u:'TheDustBwlDuck',t:'6:47 PM',m:'i hate snipers so much'}
+],
+'L33T_H4X0R':[
+{u:'L33T_H4X0R',t:'10:30 PM',m:'d00d 1 c4n h4ck ur pc'},
+{u:'TheDustBwlDuck',t:'10:30 PM',m:'no u cant'},
+{u:'L33T_H4X0R',t:'10:31 PM',m:'y35 1 c4n 1m 4 h4ck3r'},
+{u:'TheDustBwlDuck',t:'10:31 PM',m:'ur name is in leet speak and u use yahoo mail'},
+{u:'L33T_H4X0R',t:'10:32 PM',m:'wh4ts wr0ng w1th y4h00'},
+{u:'TheDustBwlDuck',t:'10:32 PM',m:'evrything'}
+],
+'gg_no_re':[
+{u:'gg_no_re',t:'9:15 PM',m:'gg'},
+{u:'TheDustBwlDuck',t:'9:15 PM',m:'the game just started'},
+{u:'gg_no_re',t:'9:16 PM',m:'gg no re'},
+{u:'TheDustBwlDuck',t:'9:16 PM',m:'WE HAVENT EVEN CAPTURED FIRST POINT YET'},
+{u:'gg_no_re',t:'9:17 PM',m:'doesnt matter gg'},
+{u:'TheDustBwlDuck',t:'9:17 PM',m:'i cant w u'}
+],
+'SniperWolf420':[
+{u:'SniperWolf420',t:'8:20 PM',m:'dude i just got backstabbed 4 times in a row'},
+{u:'TheDustBwlDuck',t:'8:20 PM',m:'turn around sometimes maybe'},
+{u:'SniperWolf420',t:'8:21 PM',m:'IM SCOPED IN I CANT SEE BEHIND ME'},
+{u:'TheDustBwlDuck',t:'8:21 PM',m:'thats... thats the problem'},
+{u:'SniperWolf420',t:'8:22 PM',m:'spy is such a broken class'},
+{u:'TheDustBwlDuck',t:'8:22 PM',m:'spy is fine ur just not checking ur back'}
+],
+'randomcrits_are_fair':[
+{u:'randomcrits_are_fair',t:'7:30 PM',m:'RANDOM CRITS ARE A FAIR AND BALANCED GAME MECHANIC'},
+{u:'TheDustBwlDuck',t:'7:30 PM',m:'u just killed me w a random crit didnt u'},
+{u:'randomcrits_are_fair',t:'7:31 PM',m:'...yes'},
+{u:'TheDustBwlDuck',t:'7:31 PM',m:'thought so'}
+],
+'teh_pwnerer':[
+{u:'teh_pwnerer',t:'5:50 PM',m:'BOOM HEADSHOT'},
+{u:'TheDustBwlDuck',t:'5:50 PM',m:'did u just quote pure pwnage'},
+{u:'teh_pwnerer',t:'5:51 PM',m:'maybe'},
+{u:'TheDustBwlDuck',t:'5:51 PM',m:'respect honestly'}
+],
+'LagSwitchLarry':[
+{u:'LagSwitchLarry',t:'9:45 PM',m:'sorry for the lag guys'},
+{u:'TheDustBwlDuck',t:'9:45 PM',m:'larry u teleported across the map and killed 3 ppl'},
+{u:'LagSwitchLarry',t:'9:46 PM',m:'bad internet'},
+{u:'TheDustBwlDuck',t:'9:46 PM',m:'ur ping went from 20 to 999 and back in 2 seconds'},
+{u:'LagSwitchLarry',t:'9:47 PM',m:'comcast am i right haha'},
+{u:'TheDustBwlDuck',t:'9:47 PM',m:'larry.'}
+],
+'killstreak_katie':[
+{u:'killstreak_katie',t:'6:30 PM',m:'im on a 20 killstreak rn'},
+{u:'TheDustBwlDuck',t:'6:30 PM',m:'what class'},
+{u:'killstreak_katie',t:'6:31 PM',m:'pyro'},
+{u:'TheDustBwlDuck',t:'6:31 PM',m:'of course its pyro'},
+{u:'killstreak_katie',t:'6:32 PM',m:'W+M1 BABY'},
+{u:'TheDustBwlDuck',t:'6:32 PM',m:'u scare me honestly'}
+],
+'NotABot_TrustMe':[
+{u:'NotABot_TrustMe',t:'4:00 PM',m:'hello fellow human player'},
+{u:'TheDustBwlDuck',t:'4:00 PM',m:'ur name is literaly notabot'},
+{u:'NotABot_TrustMe',t:'4:01 PM',m:'i am a regular human who enjoys team fortress 2'},
+{u:'TheDustBwlDuck',t:'4:01 PM',m:'do u blink'},
+{u:'NotABot_TrustMe',t:'4:02 PM',m:'of course i blink i blink exactly 15 times per minute'},
+{u:'TheDustBwlDuck',t:'4:02 PM',m:'yeah thats not suspicious at all'}
+],
+'mySp4ceTom':[
+{u:'mySp4ceTom',t:'3:00 PM',m:'dude add me on myspace'},
+{u:'TheDustBwlDuck',t:'3:00 PM',m:'nobody uses myspace anymore'},
+{u:'mySp4ceTom',t:'3:01 PM',m:'I DO'},
+{u:'TheDustBwlDuck',t:'3:01 PM',m:'tom is that u'},
+{u:'mySp4ceTom',t:'3:02 PM',m:'no comment'}
+],
+'trollface_inc':[
+{u:'trollface_inc',t:'7:00 PM',m:'problem?'},
+{u:'TheDustBwlDuck',t:'7:00 PM',m:'oh no'},
+{u:'trollface_inc',t:'7:01 PM',m:'u mad bro?'},
+{u:'TheDustBwlDuck',t:'7:01 PM',m:'did u seriously just umad me in 2010'},
+{u:'trollface_inc',t:'7:02 PM',m:'TROLOLOLOLOL'},
+{u:'TheDustBwlDuck',t:'7:02 PM',m:'im blocking u'},
+{u:'trollface_inc',t:'7:03 PM',m:'u cant block the troll'},
+{u:'TheDustBwlDuck',t:'7:03 PM',m:'watch me'}
+],
+'iCanHazCheeseburger':[
+{u:'iCanHazCheeseburger',t:'2:30 PM',m:'i can haz dustbowl?'},
+{u:'TheDustBwlDuck',t:'2:30 PM',m:'u can haz dustbowl'},
+{u:'iCanHazCheeseburger',t:'2:31 PM',m:'invisible sandwich'},
+{u:'TheDustBwlDuck',t:'2:31 PM',m:'lolcats r still funny in 2010 right'},
+{u:'iCanHazCheeseburger',t:'2:32 PM',m:'ALWAYS'}
+],
+'CPT_CAPSLOCK':[
+{u:'CPT_CAPSLOCK',t:'8:00 PM',m:'WHY IS EVERYONE SO QUIET'},
+{u:'TheDustBwlDuck',t:'8:00 PM',m:'bc ur yelling'},
+{u:'CPT_CAPSLOCK',t:'8:01 PM',m:'IM NOT YELLING THIS IS MY NORMAL VOICE'},
+{u:'TheDustBwlDuck',t:'8:01 PM',m:'turn off caps lock'},
+{u:'CPT_CAPSLOCK',t:'8:02 PM',m:'NO'},
+{u:'TheDustBwlDuck',t:'8:02 PM',m:'ok then'}
+],
+'freerunner_mike2':[
+{u:'freerunner_mike2',t:'5:00 PM',m:'yo duck u ever play mirrors edge'},
+{u:'TheDustBwlDuck',t:'5:00 PM',m:'nah is it good'},
+{u:'freerunner_mike2',t:'5:01 PM',m:'its like scout but in real life'},
+{u:'TheDustBwlDuck',t:'5:01 PM',m:'ok now im intrested'},
+{u:'freerunner_mike2',t:'5:02 PM',m:'ill lend u the disc'},
+{u:'TheDustBwlDuck',t:'5:02 PM',m:'bet'}
+],
+'AOL_Steve':[
+{u:'AOL_Steve',t:'4:30 PM',m:'you got mail'},
+{u:'TheDustBwlDuck',t:'4:30 PM',m:'steve its 2010'},
+{u:'AOL_Steve',t:'4:31 PM',m:'aol is still good'},
+{u:'TheDustBwlDuck',t:'4:31 PM',m:'no it isnt'},
+{u:'AOL_Steve',t:'4:32 PM',m:'the chatrooms are still active'},
+{u:'TheDustBwlDuck',t:'4:32 PM',m:'thats not the flex u think it is steve'}
+],
+'UBERNERD_9000':[
+{u:'UBERNERD_9000',t:'6:00 PM',m:'hey duck did u know the ubercharge takes exactly 40 seconds to build'},
+{u:'TheDustBwlDuck',t:'6:00 PM',m:'yes i kno im a medic main'},
+{u:'UBERNERD_9000',t:'6:01 PM',m:'and the ubersaw gives 25% charge per hit'},
+{u:'TheDustBwlDuck',t:'6:01 PM',m:'I KNO'},
+{u:'UBERNERD_9000',t:'6:02 PM',m:'so technically 4 hits = full uber'},
+{u:'TheDustBwlDuck',t:'6:02 PM',m:'I AM AWARE THANK U'},
+{u:'UBERNERD_9000',t:'6:03 PM',m:'just making sure :)'},
+{u:'TheDustBwlDuck',t:'6:03 PM',m:'i luv u but pls stop'}
+],
+'YOUR_MOM_420':[
+{u:'YOUR_MOM_420',t:'10:00 PM',m:'ur mom'},
+{u:'TheDustBwlDuck',t:'10:00 PM',m:'good one'},
+{u:'YOUR_MOM_420',t:'10:01 PM',m:'ur mom plays tf2'},
+{u:'TheDustBwlDuck',t:'10:01 PM',m:'she actualy doesnt she plays solitare'},
+{u:'YOUR_MOM_420',t:'10:02 PM',m:'ur mom plays solitaire lol'},
+{u:'TheDustBwlDuck',t:'10:02 PM',m:'ya she does whats ur point'}
+],
+'dustbowl_newbie':[
+{u:'dustbowl_newbie',t:'3:45 PM',m:'hey how do i play this map'},
+{u:'TheDustBwlDuck',t:'3:45 PM',m:'omg ur first time on dustbowl??'},
+{u:'dustbowl_newbie',t:'3:46 PM',m:'yeah i usually play 2fort'},
+{u:'TheDustBwlDuck',t:'3:46 PM',m:'ok so dustbowl is WAY beter. theres 3 stages and u gota capture points'},
+{u:'dustbowl_newbie',t:'3:47 PM',m:'which class should i play'},
+{u:'TheDustBwlDuck',t:'3:47 PM',m:'MEDIC. always medic. pocket me and we win'},
+{u:'dustbowl_newbie',t:'3:48 PM',m:'ok ill try'},
+{u:'TheDustBwlDuck',t:'3:48 PM',m:'welcom 2 the best map in tf2 my frend'}
+],
+'AFK_Andy':[
+{u:'AFK_Andy',t:'7:30 PM',m:'hey'},
+{u:'TheDustBwlDuck',t:'7:35 PM',m:'hey andy'},
+{u:'TheDustBwlDuck',t:'7:45 PM',m:'andy?'},
+{u:'TheDustBwlDuck',t:'8:00 PM',m:'hes afk again isnt he'},
+{u:'AFK_Andy',t:'8:30 PM',m:'sorry was afk'},
+{u:'TheDustBwlDuck',t:'8:30 PM',m:'ya i noticed'},
+{u:'AFK_Andy',t:'8:31 PM',m:'brb'},
+{u:'TheDustBwlDuck',t:'8:31 PM',m:'ANDY'}
+],
+'leeroy_jenkins_IRL':[
+{u:'leeroy_jenkins_IRL',t:'9:00 PM',m:'LEEEEEROYYY'},
+{u:'TheDustBwlDuck',t:'9:00 PM',m:'oh no'},
+{u:'leeroy_jenkins_IRL',t:'9:01 PM',m:'JENKINNNSSS'},
+{u:'TheDustBwlDuck',t:'9:01 PM',m:'he just ran into 4 sentries'},
+{u:'leeroy_jenkins_IRL',t:'9:02 PM',m:'at least i got chicken'},
+{u:'TheDustBwlDuck',t:'9:02 PM',m:'u got 0 kills and died 8 times'},
+{u:'leeroy_jenkins_IRL',t:'9:03 PM',m:'LEEROYYYY'},
+{u:'TheDustBwlDuck',t:'9:03 PM',m:'hes doing it again'}
+],
+'mp3_pirate_2010':[
+{u:'mp3_pirate_2010',t:'4:15 PM',m:'dude i just downloaded like 200 songs on limewire'},
+{u:'TheDustBwlDuck',t:'4:15 PM',m:'nice which ones'},
+{u:'mp3_pirate_2010',t:'4:16 PM',m:'all of linkin park and green day'},
+{u:'TheDustBwlDuck',t:'4:16 PM',m:'solid choices'},
+{u:'mp3_pirate_2010',t:'4:17 PM',m:'half of them are actually bill clinton speeches'},
+{u:'TheDustBwlDuck',t:'4:17 PM',m:'lmaooo classic limewire'},
+{u:'mp3_pirate_2010',t:'4:18 PM',m:'one of them was a virus'},
+{u:'TheDustBwlDuck',t:'4:18 PM',m:'also classic limewire'}
+],
+'respawn_rachel':[
+{u:'respawn_rachel',t:'5:15 PM',m:'ugh i just died again'},
+{u:'TheDustBwlDuck',t:'5:15 PM',m:'what class'},
+{u:'respawn_rachel',t:'5:16 PM',m:'spy. i keep getting set on fire'},
+{u:'TheDustBwlDuck',t:'5:16 PM',m:'ya pyros will do that'},
+{u:'respawn_rachel',t:'5:17 PM',m:'HOW DO I AVOID THEM'},
+{u:'TheDustBwlDuck',t:'5:17 PM',m:'u dont. u just die and respawn. its in ur name'}
+],
+'epicfailguy2010':[
+{u:'epicfailguy2010',t:'8:45 PM',m:'EPIC FAIL'},
+{u:'TheDustBwlDuck',t:'8:45 PM',m:'what now'},
+{u:'epicfailguy2010',t:'8:46 PM',m:'i rocket jumped into the ceiling and died'},
+{u:'TheDustBwlDuck',t:'8:46 PM',m:'thats not epic thats just fail'},
+{u:'epicfailguy2010',t:'8:47 PM',m:'EPIC. FAIL.'},
+{u:'TheDustBwlDuck',t:'8:47 PM',m:'ok watever'}
+],
+'craftking2000':[
+{u:'craftking2000',t:'3:15 PM',m:'yo duck u got any spare weapons'},
+{u:'TheDustBwlDuck',t:'3:15 PM',m:'ya i got like 20 weapon drops'},
+{u:'craftking2000',t:'3:16 PM',m:'can i have them'},
+{u:'TheDustBwlDuck',t:'3:16 PM',m:'watcha gona give me'},
+{u:'craftking2000',t:'3:17 PM',m:'friendship'},
+{u:'TheDustBwlDuck',t:'3:17 PM',m:'deal'}
+],
+'NOOB_TUBE_NANCY':[
+{u:'NOOB_TUBE_NANCY',t:'7:45 PM',m:'i think i installed tf2 wrong'},
+{u:'TheDustBwlDuck',t:'7:45 PM',m:'waht happened'},
+{u:'NOOB_TUBE_NANCY',t:'7:46 PM',m:'where is the noob tube'},
+{u:'TheDustBwlDuck',t:'7:46 PM',m:'this isnt call of duty nancy'},
+{u:'NOOB_TUBE_NANCY',t:'7:47 PM',m:'then what do i shoot people with'},
+{u:'TheDustBwlDuck',t:'7:47 PM',m:'pick a class. any class. they all shoot things'},
+{u:'NOOB_TUBE_NANCY',t:'7:48 PM',m:'which one has the noob tube'},
+{u:'TheDustBwlDuck',t:'7:48 PM',m:'i give up'}
+],
+'xFaZe_QuIcKsC0pEx':[
+{u:'xFaZe_QuIcKsC0pEx',t:'10:45 PM',m:'IM GONNA JOIN FAZE CLAN'},
+{u:'TheDustBwlDuck',t:'10:45 PM',m:'this is tf2 not cod'},
+{u:'xFaZe_QuIcKsC0pEx',t:'10:46 PM',m:'DOESNT MATTER IM FAZE MATERIAL'},
+{u:'TheDustBwlDuck',t:'10:46 PM',m:'u play pyro and u w+m1'},
+{u:'xFaZe_QuIcKsC0pEx',t:'10:47 PM',m:'FAZE PYRO'},
+{u:'TheDustBwlDuck',t:'10:47 PM',m:'thats not a thing'}
+],
+'WEEDM4STER':[
+{u:'WEEDM4STER',t:'11:00 PM',m:'420 blaze it'},
+{u:'TheDustBwlDuck',t:'11:00 PM',m:'its 11 pm go 2 sleep'},
+{u:'WEEDM4STER',t:'11:01 PM',m:'sleep is for the weak'},
+{u:'TheDustBwlDuck',t:'11:01 PM',m:'how old r u'},
+{u:'WEEDM4STER',t:'11:02 PM',m:'old enough'},
+{u:'TheDustBwlDuck',t:'11:02 PM',m:'so 13'},
+{u:'WEEDM4STER',t:'11:03 PM',m:'...shut up'}
+],
+'im_12_and_what_is_this':[
+{u:'im_12_and_what_is_this',t:'4:00 PM',m:'how do i build stuff'},
+{u:'TheDustBwlDuck',t:'4:00 PM',m:'pick engineer and press 4'},
+{u:'im_12_and_what_is_this',t:'4:01 PM',m:'whats an engineer'},
+{u:'TheDustBwlDuck',t:'4:01 PM',m:'the guy w the hard hat'},
+{u:'im_12_and_what_is_this',t:'4:02 PM',m:'i dont see him'},
+{u:'TheDustBwlDuck',t:'4:02 PM',m:'press comma to open class select'},
+{u:'im_12_and_what_is_this',t:'4:03 PM',m:'whats a comma'},
+{u:'TheDustBwlDuck',t:'4:03 PM',m:'how r u alive'}
+],
+'MUDKIPZ_4EVER':[
+{u:'MUDKIPZ_4EVER',t:'6:15 PM',m:'so i herd u liek mudkipz'},
+{u:'TheDustBwlDuck',t:'6:15 PM',m:'that meme is like 3 years old'},
+{u:'MUDKIPZ_4EVER',t:'6:16 PM',m:'MEMES DONT DIE'},
+{u:'TheDustBwlDuck',t:'6:16 PM',m:'they definately do'},
+{u:'MUDKIPZ_4EVER',t:'6:17 PM',m:'do u like mudkips tho'},
+{u:'TheDustBwlDuck',t:'6:17 PM',m:'i like dustbowl'}
+],
+'thelegend27':[
+{u:'thelegend27',t:'9:30 PM',m:'they call me thelegend27'},
+{u:'TheDustBwlDuck',t:'9:30 PM',m:'nobody calls u that'},
+{u:'thelegend27',t:'9:31 PM',m:'i call me that'},
+{u:'TheDustBwlDuck',t:'9:31 PM',m:'thats just u naming urself'},
+{u:'thelegend27',t:'9:32 PM',m:'legends name themselves'},
+{u:'TheDustBwlDuck',t:'9:32 PM',m:'u went 3 and 15 last game'},
+{u:'thelegend27',t:'9:33 PM',m:'legendary 3 kills'}
+],
+'NUKE_EM_ALL':[
+{u:'NUKE_EM_ALL',t:'8:30 PM',m:'CRITICAL HIT CRITICAL HIT CRITICAL HIT'},
+{u:'TheDustBwlDuck',t:'8:30 PM',m:'stop yelling'},
+{u:'NUKE_EM_ALL',t:'8:31 PM',m:'I GOT 3 CROCKETS IN A ROW'},
+{u:'TheDustBwlDuck',t:'8:31 PM',m:'thats actualy insane luck'},
+{u:'NUKE_EM_ALL',t:'8:32 PM',m:'ITS NOT LUCK ITS SKILL'},
+{u:'TheDustBwlDuck',t:'8:32 PM',m:'crits r literaly random'}
+]
 };
 if(typeof pcState!=='undefined'&&pcState===2){
 const corrupted=Object.assign({},normal);
@@ -504,7 +827,22 @@ const normal=[
 {id:17,from:'xX_SC0UT_RULEZ_Xx@yahoo.com',subject:'1v1 ME',date:'Sep 18, 2010',unread:false,body:'BRO 1V1 ME ON MGE\nI BET I CAN BEAT U\n\nUR UBERSAW IS NO MATCH FOR MY SCATTERGUN\n\n- SCOUT RULEZ'},
 {id:18,from:'hatcollector3000@gmail.com',subject:'trading guide',date:'Sep 17, 2010',unread:false,body:'hey duck heres how trading works:\n\n1 scrap = 2 weapons\n1 reclaimed = 3 scrap\n1 refined = 3 reclaimed\n\nstart saving ur weapon drops!!\n\n- hat guy'},
 {id:19,from:'newsletter@newgrounds.com',subject:'New Flash Games This Week!',date:'Sep 15, 2010',unread:false,body:'Check out this weeks top games:\n\n- Epic Battle Fantasy 3\n- The Impossible Quiz 2\n- Madness Combat 7\n\nPlay now at Newgrounds.com!'},
-{id:20,from:'baseballbrad55@gmail.com',subject:'funny video',date:'Sep 14, 2010',unread:false,body:'dude watch this video its hilarious\n\nhttps://youtube.com/watch?v=dQw4w9WgXcQ\n\n- brad'}
+{id:20,from:'baseballbrad55@gmail.com',subject:'funny video',date:'Sep 14, 2010',unread:false,body:'dude watch this video its hilarious\n\nhttps://youtube.com/watch?v=dQw4w9WgXcQ\n\n- brad'},
+{id:21,from:'win@free-laptop-2010.com',subject:'CONGRATULATIONS YOU WON A FREE LAPTOP',date:'Sep 13, 2010',unread:false,body:'Dear Lucky Winner,\n\nYou have been randomly selected to receive a FREE Dell Laptop!\n\nSimply click the link below and enter your social security number to claim.\n\n(seems legit)'},
+{id:22,from:'PYROMANIAC_JEFF@hotmail.com',subject:'RE: RE: RE: FIRE',date:'Sep 13, 2010',unread:false,body:'FIRE FIRE FIRE FIRE\n\nalso my mom says hi\n\nFIRE\n\n- jeff'},
+{id:23,from:'no-reply@ebay.com',subject:'Your bid on "TF2 Strategy Guide" has been outbid',date:'Sep 12, 2010',unread:false,body:'Another buyer has outbid you on:\n\nTeam Fortress 2 Official Strategy Guide\nCurrent bid: $12.50\nYour max bid: $8.00\n\nBid again before time runs out!'},
+{id:24,from:'printer-deals@inkexpress.com',subject:'PRINTER INK 50% OFF!!!',date:'Sep 11, 2010',unread:false,body:'AMAZING PRINTER INK DEALS!!!\n\nBlack ink cartridge - ONLY $29.99 (was $59.99)\nColor ink cartridge - ONLY $39.99 (was $79.99)\n\nFREE SHIPPING on orders over $50!'},
+{id:25,from:'enlarge@totallylegitpills.com',subject:'Make your COMPUTER faster with this ONE trick',date:'Sep 10, 2010',unread:false,body:'Is your PC running slow?\n\nDownload our FREE tool to make your computer 500% faster!\n\n(this is 100% not a virus we promise)'},
+{id:26,from:'dustbowl_newbie@yahoo.com',subject:'thanks for the help!',date:'Sep 10, 2010',unread:false,body:'hey duck thanks for teaching me how to play dustbowl today. i actually had fun! i might stick with medic like u said.\n\n- the newbie'},
+{id:27,from:'no-reply@pizza-hut.com',subject:'$5.99 Large Pizza Deal!',date:'Sep 9, 2010',unread:false,body:'HUNGRY? Get a large 1-topping pizza for only $5.99!\n\nOrder online at pizzahut.com\n\nOffer expires September 30, 2010'},
+{id:28,from:'nigerian.prince@email.ng',subject:'URGENT: I need your help (CONFIDENTIAL)',date:'Sep 8, 2010',unread:false,body:'Dear Friend,\n\nI am Prince Emeka of Nigeria and I need your help transferring $15,000,000 USD.\n\nYou will receive 30% of the total.\n\nPlease send your bank details.\n\nYours truly,\nPrince Emeka'},
+{id:29,from:'trollface_inc@gmail.com',subject:'important message',date:'Sep 7, 2010',unread:false,body:'hey duck open this link\n\nhttps://youtube.com/watch?v=dQw4w9WgXcQ\n\ntrust me its not a rickroll\n\n(it was a rickroll)'},
+{id:30,from:'BONKBONKBONK@hotmail.com',subject:'BONK',date:'Sep 6, 2010',unread:false,body:'BONK\n\n- BONK'},
+{id:31,from:'weekly-deals@walmart.com',subject:'Back to School SAVINGS!',date:'Sep 5, 2010',unread:false,body:'BACK TO SCHOOL DEALS!\n\nBackpacks starting at $14.99\nNotebooks 5 for $3.00\nCalculators from $9.99\n\nVisit your local Walmart!'},
+{id:32,from:'leeroy_jenkins_IRL@yahoo.com',subject:'LEEROY',date:'Sep 4, 2010',unread:false,body:'LEEEEEEEEEEEEROY\n\nJENKINNNNNNNNNNNNS\n\n\n\n\n\nat least i got chicken'},
+{id:33,from:'no-reply@miniclip.com',subject:'New Games on Miniclip!',date:'Sep 3, 2010',unread:false,body:'Check out the latest games on Miniclip.com!\n\n- 8 Ball Pool\n- Agar.io\n- Commando 2\n\nPlay for FREE!'},
+{id:34,from:'xX_SC0UT_RULEZ_Xx@yahoo.com',subject:'CHECK THIS FRAG VIDEO',date:'Sep 2, 2010',unread:false,body:'BRO I MADE A FRAG VIDEO\n\nits me getting kills on dustbowl\n\nonly 2 of them are mine the rest i stole from youtube\n\nBUT STILL\n\n- SCOUT RULEZ'},
+{id:35,from:'your-horoscope@dailystars.com',subject:'Your daily horoscope - Libra',date:'Sep 1, 2010',unread:false,body:'Libra (Sep 23 - Oct 22)\n\nToday the stars suggest you should go outside and touch grass.\n\nJust kidding play more TF2.\n\nLucky numbers: 13, 201'}
 ];
 if(typeof pcState!=='undefined'&&pcState===2){
 const corrupted=[
@@ -546,7 +884,7 @@ return[
 ];
 };
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>triggerTF2Launch(),steam:()=>triggerSteamCrash(),limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>triggerTF2Launch(),steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame};
 if(apps[id])apps[id]();
 };
 const openExplorer=(path)=>{
@@ -591,9 +929,39 @@ else if(item.type==='audio'||item.type==='video')openMediaPlayerFile(item.src,na
 const openBrowser=()=>{
 const bmarks=getBookmarks();const hist=getHistory();
 let bm='';bmarks.forEach((b)=>{bm+=`<div class="browser-bookmark" data-url="${b.url}">${b.title}</div>`});
-let ht='';hist.forEach((h)=>{ht+=`<div class="browser-history-item"><span>${h.title}</span> <span style="color:#333;margin-left:8px">${h.date}</span></div>`});
-const h=`<div class="app-browser"><div class="browser-toolbar"><input class="browser-url" id="browser-url" value="epiccustam://home" readonly><button class="browser-go-btn">\u27A1</button></div><div class="browser-content"><div style="color:#555;margin-bottom:16px;font-size:14px">EPICCUSTAMBROSWER v4.20</div><div style="color:#444;margin-bottom:8px;font-size:12px">BOOKMARKS</div><div class="browser-bookmarks">${bm}</div><div style="color:#444;margin:16px 0 8px;font-size:12px">RECENT HISTORY</div>${ht}</div></div>`;
+let ht='';hist.forEach((h)=>{ht+=`<div class="browser-history-item"><span>${h.title}</span> <span style="color:#808080;margin-left:8px">${h.date}</span></div>`});
+const homeHtml=`<div style="color:#808080;margin-bottom:16px;font-size:14px;font-family:Tahoma,sans-serif">EPICCUSTAMBROSWER v4.20</div><div style="color:#000;margin-bottom:8px;font-size:12px;font-family:Tahoma,sans-serif;font-weight:bold">Bookmarks</div><div class="browser-bookmarks">${bm}</div><div style="color:#000;margin:16px 0 8px;font-size:12px;font-family:Tahoma,sans-serif;font-weight:bold">Recent History</div>${ht}`;
+const h=`<div class="app-browser"><div class="browser-toolbar"><input class="browser-url" id="browser-url" value="epiccustam://home"><button class="browser-go-btn" id="browser-home">\u2302</button></div><div class="browser-content" id="browser-body">${homeHtml}</div></div>`;
+if(openWindows['browser'])closeWindow('browser');
 createWindow('browser','EPICCUSTAMBROSWER',600,450,h);
+setTimeout(()=>{
+document.querySelectorAll('.browser-bookmark').forEach(el=>{
+el.addEventListener('click',()=>{
+const url=el.dataset.url;
+navigateBrowser(url);
+});
+});
+const homeBtn=document.getElementById('browser-home');
+if(homeBtn)homeBtn.addEventListener('click',()=>{
+document.getElementById('browser-url').value='epiccustam://home';
+document.getElementById('browser-body').innerHTML=homeHtml;
+setTimeout(()=>{document.querySelectorAll('.browser-bookmark').forEach(el=>{el.addEventListener('click',()=>navigateBrowser(el.dataset.url))})},10);
+});
+},50);
+};
+const navigateBrowser=(url)=>{
+const urlBar=document.getElementById('browser-url');
+const body=document.getElementById('browser-body');
+if(!urlBar||!body)return;
+urlBar.value=url;
+const host=url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+const matchKey=Object.keys(browserPages).find(k=>host.includes(k));
+if(matchKey){
+const page=browserPages[matchKey];
+body.innerHTML=page.body;
+}else{
+body.innerHTML=`<div style="padding:20px;text-align:center;font-family:Tahoma,sans-serif"><div style="font-size:14px;color:#000;margin-bottom:8px">EPICCUSTAMBROSWER</div><div style="font-size:12px;color:#808080">Cannot connect to ${host}</div><div style="font-size:11px;color:#808080;margin-top:8px">The page you requested could not be loaded.</div><div style="margin-top:16px;font-size:48px;color:#d4d0c8">:(</div></div>`;
+}
 };
 const openTerminal=()=>{
 const ver=typeof pcState!=='undefined'&&pcState===2?'v0.6.66':'v1.0.2';
@@ -619,6 +987,8 @@ else if(lower==='ls'){out.innerHTML+='Desktop/  Documents/  Pictures/  Music/  V
 else if(lower==='uptime'){out.innerHTML+='up 0 days, 0:32, load average: 0.42, 0.38, 0.35\n\n'}
 else if(lower==='ps'){out.innerHTML+='  PID  STAT  COMMAND\n    1  S     init\n    2  S     soos-core\n    7  S     display-server\n   14  S     soos-shell\n   28  S     Steam.exe\n   31  S     hl2.exe\n\n'}
 else if(lower==='neofetch'){out.innerHTML+='<span style="color:#fff">  ___  ___  ___  ___\n / __||   || _ \\/ __|\n \\__ \\| | ||  _/\\__ \\\n |___/|___||_|  |___/</span>\n\n  OS: SoOS 1.0.2\n  Host: TheDustBwlDuck\n  Uptime: 32 minutes\n  Shell: soos-sh\n  CPU: Intel Core 2 Quad Q6600 @ 2.40GHz\n  GPU: ATI Radeon HD 3870 512 MB\n  Memory: 4096 MB DDR2 (43% used)\n\n'}
+else if(lower==='13'){out.innerHTML+='\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n13\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n'}
+else if(lower==='201'){out.innerHTML+='you know the password.\n\n'}
 else if(lower==='exit'){closeWindow('terminal');return}
 else if(cmd!==''){out.innerHTML+=`<span style="color:#fff">Unknown command: ${cmd}</span>\n\n`}
 out.scrollTop=out.scrollHeight;
@@ -699,3 +1069,71 @@ const openFraps=()=>{createWindow('fraps','Fraps',350,250,'<div style="padding:1
 const openWinRAR=()=>{createWindow('winrar','WinRAR',350,200,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">WinRAR 3.93</div><div style="color:#555;margin-top:12px">Your 40-day trial has expired.</div><div style="color:#555;margin-top:4px">Days since expiration: <span style="color:#fff">1,094</span></div><div style="color:#555;margin-top:4px">Will you ever buy it: <span style="color:#fff">No</span></div></div>')};
 const openAudacity=()=>{createWindow('audacity','Audacity',450,300,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">Audacity 1.3.12</div><div>Project: <span style="color:#fff">untitled</span></div><div style="margin-top:8px">Sample Rate: <span style="color:#fff">44100 Hz</span></div><div style="margin-top:12px;color:#555;font-size:11px">i use this 2 make tf2 remixes w dj_n00dles</div></div>')};
 const openMirc=()=>{createWindow('mirc','mIRC',450,300,'<div style="padding:16px;color:#888;font-size:13px"><div style="color:#fff;font-size:16px;border-bottom:1px solid #222;padding-bottom:8px;margin-bottom:12px">mIRC 7.19</div><div>Server: <span style="color:#fff">irc.gamesurge.net</span></div><div style="margin-top:8px">Channel: <span style="color:#fff">#tf2-dustbowl</span></div><div style="margin-top:8px">Users online: <span style="color:#fff">23</span></div><div style="margin-top:12px;color:#555;font-size:11px">i mostly just lurk lol</div></div>')};
+
+// Recycle Bin
+const openRecycleBin=()=>{
+const items=typeof pcState!=='undefined'&&pcState===2?[
+{name:'its_not_real.txt',content:'i keep telling myself its not real\nits just a game\nits just pixels\n\nbut then y does he kno my name'},
+{name:'DELETED_photo_001.png',content:'[IMAGE FILE - CORRUPTED]\n[Cannot display]'},
+{name:'uninstall_tf2.bat',content:'@echo off\necho Uninstalling Team Fortress 2...\necho ERROR: Access denied\necho ERROR: File in use by process (PID 13)\necho Uninstall failed.'},
+{name:'help_me.txt',content:'somebody please help me\ni dont kno who 2 ask\nmy friends think im crazy\nmaybe i am crazy\n\nbut hes real\nhes real hes real hes real'}
+]:[
+{name:'essay_draft_OLD.txt',content:'ok so the american revoltion\n\nu kno what forget it im starting over'},
+{name:'screenshot_003.png',content:'[IMAGE FILE]\n[dustbowl screenshot - bad quality]'},
+{name:'untitled.txt',content:''},
+{name:'New Folder',content:'[EMPTY FOLDER]'}
+];
+let list='';items.forEach((item,i)=>{
+list+=`<div class="explorer-item" data-bin-idx="${i}"><div class="explorer-item-icon">\uD83D\uDCC4</div><div class="explorer-item-name">${item.name}</div></div>`;
+});
+const h=`<div class="app-explorer"><div class="explorer-toolbar"><span style="font-family:Tahoma,sans-serif;font-size:11px;color:#000;padding:2px 4px">Recycle Bin - ${items.length} item(s)</span></div><div class="explorer-content" style="background:#fff">${list}</div></div>`;
+createWindow('recyclebin','Recycle Bin',400,300,h);
+document.querySelectorAll('[data-bin-idx]').forEach(el=>{
+el.addEventListener('click',()=>{const idx=parseInt(el.dataset.binIdx);openTextEditor(items[idx].content,items[idx].name)});
+});
+};
+
+// Browser with fake pages
+const browserPages={
+'dustbowl247.community-tf2.net':{title:'Dustbowl 24/7 - Community Server',body:`<div style="background:#2b2b2b;padding:16px;min-height:100%">
+<div style="color:#f0ad4e;font-size:18px;font-weight:bold;font-family:Tahoma,sans-serif">DUSTBOWL 24/7</div>
+<div style="color:#808080;font-size:11px;margin-top:4px;font-family:Tahoma,sans-serif">Community TF2 Server | cp_dustbowl</div>
+<div style="border:1px solid #444;margin:12px 0;padding:8px;background:#1a1a1a;font-family:Tahoma,sans-serif;font-size:12px">
+<div style="color:#fff;margin-bottom:8px">Server Status: <span style="color:#5cb85c">ONLINE</span></div>
+<div style="color:#aaa">Players: 22/24</div>
+<div style="color:#aaa">Map: cp_dustbowl</div>
+<div style="color:#aaa">IP: 68.142.15.201:27015</div>
+</div>
+<div style="color:#888;font-size:11px;font-family:Tahoma,sans-serif">Top Players This Week:</div>
+<div style="color:#aaa;font-size:11px;font-family:Tahoma,sans-serif;padding:4px 0">1. xx_FRAGZ_xx - 2,847 pts</div>
+<div style="color:#aaa;font-size:11px;font-family:Tahoma,sans-serif;padding:4px 0">2. TheDustBwlDuck - 2,415 pts</div>
+<div style="color:#aaa;font-size:11px;font-family:Tahoma,sans-serif;padding:4px 0">3. cr1tical_h1t - 1,923 pts</div>
+<div style="color:#aaa;font-size:11px;font-family:Tahoma,sans-serif;padding:4px 0">4. PYROMANIAC_JEFF - 1,876 pts</div>
+<div style="color:#aaa;font-size:11px;font-family:Tahoma,sans-serif;padding:4px 0">5. sENTRY_gUY_420 - 1,654 pts</div>
+<div style="color:#555;font-size:10px;margin-top:16px;font-family:Tahoma,sans-serif">Admin: dustbowlDAVE | Est. 2008 | Rules: No cheating, no sprays with nsfw</div>
+</div>`},
+'steamcommunity.com/id/thedustbwlduck':{title:'Steam Community :: TheDustBwlDuck',body:`<div style="background:#1b2838;padding:16px;min-height:100%;font-family:Tahoma,sans-serif">
+<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px">
+<div style="width:64px;height:64px;background:#2a475e;border:1px solid #4a6b8a;display:flex;align-items:center;justify-content:center;color:#66c0f4;font-size:10px">IMAGE<br>MISSING</div>
+<div>
+<div style="color:#fff;font-size:16px">TheDustBwlDuck</div>
+<div style="color:#57cbde;font-size:11px">Currently Online</div>
+<div style="color:#8f98a0;font-size:10px;margin-top:4px">Member since October 10, 2007</div>
+</div>
+</div>
+<div style="background:#2a475e;padding:8px;margin-bottom:8px;border:1px solid #4a6b8a">
+<div style="color:#fff;font-size:12px;margin-bottom:4px">Currently In-Game</div>
+<div style="color:#90ba3c;font-size:11px">Team Fortress 2</div>
+</div>
+<div style="color:#8f98a0;font-size:11px;border-top:1px solid #2a475e;padding-top:8px">
+<div style="margin-bottom:4px"><span style="color:#fff">2,847</span> hrs on record</div>
+<div style="margin-bottom:4px">Most played: Team Fortress 2 (2,847 hrs)</div>
+<div>Games owned: 3 (The Orange Box)</div>
+</div>
+<div style="color:#8f98a0;font-size:10px;margin-top:12px;border-top:1px solid #2a475e;padding-top:8px">
+<div style="color:#fff;font-size:11px;margin-bottom:4px">About me:</div>
+<div>dustbowl is the best map ever made and u cant change my mind. medic main btw. dont add me if ur gona be weird.</div>
+<div style="margin-top:8px">i play on dustbowl 24/7 server evry nite. come say hi.</div>
+</div>
+</div>`}
+};
