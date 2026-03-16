@@ -6,10 +6,12 @@ if(openWindows[id]){focusWindow(id);return openWindows[id]}
 const w=document.createElement('div');
 w.className='app-window';
 w.id=`win-${id}`;
-w.style.width=`${width}px`;
-w.style.height=`${height}px`;
-w.style.left=`${Math.max(40,Math.random()*300)}px`;
-w.style.top=`${Math.max(20,Math.random()*200)}px`;
+w.style.width=`${Math.min(width,window.innerWidth-40)}px`;
+w.style.height=`${Math.min(height,window.innerHeight-80)}px`;
+const maxL=Math.max(0,window.innerWidth-width-20);
+const maxT=Math.max(0,window.innerHeight-height-80);
+w.style.left=`${Math.min(40+Math.random()*200,maxL)}px`;
+w.style.top=`${Math.min(20+Math.random()*100,maxT)}px`;
 const tb=document.createElement('div');
 tb.className='window-titlebar';
 const tt=document.createElement('span');
@@ -19,7 +21,7 @@ const ctrls=document.createElement('div');
 ctrls.className='window-controls';
 const minBtn=document.createElement('button');
 minBtn.className='window-ctrl-btn';
-minBtn.innerHTML='_';
+minBtn.innerHTML='\u2014';
 minBtn.addEventListener('click',(e)=>{e.stopPropagation();minimizeWindow(id)});
 const maxBtn=document.createElement('button');
 maxBtn.className='window-ctrl-btn';
@@ -74,12 +76,7 @@ if(!openWindows[id])return;
 const w=openWindows[id];
 if(w.maximized){
 w.el.classList.remove('window-maximized');
-if(w.preMax){
-w.el.style.left=w.preMax.l;
-w.el.style.top=w.preMax.t;
-w.el.style.width=w.preMax.w;
-w.el.style.height=w.preMax.h;
-}
+if(w.preMax){w.el.style.left=w.preMax.l;w.el.style.top=w.preMax.t;w.el.style.width=w.preMax.w;w.el.style.height=w.preMax.h}
 w.maximized=false;
 }else{
 w.preMax={l:w.el.style.left,t:w.el.style.top,w:w.el.style.width,h:w.el.style.height};
@@ -94,9 +91,7 @@ delete openWindows[id];
 removeTaskbarBtn(id);
 if(activeWinId===id)activeWinId=null;
 };
-const closeAllWindows=()=>{
-Object.keys(openWindows).forEach(closeWindow);
-};
+const closeAllWindows=()=>{Object.keys(openWindows).forEach(closeWindow)};
 const addTaskbarBtn=(id,title)=>{
 const b=document.createElement('button');
 b.className='taskbar-app-btn active';
@@ -112,8 +107,7 @@ else{focusWindow(id)}
 document.getElementById('taskbar-apps').appendChild(b);
 };
 const removeTaskbarBtn=(id)=>{
-const b=document.querySelector(`.taskbar-app-btn[data-app-id="${id}"]`);
-b?.remove();
+document.querySelector(`.taskbar-app-btn[data-app-id="${id}"]`)?.remove();
 };
 const makeDraggable=(win,handle,id)=>{
 let ox,oy,sx,sy,dragging=false;
@@ -126,8 +120,12 @@ e.preventDefault();
 });
 document.addEventListener('mousemove',(e)=>{
 if(!dragging)return;
-win.style.left=`${sx+(e.clientX-ox)}px`;
-win.style.top=`${sy+(e.clientY-oy)}px`;
+let nx=sx+(e.clientX-ox);
+let ny=sy+(e.clientY-oy);
+nx=Math.max(-win.offsetWidth+100,Math.min(nx,window.innerWidth-100));
+ny=Math.max(0,Math.min(ny,window.innerHeight-80));
+win.style.left=`${nx}px`;
+win.style.top=`${ny}px`;
 });
 document.addEventListener('mouseup',()=>{dragging=false});
 };
@@ -142,8 +140,8 @@ e.stopPropagation();
 });
 document.addEventListener('mousemove',(e)=>{
 if(!resizing)return;
-const nw=Math.max(320,sw+(e.clientX-ox));
-const nh=Math.max(200,sh+(e.clientY-oy));
+const nw=Math.max(320,Math.min(sw+(e.clientX-ox),window.innerWidth-win.offsetLeft));
+const nh=Math.max(200,Math.min(sh+(e.clientY-oy),window.innerHeight-win.offsetTop-40));
 win.style.width=`${nw}px`;
 win.style.height=`${nh}px`;
 });
