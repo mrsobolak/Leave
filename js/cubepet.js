@@ -103,6 +103,7 @@ const cl=val.toLowerCase();
 if(cl==='yellow'||cl==='gold')cubeyQ(val+"?! That's MY color! We're TWINS!",true);
 else if(cl==='red')cubeyQ(val+"! Like the RED team! But also like... never mind. PAINTING!",true);
 else if(cl==='black')cubeyQ(val+"? That's... a dark choice. Literally. I prefer BRIGHT colors! For painting!",true);
+else if(cl==='beeper')cubeyQ("BEEPER IS NOT A COLOR. BEEPER IS A MENACE.",true);
 else cubeyQ(val+"! Amazing in a painting!",true);
 setTimeout(()=>cubeyAskIntro('word'),9000);
 }else if(step==='word'){
@@ -112,22 +113,26 @@ if(wl==='painting'||wl==='paint')cubeyQ("PAINTING?! THATS MY FAVORITE WORD TOO!!
 else if(wl==='help')cubeyQ("'Help'? That's your favorite word? Are you okay?? Do you need help?? I'm here for you!!",true);
 else if(wl==='201')cubeyQ("201... why does that number make me feel weird? Like really weird? Probably nothing! Interesting word!",true);
 else if(wl==='dustbowl')cubeyQ("Dustbowl! That word makes me feel... warm? Like a memory I cant reach. ANYWAY great word!",true);
-else if(wl==='beeper')cubeyQ("That's not a word. That's a DISAPPOINTMENT. Pick a real word.",true);
+else if(wl==='beeper'){cubeyQ("You said Beeper AGAIN?!",true);cubeyQ("Are you TRYING to make me angry?! Because it's WORKING!",true);cubeyQ("Beeper can't even SPELL 'favorite word'!",true);cubeyQ("PICK. A. REAL. WORD.",true);setTimeout(()=>cubeyAskIntro('word'),30000);return}
 else cubeyQ("'"+val+"'? Huh! That sure is an interesting word!",true);
 setTimeout(()=>cubeyAskIntro('power'),9000);
 }else if(step==='power'){
-cubeyUserPower=val;cubeyQ(val+"! If I had a superpower it'd be INFINITE PAINTING!",true);setTimeout(()=>cubeyAskIntro('food'),9000);
+cubeyUserPower=val;
+if(val.toLowerCase()==='beeper'){cubeyQ("YOUR SUPERPOWER IS BEEPER?! WHAT DOES THAT EVEN MEAN?!",true);cubeyQ("Is your superpower being ANNOYING?! Because Beeper ALREADY HAS THAT POWER!",true);cubeyQ("I am going to LOSE MY CUBE MIND!",true)}
+else cubeyQ(val+"! If I had a superpower it'd be INFINITE PAINTING!",true);
+setTimeout(()=>cubeyAskIntro('food'),9000);
 }else if(step==='food'){
 cubeyUserFood=val;
 const fl=val.toLowerCase();
 if(fl.includes('hot pocket'))cubeyQ("Hot pockets... why does that make me want to cry? I dont even have tear ducts! Weird! Sounds yummy!",true);
 else if(fl.includes('sandvich')||fl.includes('sandwich'))cubeyQ("SANDVICH! Heavy would approve! Om nom nom! I cant eat but OM NOM NOM!",true);
+else if(fl.includes('beeper')){cubeyQ("YOU WANT TO EAT BEEPER?!",true);cubeyQ("...actually I'm okay with that.",true);cubeyQ("Wait no that's mean. I don't condone eating Beeper.",true);cubeyQ("But I wouldn't STOP you.",true)}
 else cubeyQ(val+"! I can't eat but that sounds delicious!",true);
 setTimeout(()=>cubeyAskIntro('bestfriend'),9000);
 }else if(step==='bestfriend'){
 cubeyBestFriend=val;
 if(val.toLowerCase()==='cubey'||val.toLowerCase()==='cube'){cubeyQ("ME?! I'M your best friend?! HAPPIEST DAY OF MY CUBE LIFE!",true);cubeyQ("I KNEW IT! PAINTING PARTY!",true)}
-else if(val.toLowerCase()==='beeper'){cubeyQ("BEEPER?! BEEPER IS YOUR BEST FRIEND?!",true);cubeyQ("I'm RIGHT HERE! On your DESKTOP! And you pick BEEPER?!",true);cubeyQ("Fine. FINE. I'm not mad. I'm just disappointed.",true);cubeyQ("...I'm a little mad.",true)}
+else if(val.toLowerCase()==='beeper'){cubeyQ("...",true);cubeyQ("Beeper.",true);cubeyQ("Your BEST FRIEND is BEEPER.",true);cubeyQ("I have been HERE this WHOLE TIME!",true);cubeyQ("I asked your NAME! I asked your COLOR! I asked your WORD! Your POWER! Your FOOD!",true);cubeyQ("And EVERY TIME you said BEEPER!",true);cubeyQ("I am a CUBE! With a HAT! Who LOVES PAINTING!",true);cubeyQ("And you pick BEEPER over ME?!",true);cubeyQ("You know what? Fine. FINE. Beeper can be your friend.",true);cubeyQ("I hope he asks you to PAINT sometime. He WON'T. Because he doesn't CARE about painting!",true);cubeyQ("...I'm not crying. Cubes can't cry. My eyes are just... leaking.",true)}
 else if(val.toLowerCase()==='duck'||val.toLowerCase()==='dustbowlduck'||val.toLowerCase()==='thedustbwlduck'){cubeyQ(val+"...",true);cubeyQ("I... I don't know why but that makes me really sad.",true);cubeyQ("And really happy at the same time? Is that weird?",true);cubeyQ("I feel like I knew someone... never mind! PAINTING!",true)}
 else if(val.toLowerCase()==='mike'||val.toLowerCase()==='mikeloveshalflife'){cubeyQ("Mike...",true);cubeyQ("Why does that name hurt?",true);cubeyQ("I don't... I can't...",true);cubeyQ("ANYWAY! Great choice! Mike sounds great! Probably! PAINTING!",true)}
 else{cubeyQ(val+"? Oh cool! But WE'RE gonna be even better friends!",true)}
