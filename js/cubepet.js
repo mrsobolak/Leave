@@ -93,20 +93,43 @@ const handler=()=>{
 const val=inpEl.value.trim();if(!val)return;inp.classList.add('cubey-hidden');btn.removeEventListener('click',handler);inpEl.removeEventListener('keydown',kh);cubeySpeaking=false;
 if(step==='name'){
 if(val.toLowerCase()==='cubey'){cubeyQ("That's MY name! You can't be Cubey! Try again!",true);setTimeout(()=>cubeyAskIntro('name'),8000)}
+else if(val.toLowerCase()==='beeper'){cubeyQ("BEEPER?! Are you SERIOUS right now?!",true);cubeyQ("I HATE Beeper! Beeper is the WORST!",true);cubeyQ("Beeper thinks he's SO cool with his little 'investigations'!",true);cubeyQ("He's not even a REAL investigator! He just shows up and makes everything WORSE!",true);cubeyQ("Give me your REAL name. NOT Beeper. ANYONE but Beeper.",true);setTimeout(()=>cubeyAskIntro('name'),40000)}
+else if(val.toLowerCase()==='mike'||val.toLowerCase()==='mikeloveshalflife'){cubeyQ(val+"... that name... I...",true);cubeyQ("Sorry! I got dizzy for a second! Weird!",true);cubeyQ("ANYWAY hi "+val+"! Great name! Love it!",true);cubeyUserName=val;setTimeout(()=>cubeyAskIntro('color'),25000)}
+else if(val.toLowerCase()==='duck'||val.toLowerCase()==='dustbowlduck'||val.toLowerCase()==='thedustbwlduck'||val.toLowerCase()==='thedustbowlduck'){cubeyQ("...",true);cubeyQ("No.",true);cubeyQ("You're not him.",true);cubeyQ("Don't use that name. Please.",true);cubeyQ("Tell me your real name.",true);setTimeout(()=>cubeyAskIntro('name'),35000)}
 else{cubeyUserName=val;cubeyQ(val+"! What a WONDERFUL name! Hi "+val+"!",true);setTimeout(()=>cubeyAskIntro('color'),9000)}
 }else if(step==='color'){
 cubeyUserColor=val;
-cubeyQ(val+(val.toLowerCase()==='yellow'?"?! That's MY color! We're TWINS!":"! Amazing in a painting!"),true);
+const cl=val.toLowerCase();
+if(cl==='yellow'||cl==='gold')cubeyQ(val+"?! That's MY color! We're TWINS!",true);
+else if(cl==='red')cubeyQ(val+"! Like the RED team! But also like... never mind. PAINTING!",true);
+else if(cl==='black')cubeyQ(val+"? That's... a dark choice. Literally. I prefer BRIGHT colors! For painting!",true);
+else cubeyQ(val+"! Amazing in a painting!",true);
 setTimeout(()=>cubeyAskIntro('word'),9000);
 }else if(step==='word'){
-cubeyUserWord=val;cubeyQ("'"+val+"'? Huh! That sure is an interesting word!",true);setTimeout(()=>cubeyAskIntro('power'),9000);
+cubeyUserWord=val;
+const wl=val.toLowerCase();
+if(wl==='painting'||wl==='paint')cubeyQ("PAINTING?! THATS MY FAVORITE WORD TOO!! WE ARE THE SAME PERSON!! Well... you're a person. I'm a cube.",true);
+else if(wl==='help')cubeyQ("'Help'? That's your favorite word? Are you okay?? Do you need help?? I'm here for you!!",true);
+else if(wl==='201')cubeyQ("201... why does that number make me feel weird? Like really weird? Probably nothing! Interesting word!",true);
+else if(wl==='dustbowl')cubeyQ("Dustbowl! That word makes me feel... warm? Like a memory I cant reach. ANYWAY great word!",true);
+else if(wl==='beeper')cubeyQ("That's not a word. That's a DISAPPOINTMENT. Pick a real word.",true);
+else cubeyQ("'"+val+"'? Huh! That sure is an interesting word!",true);
+setTimeout(()=>cubeyAskIntro('power'),9000);
 }else if(step==='power'){
 cubeyUserPower=val;cubeyQ(val+"! If I had a superpower it'd be INFINITE PAINTING!",true);setTimeout(()=>cubeyAskIntro('food'),9000);
 }else if(step==='food'){
-cubeyUserFood=val;cubeyQ(val+"! I can't eat but that sounds delicious!",true);setTimeout(()=>cubeyAskIntro('bestfriend'),9000);
+cubeyUserFood=val;
+const fl=val.toLowerCase();
+if(fl.includes('hot pocket'))cubeyQ("Hot pockets... why does that make me want to cry? I dont even have tear ducts! Weird! Sounds yummy!",true);
+else if(fl.includes('sandvich')||fl.includes('sandwich'))cubeyQ("SANDVICH! Heavy would approve! Om nom nom! I cant eat but OM NOM NOM!",true);
+else cubeyQ(val+"! I can't eat but that sounds delicious!",true);
+setTimeout(()=>cubeyAskIntro('bestfriend'),9000);
 }else if(step==='bestfriend'){
 cubeyBestFriend=val;
 if(val.toLowerCase()==='cubey'||val.toLowerCase()==='cube'){cubeyQ("ME?! I'M your best friend?! HAPPIEST DAY OF MY CUBE LIFE!",true);cubeyQ("I KNEW IT! PAINTING PARTY!",true)}
+else if(val.toLowerCase()==='beeper'){cubeyQ("BEEPER?! BEEPER IS YOUR BEST FRIEND?!",true);cubeyQ("I'm RIGHT HERE! On your DESKTOP! And you pick BEEPER?!",true);cubeyQ("Fine. FINE. I'm not mad. I'm just disappointed.",true);cubeyQ("...I'm a little mad.",true)}
+else if(val.toLowerCase()==='duck'||val.toLowerCase()==='dustbowlduck'||val.toLowerCase()==='thedustbwlduck'){cubeyQ(val+"...",true);cubeyQ("I... I don't know why but that makes me really sad.",true);cubeyQ("And really happy at the same time? Is that weird?",true);cubeyQ("I feel like I knew someone... never mind! PAINTING!",true)}
+else if(val.toLowerCase()==='mike'||val.toLowerCase()==='mikeloveshalflife'){cubeyQ("Mike...",true);cubeyQ("Why does that name hurt?",true);cubeyQ("I don't... I can't...",true);cubeyQ("ANYWAY! Great choice! Mike sounds great! Probably! PAINTING!",true)}
 else{cubeyQ(val+"? Oh cool! But WE'RE gonna be even better friends!",true)}
 cubeyQ("Now let me tell you about ME!",true);
 cubeyQ("I was made in 2007! Same year as this PC! We're twins!",true);
