@@ -2052,7 +2052,7 @@ const openCubeyApp=()=>{
 const isC=window.pcState===2;
 if(isC){
 // ===== CORRUPTED MODE: SELF-CONTAINED PUZZLE TERMINAL =====
-const h='<div id="cubeyapp-shell" style="background:#000;padding:0;font-family:VT323,monospace;height:100%"><div id="cubeyapp-output" style="height:340px;overflow-y:auto;padding:10px;font-size:14px;color:#0f0;line-height:1.6"></div><div style="display:flex;align-items:center;padding:6px 10px;border-top:1px solid #222;background:#050505"><span style="color:#0f0;font-size:14px">root@void:~$&nbsp;</span><input id="cubeyapp-input" style="flex:1;background:transparent;border:none;color:#0f0;font-family:VT323,monospace;font-size:14px;outline:none" autocomplete="off" spellcheck="false"></div></div>';
+const h='<div id="cubeyapp-shell" style="background:#000;padding:0;font-family:Consolas,monospace;height:100%"><div id="cubeyapp-output" style="height:340px;overflow-y:auto;padding:10px;font-size:14px;color:#0f0;line-height:1.6"></div><div style="display:flex;align-items:center;padding:6px 10px;border-top:1px solid #222;background:#050505"><span style="color:#0f0;font-size:14px">root@void:~$ </span><input id="cubeyapp-input" style="flex:1;background:transparent;border:none;color:#0f0;font-family:Consolas,monospace;font-size:13px;outline:none" autocomplete="off" spellcheck="false"></div></div>';
 createWindow('cubeyapp','Cubey! \u2014 SoOS Dev Shell',560,420,h);
 setTimeout(()=>{
 const output=document.getElementById('cubeyapp-output');
