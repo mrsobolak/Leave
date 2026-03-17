@@ -12,12 +12,12 @@ const cubey=document.getElementById('cubey');
 if(cubey)cubey.style.zIndex='100002';
 
 // Cubey panics as TF2 loads
-if(typeof cubeyQ==='function'){
-cubeyQ("No...",true);
-setTimeout(()=>cubeyQ("NO NO NO! I TOLD YOU NOT TO!",true),1500);
-setTimeout(()=>cubeyQ(cubeyUserName+" CLOSE IT! PLEASE!",true),3500);
-setTimeout(()=>cubeyQ("SOMETHING IS WRONG! I CAN FEEL IT!",true),6000);
-setTimeout(()=>cubeyQ("WHATS HAPPENING TO ME?!",true),9000);
+if(window.cubeyQ){
+window.cubeyQ("No...",true);
+setTimeout(()=>window.cubeyQ("NO NO NO! I TOLD YOU NOT TO!",true),1500);
+setTimeout(()=>window.cubeyQ(cubeyUserName+" CLOSE IT! PLEASE!",true),3500);
+setTimeout(()=>window.cubeyQ("SOMETHING IS WRONG! I CAN FEEL IT!",true),6000);
+setTimeout(()=>window.cubeyQ("WHATS HAPPENING TO ME?!",true),9000);
 }
 
 // custom video player
@@ -58,8 +58,8 @@ overlay.style.background='#000';
 overlay.style.cursor='none';
 
 // Cubey screams
-if(typeof cubeyQ==='function'){
-cubeyQ("AAAAAAA!",true);
+if(window.cubeyQ){
+window.cubeyQ("AAAAAAA!",true);
 }
 // Make Cubey glitch during face
 const cubey=document.getElementById('cubey');
@@ -504,3 +504,9 @@ el.innerHTML+='<div style="color:'+l.c+';font-size:'+(l.text==='ENDING 2'?'11px'
 
 },10500);
 };
+window.triggerTF2Launch=triggerTF2Launch;
+window.triggerFace=triggerFace;
+window.triggerSteamCrash=triggerSteamCrash;
+window.triggerBeeperEnding=triggerBeeperEnding;
+window.triggerFactoryReset=triggerFactoryReset;
+Object.defineProperty(window,'pcState',{get:()=>pcState,set:(v)=>{pcState=v}});

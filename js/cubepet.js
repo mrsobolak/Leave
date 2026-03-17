@@ -411,7 +411,7 @@ cubeyQ("You're taking too long. I'm doing it myself.",true);
 setTimeout(()=>{
 cubeyQ("Opening command prompt...",true);
 setTimeout(()=>{
-if(typeof openCmd==='function')openCmd();
+if(window.openCmd)window.openCmd();
 setTimeout(()=>{
 cubeyQ("Now type 'terminal'. Do it.",true);
 },1500);
@@ -473,7 +473,7 @@ cubeyQ("No...",true);
 cubeyQ("It's too late. He found you.",true);
 cubeyQ("I'm sorry "+cubeyUserName+". I tried.",true);
 setTimeout(()=>{
-if(typeof openApp==='function')openApp('chat');
+if(window.openApp)window.openApp('chat');
 setTimeout(()=>{
 const overlay=document.getElementById('jumpscare-overlay');
 overlay.classList.remove('hidden');
@@ -542,3 +542,13 @@ cubeyStyle.textContent='#cubey{position:fixed;bottom:50px;right:20px;z-index:700
 document.head.appendChild(cubeyStyle);
 
 window._cubeyReactToFile=cubeyReactToFileMike;window._cubeyReactToApp=cubeyReactToApp;window._cubeyReactToChat=(c)=>{trackPath2Action();cubeyReactToChat(c)};window._cubeyReactToEmail=(s,f)=>{trackPath2Action();cubeyReactToEmail(s,f)};window._cubeyShutdownReact=cubeyShutdownReact;window._cubeyTF2Warn=cubeyTF2Warn;window._triggerPath2=triggerPath2;
+window.initCubey=initCubey;
+window.cubeyQ=cubeyQ;
+// Sync cubey vars to window for cross-file access
+Object.defineProperty(window,'cubeyUserName',{get:()=>cubeyUserName,set:(v)=>{cubeyUserName=v}});
+Object.defineProperty(window,'cubeyIntroDone',{get:()=>cubeyIntroDone,set:(v)=>{cubeyIntroDone=v}});
+Object.defineProperty(window,'cubeyGamesWon',{get:()=>cubeyGamesWon,set:(v)=>{cubeyGamesWon=v}});
+Object.defineProperty(window,'terminalLaunched',{get:()=>terminalLaunched,set:(v)=>{terminalLaunched=v}});
+Object.defineProperty(window,'mikeAwakened',{get:()=>mikeAwakened,set:(v)=>{mikeAwakened=v}});
+Object.defineProperty(window,'cubeyKilled',{get:()=>cubeyKilled,set:(v)=>{cubeyKilled=v}});
+Object.defineProperty(window,'cubeyQueue',{get:()=>cubeyQueue});

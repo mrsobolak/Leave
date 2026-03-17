@@ -91,7 +91,7 @@ document.getElementById('start-btn').onclick=(e)=>{e.stopPropagation();toggleSta
 document.onclick=(e)=>{if(startOpen&&!document.getElementById('start-menu').contains(e.target)&&e.target!==document.getElementById('start-btn')){toggleStart(false)}};
 document.getElementById('start-shutdown').onclick=doShutdown;
 document.getElementById('start-save').onclick=()=>{
-if(typeof saveGame==='function'){saveGame();toggleStart(false);
+if(window.saveGame){window.saveGame();toggleStart(false);
 const notif=document.createElement('div');
 notif.style.cssText='position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#333;color:#0f0;padding:6px 20px;font-family:Tahoma,sans-serif;font-size:11px;z-index:99999;border:1px solid #555';
 notif.textContent='Game saved to soos_save.json';
@@ -99,7 +99,7 @@ document.body.appendChild(notif);
 setTimeout(()=>notif.remove(),3000);
 }};
 if(typeof pcState!=='undefined'&&pcState===2){document.getElementById('desktop').classList.add('corrupted-flicker')}
-if(typeof initCubey==='function')initCubey();
+if(window.initCubey)window.initCubey();
 };
 const toggleStart=(show)=>{
 startOpen=show;
@@ -134,3 +134,4 @@ konamiSeq=[];
 openTextEditor('you found it.\n\n201\n\nthe password is the key to everything.\n\n- TheDustBwlDuck','secret.txt');
 }
 });
+window.initDesktop=initDesktop;

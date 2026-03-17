@@ -233,11 +233,12 @@ window.mikeAwakened=saveData.mikeAwakened||false;
 window.cubeyKilled=saveData.cubeyKilled||false;
 
 setTimeout(()=>{
-if(typeof initDesktop==='function')initDesktop();
-if(typeof initCubey==='function')setTimeout(initCubey,500);
+if(window.initDesktop)window.initDesktop();
+if(window.initCubey)setTimeout(window.initCubey,500);
 },300);
 }else{
 document.getElementById('dell-splash').classList.remove('hidden');
 dellSplash();
 }
 };
+window.saveGame=saveGame;

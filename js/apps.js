@@ -1129,7 +1129,7 @@ return[
 ];
 };
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>{if(typeof window._cubeyTF2Warn==='function'){window._cubeyTF2Warn().then(ok=>{if(ok==='beeper'){if(typeof triggerBeeperEnding==='function')triggerBeeperEnding()}else if(ok){triggerTF2Launch()}})}else{triggerTF2Launch()}},steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom,webcam:openWebcam,taskmgr:openTaskMgr,defrag:openDefrag,solitaire:openSolitaire,stickynotes:openStickyNotes,calendar:openCalendar,cmd:openCmd};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>{if(typeof window._cubeyTF2Warn==='function'){window._cubeyTF2Warn().then(ok=>{if(ok==='beeper'){if(window.triggerBeeperEnding)window.triggerBeeperEnding()}else if(ok){window.triggerTF2Launch()}})}else{window.triggerTF2Launch()}},steam:()=>window.triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom,webcam:openWebcam,taskmgr:openTaskMgr,defrag:openDefrag,solitaire:openSolitaire,stickynotes:openStickyNotes,calendar:openCalendar,cmd:openCmd};
 if(apps[id])apps[id]();
 if(typeof window._cubeyReactToApp==='function')window._cubeyReactToApp(id);
 };
@@ -1303,7 +1303,7 @@ createWindow('settings','Settings',400,isC?440:380,h);
 if(isC){
 setTimeout(()=>{
 const btn=document.getElementById('factory-reset-btn');
-if(btn)btn.addEventListener('click',()=>{triggerFactoryReset()});
+if(btn)btn.addEventListener('click',()=>{window.triggerFactoryReset()});
 },100);
 }
 };
@@ -2104,12 +2104,12 @@ output.innerHTML+='<span style="color:#f00">now there\'s nothing between you and
 output.innerHTML+='<span style="color:#ff0">Terminating cubey.pet (PID 003)...</span><br>';
 setTimeout(()=>{
 output.innerHTML+='<span style="color:#f00">ACCESS DENIED. Cubey cannot be killed. He loves you too much.</span><br>';
-if(typeof cubeyQ==='function')cubeyQ("HEY! Don't do that {name}! That's MEAN!".replace('{name}',typeof cubeyUserName!=='undefined'?cubeyUserName:''),true);
+if(window.cubeyQ)window.cubeyQ("HEY! Don't do that {name}! That's MEAN!".replace('{name}',typeof cubeyUserName!=='undefined'?cubeyUserName:''),true);
 },500);
 }
 }
-else if(cl==='terminal'||cl==='run terminal'){if(isC&&typeof launchTerminalPuzzle==='function'){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';if(typeof terminalLaunched!=='undefined')terminalLaunched=true;setTimeout(()=>launchTerminalPuzzle(),500)}else if(isC){output.innerHTML+='<span style="color:#f00">Terminal unavailable.</span><br>'}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
-else if(cl==='save'){if(typeof saveGame==='function'){saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
+else if(cl==='terminal'||cl==='run terminal'){if(isC&&window.launchTerminalPuzzle){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';if(typeof terminalLaunched!=='undefined')terminalLaunched=true;setTimeout(()=>window.launchTerminalPuzzle(),500)}else if(isC){output.innerHTML+='<span style="color:#f00">Terminal unavailable.</span><br>'}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
+else if(cl==='save'){if(window.saveGame){window.saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
 else output.innerHTML+="'"+cmd+"' is not recognized as a command.<br>";
 output.scrollTop=output.scrollHeight;
 });
@@ -2179,3 +2179,5 @@ if(screenSaverActive)return;
 startScreenSaverTimer();
 }));
 startScreenSaverTimer();
+window.openCmd=openCmd;
+window.openApp=openApp;

@@ -330,7 +330,7 @@ termInput=document.getElementById('pterm-input');
 
 document.getElementById('pterm-close').addEventListener('click',()=>{
  win.remove();puzzleActive=false;
- if(typeof cubeyQ==='function')cubeyQ("You closed the terminal... we need to finish this.",true);
+ if(window.cubeyQ)window.cubeyQ("You closed the terminal... we need to finish this.",true);
 });
 
 termInput.addEventListener('keydown',(e)=>{
@@ -398,8 +398,8 @@ if(termDiv){termDiv.appendChild(div);termDiv.scrollTop=termDiv.scrollHeight}
 };
 
 const mikeSay=(text)=>{
-if(typeof cubeyQ==='function'){
- if(typeof cubeyQueue!=='undefined'){cubeyQueue.length=0;cubeyProcessing=false;cubeySpeaking=false}
+if(window.cubeyQ){
+ if(window.cubeyQueue){window.cubeyQueue.length=0}
  const b=document.getElementById('cubey-bubble');
  if(b){b.classList.remove('cubey-hidden');b.textContent=text}
 }
@@ -458,3 +458,4 @@ overlay.innerHTML='<div style="text-align:center;position:absolute;top:50%;left:
 // ============ EXPORTS ============
 window.launchTerminalPuzzle=launchTerminalPuzzle;
 window.triggerEnding1=triggerEnding1;
+window.launchTerminalPuzzle=launchTerminalPuzzle;
