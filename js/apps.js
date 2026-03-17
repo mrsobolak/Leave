@@ -2108,7 +2108,7 @@ if(window.cubeyQ)window.cubeyQ("HEY! Don't do that {name}! That's MEAN!".replace
 },500);
 }
 }
-else if(cl==='terminal'||cl==='run terminal'){if(isC&&window.launchTerminalPuzzle){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';window.terminalLaunched=true;setTimeout(()=>window.launchTerminalPuzzle(),500)}else if(isC){output.innerHTML+='<span style="color:#f00">Terminal unavailable.</span><br>'}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
+else if(cl==='terminal'||cl==='run terminal'){if(isC){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';window.terminalLaunched=true;setTimeout(()=>{if(window.launchTerminalPuzzle)window.launchTerminalPuzzle();else{const s=document.createElement('script');s.src='js/puzzlegames.js';s.onload=()=>{if(window.launchTerminalPuzzle)window.launchTerminalPuzzle()};document.head.appendChild(s)}},500)}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
 else if(cl==='save'){if(window.saveGame){window.saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
 else output.innerHTML+="'"+cmd+"' is not recognized as a command.<br>";
 output.scrollTop=output.scrollHeight;

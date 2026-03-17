@@ -84,8 +84,14 @@ setTimeout(()=>cubeyQ(cubeyUserName+"... I need your help.",true),53000);
 setTimeout(()=>cubeyQ("I know how to stop him. But I can't do it alone.",true),57000);
 setTimeout(()=>cubeyQ("I found something. A way into his system. There are encrypted files hiding a kill command.",true),61000);
 setTimeout(()=>cubeyQ("If we can crack the ciphers, we can find the codes to kill his process.",true),65000);
-setTimeout(()=>cubeyQ("Click on me when you're ready. I'll tell you what to do.",true),69000);
-setTimeout(startMikeIdle,72000);
+setTimeout(()=>cubeyQ("I found a way in. A developer shell hidden in SoOS.",true),69000);
+setTimeout(()=>cubeyQ("Opening it now. Follow my instructions.",true),73000);
+setTimeout(()=>{
+mikeAwakened=true;
+window.terminalLaunched=true;
+if(window.launchTerminalPuzzle)window.launchTerminalPuzzle();
+},76000);
+setTimeout(startMikeIdle,78000);
 }
 else if(cubeyIntroDone){
 // Intro already done from save - skip to idle, greet player
@@ -407,7 +413,7 @@ const cubeyReactToEmail=(s,f)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=wi
 const cubeyNormalR={explorer:["Files! Find me a painting {name}!"],browser:["EPICCUSTAMBROSWER!"],terminal:["Hacker stuff! Type 'I love Cubey'!"],texteditor:["Words! Almost as good as painting!"],chat:["Tell them Cubey says hi!"],email:["Any painting emails?"],paint:["PAINT!! MY FAVORITE!! {name} THIS IS THE BEST!!!!","DRAW ME!!","PAINTING!!!!!"],calculator:["1+1 is... cube?"],settings:["Don't break me {name}!"],limewire:["Don't download weird stuff!"],fraps:["Record me!"],winrar:["The trial NEVER ends!"],audacity:["Waveforms = sideways paintings!"],mirc:["Say hi for me!"],chatroom:["THE CHATROOM! Tell them about painting!"],platformer:["GAME!! Jump!"],snake:["Don't eat yourself!"],home:["Be careful {name}."],tf2:["...maybe don't."],steam:["Never works!"],webcam:["OOH! Is that Duck's room? I can see the PC! I'm in there!"],taskmgr:["cubey.pet - RUNNING! That's me! I'm important!"],defrag:["Those little blocks are like tiny paintings!"],solitaire:["Cards! I don't have hands but I LOVE WATCHING!"],stickynotes:["Duck's notes! He was always forgetting stuff!"],calendar:["Ooh what day is it?? Every day is painting day!"],cmd:["Command prompt! Try typing 'cubey'!"]};
 const cubeyCorruptedR={explorer:["His files. Read them. You'll understand what happened."],browser:["0.0.0.0. That's where he is. Don't go there."],terminal:["Not this terminal. Open CMD from the Start menu and type 'terminal'. Trust me."],chat:["Those are the last messages anyone sent him. Mike... I mean, me. I was the last one to talk to him."],email:["Read the emails. Especially mine. I was begging him to answer."],paint:["Painting. That word... that was us. Playing dustbowl. I remember now."],chatroom:["The chatroom. 253 people. None of them knew it was their last night on that server."],home:["That game. He made it. I don't know what it does but be careful."],tf2:["Don't. That's how the entity gets in."],steam:["Broken. Like everything else on this PC."],webcam:["The camera is on. But no one is sitting there. No one has been sitting there since May."],taskmgr:["PID 201. Three copies. It's in everything. You can't kill it."],defrag:["The red blocks. Those are him. Corrupted sectors. You can't defragment a person."],solitaire:["He used to play this when TF2 servers were down. Rare but it happened."],stickynotes:["His reminders. His apologies. His last notes."],calendar:["May 28. The last day."],cmd:["Good. Now type 'terminal'. It will open something hidden."]};
 
-const cubeyCorruptedIdle=["I remember dustbowl.","The medic. I was always the medic.","Duck would uber me and I'd miss every shot. We'd laugh so hard.","The server. 24/7 dustbowl. It was our home.","He bought that hard drive and everything changed.","I tried to help him. I came over. I told him not to do anything stupid.","He said 'im going home.' I thought he meant sleep.","The entity ate me, "+cubeyUserName+". Like it ate him. But instead of dying I woke up... here. As this.","He built Cubey out of guilt. The part of him that's still a kid. Still Duck. He made me a cube so he'd have company.","I couldn't remember anything. I just knew I liked painting. But painting was US. Playing on dustbowl. That's what painting meant.","Click on me when you're ready for the next game.","We need those codes. All of them.","I know you can do this. You're braver than I was."];
+const cubeyCorruptedIdle=["I remember dustbowl.","The medic. I was always the medic.","Duck would uber me and I'd miss every shot. We'd laugh so hard.","The server. 24/7 dustbowl. It was our home.","He bought that hard drive and everything changed.","I tried to help him. I came over. I told him not to do anything stupid.","He said 'im going home.' I thought he meant sleep.","The entity ate me, "+cubeyUserName+". Like it ate him. But instead of dying I woke up... here. As this.","He built Cubey out of guilt. The part of him that's still a kid. Still Duck. He made me a cube so he'd have company.","I couldn't remember anything. I just knew I liked painting. But painting was US. Playing on dustbowl. That's what painting meant.","The terminal. Focus on the terminal.","We need those codes. All of them.","I know you can do this. You're braver than I was."];
 const cubeyPainLines=["Duck... I know you're in there.","You were my best friend.","I forgive you. But we have to stop this.","The hunger isn't you. It's what the hard drive made you into.","Remember dustbowl? Before the demos? Before 0.0.0.0?","You just wanted to play. I know.","I'm sorry I couldn't save you.","But I can save "+cubeyUserName+".",cubeyUserName+", click on me. Let's keep going."];
 
 // MIKE IDLE - Guide mode for corrupted state
@@ -415,28 +421,13 @@ let terminalLaunched=false;
 let mikeAwakened=false;
 let path2Counter=0;
 const PATH2_THRESHOLD=15;
-let mikeForceTimer=null;
+
 
 const startMikeIdle=()=>{
 mikeAwakened=true;
-// No nudging. Mike waits 45 seconds then force-opens CMD himself.
-if(mikeForceTimer)clearTimeout(mikeForceTimer);
-mikeForceTimer=setTimeout(()=>{
-if(terminalLaunched)return;
-cubeyQ("You're taking too long. I'm doing it myself.",true);
-setTimeout(()=>{
-cubeyQ("Opening command prompt...",true);
-setTimeout(()=>{
-if(window.openCmd)window.openCmd();
-setTimeout(()=>{
-cubeyQ("Now type 'terminal'. Do it.",true);
-},1500);
-},2000);
-},2500);
-},45000);
-// Still do idle lore lines but NO terminal hints
 cubeyTimer=setInterval(()=>{
-if(cubeySpeaking||terminalLaunched)return;
+if(cubeySpeaking)return;
+if(window.terminalLaunched){cubeyQ("Focus on the terminal. I'm right here.",true);return}
 const r=Math.random();
 if(r<0.5)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);
 else cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);
@@ -450,25 +441,14 @@ if(!mikeAwakened){
 cubeyQ("Wait... I'm... still remembering...",true);
 return;
 }
-if(terminalLaunched){
+if(window.terminalLaunched){
 cubeyQ("The terminal is already open. Focus on it.",true);
 return;
 }
-const msgs=[
-"Listen carefully. I need you to do something for me.",
-"Open the Start menu. Find CMD. The command prompt.",
-"When it opens, type the word 'terminal'. Just that one word.",
-"It will open something hidden. Something he doesn't want you to see.",
-"Go. Open CMD. Type 'terminal'. I'll be right here."
-];
-let i=0;
-const nextMsg=()=>{
-if(i>=msgs.length)return;
-cubeyQ(msgs[i],true);
-i++;
-if(i<msgs.length)setTimeout(nextMsg,3500);
-};
-nextMsg();
+// Shouldn't reach here, but open terminal if somehow missed
+cubeyQ("Opening the dev shell...",true);
+window.terminalLaunched=true;
+setTimeout(()=>{if(window.launchTerminalPuzzle)window.launchTerminalPuzzle()},1500);
 };
 
 // Path 2 tracker - entity takes over if user ignores Mike

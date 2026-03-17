@@ -315,7 +315,7 @@ win.id='puzzle-terminal';
 win.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:850;width:580px;background:#0a0a0a;border:3px solid #333;font-family:VT323,monospace';
 win.innerHTML=`
 <div style="background:#1a1a1a;padding:4px 8px;font-size:11px;color:#666;display:flex;justify-content:space-between;align-items:center;font-family:Tahoma,sans-serif">
-<span>SoOS Terminal v2.01</span>
+<span>SoOS Dev Shell</span>
 <button id="pterm-close" style="background:#600;color:#fff;border:1px solid #900;font-size:9px;padding:1px 6px;cursor:pointer;font-family:Tahoma,sans-serif">X</button>
 </div>
 <div id="pterm-output" style="height:380px;overflow-y:auto;padding:10px;font-size:14px;color:#0f0;line-height:1.6"></div>
