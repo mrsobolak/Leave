@@ -1,5 +1,6 @@
 // CUBEY - SoOS Cube Pet (Kinito-style desktop companion)
 let cubeyEl,cubeySam,cubeyReady=false,cubeySpeaking=false;
+let cubeyMuted=false;
 let cubeyTimer,cubeyBlinkTimer,cubeyWanderTimer,cubeyTimeTimer;
 let cubeyStartTime=Date.now();
 let cubeyUserName='friend',cubeyUserColor='',cubeyUserWord='',cubeyUserPower='',cubeyUserFood='',cubeyBestFriend='';
@@ -28,8 +29,17 @@ if(cubeyTimeTimer)clearInterval(cubeyTimeTimer);
 cubeyQueue=[];cubeyProcessing=false;cubeySpeaking=false;
 cubeyEl=document.createElement('div');
 cubeyEl.id='cubey';
-cubeyEl.innerHTML='<div id="cubey-body"><div id="cubey-hat"></div><div id="cubey-hat-brim"></div><div id="cubey-face"><div class="cubey-eye" id="cubey-eye-l"><div class="cubey-pupil" id="cubey-pupil-l"></div></div><div class="cubey-eye" id="cubey-eye-r"><div class="cubey-pupil" id="cubey-pupil-r"></div></div></div></div><div id="cubey-bubble" class="cubey-hidden"></div><div id="cubey-input-area" class="cubey-hidden"><input id="cubey-input" type="text" maxlength="40"><button id="cubey-input-btn">OK</button></div>';
+cubeyEl.innerHTML='<div id="cubey-body"><div id="cubey-hat"></div><div id="cubey-hat-brim"></div><div id="cubey-face"><div class="cubey-eye" id="cubey-eye-l"><div class="cubey-pupil" id="cubey-pupil-l"></div></div><div class="cubey-eye" id="cubey-eye-r"><div class="cubey-pupil" id="cubey-pupil-r"></div></div></div></div><div id="cubey-mute" style="display:none;position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:10px;cursor:pointer;background:rgba(0,0,0,0.5);color:#fff;padding:1px 5px;border-radius:3px;font-family:Tahoma;z-index:701;user-select:none" title="Mute/unmute Cubey voice">&#128266;</div><div id="cubey-bubble" class="cubey-hidden"></div><div id="cubey-input-area" class="cubey-hidden"><input id="cubey-input" type="text" maxlength="40"><button id="cubey-input-btn">OK</button></div>';
 document.body.appendChild(cubeyEl);
+// Mute button handler
+const muteBtn=document.getElementById('cubey-mute');
+if(muteBtn)muteBtn.addEventListener('click',(e)=>{
+  e.stopPropagation();
+  cubeyMuted=!cubeyMuted;
+  muteBtn.innerHTML=cubeyMuted?'&#128263;':'&#128266;';
+  muteBtn.title=cubeyMuted?'Unmute Cubey voice':'Mute Cubey voice';
+  if(cubeyMuted&&cubeySam){try{cubeySam.stop&&cubeySam.stop()}catch(e){}}
+});
 try{if(typeof SamJs!=='undefined'){cubeySam=new SamJs({speed:58,pitch:120,mouth:140,throat:110});cubeyReady=true;}}catch(e){}
 document.addEventListener('mousemove',(e)=>{
 if(window.pcState===2)return;
@@ -95,6 +105,7 @@ startMikeIdle();
 else if(cubeyIntroDone){
 // Intro already done from save - skip to idle, greet player
 cubeyQ("Hey "+cubeyUserName+"! You're back! I missed you!",true);
+const mb2=document.getElementById('cubey-mute');if(mb2)mb2.style.display='block';
 setTimeout(startCubeyIdle,3000);
 }
 else{setTimeout(cubeyStartIntro,2500);}
@@ -168,8 +179,7 @@ b.textContent='';let i=0;const ti=setInterval(()=>{if(i<dt.length){b.textContent
 }else{b.textContent=text}
 const body=document.getElementById('cubey-body');
 if(body){body.classList.add('cubey-bounce');setTimeout(()=>body.classList.remove('cubey-bounce'),400)}
-// TTS: stop any current speech, wait a beat, then speak
-if(cubeyReady&&cubeySam){
+if(cubeyReady&&cubeySam&&!cubeyMuted){
   try{cubeySam.stop&&cubeySam.stop()}catch(e){}
   try{cubeySam.speak(text)}catch(e){}
 }
@@ -239,7 +249,7 @@ const s=qs[step];b.textContent=s.q;b.classList.remove('cubey-hidden');b.style.ba
 inp.classList.remove('cubey-hidden');
 const inpEl=document.getElementById('cubey-input'),btn=document.getElementById('cubey-input-btn');
 inpEl.value='';inpEl.placeholder=s.ph;inpEl.focus();
-if(cubeyReady&&cubeySam){try{cubeySam.speak(s.q)}catch(e){}}
+if(cubeyReady&&cubeySam&&!cubeyMuted){try{cubeySam.speak(s.q)}catch(e){}}
 const handler=()=>{
 const val=inpEl.value.trim();if(!val)return;inp.classList.add('cubey-hidden');btn.removeEventListener('click',handler);inpEl.removeEventListener('keydown',kh);cubeySpeaking=false;
 if(step==='name'){
@@ -293,6 +303,7 @@ cubeyQ("My favorite things: painting, hats, eyes, and YOU!",true);
 cubeyQ("OK "+cubeyUserName+"! Go explore! I'll be RIGHT HERE! Always!",true);
 cubeyIntroDone=true;setTimeout(startCubeyIdle,40000);
 if(window.soosAudio)soosAudio.fadeOut(2,()=>{if(window.soosAudio)soosAudio.playDesktop()});
+const mb=document.getElementById('cubey-mute');if(mb)mb.style.display='block';
 }};
 const kh=(e)=>{if(e.key==='Enter')handler()};
 btn.addEventListener('click',handler);inpEl.addEventListener('keydown',kh);
@@ -403,7 +414,7 @@ const msgs=["Are you SURE? I have a REALLY bad feeling about this.","PLEASE "+cu
 const msg=msgs[Math.min(cubeyTF2Attempts-2,msgs.length-1)];
 const ov=document.createElement('div');ov.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:900;display:flex;align-items:center;justify-content:center';
 ov.innerHTML='<div style="background:#ece9d8;border:3px outset #fff;padding:0;font-family:Tahoma;width:340px"><div style="background:linear-gradient(to right,#0a246a,#3a6ea5);color:#fff;padding:3px 8px;font-size:11px;font-weight:bold">SoOS Warning</div><div style="padding:16px;display:flex;gap:12px"><div style="font-size:28px">\u26A0\uFE0F</div><div><div style="font-size:11px;margin-bottom:8px;line-height:1.4"><b>Cubey says:</b> "'+msg+'"</div><div style="font-size:11px;color:#888;margin-bottom:12px">This action cannot be undone.</div><div style="display:flex;gap:8px;justify-content:flex-end"><button id="ctf-y" style="padding:3px 16px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer">Open Anyway</button><button id="ctf-n" style="padding:3px 16px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer">Cancel</button></div></div></div></div>';
-document.body.appendChild(ov);if(cubeyReady&&cubeySam){try{cubeySam.speak(msg)}catch(e){}}
+document.body.appendChild(ov);if(cubeyReady&&cubeySam&&!cubeyMuted){try{cubeySam.speak(msg)}catch(e){}}
 document.getElementById('ctf-y').addEventListener('click',()=>{ov.remove();resolve(true)});
 document.getElementById('ctf-n').addEventListener('click',()=>{ov.remove();cubeyQ("Thank you! Let's paint instead!",true);resolve(false)});
 });
