@@ -50,6 +50,8 @@ let menuMusicPlaying=false;
 const playMenuMusic=()=>{
 if(menuMusicPlaying)return;
 menuAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+// Resume context if browser suspended it
+if(menuAudioCtx.state==='suspended')menuAudioCtx.resume();
 menuMusicPlaying=true;
 
 const pn=(freq,start,dur,type,vol)=>{
@@ -139,14 +141,23 @@ pn(55,i*2*B+B,0.1,'sine',0.02);
 };
 
 // Play all layers
+const playAllLayers=()=>{
+if(!menuMusicPlaying||!menuAudioCtx)return;
 melody();pads();bass();twinkle();pulse();
+};
+playAllLayers();
 
-// Loop after ~33 beats
+// Seamless infinite loop - schedule next before current ends
 const loopTime=33*B*1000;
-const loopId=setInterval(()=>{
-if(!menuMusicPlaying){clearInterval(loopId);return}
-melody();pads();bass();twinkle();pulse();
-},loopTime);
+const scheduleLoop=()=>{
+if(!menuMusicPlaying)return;
+setTimeout(()=>{
+if(!menuMusicPlaying||!menuAudioCtx)return;
+playAllLayers();
+scheduleLoop();
+},loopTime-200);// overlap slightly for seamless transition
+};
+scheduleLoop();
 };
 
 const stopMenuMusic=()=>{
@@ -184,15 +195,18 @@ requestAnimationFrame(draw);
 document.addEventListener('DOMContentLoaded',()=>{
 initMenuBg();
 
-// Start music on first click anywhere on menu
-let musicStarted=false;
-document.getElementById('main-menu').addEventListener('click',()=>{
-if(!musicStarted){musicStarted=true;playMenuMusic()}
-},{once:false});
-// Also start on hover over buttons for responsiveness
-document.querySelectorAll('.menu-btn').forEach(b=>b.addEventListener('mouseenter',()=>{
-if(!musicStarted){musicStarted=true;playMenuMusic()}
-},{once:true}));
+// Try to play music immediately - browsers may block, so retry on any interaction
+const tryStartMusic=()=>{
+if(menuMusicPlaying)return;
+try{
+playMenuMusic();
+}catch(e){}
+};
+tryStartMusic();
+// Fallback: any interaction unblocks audio
+['click','mousemove','keydown','touchstart'].forEach(evt=>{
+document.addEventListener(evt,()=>tryStartMusic(),{once:true});
+});
 
 document.getElementById('menu-new').addEventListener('click',()=>{stopMenuMusic();startBoot(null)});
 document.getElementById('menu-load').addEventListener('click',()=>{
