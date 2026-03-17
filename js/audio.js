@@ -51,29 +51,48 @@ const play=()=>{
 // 2. "Dell XPS 420" — Boot Chime
 playBoot(){this.init();this._n(1000,0,0.1,'square',0.08);this._n(440,0.5,0.3,'sine',0.06);this._n(554,0.8,0.3,'sine',0.06);this._n(659,1.1,0.3,'sine',0.06);this._n(880,1.4,0.6,'sine',0.07);this._n(880*2,1.5,0.8,'sine',0.02);this._n(880*1.5,1.6,0.5,'sine',0.015);this._pd([440,554,659],0.5,2,0.01)},
 
-// 3. "His Room" — Normal Desktop Ambient
+// 3. "His Room" — Normal Desktop (upbeat chiptune exploration)
 playDesktop(){this.init();this.stop();_ct='desktop';
+const B=60/112;let iter=0;
+// 4 melody phrases — chill but bouncy, G major
+const melA=[
+  [[392,0],[440,0.5],[494,1],[587,1.5],[523,2],[494,2.5],[440,3],[392,3.5],[440,4],[494,4.5],[587,5],[659,5.5],[587,6],[523,6.5],[494,7],[440,7.5]],
+  [[587,0],[523,0.5],[494,1],[440,1.5],[392,2],[440,2.5],[494,3],[523,3.5],[587,4],[659,4.5],[784,5],[659,5.5],[587,6],[523,6.5],[587,7],[494,7.5]],
+  [[494,0],[523,0.5],[587,1],[659,1.5],[587,2],[523,2.5],[494,3],[440,3.5],[523,4],[587,4.5],[659,5],[784,5.5],[659,6],[587,6.5],[523,7],[587,7.5]],
+  [[784,0],[659,0.5],[587,1],[523,1.5],[494,2],[523,2.5],[587,3],[494,3.5],[440,4],[392,4.5],[440,5],[494,5.5],[523,6],[587,6.5],[659,7],[523,7.5]],
+];
+// Bass patterns
+const bassA=[[196,196,165,175],[165,175,196,220],[175,196,220,196],[220,196,175,165]];
+// Chord sets (G Em C D)
+const chordA=[[[392,494,587],[330,392,494],[262,330,392],[294,370,440]],[[330,392,494],[262,330,392],[294,370,440],[392,494,587]]];
 const play=()=>{
   if(_ct!=='desktop')return;
-  // Fan — varies slightly each loop
-  const fanFreq=58+Math.random()*4;
-  this._ns(0,25,0.006+Math.random()*0.003,180+Math.random()*40);
-  this._n(fanFreq,0,25,'sine',0.005);
-  this._n(fanFreq*2,0,25,'sine',0.002);
-  // HDD — random count and timing
-  const clicks=2+Math.floor(Math.random()*5);
-  for(let i=0;i<clicks;i++){
-    const t=1+Math.random()*22;
-    this._n(2200+Math.random()*600,t,0.02,'square',0.01+Math.random()*0.008);
-    if(Math.random()<0.5)this._n(1600+Math.random()*400,t+0.03,0.015,'square',0.008);
+  const mel=melA[iter%4];
+  mel.forEach(([f,t])=>{
+    this._n(f,t*B,B*0.7,'square',0.018);
+    this._n(f*2,t*B+0.02,B*0.35,'square',0.004);// shimmer
+    if(Math.random()<0.3)this._n(f*0.5,t*B,B*0.5,'triangle',0.006);// low harmony sometimes
+  });
+  // Bass
+  const bn=bassA[iter%4];
+  bn.forEach((f,i)=>this._n(f,i*2*B,B*1.9,'triangle',0.035));
+  // Chords — soft square stabs
+  const ch=chordA[iter%2];
+  ch.forEach((c,i)=>c.forEach(f=>this._n(f,(i*2+0.25)*B,B*0.4,'square',0.008)));
+  // Drums — light
+  for(let i=0;i<8;i++){
+    this._ns(i*B,0.04,0.02,6000+Math.random()*2000);// hi-hat
+    if(i%4===0)this._ns(i*B,0.06,0.04,180);// kick
+    if(i%4===2)this._ns(i*B,0.04,0.03,3500);// snare
+    if(i%2===1&&Math.random()<0.25)this._ns((i+0.5)*B,0.03,0.012,8000);// ghost
   }
-  // Room sounds — very rare
-  if(Math.random()<0.15)this._ns(8+Math.random()*12,0.4,0.004,120);// creak
-  if(Math.random()<0.1){// distant car or something outside
-    const t=5+Math.random()*15;
-    this._ns(t,2,0.002,80);
+  // Occasional arp run
+  if(iter%3===0){
+    const arpNotes=[392,494,587,659,784];
+    arpNotes.forEach((f,i)=>this._n(f,(6+i*0.2)*B,B*0.3,'square',0.006));
   }
-  _lp.push(setTimeout(()=>play(),24000));
+  iter++;
+  _lp.push(setTimeout(()=>play(),8*B*1000-50));
 };play()},
 
 // 4. "Best Friends!" — Cubey Jingle
