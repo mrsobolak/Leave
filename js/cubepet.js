@@ -32,27 +32,27 @@ cubeyEl.innerHTML='<div id="cubey-body"><div id="cubey-hat"></div><div id="cubey
 document.body.appendChild(cubeyEl);
 try{if(typeof SamJs!=='undefined'){cubeySam=new SamJs({speed:58,pitch:120,mouth:140,throat:110});cubeyReady=true;}}catch(e){}
 document.addEventListener('mousemove',(e)=>{
-if(typeof pcState!=='undefined'&&pcState===2)return;
+if(window.pcState===2)return;
 const rect=cubeyEl.getBoundingClientRect();
 const cx=rect.left+rect.width/2,cy=rect.top+30,dx=e.clientX-cx,dy=e.clientY-cy,dist=Math.sqrt(dx*dx+dy*dy)||1,mx=3;
 const pl=document.getElementById('cubey-pupil-l'),pr=document.getElementById('cubey-pupil-r');
 if(pl)pl.style.transform='translate('+Math.min(mx,Math.max(-mx,(dx/dist)*mx))+'px,'+Math.min(mx,Math.max(-mx,(dy/dist)*mx))+'px)';
 if(pr)pr.style.transform=pl.style.transform;
 });
-cubeyEl.addEventListener('click',(e)=>{if(e.target.id==='cubey-input'||e.target.id==='cubey-input-btn'||e.target.classList?.contains('cubey-menu-btn'))return;const isC=typeof pcState!=='undefined'&&pcState===2;if(isC&&cubeyIntroDone){cubeyCorruptedClick();return}if(!cubeyIntroDone)return;showCubeyMenu()});
+cubeyEl.addEventListener('click',(e)=>{if(e.target.id==='cubey-input'||e.target.id==='cubey-input-btn'||e.target.classList?.contains('cubey-menu-btn'))return;const isC=window.pcState===2;if(isC&&cubeyIntroDone){cubeyCorruptedClick();return}if(!cubeyIntroDone)return;showCubeyMenu()});
 cubeyBlinkTimer=setInterval(()=>{const eyes=document.querySelectorAll('.cubey-eye');eyes.forEach(e=>{e.style.height='2px';e.style.borderRadius='1px'});setTimeout(()=>eyes.forEach(e=>{e.style.height='10px';e.style.borderRadius='50%'}),150)},4000+Math.random()*3000);
 cubeyWanderTimer=setInterval(cubeyWander,8000+Math.random()*7000);
 cubeyMoodTimer=setInterval(()=>{cubeyMood=['happy','happy','happy','hyper','sleepy','bored'][Math.floor(Math.random()*6)]},60000);
 cubeyTimeTimer=setInterval(()=>{
 if(cubeySpeaking||!cubeyIntroDone)return;
-const isC=typeof pcState!=='undefined'&&pcState===2;if(isC)return;
+const isC=window.pcState===2;if(isC)return;
 const mins=Math.floor((Date.now()-cubeyStartTime)/60000);
 if(mins===5)cubeyQ("You've been here 5 minutes! Having fun, "+cubeyUserName+"?",true);
 else if(mins===15)cubeyQ("15 minutes! You really like this PC!",true);
 else if(mins===30)cubeyQ("Half an hour! We're roommates now!",true);
 else if(mins===60)cubeyQ("ONE HOUR! "+cubeyUserName+" we're BEST FRIENDS! OFFICIAL!",true);
 },60000);
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 if(cubeyKilled){
 // Cubey was killed in CMD - don't show him
 cubeyEl.style.display='none';
@@ -155,7 +155,7 @@ const cubeySayNow=(text,friendly,duration)=>{
 const b=document.getElementById('cubey-bubble');if(!b)return;
 cubeySpeaking=true;b.classList.remove('cubey-hidden');
 b.style.background=friendly?'#ffffcc':'#330000';b.style.color=friendly?'#000':'#ff8888';b.style.borderColor=friendly?'#cca':'#800';
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 if(isC&&!friendly){
 let dt=text;
 if(Math.random()<0.2&&text.length>20){const mid=Math.floor(text.length/2);dt=text.slice(0,mid)+['—IT HURTS—','—HELP—','—STOP—','—201—','—NO—'][Math.floor(Math.random()*5)]+text.slice(mid)}
@@ -291,7 +291,7 @@ btn.addEventListener('click',handler);inpEl.addEventListener('keydown',kh);
 const startCubeyIdle=()=>{
 cubeyTimer=setInterval(()=>{
 if(cubeySpeaking||!cubeyIntroDone)return;
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 if(isC){const r=Math.random();if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);else{if(!mikeAwakened)cubeyQ("I'm... remembering...",true);else if(!terminalLaunched)cubeyQ("Click on me. I need to tell you something.",true);else cubeyQ("Focus on the terminal.",true)}return}
 const r=Math.random();
 if(r<0.10)cubeyTellJoke();
@@ -390,19 +390,19 @@ document.getElementById('ctf-y').addEventListener('click',()=>{ov.remove();resol
 document.getElementById('ctf-n').addEventListener('click',()=>{ov.remove();cubeyQ("Thank you! Let's paint instead!",true);resolve(false)});
 });
 
-const cubeyShutdownReact=()=>{const isC=typeof pcState!=='undefined'&&pcState===2;cubeyQ(isC?"You can't leave. He won't let you.":"NO! "+cubeyUserName+" don't leave me!! Who will paint with me?!",!isC)};
+const cubeyShutdownReact=()=>{const isC=window.pcState===2;cubeyQ(isC?"You can't leave. He won't let you.":"NO! "+cubeyUserName+" don't leave me!! Who will paint with me?!",!isC)};
 
 // APP TRACKING
 const cubeyTrackApp=(id)=>{cubeyAppCounts[id]=(cubeyAppCounts[id]||0)+1;cubeyClickTimes.push(Date.now());const recent=cubeyClickTimes.filter(t=>Date.now()-t<5000);if(recent.length>=4&&cubeyIntroDone){cubeyQ("WOW "+cubeyUserName+" you're clicking EVERYTHING!",true);cubeyClickTimes=[];return true}if(cubeyAppCounts[id]===2&&cubeyIntroDone){cubeyQ("This one again? You really like "+id+"!",true);return true}if(cubeyAppCounts[id]===4&&cubeyIntroDone){cubeyQ(id+" AGAIN?! "+cubeyUserName+" you're OBSESSED!",true);return true}return false};
 
 // REACTIONS
-const cubeyReactToApp=(id)=>{if(!cubeyEl||!cubeyIntroDone)return;if(cubeyTrackApp(id))return;const isC=typeof pcState!=='undefined'&&pcState===2;const r=isC?cubeyCorruptedR:cubeyNormalR;const l=r[id];if(l)cubeyQ(l[Math.floor(Math.random()*l.length)].replace(/{name}/g,cubeyUserName),!isC)};
+const cubeyReactToApp=(id)=>{if(!cubeyEl||!cubeyIntroDone)return;if(cubeyTrackApp(id))return;const isC=window.pcState===2;const r=isC?cubeyCorruptedR:cubeyNormalR;const l=r[id];if(l)cubeyQ(l[Math.floor(Math.random()*l.length)].replace(/{name}/g,cubeyUserName),!isC)};
 
-const cubeyReactToFile=(fn)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=typeof pcState!=='undefined'&&pcState===2;const n=fn.toLowerCase();if(isC){if(n.includes('goodbye')||n.includes('for_mom')||n.includes('for_mike'))cubeyQ("You shouldn't read that.",false);else if(n.includes('demo'))cubeyQ("Don't play the demos.",false);else if(n.includes('timeline'))cubeyQ("You're learning too much, "+cubeyUserName+".",false);else cubeyQ(['This was his.','Stop looking.','Leave, '+cubeyUserName+'.'][Math.floor(Math.random()*3)],false);return}if(n.includes('paint'))cubeyQ("PAINTING!!",true);else if(n.includes('tf2')||n.includes('dustbowl'))cubeyQ("TF2 stuff!",true);else if(n.includes('secret'))cubeyQ("A secret! I won't tell!",true);else if(n.includes('diary'))cubeyQ("A diary! How personal!",true);else cubeyQ(["Ooh!","Interesting!","Cool!"][Math.floor(Math.random()*3)],true)};
+const cubeyReactToFile=(fn)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=window.pcState===2;const n=fn.toLowerCase();if(isC){if(n.includes('goodbye')||n.includes('for_mom')||n.includes('for_mike'))cubeyQ("You shouldn't read that.",false);else if(n.includes('demo'))cubeyQ("Don't play the demos.",false);else if(n.includes('timeline'))cubeyQ("You're learning too much, "+cubeyUserName+".",false);else cubeyQ(['This was his.','Stop looking.','Leave, '+cubeyUserName+'.'][Math.floor(Math.random()*3)],false);return}if(n.includes('paint'))cubeyQ("PAINTING!!",true);else if(n.includes('tf2')||n.includes('dustbowl'))cubeyQ("TF2 stuff!",true);else if(n.includes('secret'))cubeyQ("A secret! I won't tell!",true);else if(n.includes('diary'))cubeyQ("A diary! How personal!",true);else cubeyQ(["Ooh!","Interesting!","Cool!"][Math.floor(Math.random()*3)],true)};
 
-const cubeyReactToChat=(c)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=typeof pcState!=='undefined'&&pcState===2;const cl=c.toLowerCase();if(isC){if(cl.includes('mike'))cubeyQ("That's me. Those are my messages. I was trying so hard to reach him.",true);else if(cl.includes('48291637')||cl.includes('?????'))cubeyQ("That's the entity. That's Duck. Or what's left of him. Don't engage.",true);else if(cl.includes('pyro'))cubeyQ("Pyro saw it on the server. The fire particles broke. That's how you know it's near.",true);else if(cl.includes('sc0ut')||cl.includes('scout'))cubeyQ("Scout saw Duck in the tunnel. But Duck was offline. The entity was pretending to be him.",true);else if(cl.includes('admin'))cubeyQ("Admin tried to stop it. Shut down the server. But you can't shut down 0.0.0.0.",true);else if(cl.includes('n00dles')||cl.includes('noodles'))cubeyQ("The .dem file n00dles got. The voice at 2:01. That was Duck calling for help.",true);else if(cl.includes('hatcollector'))cubeyQ("It spread through trades. Through the Mann Co system. Nobody was safe.",true);else if(cl.includes('bonk'))cubeyQ("Even Bonk stopped bonking. That's how you know it was bad.",true);else cubeyQ("Read everything. Every message matters.",true);return}if(cl.includes('mike'))cubeyQ("Mike! Best friends! Like us "+cubeyUserName+"!",true);else if(cl.includes('pyro'))cubeyQ("FIRE FIRE FIRE!",true);else if(cl.includes('bonk'))cubeyQ("BONK BONK BONK!",true);else if(cl.includes('48291637'))cubeyQ("Just numbers? Weird.",true);else cubeyQ("Ooh who's this!",true)};
+const cubeyReactToChat=(c)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=window.pcState===2;const cl=c.toLowerCase();if(isC){if(cl.includes('mike'))cubeyQ("That's me. Those are my messages. I was trying so hard to reach him.",true);else if(cl.includes('48291637')||cl.includes('?????'))cubeyQ("That's the entity. That's Duck. Or what's left of him. Don't engage.",true);else if(cl.includes('pyro'))cubeyQ("Pyro saw it on the server. The fire particles broke. That's how you know it's near.",true);else if(cl.includes('sc0ut')||cl.includes('scout'))cubeyQ("Scout saw Duck in the tunnel. But Duck was offline. The entity was pretending to be him.",true);else if(cl.includes('admin'))cubeyQ("Admin tried to stop it. Shut down the server. But you can't shut down 0.0.0.0.",true);else if(cl.includes('n00dles')||cl.includes('noodles'))cubeyQ("The .dem file n00dles got. The voice at 2:01. That was Duck calling for help.",true);else if(cl.includes('hatcollector'))cubeyQ("It spread through trades. Through the Mann Co system. Nobody was safe.",true);else if(cl.includes('bonk'))cubeyQ("Even Bonk stopped bonking. That's how you know it was bad.",true);else cubeyQ("Read everything. Every message matters.",true);return}if(cl.includes('mike'))cubeyQ("Mike! Best friends! Like us "+cubeyUserName+"!",true);else if(cl.includes('pyro'))cubeyQ("FIRE FIRE FIRE!",true);else if(cl.includes('bonk'))cubeyQ("BONK BONK BONK!",true);else if(cl.includes('48291637'))cubeyQ("Just numbers? Weird.",true);else cubeyQ("Ooh who's this!",true)};
 
-const cubeyReactToEmail=(s,f)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=typeof pcState!=='undefined'&&pcState===2;const sl=(s||'').toLowerCase(),fl=(f||'').toLowerCase();if(isC){if(fl.includes('0.0.0.0'))cubeyQ("From the entity. From Duck. The words aren't threats — they're cries for help. He can't stop.",true);else if(fl.includes('mike'))cubeyQ("I wrote that. Begging him to answer. He never did.",true);else if(fl.includes('mom'))cubeyQ("His mom. She left a plate outside his door. He never touched it.",true);else if(fl.includes('admin'))cubeyQ("Admin traced it to 0.0.0.0. That's not a real address. It's where the entity lives.",true);else if(fl.includes('cubey')||sl.includes('cubey'))cubeyQ("I wrote that email. When I was still Cubey. Before I remembered. Read the PS.",true);else if(sl.includes('vac'))cubeyQ("Banned for unauthorized memory access. The entity was IN the game's memory.",true);else cubeyQ("Everything on this PC tells the same story.",true);return}if(fl.includes('mom'))cubeyQ("From Duck's mom!",true);else if(sl.includes('free'))cubeyQ("SPAM!",true);else cubeyQ("Email!",true)};
+const cubeyReactToEmail=(s,f)=>{if(!cubeyEl||!cubeyIntroDone)return;const isC=window.pcState===2;const sl=(s||'').toLowerCase(),fl=(f||'').toLowerCase();if(isC){if(fl.includes('0.0.0.0'))cubeyQ("From the entity. From Duck. The words aren't threats — they're cries for help. He can't stop.",true);else if(fl.includes('mike'))cubeyQ("I wrote that. Begging him to answer. He never did.",true);else if(fl.includes('mom'))cubeyQ("His mom. She left a plate outside his door. He never touched it.",true);else if(fl.includes('admin'))cubeyQ("Admin traced it to 0.0.0.0. That's not a real address. It's where the entity lives.",true);else if(fl.includes('cubey')||sl.includes('cubey'))cubeyQ("I wrote that email. When I was still Cubey. Before I remembered. Read the PS.",true);else if(sl.includes('vac'))cubeyQ("Banned for unauthorized memory access. The entity was IN the game's memory.",true);else cubeyQ("Everything on this PC tells the same story.",true);return}if(fl.includes('mom'))cubeyQ("From Duck's mom!",true);else if(sl.includes('free'))cubeyQ("SPAM!",true);else cubeyQ("Email!",true)};
 
 const cubeyNormalR={explorer:["Files! Find me a painting {name}!"],browser:["EPICCUSTAMBROSWER!"],terminal:["Hacker stuff! Type 'I love Cubey'!"],texteditor:["Words! Almost as good as painting!"],chat:["Tell them Cubey says hi!"],email:["Any painting emails?"],paint:["PAINT!! MY FAVORITE!! {name} THIS IS THE BEST!!!!","DRAW ME!!","PAINTING!!!!!"],calculator:["1+1 is... cube?"],settings:["Don't break me {name}!"],limewire:["Don't download weird stuff!"],fraps:["Record me!"],winrar:["The trial NEVER ends!"],audacity:["Waveforms = sideways paintings!"],mirc:["Say hi for me!"],chatroom:["THE CHATROOM! Tell them about painting!"],platformer:["GAME!! Jump!"],snake:["Don't eat yourself!"],home:["Be careful {name}."],tf2:["...maybe don't."],steam:["Never works!"],webcam:["OOH! Is that Duck's room? I can see the PC! I'm in there!"],taskmgr:["cubey.pet - RUNNING! That's me! I'm important!"],defrag:["Those little blocks are like tiny paintings!"],solitaire:["Cards! I don't have hands but I LOVE WATCHING!"],stickynotes:["Duck's notes! He was always forgetting stuff!"],calendar:["Ooh what day is it?? Every day is painting day!"],cmd:["Command prompt! Try typing 'cubey'!"]};
 const cubeyCorruptedR={explorer:["His files. Read them. You'll understand what happened."],browser:["0.0.0.0. That's where he is. Don't go there."],terminal:["Not this terminal. Open CMD from the Start menu and type 'terminal'. Trust me."],chat:["Those are the last messages anyone sent him. Mike... I mean, me. I was the last one to talk to him."],email:["Read the emails. Especially mine. I was begging him to answer."],paint:["Painting. That word... that was us. Playing dustbowl. I remember now."],chatroom:["The chatroom. 253 people. None of them knew it was their last night on that server."],home:["That game. He made it. I don't know what it does but be careful."],tf2:["Don't. That's how the entity gets in."],steam:["Broken. Like everything else on this PC."],webcam:["The camera is on. But no one is sitting there. No one has been sitting there since May."],taskmgr:["PID 201. Three copies. It's in everything. You can't kill it."],defrag:["The red blocks. Those are him. Corrupted sectors. You can't defragment a person."],solitaire:["He used to play this when TF2 servers were down. Rare but it happened."],stickynotes:["His reminders. His apologies. His last notes."],calendar:["May 28. The last day."],cmd:["Good. Now type 'terminal'. It will open something hidden."]};
@@ -444,7 +444,7 @@ else cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true
 };
 
 const cubeyCorruptedClick=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 if(!isC)return;
 if(!mikeAwakened){
 cubeyQ("Wait... I'm... still remembering...",true);
@@ -473,7 +473,7 @@ nextMsg();
 
 // Path 2 tracker - entity takes over if user ignores Mike
 const trackPath2Action=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 if(!isC)return;
 if(terminalLaunched)return; // On path 1 already
 path2Counter++;

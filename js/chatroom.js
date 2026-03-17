@@ -256,7 +256,7 @@ const normal=[
 {t:'8:10 PM',u:'BONKBONKBONK',m:'GG BONK'}
 ];
 
-if(typeof pcState!=='undefined'&&pcState===2){
+if(window.pcState===2){
 const corrupted=[
 {t:'11:00 PM',u:'dustbowlBOSS_admin',m:'Server restarting for maintenance...'},
 {t:'11:01 PM',u:'mikeloveshalflife',m:'hey has anyone seen duck lately'},
@@ -361,7 +361,7 @@ return{users,messages:normal};
 
 const openChatroom=()=>{
 const data=getChatroomData();
-const isCorrupted=typeof pcState!=='undefined'&&pcState===2;
+const isCorrupted=window.pcState===2;
 const serverName=isCorrupted?'Dustbowl 24/7 - FINAL BROADCAST':'Dustbowl 24/7 Community Chat';
 let msgHtml='';
 data.messages.forEach(m=>{

@@ -34,7 +34,7 @@ const initDesktop=()=>{
 document.getElementById('desktop').classList.remove('hidden');
 const iconsEl=document.getElementById('desktop-icons');
 iconsEl.innerHTML='';
-const appsToShow=typeof pcState!=='undefined'&&pcState===2?[...desktopApps,{id:'home',icon:'<span style="font-size:24px;color:#999">&#9751;</span>',label:'home',desk:true,menu:true}]:desktopApps;
+const appsToShow=window.pcState===2?[...desktopApps,{id:'home',icon:'<span style="font-size:24px;color:#999">&#9751;</span>',label:'home',desk:true,menu:true}]:desktopApps;
 appsToShow.forEach((app)=>{
 if(!app.desk)return;
 const d=document.createElement('div');
@@ -77,12 +77,12 @@ b.addEventListener('click',()=>{openApp(app.id);toggleStart(false)});
 menuEl.appendChild(b);
 });
 document.getElementById('start-menu-user').textContent='TheDustBwlDuck';
-const clockText=typeof pcState!=='undefined'&&pcState===2?'12:06 AM  5/28/2010':'7:42 PM  9/30/2010';
+const clockText=window.pcState===2?'12:06 AM  5/28/2010':'7:42 PM  9/30/2010';
 document.getElementById('tray-clock').textContent=clockText;
 // easter egg: click clock
 document.getElementById('tray-clock').style.cursor='pointer';
 document.getElementById('tray-clock').onclick=()=>{
-if(typeof pcState!=='undefined'&&pcState===2){
+if(window.pcState===2){
 document.getElementById('tray-clock').textContent='00:00  5/28/2010';
 setTimeout(()=>{document.getElementById('tray-clock').textContent='12:06 AM  5/28/2010'},3000);
 }
@@ -98,7 +98,7 @@ notif.textContent='Game saved to soos_save.json';
 document.body.appendChild(notif);
 setTimeout(()=>notif.remove(),3000);
 }};
-if(typeof pcState!=='undefined'&&pcState===2){document.getElementById('desktop').classList.add('corrupted-flicker')}
+if(window.pcState===2){document.getElementById('desktop').classList.add('corrupted-flicker')}
 if(window.initCubey)window.initCubey();
 };
 const toggleStart=(show)=>{
@@ -108,7 +108,7 @@ show?m.classList.remove('hidden'):m.classList.add('hidden');
 };
 const doShutdown=()=>{
 if(typeof window._cubeyShutdownReact==='function')window._cubeyShutdownReact();
-if(typeof pcState!=='undefined'&&pcState===2){
+if(window.pcState===2){
 // cant leave in corrupted mode
 const overlay=document.getElementById('jumpscare-overlay');
 overlay.classList.remove('hidden');

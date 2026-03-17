@@ -121,7 +121,7 @@ cubey.style.transition='opacity 0.5s';
 cubey.style.opacity='0';
 setTimeout(()=>{cubey.style.display='none'},500);
 }
-if(typeof cubeyQueue!=='undefined'){cubeyQueue=[];cubeyProcessing=false;cubeySpeaking=false}
+if(window.cubeyQueue){window.cubeyQueue.length=0;}
 showBSOD();
 setTimeout(()=>corruptedReboot(),5000);
 },600);
@@ -243,7 +243,7 @@ chatDiv.innerHTML='<div style="background:linear-gradient(to right,#0a246a,#3a6e
 overlay.appendChild(chatDiv);
 
 const chat=document.getElementById('beeper-chat');
-const userName=typeof cubeyUserName!=='undefined'?cubeyUserName:'friend';
+const userName=window.cubeyUserName||'friend';
 
 const lines=[
 {who:'Cubey',msg:'Hi '+userName+'! :)',d:0,c:'#cc5500'},

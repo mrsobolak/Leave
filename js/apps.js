@@ -125,7 +125,7 @@ const base={
 'error.log':{type:'file',content:'[2010-09-30 19:10:05] INFO: System boot completed\n[2010-09-30 19:10:12] INFO: Network connected\n[2010-09-30 19:11:01] INFO: Audio driver loaded\n[2010-09-30 19:15:42] WARN: High CPU (Steam.exe)\n[2010-09-30 19:20:13] INFO: hl2.exe launched\n[2010-09-30 19:42:00] INFO: System idle'}
 }}
 }};
-if(typeof pcState!=='undefined'&&pcState===2){
+if(window.pcState===2){
 const docs=base['C:'].children['Users'].children['TheDustBwlDuck'].children['Documents'].children;
 const newFiles={'why_am_i_here.txt':{type:'file',content:'i dont undrstnd waht happend\nthe game crashed and now evrythings diffrent\n\nwhy does my pc feel wrong\nwhy does the clock say may\nits september\n\nits SEPTEMBER'},'the_hard_drive.txt':{type:'file',content:'i bought this hard drive from sum guy on craigslist\nit was cheap like 20 bucks\nhe said it was from an old gamers pc\n\ni put my games on it\nand thats when stuff started geting weird\n\nthe demos. the files. they wernt mine.\nsomebody elses tf2 was on here.'},'i_see_him.txt':{type:'file',content:'theres a player on dustbowl\nhes not on the scorboard\nhes not on any team\nhes just STANDING THERE\n\ni asked mike and he said he doesnt see any1\nbut HES RIGHT THERE\n\nhes looking at me\nthru the screen\ni swear hes looking at me'},'dont_open_tf2.txt':{type:'file',content:'DO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2\nDO NOT OPEN TF2'},'dreams.txt':{type:'file',content:'i keep dreming abt dustbowl\nnot the game\nlike im THERE\nthe tunels the dust\nits so dry i can feel it\n\nand hes there 2\nthe figure\nhe says i belong there\nhe says i never left'},'what_is_happening.txt':{type:'file',content:'my pc restarted on its own\nnew files evrywhre\na whole new DRIVE??\nLOCALDRIVED??\n\ni didnt put that there\ni didnt make these files\n\nwhos writing these'},'to_mom.txt':{type:'file',content:'hey mom\nim sorry i didnt clean my room\nim sorry i didnt do the grocerys\nim sorry i was always late 4 dinner\nim sorry i played tf2 insted of doing hw\n\ni luv u mom\n\ni dont think i can stop whats hapening'},'to_mike.txt':{type:'file',content:'mike if ur reading this\nur my best frend dude\nrember when we playd dustbowl all nite\nand u got that sick airshot\nand i ubered that random heavy who just ate a sandvich\n\nthat was the best nite\n\ni wish things stayed like that'},'server_0000.txt':{type:'file',content:'0.0.0.0:27015\n\ni didnt add this server\nit added itself\nit joins ME\n\nwhen i connect theres no map\njust dark\njust nothng\n\nand him'},'last_entry.txt':{type:'file',content:'5/28/2010\n\nim so tired\n\ni cant do this anymore\n\ntomrow i go home'},'note001.txt':{type:'file',content:'201 201 201 201 201 201 201'},'note002.txt':{type:'file',content:'the number 201. its evrywhere. the files. the server. the password. am i going crazy'},'note003.txt':{type:'file',content:'201. thats the number. i dont kno what it means but its importnt. its the key 2 somthing.'},
 'march_2009.txt':{type:'file',content:'march 2009\n\nbought the hard drive today\ncraigslist guy was weird abt it\nkept saying "dont play the demos"\nlike ok dude its just a hard drive\n\ninstalled tf2 on it. works fine.\nfound some old files but whatevr'},
@@ -895,7 +895,7 @@ const normal={
 {u:'TheDustBwlDuck',t:'8:32 PM',m:'crits r literaly random'}
 ]
 };
-if(typeof pcState!=='undefined'&&pcState===2){
+if(window.pcState===2){
 const corrupted=Object.assign({},normal);
 corrupted['mikeloveshalflife']=[
 {u:'mikeloveshalflife',t:'11:30 PM',m:'dude r u ok?? u havent been online in 3 days'},
@@ -1080,7 +1080,7 @@ const normal=[
 {id:34,from:'xX_SC0UT_RULEZ_Xx@yahoo.com',subject:'CHECK THIS FRAG VIDEO',date:'Sep 2, 2010',unread:false,body:'BRO I MADE A FRAG VIDEO\n\nits me getting kills on dustbowl\n\nonly 2 of them are mine the rest i stole from youtube\n\nBUT STILL\n\n- SCOUT RULEZ'},
 {id:35,from:'your-horoscope@dailystars.com',subject:'Your daily horoscope - Libra',date:'Sep 1, 2010',unread:false,body:'Libra (Sep 23 - Oct 22)\n\nToday the stars suggest you should go outside and touch grass.\n\nJust kidding play more TF2.\n\nLucky numbers: 7, 201'}
 ];
-if(typeof pcState!=='undefined'&&pcState===2){
+if(window.pcState===2){
 const corrupted=[
 {id:100,from:'??????????@0.0.0.0',subject:'y̷o̸u̵ ̴t̵u̸r̷n̶e̵d̷ ̶i̸t̵ ̷o̸n̵',date:'May 28, 2010',unread:true,body:'i knew you would come back.\nyou always do.'},
 {id:101,from:'system@soos.local',subject:'CRITICAL: 50 files recovered',date:'May 28, 2010',unread:true,body:'SYSTEM ALERT\n\n50 files recovered from corrupted sectors\nDrive D: (LOCALDRIVED) mounted\nUnknown process detected (PID 201)\n\nWARNING: Process cannot be terminated\nWARNING: Process is modifying system files\n'},
@@ -1101,7 +1101,7 @@ return corrupted;
 return normal;
 };
 const getBookmarks=()=>{
-if(typeof pcState!=='undefined'&&pcState===2)return[{title:'0.0.0.0:27015',url:'http://0.0.0.0:27015'}];
+if(window.pcState===2)return[{title:'0.0.0.0:27015',url:'http://0.0.0.0:27015'}];
 return[
 {title:'Dustbowl 24/7 - Community Server',url:'http://dustbowl247.community-tf2.net'},
 {title:'TF2 Wiki - Dustbowl',url:'http://wiki.teamfortress.com/wiki/Dustbowl'},
@@ -1114,7 +1114,7 @@ return[
 ];
 };
 const getHistory=()=>{
-if(typeof pcState!=='undefined'&&pcState===2)return[{title:'0.0.0.0:27015',date:'May 28, 2010'}];
+if(window.pcState===2)return[{title:'0.0.0.0:27015',date:'May 28, 2010'}];
 return[
 {title:'google: "tf2 mann co update whats new"',date:'Sep 30, 2010'},
 {title:'google: "tf2 trading guide beginners"',date:'Sep 30, 2010'},
@@ -1149,7 +1149,7 @@ const pathEl=document.getElementById('exp-path');
 if(!contentEl)return;
 pathEl.textContent=path;
 contentEl.innerHTML='';
-if(path==='C:/Users/TheDustBwlDuck'&&typeof pcState!=='undefined'&&pcState===2){
+if(path==='C:/Users/TheDustBwlDuck'&&window.pcState===2){
 const driveEl=document.createElement('div');
 driveEl.className='explorer-item';
 driveEl.innerHTML='<div class="explorer-item-icon">\uD83D\uDCBE</div><div class="explorer-item-name">LOCALDRIVED (D:)</div>';
@@ -1167,7 +1167,7 @@ const backBtn=document.getElementById('exp-back');
 if(backBtn){backBtn.onclick=()=>{const parent=path.split('/').slice(0,-1).join('/');if(parent)renderExplorerPath(parent)}}
 };
 const handleFileOpen=(item,name)=>{
-if(name==='home.exe'&&typeof pcState!=='undefined'&&pcState===2){openHomeGame();return}
+if(name==='home.exe'&&window.pcState===2){openHomeGame();return}
 if(item.type==='file')openTextEditor(item.content,name);
 else if(item.type==='img')openImageViewerSingle(item.src,name);
 else if(item.type==='audio'||item.type==='video')openMediaPlayerFile(item.src,name,item.type);
@@ -1211,7 +1211,7 @@ body.innerHTML=`<div style="padding:20px;text-align:center;font-family:Tahoma,sa
 }
 };
 const openTerminal=()=>{
-const ver=typeof pcState!=='undefined'&&pcState===2?'v0.6.66':'v1.0.2';
+const ver=window.pcState===2?'v0.6.66':'v1.0.2';
 const h=`<div class="app-terminal"><div class="terminal-output" id="term-out">SoOS Terminal ${ver}\nType "help" for available commands.\n\n</div><div class="terminal-input-line"><span class="terminal-prompt">TheDustBwlDuck@soos:~$</span><input class="terminal-input" id="term-in" autofocus spellcheck="false"></div></div>`;
 createWindow('terminal','Terminal',550,350,h);
 const inp=document.getElementById('term-in');
@@ -1221,7 +1221,7 @@ const processCommand=(cmd)=>{
 const out=document.getElementById('term-out');if(!out)return;
 out.innerHTML+=`<span style="color:#999">TheDustBwlDuck@soos:~$</span> ${cmd}\n`;
 const lower=cmd.toLowerCase();
-if(typeof pcState!=='undefined'&&pcState===2){
+if(window.pcState===2){
 const responses=['i see you.','why did you turn it on?','im still here.','at home.','you cant help him.','0.0.0.0','i knew you would come back.','you always do.','BACK','201','stop.','leave.'];
 out.innerHTML+=`${responses[Math.floor(Math.random()*responses.length)]}\n\n`;
 out.scrollTop=out.scrollHeight;return;
@@ -1293,7 +1293,7 @@ createWindow('email','Mail',520,400,h);
 document.querySelectorAll('.email-item').forEach((item)=>{item.addEventListener('click',()=>{const id=parseInt(item.dataset.emailId);const email=emails.find((e)=>e.id===id);if(!email)return;if(typeof window._cubeyReactToEmail==='function')window._cubeyReactToEmail(email.subject,email.from);const body=document.querySelector('#win-email .window-body');if(body){body.innerHTML=`<div class="email-view"><button class="email-view-back" id="email-back">\u25C0 Back</button><div class="email-view-header"><div class="email-view-subject">${email.subject}</div><div class="email-view-meta">From: ${email.from} | ${email.date}</div></div><div class="email-view-body">${email.body}</div></div>`;document.getElementById('email-back').addEventListener('click',()=>openEmail())}})});
 };
 const openSettings=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 let h='<div class="app-settings"><div class="settings-section"><div class="settings-section-title">System</div><div class="settings-row"><span class="settings-label">OS Version</span><span class="settings-value">SoOS 1.0.2</span></div><div class="settings-row"><span class="settings-label">User</span><span class="settings-value">TheDustBwlDuck</span></div><div class="settings-row"><span class="settings-label">Hostname</span><span class="settings-value">dustbowl-pc</span></div></div><div class="settings-section"><div class="settings-section-title">Hardware</div><div class="settings-row"><span class="settings-label">CPU</span><span class="settings-value">Intel Core 2 Quad Q6600</span></div><div class="settings-row"><span class="settings-label">RAM</span><span class="settings-value">4096 MB DDR2</span></div><div class="settings-row"><span class="settings-label">GPU</span><span class="settings-value">ATI Radeon HD 3870 512 MB</span></div><div class="settings-row"><span class="settings-label">HDD</span><span class="settings-value">320 GB (3 years old)</span></div></div><div class="settings-section"><div class="settings-section-title">Network</div><div class="settings-row"><span class="settings-label">Status</span><span class="settings-value">'+(isC?'<span style="color:#c00">0.0.0.0 [ANOMALOUS]</span>':'Connected')+'</span></div></div>';
 if(isC){
 h+='<div class="settings-section" style="border-top:2px solid #c00;margin-top:10px;padding-top:10px"><div class="settings-section-title" style="color:#c00">Danger Zone</div><div class="settings-row"><span class="settings-label" style="color:#888">Factory Reset</span><span class="settings-value"><button id="factory-reset-btn" style="background:#c00;color:#fff;border:2px outset #f44;padding:3px 12px;font-family:Tahoma,sans-serif;font-size:11px;cursor:pointer">RESET SYSTEM</button></span></div><div style="font-size:9px;color:#888;margin-top:4px;padding:0 4px">Warning: This will erase all data and restore SoOS to factory defaults. This action cannot be undone.</div></div>';
@@ -1316,7 +1316,7 @@ const disp=document.getElementById('calc-disp');let expr='';
 document.querySelectorAll('[data-calc]').forEach((btn)=>{btn.addEventListener('click',()=>{const v=btn.dataset.calc;if(v==='C'){expr='';disp.textContent='0'}else if(v==='='){try{const r=Function('"use strict";return ('+expr+')')();disp.textContent=r;expr=String(r)}catch{disp.textContent='ERR';expr=''}}else{expr+=v;disp.textContent=expr}})});
 };
 const openPaint=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const allColors=['#ffffff','#000000','#ff0000','#ff6600','#ffff00','#00cc00','#0066ff','#cc00ff','#ff69b4','#00cccc','#884400','#666666','#cccccc','#ff4444','#44ff44','#4444ff'];
 let cb='';
 allColors.forEach((c,i)=>{cb+=`<div class="paint-color-btn${i===0?' active':''}" data-color="${c}" style="background:${c};width:16px;height:16px;border:1px solid #555;cursor:pointer;display:inline-block"></div>`});
@@ -1395,7 +1395,7 @@ corrupted:[
 ]};
 
 const openPaintGallery=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const drawings=isC?[...duckDrawings.normal,...duckDrawings.corrupted]:duckDrawings.normal;
 let thumbs='<div style="display:flex;flex-wrap:wrap;gap:6px;padding:8px;max-height:500px;overflow-y:auto">';
 drawings.forEach((d,i)=>{
@@ -1598,7 +1598,7 @@ createWindow('mirc','mIRC - #tf2-dustbowl',520,380,h);
 
 // Recycle Bin
 const openRecycleBin=()=>{
-const items=typeof pcState!=='undefined'&&pcState===2?[
+const items=window.pcState===2?[
 {name:'its_not_real.txt',content:'i keep telling myself its not real\nits just a game\nits just pixels\n\nbut then y does he kno my name'},
 {name:'DELETED_photo_001.png',content:'[IMAGE FILE - CORRUPTED]\n[Cannot display]'},
 {name:'uninstall_tf2.bat',content:'@echo off\necho Uninstalling Team Fortress 2...\necho ERROR: Access denied\necho ERROR: File in use by process (PID 201)\necho Uninstall failed.'},
@@ -1866,7 +1866,7 @@ requestAnimationFrame(loop);
 
 // ============ WEBCAM ============
 const openWebcam=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const cW=320,cH=240;
 const h='<div style="background:#000;padding:0"><canvas id="webcam-canvas" width="'+cW+'" height="'+cH+'" style="display:block;width:100%"></canvas><div style="background:#222;padding:4px 8px;font-family:Tahoma;font-size:10px;color:#888;display:flex;justify-content:space-between"><span>'+(isC?'<span style="color:#f00">FEED CORRUPTED</span>':'USB Camera - No Signal')+'</span><span>REC</span></div></div>';
 createWindow('webcam','Webcam',340,290,h);
@@ -1898,7 +1898,7 @@ requestAnimationFrame(draw);
 
 // ============ TASK MANAGER ============
 const openTaskMgr=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const procs=isC?[
 {name:'soos.sys',pid:'001',mem:'12,480 K',cpu:'2%',status:'Running'},
 {name:'desktop.exe',pid:'002',mem:'8,192 K',cpu:'1%',status:'Running'},
@@ -1929,7 +1929,7 @@ createWindow('taskmgr','Task Manager',480,300,h);
 
 // ============ DEFRAG ============
 const openDefrag=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const h='<div style="font-family:Tahoma;font-size:11px;padding:10px"><div style="font-weight:bold;margin-bottom:8px">SoOS Disk Defragmenter</div><div style="font-size:10px;color:#666;margin-bottom:8px">Drive C: — '+(isC?'<span style="color:#f00">CORRUPTED SECTORS DETECTED</span>':'Healthy')+'</div><canvas id="defrag-canvas" width="400" height="200" style="border:1px inset #808080;display:block;margin-bottom:8px;background:#000"></canvas><div style="display:flex;gap:6px;align-items:center"><button id="defrag-btn" style="padding:3px 16px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer">Defragment</button><span id="defrag-status" style="font-size:10px;color:#888">Ready</span></div><div style="margin-top:8px;font-size:9px;color:#888;display:flex;gap:12px"><span><span style="display:inline-block;width:8px;height:8px;background:#4a4"></span> System</span><span><span style="display:inline-block;width:8px;height:8px;background:#44a"></span> Data</span><span><span style="display:inline-block;width:8px;height:8px;background:#aaa"></span> Free</span>'+(isC?'<span><span style="display:inline-block;width:8px;height:8px;background:#f00"></span> Corrupted</span>':'')+'</div></div>';
 createWindow('defrag','Disk Defragmenter',440,320,h);
 setTimeout(()=>{
@@ -1998,7 +1998,7 @@ createWindow('solitaire','Solitaire',420,380,h);
 
 // ============ STICKY NOTES ============
 const openStickyNotes=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const notes=isC?[
 {color:'#ffff88',text:'remember 2 eat\n\n...i havent eaten today\nor yesterday'},
 {color:'#88ffff',text:'DONT OPEN TF2\nDONT OPEN TF2\nDONT OPEN TF2'},
@@ -2022,7 +2022,7 @@ createWindow('stickynotes','Sticky Notes',500,320,notesHtml);
 
 // ============ CALENDAR ============
 const openCalendar=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const month=isC?'May 2010':'September 2010';
 const days=isC?31:30;
 const startDay=isC?6:3;// May 2010 starts Sat, Sep 2010 starts Wed
@@ -2049,7 +2049,7 @@ createWindow('calendar','Calendar',320,280,cal);
 
 // ============ COMMAND PROMPT ============
 const openCmd=()=>{
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const h='<div style="background:#000;padding:8px;font-family:\'Courier New\',monospace;font-size:13px;color:#ccc;min-height:280px"><div id="cmd-output">SoOS Command Prompt v1.0<br>Copyright (c) 2010 SoOS Project<br>'+(isC?'<span style="color:#f00">WARNING: System integrity compromised</span><br>':'')+'<br></div><div style="display:flex"><span style="color:#ccc">C:\\Users\\TheDustBwlDuck&gt;&nbsp;</span><input id="cmd-input" style="flex:1;background:transparent;border:none;color:#ccc;font-family:\'Courier New\',monospace;font-size:13px;outline:none" autofocus autocomplete="off" spellcheck="false"></div></div>';
 createWindow('cmd','Command Prompt',520,320,h);
 setTimeout(()=>{
@@ -2108,7 +2108,7 @@ if(window.cubeyQ)window.cubeyQ("HEY! Don't do that {name}! That's MEAN!".replace
 },500);
 }
 }
-else if(cl==='terminal'||cl==='run terminal'){if(isC&&window.launchTerminalPuzzle){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';if(typeof terminalLaunched!=='undefined')terminalLaunched=true;setTimeout(()=>window.launchTerminalPuzzle(),500)}else if(isC){output.innerHTML+='<span style="color:#f00">Terminal unavailable.</span><br>'}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
+else if(cl==='terminal'||cl==='run terminal'){if(isC&&window.launchTerminalPuzzle){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';window.terminalLaunched=true;setTimeout(()=>window.launchTerminalPuzzle(),500)}else if(isC){output.innerHTML+='<span style="color:#f00">Terminal unavailable.</span><br>'}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
 else if(cl==='save'){if(window.saveGame){window.saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
 else output.innerHTML+="'"+cmd+"' is not recognized as a command.<br>";
 output.scrollTop=output.scrollHeight;
@@ -2124,7 +2124,7 @@ if(screenSaverTimer)clearTimeout(screenSaverTimer);
 screenSaverTimer=setTimeout(()=>{
 if(screenSaverActive)return;
 screenSaverActive=true;
-const isC=typeof pcState!=='undefined'&&pcState===2;
+const isC=window.pcState===2;
 const ss=document.createElement('div');
 ss.id='screensaver';
 ss.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:850;cursor:none';

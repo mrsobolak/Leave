@@ -1,15 +1,15 @@
 // ========== SAVE/LOAD SYSTEM (FILE-BASED) ==========
 const saveGame=()=>{
 const data={
-  pcState:typeof pcState!=='undefined'?pcState:1,
-  cubeyIntroDone:typeof cubeyIntroDone!=='undefined'?cubeyIntroDone:false,
-  cubeyUserName:typeof cubeyUserName!=='undefined'?cubeyUserName:'',
-  cubeyGamesWon:typeof cubeyGamesWon!=='undefined'?cubeyGamesWon:0,
-  terminalLaunched:typeof terminalLaunched!=='undefined'?terminalLaunched:false,
-  mikeAwakened:typeof mikeAwakened!=='undefined'?mikeAwakened:false,
-  cubeyKilled:typeof cubeyKilled!=='undefined'?cubeyKilled:false,
-  path2Counter:typeof path2Counter!=='undefined'?path2Counter:0,
-  termStep:typeof termStep!=='undefined'?termStep:0,
+  pcState:window.pcState||1,
+  cubeyIntroDone:window.cubeyIntroDone||false,
+  cubeyUserName:window.cubeyUserName||'',
+  cubeyGamesWon:window.cubeyGamesWon||0,
+  terminalLaunched:window.terminalLaunched||false,
+  mikeAwakened:window.mikeAwakened||false,
+  cubeyKilled:window.cubeyKilled||false,
+  path2Counter:window.path2Counter||0,
+  termStep:window.termStep||0,
   timestamp:Date.now(),
   version:'2.3'
 };
