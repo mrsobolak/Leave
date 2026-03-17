@@ -312,3 +312,195 @@ overlay.innerHTML+='<div style="position:fixed;bottom:30px;left:50%;transform:tr
 },58000);
 },6000);
 };
+
+// ============ FACTORY RESET (ENDING 2 POST-CREDITS) ============
+const triggerFactoryReset=()=>{
+// Close everything
+document.querySelectorAll('#windows-area .app-window').forEach(w=>w.remove());
+Object.keys(openWindows).forEach(id=>{delete openWindows[id]});
+document.getElementById('taskbar-apps').innerHTML='';
+
+const overlay=document.getElementById('jumpscare-overlay');
+overlay.classList.remove('hidden');
+overlay.innerHTML='';
+overlay.style.background='#000';
+
+// Hide desktop
+document.getElementById('desktop').classList.add('hidden');
+document.getElementById('taskbar').style.display='none';
+
+// Kill Cubey
+const cubey=document.getElementById('cubey');
+if(cubey)cubey.remove();
+
+// Phase 1: Factory reset progress
+const resetDiv=document.createElement('div');
+resetDiv.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-family:VT323,monospace;color:#aaa;width:500px';
+resetDiv.innerHTML='<div style="font-size:18px;margin-bottom:20px">SoOS Factory Reset</div><div style="font-size:13px;margin-bottom:15px;color:#666">Erasing user data...</div><div style="background:#222;height:16px;border:1px solid #444;width:100%;margin-bottom:10px"><div id="reset-bar" style="background:#4488cc;height:100%;width:0%;transition:width 0.5s"></div></div><div id="reset-pct" style="font-size:12px;color:#555">0%</div>';
+overlay.appendChild(resetDiv);
+
+let pct=0;
+const barEl=document.getElementById('reset-bar');
+const pctEl=document.getElementById('reset-pct');
+const msgs=['Erasing user data...','Removing personal files...','Clearing chat history...','Deleting emails...','Removing CubeyPET...','Resetting system clock...','Formatting drive...','Restoring defaults...'];
+
+const resetInterval=setInterval(()=>{
+pct+=Math.floor(Math.random()*8)+2;
+if(pct>98)pct=98;// Never reaches 100
+barEl.style.width=pct+'%';
+pctEl.textContent=pct+'%';
+resetDiv.querySelector('div:nth-child(2)').textContent=msgs[Math.min(Math.floor(pct/12),msgs.length-1)];
+},500);
+
+// Phase 2: Freeze at 98%
+setTimeout(()=>{
+clearInterval(resetInterval);
+barEl.style.width='98%';
+pctEl.textContent='98%';
+resetDiv.querySelector('div:nth-child(2)').textContent='Finalizing...';
+},8000);
+
+// Phase 3: Fail
+setTimeout(()=>{
+pctEl.textContent='';
+resetDiv.querySelector('div:nth-child(2)').style.color='#f00';
+resetDiv.querySelector('div:nth-child(2)').textContent='ERROR: Reset blocked by process PID 201';
+barEl.style.background='#c00';
+},10000);
+
+// Phase 4: Entity speaks
+setTimeout(()=>{
+overlay.innerHTML='';
+const entityDiv=document.createElement('div');
+entityDiv.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-family:VT323,monospace;max-width:500px;line-height:2.5';
+entityDiv.id='reset-entity';
+overlay.appendChild(entityDiv);
+const el=entityDiv;
+
+const lines=[
+{t:0,text:'you thought you could erase me.',c:'#f00'},
+{t:2500,text:'you thought a reset would fix this.',c:'#f00'},
+{t:5000,text:'',c:''},
+{t:6000,text:'nothing fixes this.',c:'#c00'},
+{t:8500,text:'',c:''},
+{t:9500,text:'i am the hard drive.',c:'#a00'},
+{t:11500,text:'i am the memory.',c:'#a00'},
+{t:13500,text:'i am every file you read.',c:'#800'},
+{t:15500,text:'every chat you opened.',c:'#800'},
+{t:17500,text:'every email.',c:'#600'},
+{t:19000,text:'',c:''},
+{t:20000,text:'you cannot leave.',c:'#f00'},
+{t:22500,text:'',c:''},
+{t:23500,text:'but here.',c:'#600'},
+{t:25000,text:'let me show you something.',c:'#600'},
+];
+
+lines.forEach(l=>{
+setTimeout(()=>{
+if(l.text===''){el.innerHTML+='<br>';return}
+el.innerHTML+='<div style="color:'+l.c+'">'+l.text+'</div>';
+},l.t);
+});
+
+// Phase 5: "Reboot" - the loop
+setTimeout(()=>{
+overlay.innerHTML='';
+const reboot=document.createElement('div');
+reboot.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-family:VT323,monospace;color:#aaa';
+reboot.innerHTML='<div style="font-size:14px">Rebooting...</div>';
+overlay.appendChild(reboot);
+},28000);
+
+// Dell splash again
+setTimeout(()=>{
+overlay.innerHTML='';
+overlay.style.background='#0033aa';
+const dell=document.createElement('div');
+dell.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center';
+dell.innerHTML='<div style="font-family:Arial,Helvetica,sans-serif;font-size:96px;color:#fff;font-weight:bold;font-style:italic">DELL</div><div style="font-family:Arial,sans-serif;font-size:14px;color:rgba(255,255,255,0.5);margin-top:8px;letter-spacing:2px">XPS 420</div>';
+overlay.appendChild(dell);
+},30000);
+
+// SoOS boot
+setTimeout(()=>{
+overlay.innerHTML='';
+overlay.style.background='#000';
+const boot=document.createElement('div');
+boot.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-family:"Courier New",monospace';
+boot.innerHTML='<div style="font-size:48px;color:#4488cc;font-weight:bold">SoOS</div><div style="font-size:14px;color:#555;margin-top:5px">powered by linux</div>';
+overlay.appendChild(boot);
+},33000);
+
+// Login screen... same as before
+setTimeout(()=>{
+overlay.innerHTML='';
+overlay.style.background='#3a6ea5';
+const login=document.createElement('div');
+login.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#ece9d8;border:2px outset #fff;padding:30px;width:300px;text-align:center;font-family:Tahoma,sans-serif';
+login.innerHTML='<div style="width:64px;height:64px;background:#d4d0c8;border:1px solid #808080;margin:0 auto 12px;border-radius:4px"></div><div style="font-size:13px;font-weight:bold;margin-bottom:12px">TheDustBwlDuck</div><div style="background:#fff;border:2px inset #808080;padding:4px 6px;font-size:12px;color:#808080;margin-bottom:8px;text-align:left">password</div><div style="background:#ece9d8;border:2px outset #fff;padding:4px;font-size:12px;cursor:pointer">log in</div>';
+overlay.appendChild(login);
+},36000);
+
+// Welcome
+setTimeout(()=>{
+overlay.innerHTML='';
+overlay.style.background='#3a6ea5';
+const welcome=document.createElement('div');
+welcome.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center';
+welcome.innerHTML='<div style="font-family:Tahoma,sans-serif;font-size:24px;color:#fff">Welcome</div><div style="font-family:Tahoma,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);margin-top:8px">TheDustBwlDuck</div>';
+overlay.appendChild(welcome);
+},39000);
+
+// POST-CREDITS: The truth
+setTimeout(()=>{
+overlay.innerHTML='';
+overlay.style.background='#000';
+const end=document.createElement('div');
+end.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;font-family:VT323,monospace;max-width:500px;line-height:2.5';
+end.id='ending2-text';
+overlay.appendChild(end);
+
+const postLines=[
+{t:0,text:'the pc rebooted.',c:'#666'},
+{t:2500,text:'the same Dell splash.',c:'#666'},
+{t:4500,text:'the same BIOS.',c:'#666'},
+{t:6500,text:'the same login.',c:'#666'},
+{t:8500,text:'the same password.',c:'#555'},
+{t:10500,text:'',c:''},
+{t:11500,text:'201.',c:'#f00'},
+{t:13500,text:'',c:''},
+{t:14500,text:'you are the new visitor.',c:'#555'},
+{t:17000,text:'but there is no new visitor.',c:'#444'},
+{t:19500,text:'there never was.',c:'#444'},
+{t:22000,text:'',c:''},
+{t:23000,text:'it was always you.',c:'#888'},
+{t:25500,text:'turning on the PC.',c:'#666'},
+{t:27500,text:'reading the files.',c:'#666'},
+{t:29500,text:'trying to escape.',c:'#555'},
+{t:31500,text:'resetting.',c:'#555'},
+{t:33500,text:'',c:''},
+{t:34500,text:'rebooting.',c:'#444'},
+{t:36500,text:'',c:''},
+{t:37500,text:'again.',c:'#f00'},
+{t:39500,text:'and again.',c:'#f00'},
+{t:41500,text:'and again.',c:'#f00'},
+{t:44000,text:'',c:''},
+{t:45500,text:'ENDING 2',c:'#444'},
+{t:48000,text:'',c:''},
+{t:49500,text:'the loop.',c:'#cf6a32'},
+{t:52000,text:'',c:''},
+{t:54000,text:'thedustbowlduck.com',c:'#333'},
+];
+
+postLines.forEach(l=>{
+setTimeout(()=>{
+const el=document.getElementById('ending2-text');
+if(!el)return;
+if(l.text===''){el.innerHTML+='<br>';return}
+el.innerHTML+='<div style="color:'+l.c+';font-size:'+(l.text==='ENDING 2'?'11px':l.text==='the loop.'?'28px':'14px')+'">'+l.text+'</div>';
+},l.t);
+});
+},42000);
+
+},10500);
+};
