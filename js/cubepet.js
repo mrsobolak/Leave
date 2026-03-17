@@ -440,13 +440,10 @@ cubeyQ("Wait... I'm... still remembering...",true);
 return;
 }
 if(window.terminalLaunched){
-cubeyQ("The terminal is already open. Focus on it.",true);
+cubeyQ("Focus on the terminal. I'm right here.",true);
 return;
 }
-// Shouldn't reach here, but open terminal if somehow missed
-cubeyQ("Opening the dev shell...",true);
-window.terminalLaunched=true;
-setTimeout(()=>{if(window.launchTerminalPuzzle)window.launchTerminalPuzzle()},1500);
+cubeyQ("Open CMD from the Start menu. Type 'terminal'. I'll guide you through.",true);
 };
 
 // Path 2 tracker - entity takes over if user ignores Mike

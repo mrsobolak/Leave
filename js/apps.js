@@ -2109,40 +2109,28 @@ if(window.cubeyQ)window.cubeyQ("HEY! Don't do that {name}! That's MEAN!".replace
 }
 }
 else if(cl==='terminal'||cl==='run terminal'){if(isC){
-output.innerHTML+='<span style="color:#0f0">SoOS Dev Shell v0.201</span><br>';
+// Transform CMD into dev shell
+output.innerHTML+='<br><span style="color:#0f0">SoOS Dev Shell v0.201</span><br>';
 output.innerHTML+='<span style="color:#0f0">System recovery mode</span><br>';
 output.innerHTML+='<span style="color:#ff0">User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]</span><br><br>';
-// Switch prompt to dev shell style
+window.terminalLaunched=true;
+// Change prompt
 const promptEl=input.parentElement.querySelector('span');
 if(promptEl){promptEl.style.color='#0f0';promptEl.textContent='root@void:~$ '}
 input.style.color='#0f0';
 output.parentElement.style.background='#000';
-// Remove old handler, attach puzzle handler
+// Remove old keydown handler by replacing input
 const newInput=input.cloneNode(true);
 input.parentElement.replaceChild(newInput,input);
+newInput.style.color='#0f0';
 newInput.focus();
-// Init puzzle state
-let pStep=0;const pCodes=[];
-const pSteps=window._puzzleSteps||[];
-// Load puzzle steps from puzzlegames.js
-if(window.launchTerminalPuzzle){
-  // Use the real puzzle system but feed it this output/input
-  window._cmdPuzzleOutput=output;
-  window._cmdPuzzleInput=newInput;
-  window._cmdPuzzlePrompt=promptEl;
+// Wire puzzle system
+if(window.launchTerminalInCmd){
   window.launchTerminalInCmd(output,newInput);
 }else{
-  output.innerHTML+='<span style="color:#888">Dev shell ready. Mike will guide you.</span><br>';
-  if(window.cubeyQ)window.cubeyQ("Good. You're in. Type 'ls' to start.",true);
-  // Basic fallback — just show it's working
-  newInput.addEventListener('keydown',(ev)=>{
-    if(ev.key!=='Enter')return;
-    const c=newInput.value.trim();newInput.value='';
-    if(!c)return;
-    output.innerHTML+='<span style="color:#0f0">root@void:~$ '+c+'</span><br>';
-    output.innerHTML+='<span style="color:#888">Puzzle system loading...</span><br>';
-    output.scrollTop=output.scrollHeight;
-  });
+  // Fallback if puzzle system not loaded
+  output.innerHTML+='<span style="color:#888">Dev shell ready.</span><br>';
+  if(window.cubeyQ)window.cubeyQ("Good. You're in. Type 'ls' to see what's here.",true);
 }
 }else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
 else if(cl==='save'){if(window.saveGame){window.saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
