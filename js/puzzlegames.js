@@ -480,10 +480,5 @@ addTermLine('  SoOS Dev Shell v0.201','#888');
 addTermLine('  System recovery mode','#888');
 addTermLine('  User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]','#ff0');
 addTermLine('','');
-
-setTimeout(()=>{
-  if(termSteps[0]&&termSteps[0].mike){
-    mikeSay(termSteps[0].mike);
-  }
-},1500);
+// First hint delivered by cubeyReactToApp - no mikeSay needed
 };
