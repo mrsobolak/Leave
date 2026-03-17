@@ -301,7 +301,7 @@ const termSteps=[
 
 // ============ TERMINAL UI ============
 const launchTerminalPuzzle=()=>{
-if(puzzleActive)return;
+puzzleActive=false;// Reset in case it was stuck
 puzzleActive=true;
 termStep=0;
 termCodes=[];
@@ -312,15 +312,15 @@ if(old)old.remove();
 
 const win=document.createElement('div');
 win.id='puzzle-terminal';
-win.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:850;width:580px;background:#0a0a0a;border:3px solid #333;font-family:VT323,monospace';
+win.style.cssText='position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99990;width:580px;background:#0a0a0a;border:3px solid #333;font-family:VT323,monospace;box-shadow:0 0 30px rgba(0,255,0,0.1)';
 win.innerHTML=`
 <div style="background:#1a1a1a;padding:4px 8px;font-size:11px;color:#666;display:flex;justify-content:space-between;align-items:center;font-family:Tahoma,sans-serif">
-<span>SoOS Dev Shell</span>
+<span style="color:#0f0">SoOS Dev Shell</span>
 <button id="pterm-close" style="background:#600;color:#fff;border:1px solid #900;font-size:9px;padding:1px 6px;cursor:pointer;font-family:Tahoma,sans-serif">X</button>
 </div>
 <div id="pterm-output" style="height:380px;overflow-y:auto;padding:10px;font-size:14px;color:#0f0;line-height:1.6"></div>
 <div style="display:flex;align-items:center;padding:6px 10px;border-top:1px solid #222;background:#050505">
-<span style="color:#0f0;font-size:14px">C:\\void&gt;&nbsp;</span>
+<span style="color:#0f0;font-size:14px">root@void:~$&nbsp;</span>
 <input id="pterm-input" style="flex:1;background:transparent;border:none;color:#0f0;font-family:VT323,monospace;font-size:14px;outline:none" autofocus autocomplete="off" spellcheck="false">
 </div>`;
 document.body.appendChild(win);
@@ -338,14 +338,14 @@ termInput.addEventListener('keydown',(e)=>{
   const cmd=termInput.value.trim();
   termInput.value='';
   if(!cmd)return;
-  addTermLine('C:\\void> '+cmd,'#0f0');
+  addTermLine('root@void:~$ '+cmd,'#0f0');
   processCommand(cmd);
  }
 });
 
 termInput.focus();
 
-addTermLine('  SoOS Terminal v2.01','#888');
+addTermLine('  SoOS Dev Shell v0.201','#888');
 addTermLine('  System recovery mode','#888');
 addTermLine('  User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]','#ff0');
 addTermLine('','');

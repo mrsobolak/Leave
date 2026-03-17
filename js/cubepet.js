@@ -89,7 +89,26 @@ setTimeout(()=>cubeyQ("Opening it now. Follow my instructions.",true),73000);
 setTimeout(()=>{
 mikeAwakened=true;
 window.terminalLaunched=true;
-if(window.launchTerminalPuzzle)window.launchTerminalPuzzle();
+// Force open dev shell with verification
+const tryLaunch=(attempts)=>{
+  attempts=attempts||0;
+  if(attempts>10)return;// give up after 5 seconds
+  try{
+    if(window.launchTerminalPuzzle){
+      window.launchTerminalPuzzle();
+      // Verify it actually appeared
+      setTimeout(()=>{
+        if(!document.getElementById('puzzle-terminal')){
+          // It didn't appear - try again
+          tryLaunch(attempts+1);
+        }
+      },300);
+    }else{
+      setTimeout(()=>tryLaunch(attempts+1),500);
+    }
+  }catch(e){setTimeout(()=>tryLaunch(attempts+1),500)}
+};
+tryLaunch(0);
 },76000);
 setTimeout(startMikeIdle,78000);
 }
