@@ -1129,7 +1129,7 @@ return[
 ];
 };
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>{if(typeof window._cubeyTF2Warn==='function'){window._cubeyTF2Warn().then(ok=>{if(ok==='beeper'){if(typeof triggerBeeperEnding==='function')triggerBeeperEnding()}else if(ok){triggerTF2Launch()}})}else{triggerTF2Launch()}},steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>{if(typeof window._cubeyTF2Warn==='function'){window._cubeyTF2Warn().then(ok=>{if(ok==='beeper'){if(typeof triggerBeeperEnding==='function')triggerBeeperEnding()}else if(ok){triggerTF2Launch()}})}else{triggerTF2Launch()}},steam:()=>triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom,webcam:openWebcam,taskmgr:openTaskMgr,defrag:openDefrag,solitaire:openSolitaire,stickynotes:openStickyNotes,calendar:openCalendar,cmd:openCmd};
 if(apps[id])apps[id]();
 if(typeof window._cubeyReactToApp==='function')window._cubeyReactToApp(id);
 };
@@ -1757,3 +1757,304 @@ requestAnimationFrame(loop);
 };
 requestAnimationFrame(loop);
 };
+
+// ============ WEBCAM ============
+const openWebcam=()=>{
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const cW=320,cH=240;
+const h='<div style="background:#000;padding:0"><canvas id="webcam-canvas" width="'+cW+'" height="'+cH+'" style="display:block;width:100%"></canvas><div style="background:#222;padding:4px 8px;font-family:Tahoma;font-size:10px;color:#888;display:flex;justify-content:space-between"><span>'+( isC?'<span style="color:#f00">FEED CORRUPTED</span>':'USB Camera - Ready')+'</span><span>REC</span></div></div>';
+createWindow('webcam','Webcam',340,290,h);
+setTimeout(()=>{
+const canvas=document.getElementById('webcam-canvas');if(!canvas)return;
+const ctx=canvas.getContext('2d');
+const draw=()=>{
+if(!document.getElementById('webcam-canvas'))return;
+if(isC){
+// Corrupted: static with occasional dark figure
+const img=ctx.createImageData(cW,cH);
+for(let i=0;i<img.data.length;i+=4){const v=Math.random()*40;img.data[i]=v;img.data[i+1]=v;img.data[i+2]=v;img.data[i+3]=255}
+ctx.putImageData(img,0,0);
+// Dark figure sometimes
+if(Math.random()>0.95){
+ctx.fillStyle='rgba(0,0,0,0.8)';
+ctx.fillRect(cW/2-15,cH/2-40,30,80);
+ctx.fillRect(cW/2-5,cH/2-50,10,15);
+}
+// Timestamp
+ctx.font='10px monospace';ctx.fillStyle='#f00';
+ctx.fillText('05/28/2010 12:06:00',5,cH-5);
+}else{
+// Normal: room with desk
+ctx.fillStyle='#2a2a3a';ctx.fillRect(0,0,cW,cH);
+ctx.fillStyle='#3a3a4a';ctx.fillRect(0,cH*0.6,cW,cH*0.4);// floor
+ctx.fillStyle='#4a3a2a';ctx.fillRect(cW*0.3,cH*0.3,cW*0.4,cH*0.35);// desk
+ctx.fillStyle='#333';ctx.fillRect(cW*0.4,cH*0.15,cW*0.2,cH*0.2);// monitor
+ctx.fillStyle='#225';ctx.fillRect(cW*0.42,cH*0.17,cW*0.16,cH*0.15);// screen glow
+// Chair
+ctx.fillStyle='#222';ctx.fillRect(cW*0.35,cH*0.45,cW*0.3,cH*0.2);
+// Slight noise
+if(Math.random()>0.9){ctx.fillStyle='rgba(255,255,255,0.02)';ctx.fillRect(0,0,cW,cH)}
+ctx.font='10px monospace';ctx.fillStyle='#888';
+ctx.fillText('09/30/2010 19:42:'+String(Math.floor(Math.random()*60)).padStart(2,'0'),5,cH-5);
+}
+requestAnimationFrame(draw);
+};draw();
+},100);
+};
+
+// ============ TASK MANAGER ============
+const openTaskMgr=()=>{
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const procs=isC?[
+{name:'soos.sys',pid:'001',mem:'12,480 K',cpu:'2%',status:'Running'},
+{name:'desktop.exe',pid:'002',mem:'8,192 K',cpu:'1%',status:'Running'},
+{name:'cubey.pet',pid:'003',mem:'2,048 K',cpu:'3%',status:'<span style="color:#ff0">MEMORY RESTORED</span>'},
+{name:'explorer.exe',pid:'047',mem:'6,144 K',cpu:'1%',status:'Running'},
+{name:'hl2.exe',pid:'201',mem:'999,999 K',cpu:'99%',status:'<span style="color:#f00">CANNOT TERMINATE</span>'},
+{name:'hl2.exe',pid:'201',mem:'999,999 K',cpu:'99%',status:'<span style="color:#f00">CANNOT TERMINATE</span>'},
+{name:'hl2.exe',pid:'201',mem:'999,999 K',cpu:'99%',status:'<span style="color:#f00">CANNOT TERMINATE</span>'},
+]:[
+{name:'soos.sys',pid:'001',mem:'12,480 K',cpu:'2%',status:'Running'},
+{name:'desktop.exe',pid:'002',mem:'8,192 K',cpu:'1%',status:'Running'},
+{name:'cubey.pet',pid:'003',mem:'2,048 K',cpu:'3%',status:'Running'},
+{name:'explorer.exe',pid:'047',mem:'6,144 K',cpu:'1%',status:'Running'},
+{name:'samjs.dll',pid:'088',mem:'1,024 K',cpu:'0%',status:'Running'},
+{name:'chat.exe',pid:'012',mem:'3,072 K',cpu:'0%',status:'Running'},
+{name:'email.exe',pid:'015',mem:'2,560 K',cpu:'0%',status:'Running'},
+];
+let rows='';
+procs.forEach(p=>{
+const isHl2=p.name==='hl2.exe';
+rows+='<tr style="'+(isHl2?'background:#2a0a0a;color:#f88':'')+'"><td>'+p.name+'</td><td>'+p.pid+'</td><td>'+p.mem+'</td><td>'+p.cpu+'</td><td>'+p.status+'</td></tr>';
+});
+const cpuUsage=isC?'99%':'8%';
+const memUsage=isC?'3,847 MB / 4,096 MB':'1,240 MB / 4,096 MB';
+const h='<div style="font-family:Tahoma;font-size:11px"><div style="background:#ece9d8;padding:4px 8px;border-bottom:1px solid #aaa"><b>Processes</b> | Performance</div><table style="width:100%;border-collapse:collapse;font-size:10px"><tr style="background:#d4d0c8"><th style="text-align:left;padding:2px 4px">Name</th><th>PID</th><th>Memory</th><th>CPU</th><th>Status</th></tr>'+rows+'</table><div style="background:#ece9d8;padding:6px 8px;border-top:1px solid #aaa;display:flex;justify-content:space-between;font-size:10px"><span>CPU: '+cpuUsage+'</span><span>Memory: '+memUsage+'</span><span>Processes: '+procs.length+'</span></div></div>';
+createWindow('taskmgr','Task Manager',480,300,h);
+};
+
+// ============ DEFRAG ============
+const openDefrag=()=>{
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const h='<div style="font-family:Tahoma;font-size:11px;padding:10px"><div style="font-weight:bold;margin-bottom:8px">SoOS Disk Defragmenter</div><div style="font-size:10px;color:#666;margin-bottom:8px">Drive C: — '+(isC?'<span style="color:#f00">CORRUPTED SECTORS DETECTED</span>':'Healthy')+'</div><canvas id="defrag-canvas" width="400" height="200" style="border:1px inset #808080;display:block;margin-bottom:8px;background:#000"></canvas><div style="display:flex;gap:6px;align-items:center"><button id="defrag-btn" style="padding:3px 16px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:11px;cursor:pointer">Defragment</button><span id="defrag-status" style="font-size:10px;color:#888">Ready</span></div><div style="margin-top:8px;font-size:9px;color:#888;display:flex;gap:12px"><span><span style="display:inline-block;width:8px;height:8px;background:#4a4"></span> System</span><span><span style="display:inline-block;width:8px;height:8px;background:#44a"></span> Data</span><span><span style="display:inline-block;width:8px;height:8px;background:#aaa"></span> Free</span>'+(isC?'<span><span style="display:inline-block;width:8px;height:8px;background:#f00"></span> Corrupted</span>':'')+'</div></div>';
+createWindow('defrag','Disk Defragmenter',440,320,h);
+setTimeout(()=>{
+const canvas=document.getElementById('defrag-canvas');if(!canvas)return;
+const ctx=canvas.getContext('2d');
+const cols=50,rows=25,bw=8,bh=8;
+const blocks=[];
+for(let i=0;i<cols*rows;i++){
+if(isC&&Math.random()<0.15)blocks.push('#f00');
+else if(Math.random()<0.3)blocks.push('#4a4');
+else if(Math.random()<0.5)blocks.push('#44a');
+else blocks.push('#222');
+}
+const drawBlocks=()=>{
+ctx.fillStyle='#000';ctx.fillRect(0,0,400,200);
+blocks.forEach((c,i)=>{
+const x=(i%cols)*bw;const y=Math.floor(i/cols)*bh;
+ctx.fillStyle=c;ctx.fillRect(x,y,bw-1,bh-1);
+});
+};
+drawBlocks();
+const btn=document.getElementById('defrag-btn');
+if(btn)btn.addEventListener('click',()=>{
+const status=document.getElementById('defrag-status');
+if(status)status.textContent='Defragmenting...';
+btn.disabled=true;
+let step=0;
+const defragStep=()=>{
+if(!document.getElementById('defrag-canvas'))return;
+if(step>=200){
+if(status)status.textContent=isC?'ERROR: Cannot defragment corrupted sectors (PID 201)':'Complete!';
+btn.disabled=false;return;
+}
+// Move a random block
+const i=Math.floor(Math.random()*blocks.length);
+const j=Math.floor(Math.random()*blocks.length);
+if(isC&&blocks[i]==='#f00'){}// Can't move corrupted
+else{const tmp=blocks[i];blocks[i]=blocks[j];blocks[j]=tmp}
+drawBlocks();step++;
+setTimeout(defragStep,30);
+};defragStep();
+});
+},100);
+};
+
+// ============ SOLITAIRE ============
+const openSolitaire=()=>{
+const suits=['\u2660','\u2665','\u2666','\u2663'];
+const vals=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+let deck=[];
+suits.forEach(s=>vals.forEach(v=>deck.push({s,v,c:s==='\u2665'||s==='\u2666'?'#c00':'#000'})));
+// Shuffle
+for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}
+// Build 7 columns
+let cols='';
+for(let c=0;c<7;c++){
+const card=deck.pop();
+cols+='<div style="display:inline-block;width:50px;height:70px;background:#fff;border:1px solid #888;border-radius:3px;margin:2px;padding:3px;font-size:11px;font-family:serif;vertical-align:top"><div style="color:'+card.c+'">'+card.v+card.s+'</div><div style="text-align:center;font-size:20px;color:'+card.c+';margin-top:10px">'+card.s+'</div></div>';
+}
+// Stack
+let stackCards='';
+for(let i=0;i<4;i++){stackCards+='<div style="display:inline-block;width:50px;height:70px;background:#1a5a1a;border:1px solid #0a3a0a;border-radius:3px;margin:2px"></div>'}
+const h='<div style="background:#1a5a1a;padding:10px;min-height:300px"><div style="margin-bottom:10px">'+stackCards+'<div style="display:inline-block;width:50px;height:70px;background:#2a2a8a;border:1px solid #1a1a6a;border-radius:3px;margin:2px;margin-left:20px"></div></div><div>'+cols+'</div><div style="font-family:Tahoma;font-size:10px;color:#8a8;text-align:center;margin-top:15px">SoOS Solitaire — Click cards to play (just kidding, it\'s just for show)</div></div>';
+createWindow('solitaire','Solitaire',420,380,h);
+};
+
+// ============ STICKY NOTES ============
+const openStickyNotes=()=>{
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const notes=isC?[
+{color:'#ffff88',text:'remember 2 eat\n\n...i havent eaten today\nor yesterday'},
+{color:'#88ffff',text:'DONT OPEN TF2\nDONT OPEN TF2\nDONT OPEN TF2'},
+{color:'#ff88ff',text:'mikes number:\n555-0142\n\ncall him. tell him\nim sorry.'},
+{color:'#ffbb88',text:'201\n201\n201\n201'},
+{color:'#88ff88',text:'if ur reading this\nand im gone\n\ncheck LOCALDRIVED'},
+]:[
+{color:'#ffff88',text:'REMEMBER:\n- do math hw (due monday)\n- clean room b4 mom gets home\n- feed the dog'},
+{color:'#88ffff',text:'TF2 goals:\n- hit 3000 hours\n- get an unusual hat\n- beat mike at 1v1\n  (impossible but ill try)'},
+{color:'#ff88ff',text:'mikes bday is oct 15\nget him something good\nmaybe a tf2 poster??'},
+{color:'#ffbb88',text:'band practice saturday\nim on drums (barely)\ndrumz guy said im\n"not terrible" which is\nbasically a compliment'},
+{color:'#88ff88',text:'passwords:\nemail: dustbowl4life\nsteam: ********\nmyspace: idk i forgot'},
+];
+let notesHtml='<div style="display:flex;flex-wrap:wrap;gap:8px;padding:8px">';
+notes.forEach(n=>{
+notesHtml+='<div style="width:140px;min-height:120px;background:'+n.color+';padding:8px;font-family:\'Comic Sans MS\',cursive;font-size:11px;line-height:1.5;white-space:pre-wrap;box-shadow:2px 2px 4px rgba(0,0,0,0.2);transform:rotate('+(Math.random()*6-3)+'deg)">'+n.text.replace(/\n/g,'<br>')+'</div>';
+});
+notesHtml+='</div>';
+createWindow('stickynotes','Sticky Notes',500,320,notesHtml);
+};
+
+// ============ CALENDAR ============
+const openCalendar=()=>{
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const month=isC?'May 2010':'September 2010';
+const days=isC?31:30;
+const startDay=isC?6:3;// May 2010 starts Sat, Sep 2010 starts Wed
+const special=isC?{28:'bg:#f00;color:#fff',15:'bg:#ff8;color:#000',24:'bg:#ff8;color:#000',27:'bg:#ff8;color:#000'}:{15:'bg:#ff8;color:#000',25:'bg:#ff8;color:#000',30:'bg:#aaf;color:#000'};
+const specialTips=isC?{28:'12:06 AM',15:'server crash',24:'the nite evrythng fell apart',27:'mom left a plate outside'}:{15:"mike's bday soon",25:'band practice',30:'TODAY'};
+let cal='<div style="font-family:Tahoma;font-size:11px;padding:8px"><div style="text-align:center;font-weight:bold;font-size:14px;margin-bottom:8px">'+month+'</div>';
+cal+='<table style="width:100%;border-collapse:collapse;text-align:center"><tr style="background:#d4d0c8">';
+['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=>cal+='<th style="padding:3px;font-size:10px;border:1px solid #ccc">'+d+'</th>');
+cal+='</tr><tr>';
+for(let i=0;i<startDay;i++)cal+='<td style="border:1px solid #eee;padding:4px"></td>';
+for(let d=1;d<=days;d++){
+const sp=special[d];
+const tip=specialTips[d]||'';
+const style=sp?'background:'+sp.split(';')[0].split(':')[1]+';color:'+sp.split(';')[1].split(':')[1]:'';
+cal+='<td style="border:1px solid #ccc;padding:4px;font-size:11px;cursor:default;'+style+'" title="'+tip+'">'+d+'</td>';
+if((startDay+d)%7===0)cal+='</tr><tr>';
+}
+cal+='</tr></table>';
+if(isC)cal+='<div style="font-size:9px;color:#c00;margin-top:8px;text-align:center">May 28 — 12:06 AM</div>';
+else cal+='<div style="font-size:9px;color:#888;margin-top:8px;text-align:center">Today: September 30, 2010 — 7:42 PM</div>';
+cal+='</div>';
+createWindow('calendar','Calendar',320,280,cal);
+};
+
+// ============ COMMAND PROMPT ============
+const openCmd=()=>{
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const h='<div style="background:#000;padding:8px;font-family:\'Courier New\',monospace;font-size:13px;color:#ccc;min-height:280px"><div id="cmd-output">SoOS Command Prompt v1.0<br>Copyright (c) 2010 SoOS Project<br>'+(isC?'<span style="color:#f00">WARNING: System integrity compromised</span><br>':'')+'<br></div><div style="display:flex"><span style="color:#ccc">C:\\Users\\TheDustBwlDuck&gt;&nbsp;</span><input id="cmd-input" style="flex:1;background:transparent;border:none;color:#ccc;font-family:\'Courier New\',monospace;font-size:13px;outline:none" autofocus autocomplete="off" spellcheck="false"></div></div>';
+createWindow('cmd','Command Prompt',520,320,h);
+setTimeout(()=>{
+const input=document.getElementById('cmd-input');
+const output=document.getElementById('cmd-output');
+if(!input||!output)return;
+input.focus();
+input.addEventListener('keydown',(e)=>{
+if(e.key!=='Enter')return;
+const cmd=input.value.trim();input.value='';
+if(!cmd)return;
+output.innerHTML+='<span style="color:#ccc">C:\\Users\\TheDustBwlDuck&gt; '+cmd+'</span><br>';
+const cl=cmd.toLowerCase();
+if(cl==='help')output.innerHTML+='Commands: help, dir, cls, date, whoami, ver, echo, ipconfig, tasklist, color<br>';
+else if(cl==='dir')output.innerHTML+='<br> Directory of C:\\Users\\TheDustBwlDuck<br><br> Documents/<br> Downloads/<br> Desktop/<br> '+(isC?'<span style="color:#f00">LOCALDRIVED/</span><br>':'')+'<br>';
+else if(cl==='cls'){output.innerHTML=''}
+else if(cl==='date')output.innerHTML+=(isC?'05/28/2010 12:06 AM':'09/30/2010 7:42 PM')+'<br>';
+else if(cl==='whoami')output.innerHTML+='TheDustBwlDuck<br>';
+else if(cl==='ver')output.innerHTML+='SoOS Version 1.0.2 (Build 2010.09.30)'+(isC?' <span style="color:#f00">[COMPROMISED]</span>':'')+'<br>';
+else if(cl.startsWith('echo '))output.innerHTML+=cmd.substring(5)+'<br>';
+else if(cl==='ipconfig')output.innerHTML+=(isC?'<span style="color:#f00">IPv4 Address: 0.0.0.0<br>Subnet: 0.0.0.0<br>Gateway: 0.0.0.0<br>Status: ANOMALOUS</span>':'IPv4 Address: 192.168.1.47<br>Subnet: 255.255.255.0<br>Gateway: 192.168.1.1<br>Status: Connected')+'<br>';
+else if(cl==='tasklist'){
+output.innerHTML+='<br>PID   Name            Status<br>';
+output.innerHTML+='001   soos.sys        Running<br>';
+output.innerHTML+='002   desktop.exe     Running<br>';
+output.innerHTML+='003   cubey.pet       Running<br>';
+if(isC){output.innerHTML+='<span style="color:#f00">201   hl2.exe         CANNOT TERMINATE<br>201   hl2.exe         CANNOT TERMINATE<br>201   hl2.exe         CANNOT TERMINATE</span><br>'}
+output.innerHTML+='<br>';
+}
+else if(cl==='color'){const colors=['#0f0','#0ff','#ff0','#f0f','#f80'];output.querySelector('div')||true;output.style&&(output.parentElement.style.color=colors[Math.floor(Math.random()*colors.length)])}
+else if(isC&&(cl==='kill 201'||cl==='taskkill /f /im hl2.exe'||cl==='kill hl2.exe'))output.innerHTML+='<span style="color:#f00">ACCESS DENIED. Process cannot be terminated.</span><br><span style="color:#f00">Nice try.</span><br>';
+else if(cl==='201')output.innerHTML+=(isC?'<span style="color:#f00">you know what that means.</span>':'201? What about it?')+'<br>';
+else if(cl==='cubey')output.innerHTML+=(isC?'<span style="color:#ff0">His name is Mike.</span>':'<span style="color:#ff0">PAINTING!!</span>')+'<br>';
+else output.innerHTML+="'"+cmd+"' is not recognized as a command.<br>";
+output.scrollTop=output.scrollHeight;
+});
+},100);
+};
+
+// ============ SCREENSAVER ============
+let screenSaverTimer=null;
+let screenSaverActive=false;
+const startScreenSaverTimer=()=>{
+if(screenSaverTimer)clearTimeout(screenSaverTimer);
+screenSaverTimer=setTimeout(()=>{
+if(screenSaverActive)return;
+screenSaverActive=true;
+const isC=typeof pcState!=='undefined'&&pcState===2;
+const ss=document.createElement('div');
+ss.id='screensaver';
+ss.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:850;cursor:none';
+const canvas=document.createElement('canvas');
+canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+canvas.style.cssText='width:100%;height:100%';
+ss.appendChild(canvas);
+document.body.appendChild(ss);
+const ctx=canvas.getContext('2d');
+let x=canvas.width/2,y=canvas.height/2;
+let dx=2+Math.random()*2,dy=1.5+Math.random()*2;
+let hue=0;
+const drawSS=()=>{
+if(!document.getElementById('screensaver'))return;
+ctx.fillStyle='rgba(0,0,0,0.05)';ctx.fillRect(0,0,canvas.width,canvas.height);
+if(isC){
+// Corrupted: just "201" bouncing in red
+ctx.font='bold 48px "Courier New",monospace';
+ctx.fillStyle='#f00';
+ctx.fillText('201',x,y);
+}else{
+// Normal: "SoOS" bouncing with color change
+ctx.font='bold 36px "Courier New",monospace';
+ctx.fillStyle='hsl('+hue+',80%,60%)';
+ctx.fillText('SoOS',x,y);
+hue=(hue+2)%360;
+}
+x+=dx;y+=dy;
+if(x<0||x>canvas.width-80){dx=-dx;hue=(hue+60)%360}
+if(y<30||y>canvas.height-10){dy=-dy;hue=(hue+60)%360}
+requestAnimationFrame(drawSS);
+};
+drawSS();
+// Click/key to dismiss
+const dismiss=()=>{
+ss.remove();screenSaverActive=false;
+document.removeEventListener('mousemove',dismiss);
+document.removeEventListener('keydown',dismiss);
+document.removeEventListener('click',dismiss);
+startScreenSaverTimer();
+};
+setTimeout(()=>{
+document.addEventListener('mousemove',dismiss,{once:false});
+document.addEventListener('keydown',dismiss,{once:true});
+document.addEventListener('click',dismiss,{once:true});
+},500);
+},120000);// 2 minutes idle
+};
+// Reset timer on any activity
+['mousemove','keydown','click'].forEach(e=>document.addEventListener(e,()=>{
+if(screenSaverActive)return;
+startScreenSaverTimer();
+}));
+startScreenSaverTimer();
