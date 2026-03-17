@@ -44,7 +44,7 @@ cubeyBlinkTimer=setInterval(()=>{const eyes=document.querySelectorAll('.cubey-ey
 cubeyWanderTimer=setInterval(cubeyWander,8000+Math.random()*7000);
 cubeyMoodTimer=setInterval(()=>{cubeyMood=['happy','happy','happy','hyper','sleepy','bored'][Math.floor(Math.random()*6)]},60000);
 cubeyTimeTimer=setInterval(()=>{
-if(cubeySpeaking||!cubeyIntroDone)return;
+if(cubeySpeaking||cubeyProcessing||!cubeyIntroDone)return;
 const isC=window.pcState===2;if(isC)return;
 const mins=Math.floor((Date.now()-cubeyStartTime)/60000);
 if(mins===5)cubeyQ("You've been here 5 minutes! Having fun, "+cubeyUserName+"?",true);
@@ -167,9 +167,13 @@ b.textContent='';let i=0;const ti=setInterval(()=>{if(i<dt.length){b.textContent
 }else{b.textContent=text}
 const body=document.getElementById('cubey-body');
 if(body){body.classList.add('cubey-bounce');setTimeout(()=>body.classList.remove('cubey-bounce'),400)}
-if(cubeyReady&&cubeySam){try{cubeySam.speak(text)}catch(e){}}
+// TTS: stop any current speech, wait a beat, then speak
+if(cubeyReady&&cubeySam){
+  try{cubeySam.stop&&cubeySam.stop()}catch(e){}
+  try{cubeySam.speak(text)}catch(e){}
+}
 const dur=duration||Math.max(7000,text.length*120);
-setTimeout(()=>{b.classList.add('cubey-hidden');cubeySpeaking=false;setTimeout(cubeyNext,800)},dur);
+setTimeout(()=>{b.classList.add('cubey-hidden');cubeySpeaking=false;setTimeout(cubeyNext,1200)},dur);
 };
 
 const cubeyDismiss=()=>{const b=document.getElementById('cubey-bubble');const inp=document.getElementById('cubey-input-area');const menu=document.getElementById('cubey-menu');if(b)b.classList.add('cubey-hidden');if(inp)inp.classList.add('cubey-hidden');if(menu)menu.remove();cubeySpeaking=false;cubeyQueue=[];cubeyProcessing=false};
@@ -294,9 +298,16 @@ btn.addEventListener('click',handler);inpEl.addEventListener('keydown',kh);
 // IDLE
 const startCubeyIdle=()=>{
 cubeyTimer=setInterval(()=>{
-if(cubeySpeaking||!cubeyIntroDone)return;
+if(cubeySpeaking||cubeyProcessing||cubeyQueue.length>0||!cubeyIntroDone)return;
 const isC=window.pcState===2;
-if(isC){const r=Math.random();if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);else{if(!mikeAwakened)cubeyQ("I'm... remembering...",true);else if(!terminalLaunched)cubeyQ("Click on me. I need to tell you something.",true);else cubeyQ("Focus on the terminal.",true)}return}
+if(isC){
+  if(window.terminalLaunched)return;// puzzle owns the bubble
+  const r=Math.random();
+  if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);
+  else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);
+  else{if(!mikeAwakened)cubeyQ("I'm... remembering...",true);else cubeyQ("Open the Cubey! app.",true)}
+  return;
+}
 const r=Math.random();
 if(r<0.10)cubeyTellJoke();
 else if(r<0.18)cubeyTellStory();
