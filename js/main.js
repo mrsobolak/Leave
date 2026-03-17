@@ -82,9 +82,9 @@ window.soosAudio&&soosAudio.playMenu();
 const gateBtn=document.getElementById('gate-enter');
 if(gateBtn){gateBtn.addEventListener('mouseenter',()=>{gateBtn.style.color='#fff';gateBtn.style.borderColor='#cf6a32';gateBtn.style.background='rgba(207,106,50,0.1)'});gateBtn.addEventListener('mouseleave',()=>{gateBtn.style.color='#aaa';gateBtn.style.borderColor='#555';gateBtn.style.background='transparent'})}
 
-document.getElementById('menu-new').addEventListener('click',()=>{window.soosAudio&&soosAudio.fadeOut(0.5);startBoot(null)});
+document.getElementById('menu-new').addEventListener('click',()=>{if(window.soosAudio)soosAudio.stop();startBoot(null)});
 document.getElementById('menu-load').addEventListener('click',()=>{
-window.soosAudio&&soosAudio.fadeOut(0.5);
+if(window.soosAudio)soosAudio.stop();
 loadGameFromFile((save)=>{startBoot(save)});
 });
 document.getElementById('menu-about').addEventListener('click',()=>{document.getElementById('menu-about-panel').classList.remove('hidden')});
@@ -92,7 +92,6 @@ document.getElementById('menu-about-back').addEventListener('click',()=>{documen
 });
 
 const startBoot=(saveData)=>{
-window.soosAudio&&soosAudio.fadeOut(0.5);
 const el=document.documentElement;
 if(el.requestFullscreen)el.requestFullscreen();
 else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
@@ -115,6 +114,13 @@ if(saveData.path2Counter&&window.path2Counter!==undefined)window.path2Counter=sa
 setTimeout(()=>{
 if(window.initDesktop)window.initDesktop();
 if(window.initCubey)setTimeout(window.initCubey,500);
+// Start audio for save load
+setTimeout(()=>{
+  if(window.soosAudio){
+    soosAudio.init();
+    window.pcState===2?soosAudio.playCorrupted():soosAudio.playDesktop();
+  }
+},800);
 },300);
 }else{
 document.getElementById('dell-splash').classList.remove('hidden');
