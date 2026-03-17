@@ -458,5 +458,37 @@ overlay.innerHTML='<div style="text-align:center;position:absolute;top:50%;left:
 // ============ EXPORTS ============
 window.launchTerminalPuzzle=launchTerminalPuzzle;
 window.triggerEnding1=triggerEnding1;
-window.launchTerminalPuzzle=launchTerminalPuzzle;
 Object.defineProperty(window,'termStep',{get:()=>termStep,set:(v)=>{termStep=v}});
+
+// Launch puzzle INSIDE the CMD window
+window.launchTerminalInCmd=(cmdOutput,cmdInput)=>{
+puzzleActive=true;
+termStep=0;
+termCodes=[];
+termLines=[];
+window.terminalLaunched=true;
+
+// Override termDiv/termInput to point at CMD elements
+termDiv=cmdOutput;
+termInput=cmdInput;
+
+// Wire up the input
+cmdInput.addEventListener('keydown',(e)=>{
+  if(e.key!=='Enter')return;
+  const cmd=cmdInput.value.trim();
+  cmdInput.value='';
+  if(!cmd)return;
+  addTermLine('root@void:~$ '+cmd,'#0f0');
+  processCommand(cmd);
+});
+
+// Show first step
+addTermLine('  SoOS Dev Shell v0.201','#888');
+addTermLine('  System recovery mode','#888');
+addTermLine('  User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]','#ff0');
+addTermLine('','');
+
+setTimeout(()=>{
+  mikeSay(termSteps[0].mike);
+},1500);
+};

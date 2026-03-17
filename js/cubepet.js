@@ -85,32 +85,11 @@ setTimeout(()=>cubeyQ("I know how to stop him. But I can't do it alone.",true),5
 setTimeout(()=>cubeyQ("I found something. A way into his system. There are encrypted files hiding a kill command.",true),61000);
 setTimeout(()=>cubeyQ("If we can crack the ciphers, we can find the codes to kill his process.",true),65000);
 setTimeout(()=>cubeyQ("I found a way in. A developer shell hidden in SoOS.",true),69000);
-setTimeout(()=>cubeyQ("Opening it now. Follow my instructions.",true),73000);
+setTimeout(()=>cubeyQ("Open CMD from the Start menu. Type 'terminal'. That's all.",true),73000);
 setTimeout(()=>{
 mikeAwakened=true;
-window.terminalLaunched=true;
-// Force open dev shell with verification
-const tryLaunch=(attempts)=>{
-  attempts=attempts||0;
-  if(attempts>10)return;// give up after 5 seconds
-  try{
-    if(window.launchTerminalPuzzle){
-      window.launchTerminalPuzzle();
-      // Verify it actually appeared
-      setTimeout(()=>{
-        if(!document.getElementById('puzzle-terminal')){
-          // It didn't appear - try again
-          tryLaunch(attempts+1);
-        }
-      },300);
-    }else{
-      setTimeout(()=>tryLaunch(attempts+1),500);
-    }
-  }catch(e){setTimeout(()=>tryLaunch(attempts+1),500)}
-};
-tryLaunch(0);
+startMikeIdle();
 },76000);
-setTimeout(startMikeIdle,78000);
 }
 else if(cubeyIntroDone){
 // Intro already done from save - skip to idle, greet player

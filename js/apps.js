@@ -2108,7 +2108,43 @@ if(window.cubeyQ)window.cubeyQ("HEY! Don't do that {name}! That's MEAN!".replace
 },500);
 }
 }
-else if(cl==='terminal'||cl==='run terminal'){if(isC){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';window.terminalLaunched=true;setTimeout(()=>{if(window.launchTerminalPuzzle)window.launchTerminalPuzzle();else{const s=document.createElement('script');s.src='js/puzzlegames.js';s.onload=()=>{if(window.launchTerminalPuzzle)window.launchTerminalPuzzle()};document.head.appendChild(s)}},500)}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
+else if(cl==='terminal'||cl==='run terminal'){if(isC){
+output.innerHTML+='<span style="color:#0f0">SoOS Dev Shell v0.201</span><br>';
+output.innerHTML+='<span style="color:#0f0">System recovery mode</span><br>';
+output.innerHTML+='<span style="color:#ff0">User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]</span><br><br>';
+// Switch prompt to dev shell style
+const promptEl=input.parentElement.querySelector('span');
+if(promptEl){promptEl.style.color='#0f0';promptEl.textContent='root@void:~$ '}
+input.style.color='#0f0';
+output.parentElement.style.background='#000';
+// Remove old handler, attach puzzle handler
+const newInput=input.cloneNode(true);
+input.parentElement.replaceChild(newInput,input);
+newInput.focus();
+// Init puzzle state
+let pStep=0;const pCodes=[];
+const pSteps=window._puzzleSteps||[];
+// Load puzzle steps from puzzlegames.js
+if(window.launchTerminalPuzzle){
+  // Use the real puzzle system but feed it this output/input
+  window._cmdPuzzleOutput=output;
+  window._cmdPuzzleInput=newInput;
+  window._cmdPuzzlePrompt=promptEl;
+  window.launchTerminalInCmd(output,newInput);
+}else{
+  output.innerHTML+='<span style="color:#888">Dev shell ready. Mike will guide you.</span><br>';
+  if(window.cubeyQ)window.cubeyQ("Good. You're in. Type 'ls' to start.",true);
+  // Basic fallback — just show it's working
+  newInput.addEventListener('keydown',(ev)=>{
+    if(ev.key!=='Enter')return;
+    const c=newInput.value.trim();newInput.value='';
+    if(!c)return;
+    output.innerHTML+='<span style="color:#0f0">root@void:~$ '+c+'</span><br>';
+    output.innerHTML+='<span style="color:#888">Puzzle system loading...</span><br>';
+    output.scrollTop=output.scrollHeight;
+  });
+}
+}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
 else if(cl==='save'){if(window.saveGame){window.saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
 else output.innerHTML+="'"+cmd+"' is not recognized as a command.<br>";
 output.scrollTop=output.scrollHeight;
