@@ -460,27 +460,27 @@ window.launchTerminalPuzzle=launchTerminalPuzzle;
 window.triggerEnding1=triggerEnding1;
 Object.defineProperty(window,'termStep',{get:()=>termStep,set:(v)=>{termStep=v}});
 
-// Launch puzzle INSIDE the CMD window
-// CMD handles all input — this just inits puzzle state and exposes processCommand
-window.launchTerminalInCmd=(cmdOutput,scrollContainer)=>{
+// Launch puzzle INSIDE any window (Cubey app or CMD)
+window.launchTerminalInCmd=(outputEl,scrollEl)=>{
 puzzleActive=true;
 termStep=0;
 termCodes=[];
 termLines=[];
 window.terminalLaunched=true;
 
-// Point addTermLine at CMD's output div
-termDiv=cmdOutput;
-// Point termInput at CMD's input for focus calls
-termInput=document.getElementById('cmd-input');
+termDiv=outputEl;
+termInput=document.getElementById('cubeyapp-input')||document.getElementById('cmd-input');
 
-// Expose processCommand so CMD's keydown handler can call it
 window._puzzleProcessCommand=(cmd)=>{
   processCommand(cmd);
-  if(scrollContainer)scrollContainer.scrollTop=scrollContainer.scrollHeight;
+  if(scrollEl)scrollEl.scrollTop=scrollEl.scrollHeight;
 };
 
-// Show first Mike hint
+addTermLine('  SoOS Dev Shell v0.201','#888');
+addTermLine('  System recovery mode','#888');
+addTermLine('  User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]','#ff0');
+addTermLine('','');
+
 setTimeout(()=>{
   if(termSteps[0]&&termSteps[0].mike){
     mikeSay(termSteps[0].mike);

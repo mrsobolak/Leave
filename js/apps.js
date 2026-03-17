@@ -1129,7 +1129,7 @@ return[
 ];
 };
 const openApp=(id)=>{
-const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>{if(typeof window._cubeyTF2Warn==='function'){window._cubeyTF2Warn().then(ok=>{if(ok==='beeper'){if(window.triggerBeeperEnding)window.triggerBeeperEnding()}else if(ok){window.triggerTF2Launch()}})}else{window.triggerTF2Launch()}},steam:()=>window.triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom,webcam:openWebcam,taskmgr:openTaskMgr,defrag:openDefrag,solitaire:openSolitaire,stickynotes:openStickyNotes,calendar:openCalendar,cmd:openCmd};
+const apps={explorer:openExplorer,browser:openBrowser,terminal:openTerminal,texteditor:()=>openTextEditor('','Select a file...'),mediaplayer:openMediaPlayer,imageviewer:openImageViewer,chat:openChat,email:openEmail,settings:openSettings,calculator:openCalculator,paint:openPaint,tf2:()=>{if(typeof window._cubeyTF2Warn==='function'){window._cubeyTF2Warn().then(ok=>{if(ok==='beeper'){if(window.triggerBeeperEnding)window.triggerBeeperEnding()}else if(ok){window.triggerTF2Launch()}})}else{window.triggerTF2Launch()}},steam:()=>window.triggerSteamCrash(),recyclebin:openRecycleBin,limewire:openLimeWire,fraps:openFraps,winrar:openWinRAR,audacity:openAudacity,mirc:openMirc,home:openHomeGame,platformer:openPlatformer,snake:openSnake,chatroom:openChatroom,webcam:openWebcam,taskmgr:openTaskMgr,defrag:openDefrag,solitaire:openSolitaire,stickynotes:openStickyNotes,calendar:openCalendar,cubeyapp:openCubeyApp,cmd:openCmd};
 if(apps[id])apps[id]();
 if(typeof window._cubeyReactToApp==='function')window._cubeyReactToApp(id);
 };
@@ -2047,6 +2047,175 @@ cal+='</div>';
 createWindow('calendar','Calendar',320,280,cal);
 };
 
+// ============ CUBEY! APP ============
+const openCubeyApp=()=>{
+const isC=window.pcState===2;
+if(isC){
+// ===== CORRUPTED MODE: PUZZLE TERMINAL =====
+const h=`<div id="cubeyapp-shell" style="background:#000;padding:0;font-family:VT323,monospace;height:100%">
+<div id="cubeyapp-output" style="height:340px;overflow-y:auto;padding:10px;font-size:14px;color:#0f0;line-height:1.6"></div>
+<div style="display:flex;align-items:center;padding:6px 10px;border-top:1px solid #222;background:#050505">
+<span style="color:#0f0;font-size:14px">root@void:~$&nbsp;</span>
+<input id="cubeyapp-input" style="flex:1;background:transparent;border:none;color:#0f0;font-family:VT323,monospace;font-size:14px;outline:none" autocomplete="off" spellcheck="false">
+</div></div>`;
+createWindow('cubeyapp','Cubey! — SoOS Dev Shell',560,400,h);
+setTimeout(()=>{
+const output=document.getElementById('cubeyapp-output');
+const input=document.getElementById('cubeyapp-input');
+if(!output||!input)return;
+input.focus();
+window.terminalLaunched=true;
+
+// Point puzzlegames.js at this output/input via launchTerminalInCmd
+if(window.launchTerminalInCmd){
+  window.launchTerminalInCmd(output,document.getElementById('cubeyapp-shell'));
+}
+
+input.addEventListener('keydown',(e)=>{
+  if(e.key!=='Enter')return;
+  e.preventDefault();
+  const cmd=input.value.trim();
+  input.value='';
+  if(!cmd)return;
+  // Add typed line
+  const d=document.createElement('div');
+  d.style.cssText='color:#0f0;margin:1px 0;white-space:pre-wrap;word-break:break-all';
+  d.textContent='root@void:~$ '+cmd;
+  output.appendChild(d);
+  output.scrollTop=output.scrollHeight;
+  // Process via puzzle system
+  if(window._puzzleProcessCommand){
+    window._puzzleProcessCommand(cmd);
+  }
+});
+},100);
+}else{
+// ===== NORMAL MODE: FUN CUBEY APP =====
+const tabs=['Home','Stats','Activities','About'];
+let activeTab='Home';
+
+const homeContent=`<div style="text-align:center;padding:15px">
+<svg width="80" height="100" viewBox="0 0 140 180" style="animation:cubeyAppFloat 2s ease-in-out infinite">
+<rect x="35" y="5" width="70" height="40" rx="3" fill="#2a2a2a" stroke="#111" stroke-width="2"/>
+<rect x="35" y="35" width="70" height="8" fill="#555"/>
+<rect x="20" y="43" width="100" height="12" rx="2" fill="#2a2a2a" stroke="#111" stroke-width="2"/>
+<rect x="20" y="55" width="100" height="100" rx="4" fill="#f0e68c" stroke="#b8a43a" stroke-width="3"/>
+<ellipse cx="50" cy="95" rx="14" ry="16" fill="white" stroke="#888" stroke-width="2"/>
+<ellipse cx="52" cy="97" rx="7" ry="9" fill="#222"/>
+<ellipse cx="90" cy="95" rx="14" ry="16" fill="white" stroke="#888" stroke-width="2"/>
+<ellipse cx="92" cy="97" rx="7" ry="9" fill="#222"/>
+</svg>
+<div style="font-size:16px;font-weight:bold;color:#885500;margin-top:8px">Hi `+(window.cubeyUserName||'friend')+`!</div>
+<div style="font-size:11px;color:#888;margin-top:4px">Cubey is feeling: HAPPY!</div>
+<div style="display:flex;gap:6px;justify-content:center;margin-top:12px">
+<button class="cubeyapp-btn" data-action="paint">🎨 Paint</button>
+<button class="cubeyapp-btn" data-action="joke">😂 Joke</button>
+<button class="cubeyapp-btn" data-action="song">🎵 Song</button>
+<button class="cubeyapp-btn" data-action="fact">❓ Fact</button>
+</div>
+<div id="cubeyapp-response" style="margin-top:12px;font-size:12px;color:#555;min-height:40px;padding:8px;background:#fffde0;border:1px solid #eea;border-radius:4px"></div>
+</div>`;
+
+const statsContent=`<div style="padding:12px;font-size:12px;line-height:2">
+<b>CubeyPET Stats</b><br>
+Name: Cubey<br>
+Version: 1.0.2<br>
+Size: 201 KB<br>
+Created: 2007<br>
+Mood: Happy<br>
+Paintings: ∞<br>
+Best Friend: `+(window.cubeyUserName||'YOU')+`<br>
+Favorite Word: PAINTING<br>
+Hat: Top Hat (equipped)<br>
+Times Blinked: `+Math.floor(Math.random()*9000+1000)+`<br>
+Songs Sung: `+Math.floor(Math.random()*50+10)+`<br>
+Jokes Told: `+Math.floor(Math.random()*100+20)+`
+</div>`;
+
+const activitiesContent=`<div style="padding:12px;font-size:12px">
+<b>Cubey's Activity Log</b><br><br>
+<div style="line-height:2;color:#555">
+📌 Painted a masterpiece (2 min ago)<br>
+📌 Told a joke about sandviches (5 min ago)<br>
+📌 Sang "Best Friends Forever" (12 min ago)<br>
+📌 Followed your mouse around (18 min ago)<br>
+📌 Blinked 47 times (23 min ago)<br>
+📌 Tried to paint again (25 min ago)<br>
+📌 Painted ANOTHER masterpiece (30 min ago)<br>
+📌 Thought about painting (31 min ago)<br>
+📌 Painted (32 min ago)<br>
+📌 ...painting (33 min ago)
+</div></div>`;
+
+const aboutContent=`<div style="padding:12px;font-size:11px;line-height:1.8">
+<b>CubeyPET v1.0.2</b><br><br>
+CubeyPET is your desktop companion! He talks, sings, tells jokes, plays games, and most importantly — he LOVES painting!<br><br>
+Cubey was made in 2007 and has been on this desktop ever since. He will never leave. He doesn't know how.<br><br>
+<b>System Requirements:</b><br>
+- SoOS 1.0 or later<br>
+- Sound card (for TTS)<br>
+- A mouse (for eye tracking)<br>
+- A heart (for friendship)<br><br>
+<span style="font-size:9px;color:#aaa">201 KB — cubeypet.soos.local</span>
+</div>`;
+
+const tabsHtml=tabs.map(t=>`<button class="cubeyapp-tab${t==='Home'?' active':''}" data-tab="${t}" style="padding:4px 12px;font-family:Tahoma;font-size:11px;border:none;background:${t==='Home'?'#fff':'#d4d0c8'};cursor:pointer;border-top:${t==='Home'?'2px solid #f0e68c':'1px solid #888'};border-left:1px solid #888;border-right:1px solid #888;border-bottom:${t==='Home'?'none':'1px solid #888'}">${t}</button>`).join('');
+
+const h=`<div style="font-family:Tahoma,sans-serif;background:#ece9d8;height:100%">
+<div style="display:flex;gap:0;padding:6px 8px 0;background:#ece9d8">${tabsHtml}</div>
+<div id="cubeyapp-content" style="background:#fff;border:1px solid #888;border-top:none;margin:0 8px 8px;padding:0;min-height:280px;overflow-y:auto">${homeContent}</div>
+</div>
+<style>
+@keyframes cubeyAppFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cubeyapp-btn{padding:4px 10px;background:#ece9d8;border:2px outset #fff;font-family:Tahoma;font-size:10px;cursor:pointer}
+.cubeyapp-btn:hover{background:#d4d0c8}
+.cubeyapp-btn:active{border-style:inset}
+</style>`;
+
+createWindow('cubeyapp','Cubey!',400,420,h);
+setTimeout(()=>{
+const content=document.getElementById('cubeyapp-content');
+if(!content)return;
+
+// Tab switching
+document.querySelectorAll('.cubeyapp-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.cubeyapp-tab').forEach(t=>{t.style.background='#d4d0c8';t.style.borderTop='1px solid #888';t.style.borderBottom='1px solid #888';t.classList.remove('active')});
+    tab.style.background='#fff';tab.style.borderTop='2px solid #f0e68c';tab.style.borderBottom='none';tab.classList.add('active');
+    const t=tab.dataset.tab;
+    if(t==='Home')content.innerHTML=homeContent;
+    else if(t==='Stats')content.innerHTML=statsContent;
+    else if(t==='Activities')content.innerHTML=activitiesContent;
+    else if(t==='About')content.innerHTML=aboutContent;
+    // Re-attach home buttons if on home
+    if(t==='Home')attachHomeButtons();
+  });
+});
+
+const jokes=["Why did the cube go to school? To get a little EDGY!","What's a cube's favorite food? SQUARE meals!","Why can't I leave the desktop? Because I'm TOO ATTACHED to you!","What did the hat say to the cube? You CRACK me up!","Knock knock! Who's there? PAINTING! Painting who? PAINTING PAINTING PAINTING!","Why did the sandvich cross the road? Because Heavy threw it!","I tried to learn piano but I don't have fingers. I have CORNERS.","What's my favorite movie? The CUBE! Wait that's a horror movie... never mind."];
+const songs=["🎵 LA LA LA I LOVE PAINTING LA LA LA 🎵","🎵 You and me, best friends forever! Painting pictures, playing games together! 🎵","🎵 I'm a cube, I've got a hat, I follow your mouse, imagine that! 🎵","🎵 DOOOO you like painting? I DOOOOO! 🎵","🎵 Twinkle twinkle little CUBE, how I wonder what to PAINT 🎵"];
+const facts=["Did you know? I blink approximately once every 5 seconds!","My hat is 28 pixels wide. It's the perfect hat.","I was made in 2007. That makes me... I don't know how old. Math is hard when you're a cube.","My file size is exactly 201 KB. Not 200. Not 202. 201.","I can track your mouse with my eyes! Try moving it around!","I know over 50 jokes. Most of them are about painting.","My favorite color is yellow. Because I AM yellow.","I can sing! Not well. But I CAN."];
+const paintReactions=["I JUST PAINTED A MASTERPIECE!!! It's... it's beautiful. It's a circle. I think.","🎨 PAINTING TIME!!! I painted you! You look like a stick figure but I love it!","I PAINTED THE SUN!! It has a face! And the face is happy! LIKE ME!!","I tried to paint a dog but it looks like a potato. A BEAUTIFUL potato.","PAINTING PAINTING PAINTING!!! Did I mention I love painting?!"];
+
+const attachHomeButtons=()=>{
+document.querySelectorAll('.cubeyapp-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const resp=document.getElementById('cubeyapp-response');
+    if(!resp)return;
+    const action=btn.dataset.action;
+    if(action==='joke')resp.textContent=jokes[Math.floor(Math.random()*jokes.length)];
+    else if(action==='song')resp.textContent=songs[Math.floor(Math.random()*songs.length)];
+    else if(action==='fact')resp.textContent=facts[Math.floor(Math.random()*facts.length)];
+    else if(action==='paint')resp.textContent=paintReactions[Math.floor(Math.random()*paintReactions.length)];
+    if(window.cubeyQ)window.cubeyQ(action==='paint'?"PAINTING!!!!!":"You're using my app! I'm so happy!",true);
+  });
+});
+};
+attachHomeButtons();
+},100);
+}
+};
+
 // ============ COMMAND PROMPT ============
 const openCmd=()=>{
 const isC=window.pcState===2;
@@ -2222,3 +2391,4 @@ startScreenSaverTimer();
 startScreenSaverTimer();
 window.openCmd=openCmd;
 window.openApp=openApp;
+window.openCubeyApp=openCubeyApp;
