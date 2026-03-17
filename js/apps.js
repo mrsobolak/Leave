@@ -2051,45 +2051,77 @@ createWindow('calendar','Calendar',320,280,cal);
 const openCubeyApp=()=>{
 const isC=window.pcState===2;
 if(isC){
-// ===== CORRUPTED MODE: PUZZLE TERMINAL =====
-const h=`<div id="cubeyapp-shell" style="background:#000;padding:0;font-family:VT323,monospace;height:100%">
-<div id="cubeyapp-output" style="height:340px;overflow-y:auto;padding:10px;font-size:14px;color:#0f0;line-height:1.6"></div>
-<div style="display:flex;align-items:center;padding:6px 10px;border-top:1px solid #222;background:#050505">
-<span style="color:#0f0;font-size:14px">root@void:~$&nbsp;</span>
-<input id="cubeyapp-input" style="flex:1;background:transparent;border:none;color:#0f0;font-family:VT323,monospace;font-size:14px;outline:none" autocomplete="off" spellcheck="false">
-</div></div>`;
-createWindow('cubeyapp','Cubey! — SoOS Dev Shell',560,400,h);
+// ===== CORRUPTED MODE: SELF-CONTAINED PUZZLE TERMINAL =====
+const h='<div id="cubeyapp-shell" style="background:#000;padding:0;font-family:VT323,monospace;height:100%"><div id="cubeyapp-output" style="height:340px;overflow-y:auto;padding:10px;font-size:14px;color:#0f0;line-height:1.6"></div><div style="display:flex;align-items:center;padding:6px 10px;border-top:1px solid #222;background:#050505"><span style="color:#0f0;font-size:14px">root@void:~$&nbsp;</span><input id="cubeyapp-input" style="flex:1;background:transparent;border:none;color:#0f0;font-family:VT323,monospace;font-size:14px;outline:none" autocomplete="off" spellcheck="false"></div></div>';
+createWindow('cubeyapp','Cubey! \u2014 SoOS Dev Shell',560,420,h);
 setTimeout(()=>{
 const output=document.getElementById('cubeyapp-output');
 const input=document.getElementById('cubeyapp-input');
 if(!output||!input)return;
 input.focus();
 window.terminalLaunched=true;
-
-// Point puzzlegames.js at this output/input via launchTerminalInCmd
-if(window.launchTerminalInCmd){
-  window.launchTerminalInCmd(output,document.getElementById('cubeyapp-shell'));
-}
-
+let pStep=0;const pCodes=[];
+const aL=(text,color)=>{const d=document.createElement('div');d.style.cssText='color:'+(color||'#0f0')+';margin:1px 0;white-space:pre-wrap;word-break:break-all';d.textContent=text;output.appendChild(d);output.scrollTop=output.scrollHeight};
+const mB=(text)=>{const b=document.getElementById('cubey-bubble');if(b){b.classList.remove('cubey-hidden');b.textContent=text}};
+const mD=(text)=>{setTimeout(()=>mB(text),1500)};
+const caesarE=(t,s)=>t.split('').map(c=>{if(c>='a'&&c<='z')return String.fromCharCode(((c.charCodeAt(0)-97+s)%26)+97);if(c>='A'&&c<='Z')return String.fromCharCode(((c.charCodeAt(0)-65+s)%26)+65);return c}).join('');
+const hexE=(t)=>t.split('').map(c=>c.charCodeAt(0).toString(16).padStart(2,'0')).join(' ');
+const revT=(t)=>t.split('').reverse().join('');
+const binE=(t)=>t.split('').map(c=>c.charCodeAt(0).toString(2).padStart(8,'0')).join(' ');
+const a1z26E=(t)=>t.toLowerCase().split('').map(c=>{if(c>='a'&&c<='z')return(c.charCodeAt(0)-96).toString();return c}).join(' ');
+const wPoem=['Falling through the tunnel with no end in sight','Only darkness ahead and darkness behind','Running from something that has no shape','Every server every game every player','Silent figure standing where the light should be','Tomorrow I go home'];
+const pSteps=[
+{e:'ls',f:()=>{aL('  /system/','#0a0');aL('  /users/','#0a0');aL('  /hidden/     [ACCESS DENIED]','#f00');aL('  soos.cfg','#888');aL('  boot.log','#888');mD("The /system folder. That's where processes run. Type 'cd /system/processes'")}},
+{e:'cd /system/processes',f:()=>{aL('  Directory changed to /system/processes','#888');mD("Good. Now type 'ps -a' to list all running processes.")}},
+{e:'ps -a',f:()=>{aL('  PID    NAME         STATUS','#888');aL('  001    soos.sys     RUNNING','#0a0');aL('  002    desktop      RUNNING','#0a0');aL('  003    cubey.pet    RUNNING','#0a0');aL('  201    hl2.exe      RUNNING  [CANNOT TERMINATE]','#f00');aL('  201    hl2.exe      RUNNING  [CANNOT TERMINATE]','#f00');aL('  201    hl2.exe      RUNNING  [CANNOT TERMINATE]','#f00');mD("There it is. hl2.exe. PID 201. Three copies. Type 'cat hl2.log'")}},
+{e:'cat hl2.log',f:()=>{aL('  '+caesarE('the entity lives in /hidden/void',2),'#f80');mB("Caesar cipher. Every letter shifted forward by 2. Shift each letter BACK by 2 and type what it says.")}},
+{e:'the entity lives in /hidden/void',f:()=>{aL('  DECODED: the entity lives in /hidden/void','#ff0');mD("Type 'cd /hidden/void'")}},
+{e:'cd /hidden/void',f:()=>{aL('  ACCESS GRANTED','#f00');aL('  Directory changed to /hidden/void','#888');mD("We're inside the entity's core. Type 'ls'")}},
+{e:'ls',f:()=>{aL('  hunger.dat      [ENCRYPTED]','#f80');aL('  origin.dat      [ENCRYPTED]','#f80');aL('  spread.log      [ENCRYPTED]','#f80');aL('  memory.dat      [ENCRYPTED]','#f80');aL('  whisper.dat     [ENCRYPTED]','#f80');aL('  final.key       [LOCKED \u2014 3 CODES REQUIRED]','#f00');mD("5 encrypted files. 3 contain codes. Start with 'cat hunger.dat'")}},
+{e:'cat hunger.dat',f:()=>{aL('  '+hexE('i am always hungry i can never stop'),'#f80');mB("Hexadecimal. Every pair of characters is one letter. 69='i', 20=space, 61='a', 6d='m'... Type the full message.")}},
+{e:'i am always hungry i can never stop',f:()=>{aL('  DECODED: i am always hungry i can never stop','#ff0');mB("That's what Duck feels. Always hungry. Type 'cat origin.dat'")}},
+{e:'cat origin.dat',f:()=>{aL('  '+revT('craigslist hard drive march 2009'),'#f80');mB("Read it backwards. Right to left. Type what it says.")}},
+{e:'craigslist hard drive march 2009',f:()=>{aL('  DECODED: craigslist hard drive march 2009','#ff0');mB("March 2009. He bought a used hard drive. Type 'cat spread.log'")}},
+{e:'cat spread.log',f:()=>{aL('  '+binE('dustbowl'),'#f80');mB("Binary. Every 8 digits = one letter. This is a CODE. Decode it.")}},
+{e:'dustbowl',f:()=>{pCodes.push('DUSTBOWL');aL('  === CODE 1 OF 3: DUSTBOWL ===','#ff0');mB("DUSTBOWL. Code 1 of 3. Type 'cat memory.dat'")}},
+{e:'cat memory.dat',f:()=>{aL('  '+a1z26E('ubersaw'),'#f80');mB("A1Z26. A=1, B=2, C=3... Z=26. Convert each number.")}},
+{e:'ubersaw',f:()=>{pCodes.push('UBERSAW');aL('  === CODE 2 OF 3: UBERSAW ===','#ff0');mB("UBERSAW. Code 2 of 3. Type 'cat whisper.dat'")}},
+{e:'cat whisper.dat',f:()=>{wPoem.forEach(l=>aL('  '+l,'#f80'));mB("A poem. First letter of each line. Top to bottom. Type the word.")}},
+{e:'forest',f:()=>{pCodes.push('FOREST');aL('  === CODE 3 OF 3: FOREST ===','#ff0');mB("FOREST. All 3 codes found. Type 'rm -f hunger.dat origin.dat spread.log memory.dat whisper.dat'")}},
+{e:'rm -f hunger.dat origin.dat spread.log memory.dat whisper.dat',f:()=>{aL('  Files removed.','#888');aL('  final.key [UNLOCKED]','#ff0');aL('  KILL COMMAND READY','#f00');mB("This is it. Type: kill_process DUSTBOWL_UBERSAW_FOREST_201")}},
+{e:'kill_process dustbowl_ubersaw_forest_201',f:()=>{
+aL('  Executing kill_process...','#f00');
+setTimeout(()=>aL('  \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 90%','#f00'),1000);
+setTimeout(()=>{aL('');aL('  ACCESS DENIED.','#f00')},2500);
+setTimeout(()=>{aL('');aL('  you cant kill me.','#f00');aL('  i AM this computer.','#f00')},4000);
+setTimeout(()=>mB("No... it didn't work. He IS the system."),4500);
+setTimeout(()=>mB("I'm sorry. I couldn't stop him. But I can save you."),7000);
+setTimeout(()=>mB("I'm putting you somewhere safe. Somewhere he can't reach."),10000);
+setTimeout(()=>{aL('');aL('  Loading cp_dustbowl...','#f80');aL('  Server: 0.0.0.0:27015','#666')},12000);
+setTimeout(()=>{const ov=document.getElementById('jumpscare-overlay');if(ov){ov.classList.remove('hidden');ov.innerHTML='';ov.style.background='#000';ov.innerHTML='<div style="text-align:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:VT323,monospace"><div style="font-size:14px;color:#f00;margin-bottom:20px">Server: 0.0.0.0:27015</div><div style="font-size:11px;color:#666;line-height:2">You are standing in the tunnel.<br>Stage 2.<br>You cannot move.<br>You have always been here.<br><br></div><div style="font-size:12px;color:#f00">i knew you would come back.</div><div style="font-size:12px;color:#f00">you always do.</div><br><div style="font-size:9px;color:#444">ENDING 1: dustbowl</div></div>'}},16000);
+}},
+];
+aL('  SoOS Dev Shell v0.201','#888');
+aL('  System recovery mode','#888');
+aL('  User: CUBEY.PET [MEMORY RESTORED \u2014 ID: MIKE]','#ff0');
+aL('','');
 input.addEventListener('keydown',(e)=>{
-  if(e.key!=='Enter')return;
-  e.preventDefault();
-  const cmd=input.value.trim();
-  input.value='';
-  if(!cmd)return;
-  // Add typed line
-  const d=document.createElement('div');
-  d.style.cssText='color:#0f0;margin:1px 0;white-space:pre-wrap;word-break:break-all';
-  d.textContent='root@void:~$ '+cmd;
-  output.appendChild(d);
-  output.scrollTop=output.scrollHeight;
-  // Process via puzzle system
-  if(window._puzzleProcessCommand){
-    window._puzzleProcessCommand(cmd);
-  }
+if(e.key!=='Enter')return;
+e.preventDefault();
+const cmd=input.value.trim();input.value='';
+if(!cmd)return;
+aL('root@void:~$ '+cmd,'#0f0');
+const cl=cmd.toLowerCase().trim();
+if(cl==='help'){aL('  Commands: ls, cd, cat, ps, rm, kill_process, clear, help','#888');aL("  Follow Mike's instructions in the speech bubble.",'#888');return}
+if(cl==='clear'||cl==='cls'){output.innerHTML='';return}
+const s=pSteps[pStep];
+if(!s){aL('  Terminal sequence complete.','#888');return}
+if(cl===s.e.toLowerCase().trim()){pStep++;s.f();input.focus()}
+else{aL("  '"+cmd+"' \u2014 not recognized or incorrect.",'#666');aL("  Check Mike's bubble for what to type.",'#666')}
 });
-},100);
+},500);
 }else{
+
 // ===== NORMAL MODE: FUN CUBEY APP =====
 const tabs=['Home','Stats','Activities','About'];
 let activeTab='Home';
