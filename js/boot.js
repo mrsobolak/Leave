@@ -1,6 +1,7 @@
 const typeText=(el,text,speed,cb)=>{let i=0;const iv=setInterval(()=>{if(i<text.length){el.innerHTML+=text[i]==='\n'?'\n':text[i];i++;el.scrollTop=el.scrollHeight}else{clearInterval(iv);cb?.()}},speed)};
 
 const dellSplash=()=>{
+if(window.soosAudio)soosAudio.playBoot();
 setTimeout(()=>{
 setTimeout(()=>{goToBios()},3500);
 },200);

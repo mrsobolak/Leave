@@ -100,6 +100,8 @@ document.body.appendChild(notif);
 setTimeout(()=>notif.remove(),3000);
 }};
 if(window.pcState===2){document.getElementById('desktop').classList.add('corrupted-flicker')}
+// Start soundtrack based on state
+if(window.soosAudio){window.pcState===2?soosAudio.playCorrupted():soosAudio.playDesktop()}
 if(window.initCubey)window.initCubey();
 };
 const toggleStart=(show)=>{

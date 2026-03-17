@@ -1,6 +1,7 @@
 let pcState=1;
 
 const triggerTF2Launch=()=>{
+if(window.soosAudio){soosAudio.stop();soosAudio.playTF2Crash()}
 const overlay=document.getElementById('jumpscare-overlay');
 overlay.classList.remove('hidden');
 overlay.innerHTML='';
@@ -216,6 +217,7 @@ initDesktop();
 
 // ============ BEEPER ENDING ============
 const triggerBeeperEnding=()=>{
+if(window.soosAudio){soosAudio.stop();soosAudio.playBeeper()}
 const overlay=document.getElementById('jumpscare-overlay');
 overlay.classList.remove('hidden');
 overlay.innerHTML='';
@@ -315,6 +317,7 @@ overlay.innerHTML+='<div style="position:fixed;bottom:30px;left:50%;transform:tr
 
 // ============ FACTORY RESET (ENDING 2 POST-CREDITS) ============
 const triggerFactoryReset=()=>{
+if(window.soosAudio){soosAudio.stop();soosAudio.playEnding2()}
 // Close everything
 document.querySelectorAll('#windows-area .app-window').forEach(w=>w.remove());
 Object.keys(openWindows).forEach(id=>{delete openWindows[id]});

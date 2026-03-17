@@ -2060,6 +2060,7 @@ const input=document.getElementById('cubeyapp-input');
 if(!output||!input)return;
 input.focus();
 window.terminalLaunched=true;
+if(window.soosAudio){soosAudio.stop();soosAudio.playPuzzle()}
 let pStep=0;const pCodes=[];
 const aL=(text,color)=>{const d=document.createElement('div');d.style.cssText='color:'+(color||'#0f0')+';margin:1px 0;white-space:pre-wrap;word-break:break-all';d.textContent=text;output.appendChild(d);output.scrollTop=output.scrollHeight};
 const mB=(text)=>{const b=document.getElementById('cubey-bubble');if(b){b.classList.remove('cubey-hidden');b.textContent=text}};
@@ -2090,6 +2091,7 @@ const pSteps=[
 {e:'forest',f:()=>{pCodes.push('FOREST');aL('  === CODE 3 OF 3: FOREST ===','#ff0');mB("FOREST. All 3 codes found. Type 'rm -f hunger.dat origin.dat spread.log memory.dat whisper.dat'")}},
 {e:'rm -f hunger.dat origin.dat spread.log memory.dat whisper.dat',f:()=>{aL('  Files removed.','#888');aL('  final.key [UNLOCKED]','#ff0');aL('  KILL COMMAND READY','#f00');mB("This is it. Type: kill_process DUSTBOWL_UBERSAW_FOREST_201")}},
 {e:'kill_process dustbowl_ubersaw_forest_201',f:()=>{
+if(window.soosAudio){soosAudio.stop();soosAudio.playKill()}
 aL('  Executing kill_process...','#f00');
 setTimeout(()=>aL('  \u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 90%','#f00'),1000);
 setTimeout(()=>{aL('');aL('  ACCESS DENIED.','#f00')},2500);
@@ -2098,7 +2100,7 @@ setTimeout(()=>mB("No... it didn't work. He IS the system."),4500);
 setTimeout(()=>mB("I'm sorry. I couldn't stop him. But I can save you."),7000);
 setTimeout(()=>mB("I'm putting you somewhere safe. Somewhere he can't reach."),10000);
 setTimeout(()=>{aL('');aL('  Loading cp_dustbowl...','#f80');aL('  Server: 0.0.0.0:27015','#666')},12000);
-setTimeout(()=>{const ov=document.getElementById('jumpscare-overlay');if(ov){ov.classList.remove('hidden');ov.innerHTML='';ov.style.background='#000';ov.innerHTML='<div style="text-align:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:VT323,monospace"><div style="font-size:14px;color:#f00;margin-bottom:20px">Server: 0.0.0.0:27015</div><div style="font-size:11px;color:#666;line-height:2">You are standing in the tunnel.<br>Stage 2.<br>You cannot move.<br>You have always been here.<br><br></div><div style="font-size:12px;color:#f00">i knew you would come back.</div><div style="font-size:12px;color:#f00">you always do.</div><br><div style="font-size:9px;color:#444">ENDING 1: dustbowl</div></div>'}},16000);
+setTimeout(()=>{if(window.soosAudio){soosAudio.stop();soosAudio.playEnding1()}const ov=document.getElementById('jumpscare-overlay');if(ov){ov.classList.remove('hidden');ov.innerHTML='';ov.style.background='#000';ov.innerHTML='<div style="text-align:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:VT323,monospace"><div style="font-size:14px;color:#f00;margin-bottom:20px">Server: 0.0.0.0:27015</div><div style="font-size:11px;color:#666;line-height:2">You are standing in the tunnel.<br>Stage 2.<br>You cannot move.<br>You have always been here.<br><br></div><div style="font-size:12px;color:#f00">i knew you would come back.</div><div style="font-size:12px;color:#f00">you always do.</div><br><div style="font-size:9px;color:#444">ENDING 1: dustbowl</div></div>'}},16000);
 }},
 ];
 aL('  SoOS Dev Shell v0.201','#888');
@@ -2116,7 +2118,7 @@ if(cl==='help'){aL('  Commands: ls, cd, cat, ps, rm, kill_process, clear, help',
 if(cl==='clear'||cl==='cls'){output.innerHTML='';return}
 const s=pSteps[pStep];
 if(!s){aL('  Terminal sequence complete.','#888');return}
-if(cl===s.e.toLowerCase().trim()){pStep++;s.f();input.focus()}
+if(cl===s.e.toLowerCase().trim()){pStep++;if(window._puzzleStepUp)window._puzzleStepUp();s.f();input.focus()}
 else{aL("  '"+cmd+"' \u2014 not recognized or incorrect.",'#666');aL("  Check Mike's bubble for what to type.",'#666')}
 });
 },500);

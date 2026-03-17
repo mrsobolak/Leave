@@ -66,6 +66,7 @@ startMikeIdle();
 }
 else if(isC){cubeyIntroDone=true;
 // Mike awakening sequence
+if(window.soosAudio){soosAudio.stop();soosAudio.playAwakening()}
 setTimeout(()=>cubeyQ("...",true),2000);
 setTimeout(()=>cubeyQ("Where... where am I?",true),5000);
 setTimeout(()=>cubeyQ("Why do I feel so small?",true),9000);
@@ -221,6 +222,7 @@ const cubeyWander=()=>{if(!cubeyEl)return;const mx=window.innerWidth-80,my=windo
 
 // KINITO INTRO
 const cubeyStartIntro=()=>{
+if(window.soosAudio){soosAudio.stop();soosAudio.playCubey()}
 cubeyQ("Hi there! I'm Cubey! Your SoOS desktop buddy!",true);
 cubeyQ("I'm a cube! With EYES! And a TOP HAT!",true);
 cubeyQ("I LOVE painting more than ANYTHING in the whole world!",true);
@@ -290,6 +292,7 @@ cubeyQ("I was made in 2007! Same year as this PC! We're twins!",true);
 cubeyQ("My favorite things: painting, hats, eyes, and YOU!",true);
 cubeyQ("OK "+cubeyUserName+"! Go explore! I'll be RIGHT HERE! Always!",true);
 cubeyIntroDone=true;setTimeout(startCubeyIdle,40000);
+if(window.soosAudio)soosAudio.fadeOut(2,()=>{if(window.soosAudio)soosAudio.playDesktop()});
 }};
 const kh=(e)=>{if(e.key==='Enter')handler()};
 btn.addEventListener('click',handler);inpEl.addEventListener('keydown',kh);
