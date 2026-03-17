@@ -13,39 +13,49 @@ _pick(a){return a[Math.floor(Math.random()*a.length)]},
 
 // 1. "TheDustBowlDuck" — Main Menu
 playMenu(){this.init();this.stop();_ct='menu';
-const B=60/108;let iteration=0;
-// 4 different melody phrases that rotate
+const B=60/105;let iter=0;
+// C major, gentle piano — every phrase resolves to C (523) for seamless loop
+// [freq, beat, duration in beats]
 const phrases=[
-  [[523,0],[494,0.75],[523,1],[659,1.5],[587,2.5],[523,3],[494,3.5],[440,4],[440,5],[523,5.5],[587,6],[659,7],[698,7.5],[659,8]],
-  [[659,0],[587,0.5],[523,1],[494,1.5],[440,2],[392,3],[440,3.5],[494,4],[523,5],[587,5.5],[659,6],[784,7],[659,7.5],[523,8]],
-  [[784,0],[698,0.5],[659,1],[587,1.5],[523,2],[587,2.5],[659,3],[523,4],[440,5],[494,5.5],[523,6],[587,6.5],[523,7],[494,8]],
-  [[440,0],[494,0.5],[523,1],[587,1.5],[659,2],[587,2.5],[523,3],[440,4],[392,5],[440,5.5],[523,6],[659,7],[587,7.5],[523,8]],
+  // A: gentle rise and fall
+  [[523,0,1.5],[587,1.5,1],[659,2.5,1.5],[587,4,1],[523,5,2],
+   [440,7,1],[494,8,1.5],[523,9.5,1],[587,10.5,1.5],
+   [523,12,1],[494,13,1],[440,14,1],[523,15,1]],
+  // B: higher, more hopeful
+  [[659,0,1.5],[698,1.5,1],[659,2.5,1],[587,3.5,1.5],[523,5,2],
+   [587,7,1],[659,8,1],[784,9,2],[659,11,1],
+   [587,12,1],[523,13,1],[494,14,1],[523,15,1]],
+  // C: descending, thoughtful
+  [[784,0,2],[659,2,1.5],[587,3.5,1],[523,4.5,2],
+   [494,6.5,1],[440,7.5,1.5],[392,9,1],[440,10,1.5],
+   [494,11.5,1],[523,12.5,1.5],[494,14,1],[523,15,1]],
+  // D: simple, nostalgic
+  [[440,0,2],[523,2,1.5],[587,3.5,1],[523,4.5,2],
+   [440,6.5,1.5],[494,8,1],[523,9,2],[587,11,1],
+   [523,12,1.5],[440,13.5,0.5],[494,14,1],[523,15,1]],
 ];
-const chordSets=[
-  [[262,330,392],[220,262,330],[175,220,262],[196,247,294]],
-  [[220,262,330],[175,220,262],[196,247,294],[262,330,392]],
-];
-const bassNotes=[[131,110,87,98],[110,87,98,131],[87,98,131,110]];
+const chords=[[262,330,392],[220,262,330],[175,220,262],[196,247,294]];
+const bassR=[131,110,87,98];
 const play=()=>{
   if(_ct!=='menu')return;
-  const ph1=phrases[iteration%4];
-  const ph2=phrases[(iteration+1)%4];
-  // Phrase 1
-  ph1.forEach(([f,t])=>{this._n(f,t*B,B*1.8,'sine',0.04);this._n(f*2,t*B+0.05,B*1,'sine',0.009)});
-  // Phrase 2 offset
-  ph2.forEach(([f,t])=>{this._n(f,(t+9)*B,B*1.8,'sine',0.04);this._n(f*2,(t+9)*B+0.05,B*1,'sine',0.009)});
-  // Chords
-  const chs=chordSets[iteration%2];
-  for(let i=0;i<4;i++)this._pd(chs[i],i*4.5*B,B*4,'sine',0.016);
+  const ph=phrases[iter%4];
+  ph.forEach(([f,t,d])=>{
+    this._n(f,t*B,d*B*0.95,'sine',0.04);
+    this._n(f*2,t*B+0.04,d*B*0.5,'sine',0.009);// music box
+  });
+  // Warm pads C Am F G
+  for(let i=0;i<4;i++)this._pd(chords[i],i*4*B,B*3.8,0.016);
   // Bass
-  const bn=bassNotes[iteration%3];
-  bn.forEach((f,i)=>this._n(f,i*4.5*B,B*4,'triangle',0.045));
-  // Twinkle — randomized
-  for(let i=0;i<4;i++){const f=this._pick([1047,1175,1319,1397,1568,1760]);this._n(f,(3+i*4)*B,B*2,'sine',0.007)}
-  // Soft pulse
-  for(let i=0;i<9;i++){this._n(65,i*2*B,0.15,'sine',0.025);this._n(55,(i*2+1)*B,0.1,'sine',0.015)}
-  iteration++;
-  _lp.push(setTimeout(()=>play(),18*B*1000-150));
+  bassR.forEach((f,i)=>this._n(f,i*4*B,B*3.8,'triangle',0.04));
+  // Twinkle — 2 per loop, random from high register
+  for(let i=0;i<2;i++){
+    const f=this._pick([1047,1175,1319,1397,1568]);
+    this._n(f,(4+i*6+Math.random()*2)*B,B*2,'sine',0.006);
+  }
+  // Gentle pulse
+  for(let i=0;i<8;i++){this._n(65,i*2*B,0.12,'sine',0.02)}
+  iter++;
+  _lp.push(setTimeout(()=>play(),16*B*1000-30));
 };play()},
 
 // 2. "Dell XPS 420" — Boot Chime
@@ -53,76 +63,100 @@ playBoot(){this.init();this._n(1000,0,0.1,'square',0.08);this._n(440,0.5,0.3,'si
 
 // 3. "His Room" — Normal Desktop (upbeat chiptune exploration)
 playDesktop(){this.init();this.stop();_ct='desktop';
-const B=60/112;let iter=0;
-// 4 melody phrases — chill but bouncy, G major
+const B=60/115;let iter=0;
+// Key of C major, 16-beat phrases, every phrase ENDS on C (262/523) for clean loop
+// Melodies have shape: rise → peak → resolve back home
 const melA=[
-  [[392,0],[440,0.5],[494,1],[587,1.5],[523,2],[494,2.5],[440,3],[392,3.5],[440,4],[494,4.5],[587,5],[659,5.5],[587,6],[523,6.5],[494,7],[440,7.5]],
-  [[587,0],[523,0.5],[494,1],[440,1.5],[392,2],[440,2.5],[494,3],[523,3.5],[587,4],[659,4.5],[784,5],[659,5.5],[587,6],[523,6.5],[587,7],[494,7.5]],
-  [[494,0],[523,0.5],[587,1],[659,1.5],[587,2],[523,2.5],[494,3],[440,3.5],[523,4],[587,4.5],[659,5],[784,5.5],[659,6],[587,6.5],[523,7],[587,7.5]],
-  [[784,0],[659,0.5],[587,1],[523,1.5],[494,2],[523,2.5],[587,3],[494,3.5],[440,4],[392,4.5],[440,5],[494,5.5],[523,6],[587,6.5],[659,7],[523,7.5]],
+  // A: climb up, come back down to C
+  [[262,0,1],[330,1,1],[392,2,0.75],[440,2.75,0.75],[523,3.5,1.5],
+   [494,5,0.75],[440,5.75,0.75],[392,6.5,1],[330,7.5,0.5],
+   [392,8,1],[440,9,0.75],[523,9.75,0.75],[587,10.5,1.5],
+   [523,12,1],[440,13,1],[392,14,1],[262,15,1]],
+  // B: start high, wander down
+  [[523,0,1],[494,1,0.75],[440,1.75,0.75],[392,2.5,1.5],
+   [440,4,1],[494,5,0.75],[523,5.75,0.75],[587,6.5,1],[523,7.5,0.5],
+   [440,8,1],[392,9,1],[330,10,1.5],
+   [392,11.5,0.75],[440,12.25,0.75],[392,13,1],[330,14,1],[262,15,1]],
+  // C: playful bounce
+  [[262,0,0.5],[330,0.5,0.5],[392,1,1],[523,2,0.5],[494,2.5,0.5],[440,3,1],
+   [392,4,0.5],[440,4.5,0.5],[494,5,1],[523,6,1],[440,7,1],
+   [392,8,1],[494,9,0.5],[523,9.5,0.5],[587,10,1.5],
+   [523,11.5,1],[440,12.5,1],[392,13.5,0.5],[330,14,1],[262,15,1]],
+  // D: gentle, spacious
+  [[392,0,2],[440,2,1],[494,3,1],
+   [523,4,2],[494,6,1],[440,7,1],
+   [392,8,2],[523,10,1],[587,11,1],
+   [523,12,1.5],[440,13.5,0.5],[392,14,1],[262,15,1]],
 ];
-// Bass patterns
-const bassA=[[196,196,165,175],[165,175,196,220],[175,196,220,196],[220,196,175,165]];
-// Chord sets (G Em C D)
-const chordA=[[[392,494,587],[330,392,494],[262,330,392],[294,370,440]],[[330,392,494],[262,330,392],[294,370,440],[392,494,587]]];
+// Chords: C Am F G — each lasts 4 beats
+const chords=[[262,330,392],[220,262,330],[175,220,262],[196,247,294]];
+// Bass follows chord roots
+const bassRoots=[131,110,87,98];
 const play=()=>{
   if(_ct!=='desktop')return;
   const mel=melA[iter%4];
-  mel.forEach(([f,t])=>{
-    this._n(f,t*B,B*0.7,'square',0.018);
-    this._n(f*2,t*B+0.02,B*0.35,'square',0.004);// shimmer
-    if(Math.random()<0.3)this._n(f*0.5,t*B,B*0.5,'triangle',0.006);// low harmony sometimes
+  // Melody
+  mel.forEach(([f,t,d])=>{
+    this._n(f,t*B,d*B*0.9,'square',0.02);
+    this._n(f*2,t*B+0.03,d*B*0.4,'square',0.004);
   });
-  // Bass
-  const bn=bassA[iter%4];
-  bn.forEach((f,i)=>this._n(f,i*2*B,B*1.9,'triangle',0.035));
-  // Chords — soft square stabs
-  const ch=chordA[iter%2];
-  ch.forEach((c,i)=>c.forEach(f=>this._n(f,(i*2+0.25)*B,B*0.4,'square',0.008)));
-  // Drums — light
-  for(let i=0;i<8;i++){
-    this._ns(i*B,0.04,0.02,6000+Math.random()*2000);// hi-hat
-    if(i%4===0)this._ns(i*B,0.06,0.04,180);// kick
-    if(i%4===2)this._ns(i*B,0.04,0.03,3500);// snare
-    if(i%2===1&&Math.random()<0.25)this._ns((i+0.5)*B,0.03,0.012,8000);// ghost
+  // Chords — 4 beats each, gentle
+  for(let i=0;i<4;i++){
+    chords[i].forEach(f=>{
+      this._n(f,i*4*B,B*3.5,'sine',0.01);
+      this._n(f*1.002,i*4*B+0.06,B*3,'sine',0.005);
+    });
   }
-  // Occasional arp run
-  if(iter%3===0){
-    const arpNotes=[392,494,587,659,784];
-    arpNotes.forEach((f,i)=>this._n(f,(6+i*0.2)*B,B*0.3,'square',0.006));
+  // Bass
+  bassRoots.forEach((f,i)=>this._n(f,i*4*B,B*3.8,'triangle',0.03));
+  // Drums — 16 beats
+  for(let i=0;i<16;i++){
+    if(i%2===0)this._ns(i*B,0.035,0.018,6000);// hi-hat on beats
+    if(i%4===0)this._ns(i*B,0.06,0.04,180);// kick on 1
+    if(i%4===2)this._ns(i*B,0.04,0.03,3500);// snare on 3
+  }
+  // Small fills every other loop
+  if(iter%2===1){
+    this._ns(14.5*B,0.03,0.02,5000);
+    this._ns(14.75*B,0.03,0.02,5500);
+    this._ns(15*B,0.04,0.025,4000);
   }
   iter++;
-  _lp.push(setTimeout(()=>play(),8*B*1000-50));
+  _lp.push(setTimeout(()=>play(),16*B*1000-30));
 };play()},
 
 // 4. "Best Friends!" — Cubey Jingle
 playCubey(){this.init();this.stop();_ct='cubey';
-const B=60/140;let iter=0;
+const B=60/138;let iter=0;
+// All phrases end on C (523) for clean loop, [freq, beat, dur]
 const melodies=[
-  [[523,0],[523,0.5],[659,1],[784,1.5],[659,2],[523,2.5],[587,3],[659,3.5],[587,4],[523,4.5],[440,5],[523,5.5],[659,6],[784,6.5],[880,7],[784,7.5]],
-  [[880,0],[784,0.5],[659,1],[523,1.5],[587,2],[659,2.5],[784,3],[659,3.5],[523,4],[440,4.5],[523,5],[587,5.5],[659,6],[523,6.5],[440,7],[523,7.5]],
-  [[659,0],[523,0.25],[659,0.5],[784,1],[698,1.5],[659,2],[587,2.5],[523,3],[587,3.5],[659,4],[784,4.5],[880,5],[784,5.5],[659,6],[523,6.5],[659,7]],
+  [[523,0,0.5],[523,0.5,0.5],[659,1,0.5],[784,1.5,1],[659,2.5,0.5],[523,3,0.5],
+   [587,3.5,0.5],[659,4,1],[587,5,0.5],[523,5.5,0.5],
+   [440,6,0.5],[494,6.5,0.5],[523,7,1]],
+  [[784,0,0.5],[659,0.5,0.5],[523,1,1],[587,2,0.5],[659,2.5,0.5],
+   [784,3,1],[659,4,0.5],[587,4.5,0.5],
+   [523,5,0.5],[440,5.5,0.5],[494,6,0.5],[523,6.5,0.5],[523,7,1]],
+  [[659,0,0.5],[523,0.5,0.5],[659,1,0.5],[784,1.5,1],[698,2.5,0.5],
+   [659,3,0.5],[587,3.5,0.5],[523,4,1],
+   [587,5,0.5],[659,5.5,0.5],[587,6,0.5],[523,6.5,0.5],[523,7,1]],
 ];
 const play=()=>{
   if(_ct!=='cubey')return;
   const mel=melodies[iter%3];
-  mel.forEach(([f,t])=>{this._n(f,t*B,B*0.7,'square',0.022);this._n(f*2,t*B,B*0.3,'square',0.005)});
-  // Bass varies
-  const basses=[[262,220,175,196],[220,175,196,262],[175,196,262,220]];
-  basses[iter%3].forEach((f,i)=>this._n(f,i*2*B,B*1.8,'triangle',0.035));
-  // Drums — slight variation
+  mel.forEach(([f,t,d])=>{this._n(f,t*B,d*B*0.85,'square',0.022);this._n(f*2,t*B,d*B*0.35,'square',0.005)});
+  // Bass — always resolves to C
+  [[262,0],[220,2],[175,4],[196,6]].forEach(([f,t])=>this._n(f,t*B,B*1.9,'triangle',0.035));
+  // Drums
   for(let i=0;i<8;i++){
-    this._ns(i*B,0.04,0.025,7000+Math.random()*2000);
+    this._ns(i*B,0.04,0.025,7000);
     if(i%4===0)this._ns(i*B,0.07,0.05,200);
-    if(i%4===2)this._ns(i*B,0.04,0.035,4000+Math.random()*2000);
-    if(i%2===1&&Math.random()<0.3)this._ns(i*B+B*0.5,0.03,0.015,9000);// ghost hi-hat
+    if(i%4===2)this._ns(i*B,0.04,0.035,4000);
   }
-  // Chord stab — rotates
-  const chStabs=[[[523,659,784]],[[440,523,659]],[[349,440,523]],[[392,494,587]]];
-  const cs=chStabs[(iter*2)%4][0];
-  cs.forEach(f=>this._n(f,(iter%2===0?0:4)*B,B*0.25,'square',0.01));
+  // Chord stab on beat 1
+  const stabs=[[523,659,784],[440,523,659],[349,440,523]];
+  stabs[iter%3].forEach(f=>this._n(f,0,B*0.3,'square',0.01));
   iter++;
-  _lp.push(setTimeout(()=>play(),8*B*1000-50));
+  _lp.push(setTimeout(()=>play(),8*B*1000-30));
 };play()},
 
 // 5. "12:06 AM" — Corrupted Desktop
