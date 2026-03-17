@@ -1215,9 +1215,9 @@ const ver=window.pcState===2?'v0.6.66':'v1.0.2';
 const h=`<div class="app-terminal"><div class="terminal-output" id="term-out">SoOS Terminal ${ver}\nType "help" for available commands.\n\n</div><div class="terminal-input-line"><span class="terminal-prompt">TheDustBwlDuck@soos:~$</span><input class="terminal-input" id="term-in" autofocus spellcheck="false"></div></div>`;
 createWindow('terminal','Terminal',550,350,h);
 const inp=document.getElementById('term-in');
-if(inp){inp.focus();inp.addEventListener('keydown',(e)=>{if(e.key==='Enter'){const cmd=inp.value.trim();inp.value='';processCommand(cmd)}})}
+if(inp){inp.focus();inp.addEventListener('keydown',(e)=>{if(e.key==='Enter'){const cmd=inp.value.trim();inp.value='';termProcessCmd(cmd)}})}
 };
-const processCommand=(cmd)=>{
+const termProcessCmd=(cmd)=>{
 const out=document.getElementById('term-out');if(!out)return;
 out.innerHTML+=`<span style="color:#999">TheDustBwlDuck@soos:~$</span> ${cmd}\n`;
 const lower=cmd.toLowerCase();
