@@ -2050,17 +2050,41 @@ createWindow('calendar','Calendar',320,280,cal);
 // ============ COMMAND PROMPT ============
 const openCmd=()=>{
 const isC=window.pcState===2;
-const h='<div style="background:#000;padding:8px;font-family:\'Courier New\',monospace;font-size:13px;color:#ccc;min-height:280px"><div id="cmd-output">SoOS Command Prompt v1.0<br>Copyright (c) 2010 SoOS Project<br>'+(isC?'<span style="color:#f00">WARNING: System integrity compromised</span><br>':'')+'<br></div><div style="display:flex"><span style="color:#ccc">C:\\Users\\TheDustBwlDuck&gt;&nbsp;</span><input id="cmd-input" style="flex:1;background:transparent;border:none;color:#ccc;font-family:\'Courier New\',monospace;font-size:13px;outline:none" autofocus autocomplete="off" spellcheck="false"></div></div>';
-createWindow('cmd','Command Prompt',520,320,h);
+const h='<div id="cmd-wrapper" style="background:#000;padding:8px;font-family:\'Courier New\',monospace;font-size:13px;color:#ccc;min-height:280px;max-height:400px;overflow-y:auto"><div id="cmd-output">SoOS Command Prompt v1.0<br>Copyright (c) 2010 SoOS Project<br>'+(isC?'<span style="color:#f00">WARNING: System integrity compromised</span><br>':'')+'<br></div><div id="cmd-prompt-line" style="display:flex"><span id="cmd-prompt-text" style="color:#ccc;white-space:nowrap">C:\\Users\\TheDustBwlDuck&gt;&nbsp;</span><input id="cmd-input" style="flex:1;background:transparent;border:none;color:#ccc;font-family:\'Courier New\',monospace;font-size:13px;outline:none" autocomplete="off" spellcheck="false"></div></div>';
+createWindow('cmd','Command Prompt',520,340,h);
 setTimeout(()=>{
 const input=document.getElementById('cmd-input');
 const output=document.getElementById('cmd-output');
+const wrapper=document.getElementById('cmd-wrapper');
+const promptText=document.getElementById('cmd-prompt-text');
 if(!input||!output)return;
 input.focus();
+
+let devShellMode=false;
+
 input.addEventListener('keydown',(e)=>{
 if(e.key!=='Enter')return;
-const cmd=input.value.trim();input.value='';
+e.preventDefault();
+const cmd=input.value.trim();
+input.value='';
 if(!cmd)return;
+
+// ===== DEV SHELL MODE =====
+if(devShellMode){
+  // Show typed command
+  const line=document.createElement('div');
+  line.style.cssText='color:#0f0;margin:1px 0;white-space:pre-wrap;word-break:break-all';
+  line.textContent='root@void:~$ '+cmd;
+  output.appendChild(line);
+  // Process puzzle command
+  if(window._puzzleProcessCommand){
+    window._puzzleProcessCommand(cmd);
+  }
+  wrapper.scrollTop=wrapper.scrollHeight;
+  return;
+}
+
+// ===== NORMAL CMD MODE =====
 output.innerHTML+='<span style="color:#ccc">C:\\Users\\TheDustBwlDuck&gt; '+cmd+'</span><br>';
 const cl=cmd.toLowerCase();
 if(cl==='help')output.innerHTML+='Commands: help, dir, cls, date, whoami, ver, echo, ipconfig, tasklist, terminal, save, color<br>';
@@ -2079,7 +2103,7 @@ output.innerHTML+='003   cubey.pet       Running     (cubey32.exe)<br>';
 if(isC){output.innerHTML+='<span style="color:#f00">201   hl2.exe         CANNOT TERMINATE<br>201   hl2.exe         CANNOT TERMINATE<br>201   hl2.exe         CANNOT TERMINATE</span><br>'}
 output.innerHTML+='<br>';
 }
-else if(cl==='color'){const colors=['#0f0','#0ff','#ff0','#f0f','#f80'];output.querySelector('div')||true;output.style&&(output.parentElement.style.color=colors[Math.floor(Math.random()*colors.length)])}
+else if(cl==='color'){const colors=['#0f0','#0ff','#ff0','#f0f','#f80'];wrapper.style.color=colors[Math.floor(Math.random()*colors.length)]}
 else if(isC&&(cl==='kill 201'||cl==='taskkill /f /im hl2.exe'||cl==='kill hl2.exe'))output.innerHTML+='<span style="color:#f00">ACCESS DENIED. Process cannot be terminated.</span><br><span style="color:#f00">Nice try.</span><br>';
 else if(cl==='201')output.innerHTML+=(isC?'<span style="color:#f00">you know what that means.</span>':'201? What about it?')+'<br>';
 else if(cl==='cubey')output.innerHTML+=(isC?'<span style="color:#ff0">His name is Mike.</span>':'<span style="color:#ff0">PAINTING!!</span>')+'<br>';
@@ -2104,38 +2128,31 @@ output.innerHTML+='<span style="color:#f00">now there\'s nothing between you and
 output.innerHTML+='<span style="color:#ff0">Terminating cubey.pet (PID 003)...</span><br>';
 setTimeout(()=>{
 output.innerHTML+='<span style="color:#f00">ACCESS DENIED. Cubey cannot be killed. He loves you too much.</span><br>';
-if(window.cubeyQ)window.cubeyQ("HEY! Don't do that {name}! That's MEAN!".replace('{name}',typeof cubeyUserName!=='undefined'?cubeyUserName:''),true);
+if(window.cubeyQ)window.cubeyQ("HEY! Don't do that! That's MEAN!",true);
 },500);
 }
 }
-else if(cl==='terminal'||cl==='run terminal'){if(isC){
-// Transform CMD into dev shell
+else if(cl==='terminal'||cl==='run terminal'){
+if(isC){
+// === SWITCH TO DEV SHELL MODE ===
+devShellMode=true;
+window.terminalLaunched=true;
 output.innerHTML+='<br><span style="color:#0f0">SoOS Dev Shell v0.201</span><br>';
 output.innerHTML+='<span style="color:#0f0">System recovery mode</span><br>';
 output.innerHTML+='<span style="color:#ff0">User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]</span><br><br>';
-window.terminalLaunched=true;
-// Change prompt
-const promptEl=input.parentElement.querySelector('span');
-if(promptEl){promptEl.style.color='#0f0';promptEl.textContent='root@void:~$ '}
+promptText.style.color='#0f0';
+promptText.textContent='root@void:~$ ';
 input.style.color='#0f0';
-output.parentElement.style.background='#000';
-// Remove old keydown handler by replacing input
-const newInput=input.cloneNode(true);
-input.parentElement.replaceChild(newInput,input);
-newInput.style.color='#0f0';
-newInput.focus();
-// Wire puzzle system
+wrapper.style.background='#000';
+// Init puzzle system
 if(window.launchTerminalInCmd){
-  window.launchTerminalInCmd(output,newInput);
-}else{
-  // Fallback if puzzle system not loaded
-  output.innerHTML+='<span style="color:#888">Dev shell ready.</span><br>';
-  if(window.cubeyQ)window.cubeyQ("Good. You're in. Type 'ls' to see what's here.",true);
+  window.launchTerminalInCmd(output,wrapper);
 }
-}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
+}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}
+}
 else if(cl==='save'){if(window.saveGame){window.saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
 else output.innerHTML+="'"+cmd+"' is not recognized as a command.<br>";
-output.scrollTop=output.scrollHeight;
+wrapper.scrollTop=wrapper.scrollHeight;
 });
 },100);
 };

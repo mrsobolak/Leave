@@ -461,28 +461,26 @@ window.triggerEnding1=triggerEnding1;
 Object.defineProperty(window,'termStep',{get:()=>termStep,set:(v)=>{termStep=v}});
 
 // Launch puzzle INSIDE the CMD window
-window.launchTerminalInCmd=(cmdOutput,cmdInput)=>{
+// CMD handles all input — this just inits puzzle state and exposes processCommand
+window.launchTerminalInCmd=(cmdOutput,scrollContainer)=>{
 puzzleActive=true;
 termStep=0;
 termCodes=[];
 termLines=[];
 window.terminalLaunched=true;
 
-// Point puzzle system at CMD elements
+// Point addTermLine at CMD's output div
 termDiv=cmdOutput;
-termInput=cmdInput;
+// Point termInput at CMD's input for focus calls
+termInput=document.getElementById('cmd-input');
 
-// Wire input to puzzle command processor
-cmdInput.addEventListener('keydown',(e)=>{
-  if(e.key!=='Enter')return;
-  const cmd=cmdInput.value.trim();
-  cmdInput.value='';
-  if(!cmd)return;
-  addTermLine('root@void:~$ '+cmd,'#0f0');
+// Expose processCommand so CMD's keydown handler can call it
+window._puzzleProcessCommand=(cmd)=>{
   processCommand(cmd);
-});
+  if(scrollContainer)scrollContainer.scrollTop=scrollContainer.scrollHeight;
+};
 
-// Show first Mike hint after a beat
+// Show first Mike hint
 setTimeout(()=>{
   if(termSteps[0]&&termSteps[0].mike){
     mikeSay(termSteps[0].mike);
