@@ -2063,7 +2063,7 @@ const cmd=input.value.trim();input.value='';
 if(!cmd)return;
 output.innerHTML+='<span style="color:#ccc">C:\\Users\\TheDustBwlDuck&gt; '+cmd+'</span><br>';
 const cl=cmd.toLowerCase();
-if(cl==='help')output.innerHTML+='Commands: help, dir, cls, date, whoami, ver, echo, ipconfig, tasklist, terminal, color<br>';
+if(cl==='help')output.innerHTML+='Commands: help, dir, cls, date, whoami, ver, echo, ipconfig, tasklist, terminal, save, color<br>';
 else if(cl==='dir')output.innerHTML+='<br> Directory of C:\\Users\\TheDustBwlDuck<br><br> Documents/<br> Downloads/<br> Desktop/<br> '+(isC?'<span style="color:#f00">LOCALDRIVED/</span><br>':'')+'<br>';
 else if(cl==='cls'){output.innerHTML=''}
 else if(cl==='date')output.innerHTML+=(isC?'05/28/2010 12:06 AM':'09/30/2010 7:42 PM')+'<br>';
@@ -2109,6 +2109,7 @@ if(typeof cubeyQ==='function')cubeyQ("HEY! Don't do that {name}! That's MEAN!".r
 }
 }
 else if(cl==='terminal'||cl==='run terminal'){if(isC&&typeof launchTerminalPuzzle==='function'){output.innerHTML+='<span style="color:#0f0">Launching terminal...</span><br>';if(typeof terminalLaunched!=='undefined')terminalLaunched=true;setTimeout(()=>launchTerminalPuzzle(),500)}else if(isC){output.innerHTML+='<span style="color:#f00">Terminal unavailable.</span><br>'}else{output.innerHTML+='Use the Terminal app from the Start menu.<br>'}}
+else if(cl==='save'){if(typeof saveGame==='function'){saveGame();output.innerHTML+='<span style="color:#0f0">Game saved to soos_save.json</span><br>'}else{output.innerHTML+='Save system unavailable.<br>'}}
 else output.innerHTML+="'"+cmd+"' is not recognized as a command.<br>";
 output.scrollTop=output.scrollHeight;
 });

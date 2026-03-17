@@ -90,6 +90,14 @@ setTimeout(()=>{document.getElementById('tray-clock').textContent='12:06 AM  5/2
 document.getElementById('start-btn').onclick=(e)=>{e.stopPropagation();toggleStart(!startOpen)};
 document.onclick=(e)=>{if(startOpen&&!document.getElementById('start-menu').contains(e.target)&&e.target!==document.getElementById('start-btn')){toggleStart(false)}};
 document.getElementById('start-shutdown').onclick=doShutdown;
+document.getElementById('start-save').onclick=()=>{
+if(typeof saveGame==='function'){saveGame();toggleStart(false);
+const notif=document.createElement('div');
+notif.style.cssText='position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#333;color:#0f0;padding:6px 20px;font-family:Tahoma,sans-serif;font-size:11px;z-index:99999;border:1px solid #555';
+notif.textContent='Game saved to soos_save.json';
+document.body.appendChild(notif);
+setTimeout(()=>notif.remove(),3000);
+}};
 if(typeof pcState!=='undefined'&&pcState===2){document.getElementById('desktop').classList.add('corrupted-flicker')}
 if(typeof initCubey==='function')initCubey();
 };
