@@ -195,18 +195,14 @@ requestAnimationFrame(draw);
 document.addEventListener('DOMContentLoaded',()=>{
 initMenuBg();
 
-// Try to play music immediately - browsers may block, so retry on any interaction
-const tryStartMusic=()=>{
-if(menuMusicPlaying)return;
-try{
+// Gate: click ENTER -> music starts instantly, gate disappears
+document.getElementById('gate-enter').addEventListener('click',()=>{
+document.getElementById('menu-gate').style.display='none';
 playMenuMusic();
-}catch(e){}
-};
-tryStartMusic();
-// Fallback: any interaction unblocks audio
-['click','mousemove','keydown','touchstart'].forEach(evt=>{
-document.addEventListener(evt,()=>tryStartMusic(),{once:true});
 });
+// Hover style for gate button
+const gateBtn=document.getElementById('gate-enter');
+if(gateBtn){gateBtn.addEventListener('mouseenter',()=>{gateBtn.style.color='#fff';gateBtn.style.borderColor='#cf6a32';gateBtn.style.background='rgba(207,106,50,0.1)'});gateBtn.addEventListener('mouseleave',()=>{gateBtn.style.color='#aaa';gateBtn.style.borderColor='#555';gateBtn.style.background='transparent'})}
 
 document.getElementById('menu-new').addEventListener('click',()=>{stopMenuMusic();startBoot(null)});
 document.getElementById('menu-load').addEventListener('click',()=>{
