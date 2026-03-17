@@ -1,17 +1,23 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'VT323',monospace;color:#aaa;cursor:default;user-select:none}
 .hidden{display:none!important}
-#demo-disclaimer{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:100001;display:flex;align-items:center;justify-content:center}
-#demo-content{text-align:center;animation:demoFadeIn 1.5s ease}
-#demo-title{font-family:Tahoma,sans-serif;font-size:32px;color:#c0c0c0;letter-spacing:4px;font-weight:bold}
-#demo-subtitle{font-family:Tahoma,sans-serif;font-size:12px;color:#555;margin-top:4px;letter-spacing:2px}
-#demo-divider{width:200px;height:1px;background:#333;margin:20px auto}
-#demo-text{font-family:Tahoma,sans-serif;font-size:18px;color:#cf6a32;letter-spacing:6px;margin-bottom:8px}
-#demo-subtext{font-family:Tahoma,sans-serif;font-size:13px;color:#888;margin-bottom:24px}
-#demo-hint{font-family:Tahoma,sans-serif;font-size:10px;color:#444;line-height:1.6;margin-bottom:28px}
-#demo-start{font-family:Tahoma,sans-serif;font-size:13px;color:#aaa;background:transparent;border:1px solid #555;padding:8px 40px;cursor:pointer;letter-spacing:4px;transition:all 0.3s;position:relative;z-index:1010}
-#demo-start:hover{color:#fff;border-color:#cf6a32;background:rgba(207,106,50,0.1)}
-@keyframes demoFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#demo-disclaimer{display:none}
+/* DDLC-style main menu */
+#main-menu{position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a12;z-index:100001;overflow:hidden}
+#menu-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;padding-left:8%;animation:menuFadeIn 1.5s ease}
+@keyframes menuFadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+#menu-title{font-family:'Press Start 2P',monospace;font-size:28px;color:#cf6a32;letter-spacing:2px;text-shadow:0 0 20px rgba(207,106,50,0.3)}
+#menu-subtitle{font-family:Tahoma,sans-serif;font-size:11px;color:#555;margin-top:6px;letter-spacing:3px}
+#menu-cubey{position:absolute;right:12%;top:50%;transform:translateY(-50%);animation:menuCubeyFloat 3s ease-in-out infinite;opacity:0.4;z-index:1}
+@keyframes menuCubeyFloat{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 15px))}}
+#menu-buttons{display:flex;flex-direction:column;gap:0;margin-top:40px}
+.menu-btn{font-family:Tahoma,sans-serif;font-size:16px;color:#888;background:transparent;border:none;padding:10px 0;cursor:pointer;letter-spacing:2px;text-align:left;transition:all 0.2s;position:relative}
+.menu-btn:hover{color:#cf6a32;padding-left:10px}
+.menu-btn:hover::before{content:'▸ ';color:#cf6a32}
+#menu-version{position:absolute;bottom:20px;left:8%;font-family:Tahoma,sans-serif;font-size:10px;color:#333}
+#menu-warning{position:absolute;bottom:20px;right:5%;font-family:Tahoma,sans-serif;font-size:9px;color:#333;text-align:right;line-height:1.6}
+#menu-about-panel{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:5;display:flex;align-items:center;justify-content:center}
+#menu-about-content{text-align:center;animation:menuFadeIn 0.5s ease}
 #demo-notice{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:1100;display:flex;align-items:center;justify-content:center}
 #demo-notice-box{text-align:center;animation:demoFadeIn 1.5s ease}
 #demo-notice-title{font-family:Tahoma,sans-serif;font-size:28px;color:#cf6a32;letter-spacing:4px;font-weight:bold;margin-bottom:24px}

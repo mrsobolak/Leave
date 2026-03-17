@@ -276,7 +276,7 @@ const startCubeyIdle=()=>{
 cubeyTimer=setInterval(()=>{
 if(cubeySpeaking||!cubeyIntroDone)return;
 const isC=typeof pcState!=='undefined'&&pcState===2;
-if(isC){const r=Math.random();if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);else{if(!terminalLaunched)cubeyQ("Click on me. I need to tell you something.",true);else cubeyQ("Focus on the terminal.",true)}return}
+if(isC){const r=Math.random();if(r<0.4)cubeyQ(cubeyCorruptedIdle[Math.floor(Math.random()*cubeyCorruptedIdle.length)],true);else if(r<0.7)cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true);else{if(!mikeAwakened)cubeyQ("I'm... remembering...",true);else if(!terminalLaunched)cubeyQ("Click on me. I need to tell you something.",true);else cubeyQ("Focus on the terminal.",true)}return}
 const r=Math.random();
 if(r<0.10)cubeyTellJoke();
 else if(r<0.18)cubeyTellStory();
@@ -396,11 +396,13 @@ const cubeyPainLines=["Duck... I know you're in there.","You were my best friend
 
 // MIKE IDLE - Guide mode for corrupted state
 let terminalLaunched=false;
+let mikeAwakened=false;
 let path2Counter=0;
 const PATH2_THRESHOLD=15;
 let mikeForceTimer=null;
 
 const startMikeIdle=()=>{
+mikeAwakened=true;
 // No nudging. Mike waits 45 seconds then force-opens CMD himself.
 if(mikeForceTimer)clearTimeout(mikeForceTimer);
 mikeForceTimer=setTimeout(()=>{
@@ -428,6 +430,10 @@ else cubeyQ(cubeyPainLines[Math.floor(Math.random()*cubeyPainLines.length)],true
 const cubeyCorruptedClick=()=>{
 const isC=typeof pcState!=='undefined'&&pcState===2;
 if(!isC)return;
+if(!mikeAwakened){
+cubeyQ("Wait... I'm... still remembering...",true);
+return;
+}
 if(terminalLaunched){
 cubeyQ("The terminal is already open. Focus on it.",true);
 return;

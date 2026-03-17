@@ -13,16 +13,47 @@
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="demo-disclaimer">
-<div id="demo-content">
-<div id="demo-title">TheDustBowlDuck</div>
-<div id="demo-subtitle">thedustbowlduck.com</div>
-<div id="demo-divider"></div>
-<div id="demo-text">THIS IS A DEMO</div>
-<div id="demo-version" style="font-family:Tahoma,sans-serif;font-size:10px;color:#444;margin-top:2px;letter-spacing:2px">v2.2</div>
-<div id="demo-subtext">More is to come. This is only the beginning.</div>
-<div id="demo-hint">This experience contains horror elements.<br>Best viewed on desktop with audio enabled.<br><br>Headphones recommended.</div>
-<button id="demo-start">ENTER</button>
+<div id="main-menu">
+<canvas id="menu-bg" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0"></canvas>
+<div id="menu-content">
+<div id="menu-title">TheDustBowlDuck</div>
+<div id="menu-subtitle">thedustbowlduck.com</div>
+<div id="menu-cubey">
+<svg width="80" height="100" viewBox="0 0 140 180">
+<rect x="35" y="5" width="70" height="40" rx="3" fill="#2a2a2a" stroke="#111" stroke-width="2"/>
+<rect x="35" y="35" width="70" height="8" fill="#555"/>
+<rect x="20" y="43" width="100" height="12" rx="2" fill="#2a2a2a" stroke="#111" stroke-width="2"/>
+<rect x="20" y="55" width="100" height="100" rx="4" fill="#f0e68c" stroke="#b8a43a" stroke-width="3"/>
+<ellipse cx="50" cy="95" rx="14" ry="16" fill="white" stroke="#888" stroke-width="2"/>
+<ellipse cx="52" cy="97" rx="7" ry="9" fill="#222"/>
+<ellipse cx="48" cy="91" rx="4" ry="5" fill="white" opacity="0.8"/>
+<ellipse cx="90" cy="95" rx="14" ry="16" fill="white" stroke="#888" stroke-width="2"/>
+<ellipse cx="92" cy="97" rx="7" ry="9" fill="#222"/>
+<ellipse cx="88" cy="91" rx="4" ry="5" fill="white" opacity="0.8"/>
+<ellipse cx="40" cy="115" rx="10" ry="5" fill="#ffaaaa" opacity="0.4"/>
+<ellipse cx="100" cy="115" rx="10" ry="5" fill="#ffaaaa" opacity="0.4"/>
+</svg>
+</div>
+<div id="menu-buttons">
+<button class="menu-btn" id="menu-new">New Game</button>
+<button class="menu-btn" id="menu-continue" style="display:none">Continue</button>
+<button class="menu-btn" id="menu-about">About</button>
+</div>
+<div id="menu-version">v2.3</div>
+<div id="menu-warning">This experience contains horror elements.<br>Headphones recommended.</div>
+</div>
+<div id="menu-about-panel" class="hidden">
+<div id="menu-about-content">
+<div style="font-family:'Press Start 2P',monospace;font-size:12px;color:#cf6a32;margin-bottom:12px">TheDustBowlDuck</div>
+<div style="font-family:Tahoma,sans-serif;font-size:12px;color:#aaa;line-height:1.8">
+THIS IS A DEMO. More is to come.<br><br>
+Best viewed on desktop with audio enabled.<br>
+Password: 201<br><br>
+Made by Sobo<br>
+<span style="font-size:10px;color:#555">DM me on Discord for early access: mrsobo</span>
+</div>
+<button class="menu-btn" id="menu-about-back" style="margin-top:16px">Back</button>
+</div>
 </div>
 </div>
 <div id="dell-splash" class="hidden">
