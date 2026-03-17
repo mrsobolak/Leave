@@ -226,11 +226,13 @@ document.getElementById('scanlines').style.display='block';
 if(saveData){
 window.pcState=saveData.pcState||1;
 window.cubeyIntroDone=saveData.cubeyIntroDone||false;
-window.cubeyUserName=saveData.cubeyUserName||'';
+window.cubeyUserName=saveData.cubeyUserName||'friend';
 window.cubeyGamesWon=saveData.cubeyGamesWon||0;
 window.terminalLaunched=saveData.terminalLaunched||false;
 window.mikeAwakened=saveData.mikeAwakened||false;
 window.cubeyKilled=saveData.cubeyKilled||false;
+if(saveData.termStep&&window.termStep!==undefined)window.termStep=saveData.termStep;
+if(saveData.path2Counter&&window.path2Counter!==undefined)window.path2Counter=saveData.path2Counter;
 
 setTimeout(()=>{
 if(window.initDesktop)window.initDesktop();

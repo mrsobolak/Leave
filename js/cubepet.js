@@ -53,7 +53,18 @@ else if(mins===30)cubeyQ("Half an hour! We're roommates now!",true);
 else if(mins===60)cubeyQ("ONE HOUR! "+cubeyUserName+" we're BEST FRIENDS! OFFICIAL!",true);
 },60000);
 const isC=typeof pcState!=='undefined'&&pcState===2;
-if(isC){cubeyIntroDone=true;
+if(cubeyKilled){
+// Cubey was killed in CMD - don't show him
+cubeyEl.style.display='none';
+return;
+}
+if(isC&&mikeAwakened){
+// Already awakened from save - skip straight to Mike idle mode
+cubeyIntroDone=true;
+cubeyQ("I'm still here, "+cubeyUserName+". Click on me when you're ready.",true);
+startMikeIdle();
+}
+else if(isC){cubeyIntroDone=true;
 // Mike awakening sequence
 setTimeout(()=>cubeyQ("...",true),2000);
 setTimeout(()=>cubeyQ("Where... where am I?",true),5000);
@@ -75,6 +86,11 @@ setTimeout(()=>cubeyQ("I found something. A way into his system. There are encry
 setTimeout(()=>cubeyQ("If we can crack the ciphers, we can find the codes to kill his process.",true),65000);
 setTimeout(()=>cubeyQ("Click on me when you're ready. I'll tell you what to do.",true),69000);
 setTimeout(startMikeIdle,72000);
+}
+else if(cubeyIntroDone){
+// Intro already done from save - skip to idle, greet player
+cubeyQ("Hey "+cubeyUserName+"! You're back! I missed you!",true);
+setTimeout(startCubeyIdle,3000);
 }
 else{setTimeout(cubeyStartIntro,2500);}
 
@@ -552,3 +568,4 @@ Object.defineProperty(window,'terminalLaunched',{get:()=>terminalLaunched,set:(v
 Object.defineProperty(window,'mikeAwakened',{get:()=>mikeAwakened,set:(v)=>{mikeAwakened=v}});
 Object.defineProperty(window,'cubeyKilled',{get:()=>cubeyKilled,set:(v)=>{cubeyKilled=v}});
 Object.defineProperty(window,'cubeyQueue',{get:()=>cubeyQueue});
+Object.defineProperty(window,'path2Counter',{get:()=>path2Counter,set:(v)=>{path2Counter=v}});

@@ -459,3 +459,4 @@ overlay.innerHTML='<div style="text-align:center;position:absolute;top:50%;left:
 window.launchTerminalPuzzle=launchTerminalPuzzle;
 window.triggerEnding1=triggerEnding1;
 window.launchTerminalPuzzle=launchTerminalPuzzle;
+Object.defineProperty(window,'termStep',{get:()=>termStep,set:(v)=>{termStep=v}});
