@@ -71,10 +71,12 @@ return;
 if(isC&&mikeAwakened){
 // Already awakened from save - skip straight to Mike idle mode
 cubeyIntroDone=true;
+const mb0=document.getElementById('cubey-mute');if(mb0)mb0.style.display='block';
 cubeyQ("I'm still here, "+cubeyUserName+". Click on me when you're ready.",true);
 startMikeIdle();
 }
 else if(isC){cubeyIntroDone=true;
+const mb1=document.getElementById('cubey-mute');if(mb1)mb1.style.display='block';
 // Mike awakening sequence
 if(window.soosAudio){soosAudio.stop();soosAudio.playAwakening()}
 setTimeout(()=>cubeyQ("...",true),2000);
