@@ -251,6 +251,8 @@ hallway:{size:[12,3,4],light:{c:0x554433,i:0.5},
     {p:[3,0.9,1.95],s:[1,1.8,0.15],to:'bathroom',sp:[0,1.5,-1.2]},
     // Outside: right end of hallway (+X)
     {p:[5.9,0.9,0],s:[0.15,1.8,1],to:'outside',sp:[-4,1.5,0]},
+    // Master bedroom: far left of front wall (+Z)
+    {p:[-4,0.9,1.95],s:[1,1.8,0.15],to:'master',sp:[0,1.5,-2.5]},
   ]},
 
 // KITCHEN: 6 wide x 3 tall x 5 deep
@@ -283,7 +285,7 @@ livingroom:{size:[8,3,6],light:{c:0x333340,i:0.35},
     // Couch: middle of room, facing -Z toward TV (no rotation, front is -Z)
     const couch=mkCouch();couch.position.set(0,0,0.8);g.add(couch);
     // Bookshelf: against left wall, rotated 90 so front faces +X (into room)
-    const shelf=mkBookshelf();shelf.position.set(-3.65,0,0);shelf.rotation.y=Math.PI/2;g.add(shelf);
+    const shelf=mkBookshelf();shelf.position.set(-3.65,0,0);shelf.rotation.y=-Math.PI/2;g.add(shelf);
     return[
       {mesh:tv,n:'TV',m:'its off. it hasnt been on in a long time.'},
       {mesh:couch,n:'Couch',m:'dad used to sit here and watch the news. i sat here when i didnt want to be alone.'},
@@ -297,19 +299,16 @@ livingroom:{size:[8,3,6],light:{c:0x333340,i:0.35},
 bedroom:{size:[7,3,6],light:{c:0x2a3050,i:0.28},
   build(g){
     // PC desk: against left wall (-X), rotated 90 so screen faces +X (into room)
-    const pc=mkPC();pc.position.set(-3,0,-0.5);pc.rotation.y=Math.PI/2;g.add(pc);
+    const pc=mkPC();pc.position.set(-3,0,-0.5);pc.rotation.y=-Math.PI/2;g.add(pc);
     // Bed: against right wall (+X), long axis on Z
     const bed=mkBed();bed.position.set(2.3,0,0.5);g.add(bed);
     // Posters on left wall — flat against it
-    const poster1=B(0.5,0.35,0.02,M(0x2a1a1a));poster1.position.set(-3.35,1.6,1);g.add(poster1);
-    const poster2=B(0.35,0.45,0.02,M(0x1a2a1a));poster2.position.set(-3.35,1.5,-1.5);g.add(poster2);
     // Backpack on floor near door
     const bp=B(0.3,0.3,0.25,M(0x2a1a1a));bp.position.set(-1,0.15,-2.3);g.add(bp);
     const strap=B(0.04,0.2,0.02,M(0x1a1010));strap.position.set(-0.88,0.32,-2.18);g.add(strap);
     return[
       {mesh:pc,n:'My PC',m:'Dell XPS 420. birthday present. 2007. this is where it all started.'},
       {mesh:bed,n:'Bed',m:'i stopped sleeping. the dreams were always dustbowl.'},
-      {mesh:poster1,n:'Posters',m:'tf2 posters. i put them up when i first got the game. they used to make me happy.'},
       {mesh:bp,n:'Backpack',m:'i havent been to school in weeks. they stopped calling.'},
     ];
   },
@@ -319,20 +318,14 @@ bedroom:{size:[7,3,6],light:{c:0x2a3050,i:0.28},
 // Player enters from back wall (-Z), faces +Z
 bathroom:{size:[4,3,4],light:{c:0x334444,i:0.3},
   build(g){
-    // Toilet: back right corner, faces -X (toward center)
-    const toilet=mkToilet();toilet.position.set(1.2,0,1.2);toilet.rotation.y=-Math.PI/2;g.add(toilet);
     // Sink: against right wall, faces -X
     const sink=mkSink();sink.position.set(1.5,0,-0.5);sink.rotation.y=-Math.PI/2;g.add(sink);
-    // Mirror: on right wall above sink
-    const mirror=mkMirror();mirror.position.set(1.92,0,-0.5);mirror.rotation.y=-Math.PI/2;g.add(mirror);
     // Bathtub: against left wall, long axis on Z
     const tub=mkBathtub();tub.position.set(-1.3,0,0.3);g.add(tub);
     // Towel on left wall
     const towel=B(0.35,0.5,0.02,M(0x1a2a2a));towel.position.set(-1.92,1.3,-0.5);g.add(towel);
     return[
-      {mesh:toilet,n:'Toilet',m:'someone left the seat up. probably duck.'},
       {mesh:sink,n:'Sink',m:'the faucet drips. has for months. nobody fixed it.'},
-      {mesh:mirror,n:'Mirror',m:'i look at the mirror. nothing looks back.'},
       {mesh:tub,n:'Bathtub',m:'cold water. duck stopped taking warm showers. didnt care anymore.'},
       {mesh:towel,n:'Towel',m:'still damp. like someone just used it. but no one has been here in a long time.'},
     ];
@@ -362,7 +355,28 @@ outside:{size:[14,6,12],light:{c:0x1a1a22,i:0.18},
       {mesh:mystery,n:'???',m:''},
     ];
   },
-  exits:[{p:[-6.9,0.9,0],s:[0.15,1.8,1.2],to:'hallway',sp:[5,1.5,0]}]}
+  exits:[{p:[-6.9,0.9,0],s:[0.15,1.8,1.2],to:'hallway',sp:[5,1.5,0]}]},
+
+// MASTER BEDROOM: 7 wide x 3 tall x 6 deep
+// Empty. Bed frame. Dust. Trapdoor.
+master:{size:[7,3,6],light:{c:0x1a1510,i:0.15},
+  build(g){
+    // Bare bed frame — no mattress
+    const frame=B(1.4,0.18,2,M(0x1a1208));frame.position.set(2,0.09,1);g.add(frame);
+    const leg1=B(0.08,0.3,0.08,M(0x151005));leg1.position.set(1.4,0.15,0.1);g.add(leg1);
+    const leg2=B(0.08,0.3,0.08,M(0x151005));leg2.position.set(2.6,0.15,0.1);g.add(leg2);
+    const leg3=B(0.08,0.3,0.08,M(0x151005));leg3.position.set(1.4,0.15,1.9);g.add(leg3);
+    const leg4=B(0.08,0.3,0.08,M(0x151005));leg4.position.set(2.6,0.15,1.9);g.add(leg4);
+    // Trapdoor in floor — center of room
+    const trap=B(0.9,0.04,0.9,M(0x2a1a0a,0x0a0500));trap.position.set(-0.5,0.02,0);g.add(trap);
+    // Ring handle on trapdoor
+    const ring=Cy(0.06,0.03,6,M(0x555555));ring.position.set(-0.5,0.06,0);g.add(ring);
+    return[
+      {mesh:frame,n:'Bed Frame',m:'no mattress. just springs. this was their room. before mom left.'},
+      {mesh:trap,n:'Trapdoor',m:'MAZE'},// special — triggers maze
+    ];
+  },
+  exits:[{p:[0,0.9,-2.95],s:[1,1.8,0.15],to:'hallway',sp:[-4,1.5,1]}]},
 };
 
 // === STATE ===
@@ -414,6 +428,7 @@ function interact(){
   if(ud.exit){curRoom=ud.to;camera.position.set(ud.spawn[0],ud.spawn[1],ud.spawn[2]);buildRoom(curRoom);return}
   if(!ud.name)return;const key=ud.room+'-'+ud.name;
   if(!interacted[key]){interacted[key]=true;totalDone++;const cn=document.getElementById('home-counter');if(cn)cn.textContent=totalDone+'/'+totalObjs}
+  if(ud.msg==='MAZE'){showMsg('descending...');setTimeout(()=>launchMaze(),1500);return}
   if(curRoom==='outside'&&ud.name==='???'){
     if(totalDone>=totalObjs)showMsg('Im still here at home');
     else showMsg('i cant go yet. theres more i need to remember. ('+totalDone+'/'+totalObjs+')');
@@ -430,28 +445,345 @@ function loop(){
   if(keys['w'])dir.z-=1;if(keys['s'])dir.z+=1;if(keys['a'])dir.x-=1;if(keys['d'])dir.x+=1;
   if(dir.lengthSq()>0){
     dir.normalize().multiplyScalar(spd);dir.applyAxisAngle(new THREE.Vector3(0,1,0),yaw);
-    const r=rooms[curRoom],hx=r.size[0]/2-0.4,hz=r.size[2]/2-0.4;
     const nx=camera.position.x+dir.x,nz=camera.position.z+dir.z;
-    if(nx>-hx&&nx<hx)camera.position.x=nx;if(nz>-hz&&nz<hz)camera.position.z=nz;
+    if(mazeActive){
+      // Maze collision
+      if(mazeCanWalk(nx,camera.position.z))camera.position.x=nx;
+      if(mazeCanWalk(camera.position.x,nz))camera.position.z=nz;
+    }else{
+      // Room bounds collision
+      const r=rooms[curRoom];
+      if(r){const hx=r.size[0]/2-0.4,hz=r.size[2]/2-0.4;
+      if(nx>-hx&&nx<hx)camera.position.x=nx;if(nz>-hz&&nz<hz)camera.position.z=nz}
+    }
   }
   camera.rotation.set(0,0,0);camera.rotateY(yaw);camera.rotateX(pitch);
   flash.position.copy(camera.position);
   const fd=new THREE.Vector3(0,0,-1).applyQuaternion(camera.quaternion);
   flash.target.position.copy(camera.position).add(fd.multiplyScalar(6));
   if(keys['e']){interact();keys['e']=false}
-  const allM=[];objData.forEach(o=>{if(o.isMesh)allM.push(o);else o.traverse(c=>{if(c.isMesh)allM.push(c)})});exitMeshes.forEach(m=>allM.push(m));
-  ray.setFromCamera(ctr,camera);const hits=ray.intersectObjects(allM,false);
-  const iEl=document.getElementById('home-interact'),ch=document.getElementById('home-crosshair');
-  lookingAt=null;
-  if(hits.length&&hits[0].distance<4){
-    let obj=hits[0].object;while(obj&&!obj.userData.name&&!obj.userData.exit&&obj.parent&&obj.parent!==roomGrp)obj=obj.parent;
-    if(obj.userData.name||obj.userData.exit){lookingAt=obj;const ud=obj.userData;if(iEl){iEl.textContent=ud.exit?'[E] '+ud.to:'[E] '+ud.name;iEl.style.opacity='1'}if(ch)ch.style.color='#cf6a32'}
+  // Maze updates
+  if(mazeActive){updateEntity();checkMazeExit()}
+  // Raycast for room objects (not in maze)
+  if(!mazeActive){
+    const allM=[];objData.forEach(o=>{if(o.isMesh)allM.push(o);else o.traverse(c=>{if(c.isMesh)allM.push(c)})});exitMeshes.forEach(m=>allM.push(m));
+    ray.setFromCamera(ctr,camera);const hits=ray.intersectObjects(allM,false);
+    const iEl=document.getElementById('home-interact'),ch=document.getElementById('home-crosshair');
+    lookingAt=null;
+    if(hits.length&&hits[0].distance<4){
+      let obj=hits[0].object;while(obj&&!obj.userData.name&&!obj.userData.exit&&obj.parent&&obj.parent!==roomGrp)obj=obj.parent;
+      if(obj.userData.name||obj.userData.exit){lookingAt=obj;const ud=obj.userData;if(iEl){iEl.textContent=ud.exit?'[E] '+ud.to:'[E] '+ud.name;iEl.style.opacity='1'}if(ch)ch.style.color='#cf6a32'}
+    }
+    if(!lookingAt){if(iEl)iEl.style.opacity='0';if(ch)ch.style.color='#555'}
+    for(let i=0;i<exitMeshes.length;i++){if(camera.position.distanceTo(exitMeshes[i].position)<0.9){const ud=exitMeshes[i].userData;curRoom=ud.to;camera.position.set(ud.spawn[0],ud.spawn[1],ud.spawn[2]);buildRoom(curRoom);break}}
   }
-  if(!lookingAt){if(iEl)iEl.style.opacity='0';if(ch)ch.style.color='#555'}
-  for(let i=0;i<exitMeshes.length;i++){if(camera.position.distanceTo(exitMeshes[i].position)<0.9){const ud=exitMeshes[i].userData;curRoom=ud.to;camera.position.set(ud.spawn[0],ud.spawn[1],ud.spawn[2]);buildRoom(curRoom);break}}
   renderer.render(scene,camera);
 }
 loop();
 const ro=new ResizeObserver(()=>{const w=container.clientWidth,h=container.clientHeight;if(w>0&&h>0){const sc=Math.max(1,Math.floor(Math.min(w/PW,h/PH)));renderer.setSize(PW*sc,PH*sc);canvas.style.width=w+'px';canvas.style.height=h+'px'}});
 ro.observe(container);
+
+// ============================================================
+// MAZE SYSTEM — 20x20 basement maze with entity chase
+// ============================================================
+let mazeActive=false;
+let entityMesh=null;
+let entityPos={x:0,z:0};
+let mazeGrid=null;
+const MAZE_S=20;// 20x20
+const CELL=2;// each cell is 2x2 units
+const WALL_H=3;
+
+function generateMaze(w,h){
+  // DFS recursive backtracker
+  // Grid: each cell has walls {n,s,e,w}
+  const grid=[];
+  for(let y=0;y<h;y++){
+    grid[y]=[];
+    for(let x=0;x<w;x++)grid[y][x]={n:true,s:true,e:true,w:true,visited:false};
+  }
+  const stack=[];
+  let cx=0,cy=0;
+  grid[cy][cx].visited=true;
+  stack.push([cx,cy]);
+  while(stack.length>0){
+    const neighbors=[];
+    if(cy>0&&!grid[cy-1][cx].visited)neighbors.push([cx,cy-1,'n','s']);
+    if(cy<h-1&&!grid[cy+1][cx].visited)neighbors.push([cx,cy+1,'s','n']);
+    if(cx>0&&!grid[cy][cx-1].visited)neighbors.push([cx-1,cy,'w','e']);
+    if(cx<w-1&&!grid[cy][cx+1].visited)neighbors.push([cx+1,cy,'e','w']);
+    if(neighbors.length>0){
+      const[nx,ny,wall,opp]=neighbors[Math.floor(Math.random()*neighbors.length)];
+      grid[cy][cx][wall]=false;
+      grid[ny][nx][opp]=false;
+      grid[ny][nx].visited=true;
+      stack.push([cx,cy]);
+      cx=nx;cy=ny;
+    }else{
+      const p=stack.pop();cx=p[0];cy=p[1];
+    }
+  }
+  return grid;
 }
+
+function launchMaze(){
+  mazeActive=true;
+  curRoom='maze';
+
+  // Clear everything
+  while(roomGrp.children.length)roomGrp.remove(roomGrp.children[0]);
+  if(roomLight)scene.remove(roomLight);
+  if(roomAmb)scene.remove(roomAmb);
+  objData=[];exitMeshes=[];
+
+  // Generate maze
+  mazeGrid=generateMaze(MAZE_S,MAZE_S);
+  const totalW=MAZE_S*CELL;
+  const matMazeWall=M(0x1a1a1a);
+  const matMazeFloor=M(0x0f0e0d);
+
+  // Floor
+  const fl=new THREE.Mesh(new THREE.PlaneGeometry(totalW+2,totalW+2),matMazeFloor);
+  fl.rotation.x=-Math.PI/2;fl.position.set(totalW/2,0,totalW/2);
+  fl.receiveShadow=true;roomGrp.add(fl);
+
+  // Ceiling
+  const ceil=new THREE.Mesh(new THREE.PlaneGeometry(totalW+2,totalW+2),M(0x0a0a0a));
+  ceil.rotation.x=Math.PI/2;ceil.position.set(totalW/2,WALL_H,totalW/2);
+  roomGrp.add(ceil);
+
+  // Build walls from grid
+  const wallGeo=new THREE.BoxGeometry(CELL,WALL_H,0.1);
+  const wallGeoSide=new THREE.BoxGeometry(0.1,WALL_H,CELL);
+
+  for(let y=0;y<MAZE_S;y++){
+    for(let x=0;x<MAZE_S;x++){
+      const cell=mazeGrid[y][x];
+      const wx=x*CELL+CELL/2;
+      const wz=y*CELL+CELL/2;
+      // North wall (top, -Z side of cell)
+      if(cell.n){
+        const w=new THREE.Mesh(wallGeo,matMazeWall);
+        w.position.set(wx,WALL_H/2,y*CELL);
+        w.castShadow=true;w.receiveShadow=true;roomGrp.add(w);
+      }
+      // West wall (left, -X side of cell)
+      if(cell.w){
+        const w=new THREE.Mesh(wallGeoSide,matMazeWall);
+        w.position.set(x*CELL,WALL_H/2,wz);
+        w.castShadow=true;w.receiveShadow=true;roomGrp.add(w);
+      }
+    }
+  }
+  // Outer walls — south and east borders
+  for(let x=0;x<MAZE_S;x++){
+    const w=new THREE.Mesh(wallGeo,matMazeWall);
+    w.position.set(x*CELL+CELL/2,WALL_H/2,MAZE_S*CELL);
+    roomGrp.add(w);
+  }
+  for(let y=0;y<MAZE_S;y++){
+    const w=new THREE.Mesh(wallGeoSide,matMazeWall);
+    w.position.set(MAZE_S*CELL,WALL_H/2,y*CELL+CELL/2);
+    roomGrp.add(w);
+  }
+
+  // Exit marker — glowing green at (19,19)
+  const exitX=(MAZE_S-1)*CELL+CELL/2;
+  const exitZ=(MAZE_S-1)*CELL+CELL/2;
+  const exitMarker=new THREE.Mesh(
+    new THREE.BoxGeometry(0.5,0.1,0.5),
+    M(0x00ff00,0x004400)
+  );
+  exitMarker.position.set(exitX,0.05,exitZ);
+  roomGrp.add(exitMarker);
+
+  // Very dim ambient — flashlight is essential
+  roomAmb=new THREE.AmbientLight(0x050505,0.1);scene.add(roomAmb);
+  roomLight=new THREE.PointLight(0x110808,0.08,20);
+  roomLight.position.set(totalW/2,2.5,totalW/2);scene.add(roomLight);
+
+  // Place player at start (cell 0,0)
+  camera.position.set(CELL/2,1.5,CELL/2);
+  yaw=0;pitch=0;
+
+  // Build entity — tall black demon
+  entityMesh=new THREE.Group();
+  // Body — tall thin
+  const eBody=B(0.35,2,0.25,M(0x050505,0x020000));eBody.position.y=1;entityMesh.add(eBody);
+  // Head — slightly wider, taller
+  const eHead=B(0.3,0.35,0.25,M(0x080808,0x030000));eHead.position.y=2.15;entityMesh.add(eHead);
+  // Eyes — two tiny red dots
+  const eEyeL=B(0.04,0.04,0.02,M(0xff0000,0x440000));eEyeL.position.set(-0.08,2.2,-0.14);entityMesh.add(eEyeL);
+  const eEyeR=B(0.04,0.04,0.02,M(0xff0000,0x440000));eEyeR.position.set(0.08,2.2,-0.14);entityMesh.add(eEyeR);
+  // Arms — thin, hanging
+  const eArmL=B(0.08,1.3,0.08,M(0x050505));eArmL.position.set(-0.25,0.7,0);entityMesh.add(eArmL);
+  const eArmR=B(0.08,1.3,0.08,M(0x050505));eArmR.position.set(0.25,0.7,0);entityMesh.add(eArmR);
+  // Claws — thin extensions
+  const eClawL=B(0.06,0.3,0.04,M(0x030303));eClawL.position.set(-0.25,0.02,0);entityMesh.add(eClawL);
+  const eClawR=B(0.06,0.3,0.04,M(0x030303));eClawR.position.set(0.25,0.02,0);entityMesh.add(eClawR);
+  // Legs — thin
+  const eLegL=B(0.1,1,0.1,M(0x050505));eLegL.position.set(-0.1,-0.1,0);entityMesh.add(eLegL);
+  const eLegR=B(0.1,1,0.1,M(0x050505));eLegR.position.set(0.1,-0.1,0);entityMesh.add(eLegR);
+
+  // Spawn entity at far corner
+  entityPos.x=(MAZE_S-1)*CELL+CELL/2;
+  entityPos.z=(MAZE_S-3)*CELL+CELL/2;// slightly away from exit
+  entityMesh.position.set(entityPos.x,0,entityPos.z);
+  roomGrp.add(entityMesh);
+
+  // Update HUD
+  const rn=document.getElementById('home-room-name');if(rn)rn.textContent='BASEMENT';
+  const cn=document.getElementById('home-counter');if(cn)cn.textContent='find the exit';
+  showMsg('find the green light. dont look back.');
+
+  // Play puzzle audio for tension
+  if(window.soosAudio){soosAudio.stop();soosAudio.playPuzzle()}
+}
+
+// Check if a position is walkable in maze
+function mazeCanWalk(x,z){
+  if(!mazeGrid)return false;
+  const cx=Math.floor(x/CELL);
+  const cz=Math.floor(z/CELL);
+  if(cx<0||cx>=MAZE_S||cz<0||cz>=MAZE_S)return false;
+  // Check if we'd cross a wall
+  const lx=x-cx*CELL;
+  const lz=z-cz*CELL;
+  // Near north wall
+  if(lz<0.3&&mazeGrid[cz][cx].n&&cz>0)return false;
+  // Near south wall  
+  if(lz>CELL-0.3&&cz<MAZE_S-1&&mazeGrid[cz][cx].s)return false;
+  if(lz>CELL-0.3&&cz===MAZE_S-1)return false;
+  // Near west wall
+  if(lx<0.3&&mazeGrid[cz][cx].w&&cx>0)return false;
+  // Near east wall
+  if(lx>CELL-0.3&&cx<MAZE_S-1&&mazeGrid[cz][cx].e)return false;
+  if(lx>CELL-0.3&&cx===MAZE_S-1)return false;
+  return true;
+}
+
+// Entity AI — simple: move toward player, check walls
+let entityMoveTimer=0;
+function updateEntity(){
+  if(!entityMesh||!mazeActive)return;
+  entityMoveTimer++;
+  if(entityMoveTimer%3!==0)return;// move every 3 frames ~20fps = every 150ms
+
+  const speed=0.04;// slightly slower than player
+  const dx=camera.position.x-entityPos.x;
+  const dz=camera.position.z-entityPos.z;
+  const dist=Math.sqrt(dx*dx+dz*dz);
+  if(dist<0.01)return;
+
+  // Try to move toward player
+  const nx=entityPos.x+dx/dist*speed;
+  const nz=entityPos.z+dz/dist*speed;
+
+  // Try X first
+  if(mazeCanWalk(nx,entityPos.z))entityPos.x=nx;
+  else if(mazeCanWalk(entityPos.x,nz))entityPos.z=nz;
+  // If stuck, try just one axis
+  else{
+    if(Math.abs(dx)>Math.abs(dz)){
+      if(mazeCanWalk(entityPos.x+Math.sign(dx)*speed,entityPos.z))
+        entityPos.x+=Math.sign(dx)*speed;
+    }else{
+      if(mazeCanWalk(entityPos.x,entityPos.z+Math.sign(dz)*speed))
+        entityPos.z+=Math.sign(dz)*speed;
+    }
+  }
+
+  entityMesh.position.set(entityPos.x,0,entityPos.z);
+
+  // Face player
+  entityMesh.lookAt(camera.position.x,0,camera.position.z);
+
+  // Step up puzzle tension
+  if(dist<8&&window._puzzleStepUp)window._puzzleStepUp();
+
+  // FOR TESTING: entity does NOT kill. Uncomment below for final:
+  // if(dist<0.8){triggerEntityCatch();return}
+}
+
+// Check if player reached exit
+function checkMazeExit(){
+  if(!mazeActive)return;
+  const exitX=(MAZE_S-1)*CELL+CELL/2;
+  const exitZ=(MAZE_S-1)*CELL+CELL/2;
+  const dx=camera.position.x-exitX;
+  const dz=camera.position.z-exitZ;
+  if(Math.sqrt(dx*dx+dz*dz)<1.2){
+    triggerFreedomEnding();
+  }
+}
+
+// ENDING 4: FREEDOM
+function triggerFreedomEnding(){
+  mazeActive=false;
+  if(window.soosAudio)soosAudio.stop();
+
+  // Flashbang
+  const fb=document.createElement('div');
+  fb.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;z-index:9999;opacity:1;transition:opacity 3s';
+  container.appendChild(fb);
+
+  // Flashbang sound
+  if(window.soosAudio){
+    soosAudio.init();
+    soosAudio._ns(0,0.3,0.12,10000);// loud white noise burst
+    soosAudio._n(4000,0,0.5,'sine',0.08);// high ring
+    soosAudio._n(2000,0.1,2,'sine',0.04);// tinnitus ring
+    soosAudio._n(1000,0.2,3,'sine',0.02);// fading ring
+  }
+
+  // After flash, show ending text
+  setTimeout(()=>{
+    // Play "Freedom" track
+    if(window.soosAudio)soosAudio.playFreedom&&soosAudio.playFreedom();
+
+    fb.innerHTML='';
+    fb.style.cssText='position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:VT323,monospace;overflow-y:auto';
+
+    const lines=[
+      {t:'',d:1000},
+      {t:'the pc exploded.',d:2500,s:18,c:'#333'},
+      {t:'',d:500},
+      {t:'glass everywhere. smoke.',d:2500,s:14,c:'#555'},
+      {t:'his mom found him on the floor.',d:3000,s:14,c:'#555'},
+      {t:'',d:1000},
+      {t:'he couldnt remember anything.',d:2500,s:14,c:'#555'},
+      {t:'not the pc. not the demos. not dustbowl.',d:3000,s:13,c:'#666'},
+      {t:'not 201.',d:2000,s:13,c:'#666'},
+      {t:'',d:1000},
+      {t:'he spent 3 weeks in the hospital.',d:2500,s:14,c:'#555'},
+      {t:'burns on his hands and face.',d:2500,s:14,c:'#555'},
+      {t:'',d:1000},
+      {t:'but he survived.',d:3000,s:16,c:'#333'},
+      {t:'',d:1500},
+      {t:'and for the first time in 14 months',d:3000,s:14,c:'#555'},
+      {t:'he went outside.',d:3000,s:16,c:'#333'},
+      {t:'',d:3000},
+      {t:'ENDING 4: freedom',d:0,s:20,c:'#cf6a32'},
+    ];
+
+    let delay=2000;
+    const textBox=document.createElement('div');
+    textBox.style.cssText='text-align:center;padding:40px;max-width:500px';
+    fb.appendChild(textBox);
+
+    lines.forEach(l=>{
+      setTimeout(()=>{
+        const div=document.createElement('div');
+        div.style.cssText='opacity:0;transition:opacity 1.5s;margin:4px 0;font-size:'+(l.s||14)+'px;color:'+(l.c||'#555');
+        div.textContent=l.t;
+        textBox.appendChild(div);
+        setTimeout(()=>{div.style.opacity='1'},50);
+        // Scroll to bottom
+        textBox.scrollTop=textBox.scrollHeight;
+      },delay);
+      delay+=l.d+1500;
+    });
+  },3000);
+}
+
+}// end initHome3D

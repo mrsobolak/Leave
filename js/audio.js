@@ -292,5 +292,48 @@ const play=()=>{
 
 // 12. "Beeper." — Ending 3
 playBeeper(){this.init();this.stop();_ct='beeper';this._n(1000,0,1.5,'square',0.1);this._ns(0,0.1,0.08,10000);setTimeout(()=>this.stop(),2000)},
+
+// 13. "Freedom" — Ending 4 (the only hopeful track)
+// Gentle piano, warm pads, major key, slowly building. Safety.
+playFreedom(){this.init();this.stop();_ct='freedom';
+const B=60/72;let iter=0;
+// F major — warm, open, resolved. [freq, beat, durBeats]
+const phrases=[
+  [[349,0,2],[440,2,1.5],[523,3.5,2],[494,5.5,1],[440,6.5,1.5],[392,8,2],
+   [440,10,1.5],[523,11.5,2],[587,13.5,1],[523,14.5,1.5],[349,16,2]],
+  [[523,0,2],[587,2,1.5],[659,3.5,2],[587,5.5,1.5],[523,7,2],
+   [440,9,1.5],[494,10.5,1],[523,11.5,2],[440,13.5,1.5],[392,15,1],[349,16,2]],
+  [[659,0,2],[587,2,2],[523,4,1.5],[440,5.5,1.5],[392,7,2],
+   [440,9,2],[523,11,1.5],[587,12.5,1.5],[523,14,1],[440,15,1],[349,16,2]],
+];
+// Chords: F Dm Bb C
+const chords=[[349,440,523],[294,349,440],[233,294,349],[262,330,392]];
+const bass=[175,147,117,131];
+const play=()=>{
+  if(_ct!=='freedom')return;
+  const ph=phrases[iter%3];
+  // Piano — sine, warm, gentle attack
+  ph.forEach(([f,t,d])=>{
+    this._n(f,t*B,d*B*0.95,'sine',0.045);
+    this._n(f*2,t*B+0.05,d*B*0.5,'sine',0.012);// upper octave shimmer
+  });
+  // Warm pads — very soft, wide
+  for(let i=0;i<4;i++){
+    chords[i].forEach(f=>{
+      this._n(f,i*4.5*B,B*4.2,'sine',0.018);
+      this._n(f*1.002,i*4.5*B+0.1,B*4,'sine',0.008);
+      this._n(f*0.999,i*4.5*B+0.15,B*3.8,'sine',0.006);
+    });
+  }
+  // Bass — deep, steady, grounding
+  bass.forEach((f,i)=>this._n(f,i*4.5*B,B*4.2,'triangle',0.035));
+  // High twinkle — like sunlight
+  for(let i=0;i<3;i++){
+    const f=this._pick([1047,1175,1319,1397]);
+    this._n(f,(3+i*5+Math.random()*2)*B,B*2.5,'sine',0.008);
+  }
+  iter++;
+  _lp.push(setTimeout(()=>play(),18*B*1000-50));
+};play()},
 };
 window.soosAudio=soosAudio;
