@@ -2,7 +2,7 @@
 // All furniture faces TOWARD room center. Built with front at -Z, rotated as needed.
 let _homeLoaded=false;
 const openHomeGame=()=>{
-const h='<div id="home-container" style="width:100%;height:100%;min-height:400px;background:#000;position:relative;cursor:crosshair;overflow:hidden"><canvas id="home-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;image-rendering:pixelated"></canvas><div id="home-play-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer"><div style="text-align:center"><div style="font-family:VT323,monospace;font-size:24px;color:#cf6a32;margin-bottom:12px">home.exe</div><div style="font-family:VT323,monospace;font-size:14px;color:#666">Click to Play</div><div style="font-family:VT323,monospace;font-size:10px;color:#444;margin-top:8px">WASD move | Mouse look | E interact | F flashlight</div></div></div><div id="home-crosshair" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#555;font-size:18px;pointer-events:none;z-index:5">+</div><div id="home-interact" style="position:absolute;bottom:55px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:16px;color:#888;pointer-events:none;opacity:0;transition:opacity 0.3s;text-align:center;text-shadow:0 0 6px #000;z-index:5"></div><div id="home-msg" style="position:absolute;bottom:15px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:14px;color:#666;pointer-events:none;text-align:center;max-width:90%;text-shadow:0 0 6px #000;z-index:5"></div><div id="home-room-name" style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none;z-index:5"></div><div id="home-counter" style="position:absolute;top:10px;right:15px;font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none;z-index:5"></div><div id="home-flash-hint" style="position:absolute;top:30px;right:15px;font-family:VT323,monospace;font-size:11px;color:#444;pointer-events:none;z-index:5">[F] Flashlight</div></div>';
+const h='<div id="home-container" style="width:100%;height:100%;min-height:400px;background:#000;position:relative;cursor:crosshair;overflow:hidden"><canvas id="home-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;image-rendering:pixelated"></canvas><div id="home-play-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer"><div style="text-align:center"><div style="font-family:monospace,monospace;font-size:16px;color:#cf6a32;margin-bottom:16px">home.exe</div><div style="font-family:monospace,monospace;font-size:10px;color:#666">Click to Play</div><div style="font-family:monospace,monospace;font-size:7px;color:#444;margin-top:12px;line-height:1.8">WASD move | Mouse look | E interact | F flashlight</div></div></div><div id="home-crosshair" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#555;font-size:18px;pointer-events:none;z-index:5">+</div><div id="home-interact" style="position:absolute;bottom:55px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:16px;color:#888;pointer-events:none;opacity:0;transition:opacity 0.3s;text-align:center;text-shadow:0 0 6px #000;z-index:5"></div><div id="home-msg" style="position:absolute;bottom:15px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:14px;color:#666;pointer-events:none;text-align:center;max-width:90%;text-shadow:0 0 6px #000;z-index:5"></div><div id="home-room-name" style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none;z-index:5"></div><div id="home-counter" style="position:absolute;top:10px;right:15px;font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none;z-index:5"></div><div id="home-flash-hint" style="position:absolute;top:30px;right:15px;font-family:VT323,monospace;font-size:11px;color:#444;pointer-events:none;z-index:5">[F] Flashlight</div></div>';
 createWindow('home','home.exe',640,480,h);
 setTimeout(()=>{
   if(typeof THREE!=='undefined'){initHome3D()}
@@ -11,6 +11,14 @@ setTimeout(()=>{
 };
 
 function initHome3D(){
+// Inject 8-bit font style
+if(!document.getElementById('home-style')){
+  const st=document.createElement('style');st.id='home-style';
+  st.textContent='.home8bit{font-family:"Press Start 2P",monospace!important}';
+  document.head.appendChild(st);
+}
+// Apply to overlay text
+document.querySelectorAll('#home-play-overlay div div').forEach(el=>el.classList.add('home8bit'));
 const container=document.getElementById('home-container');
 const canvas=document.getElementById('home-canvas');
 if(!container||!canvas||typeof THREE==='undefined')return;
@@ -18,7 +26,7 @@ if(!container||!canvas||typeof THREE==='undefined')return;
 const PW=320,PH=240;
 const scene=new THREE.Scene();
 scene.background=new THREE.Color(0x020202);
-scene.fog=new THREE.Fog(0x020202,1,14);
+scene.fog=new THREE.Fog(0x020202,3,25);
 const camera=new THREE.PerspectiveCamera(75,PW/PH,0.1,18);
 camera.position.set(0,1.5,0);
 const renderer=new THREE.WebGLRenderer({canvas,antialias:false});
@@ -29,7 +37,7 @@ renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.BasicShadowMap;
 function M(c,e){const m=new THREE.MeshPhongMaterial({color:c,flatShading:true,shininess:0});if(e)m.emissive=new THREE.Color(e);return m}
 function B(x,y,z,m){return new THREE.Mesh(new THREE.BoxGeometry(x,y,z),m)}
 function Cy(r,h,s,m){return new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,s||6),m)}
-const mF=M(0x1a1816),mW=M(0x181818),mC=M(0x0c0c0c),mE=M(0x080808,0x040404);
+const mF=M(0x2a2820),mW=M(0x181818),mC=M(0x0c0c0c),mE=M(0x080808,0x040404);
 
 // ============================================================
 // FURNITURE: all built centered at origin, "front" faces -Z
@@ -223,7 +231,7 @@ function mkMailbox(){
 const rooms={
 // HALLWAY: 12 wide x 3 tall x 4 deep
 // Player starts center. Long corridor.
-hallway:{size:[12,3,4],light:{c:0x554433,i:0.5},
+hallway:{size:[12,3,4],light:{c:0x665544,i:1.5},
   build(g){
     // Two ceiling lamps
     const l1=B(0.3,0.06,0.3,M(0x443322,0x221100));l1.position.set(-2,2.7,0);g.add(l1);
@@ -257,7 +265,7 @@ hallway:{size:[12,3,4],light:{c:0x554433,i:0.5},
 
 // KITCHEN: 6 wide x 3 tall x 5 deep
 // Player enters from front wall (+Z), faces -Z into room
-kitchen:{size:[6,3,5],light:{c:0x444430,i:0.4},
+kitchen:{size:[6,3,5],light:{c:0x555540,i:1.2},
   build(g){
     // Fridge: against back wall (-Z side), rotated 180 so front faces player (+Z)
     const fridge=mkFridge();fridge.position.set(-2,0,-2.1);fridge.rotation.y=Math.PI;g.add(fridge);
@@ -278,7 +286,7 @@ kitchen:{size:[6,3,5],light:{c:0x444430,i:0.4},
 
 // LIVING ROOM: 8 wide x 3 tall x 6 deep
 // Player enters from front wall (+Z), faces -Z
-livingroom:{size:[8,3,6],light:{c:0x333340,i:0.35},
+livingroom:{size:[8,3,6],light:{c:0x444450,i:1.2},
   build(g){
     // TV: against back wall (-Z), rotated 180 so screen faces player
     const tv=mkTV();tv.position.set(0,0,-2.6);tv.rotation.y=Math.PI;g.add(tv);
@@ -296,7 +304,7 @@ livingroom:{size:[8,3,6],light:{c:0x333340,i:0.35},
 
 // BEDROOM: 7 wide x 3 tall x 6 deep
 // Player enters from back wall (-Z), faces +Z into room
-bedroom:{size:[7,3,6],light:{c:0x2a3050,i:0.28},
+bedroom:{size:[7,3,6],light:{c:0x3a4060,i:1.0},
   build(g){
     // PC desk: against left wall (-X), rotated 90 so screen faces +X (into room)
     const pc=mkPC();pc.position.set(-3,0,-0.5);pc.rotation.y=-Math.PI/2;g.add(pc);
@@ -316,7 +324,7 @@ bedroom:{size:[7,3,6],light:{c:0x2a3050,i:0.28},
 
 // BATHROOM: 4 wide x 3 tall x 4 deep
 // Player enters from back wall (-Z), faces +Z
-bathroom:{size:[4,3,4],light:{c:0x334444,i:0.3},
+bathroom:{size:[4,3,4],light:{c:0x446666,i:1.0},
   build(g){
     // Sink: against right wall, faces -X
     const sink=mkSink();sink.position.set(1.5,0,-0.5);sink.rotation.y=-Math.PI/2;g.add(sink);
@@ -334,7 +342,7 @@ bathroom:{size:[4,3,4],light:{c:0x334444,i:0.3},
 
 // OUTSIDE: 14 wide x 6 tall x 12 deep
 // Player enters from left wall (-X), faces +X
-outside:{size:[14,6,12],light:{c:0x1a1a22,i:0.18},
+outside:{size:[14,6,12],light:{c:0x2a2a33,i:0.6},
   build(g){
     // Dead grass patch
     const yard=B(5,0.03,5,M(0x0a1a0a));yard.position.set(0,0.015,0);g.add(yard);
@@ -359,7 +367,7 @@ outside:{size:[14,6,12],light:{c:0x1a1a22,i:0.18},
 
 // MASTER BEDROOM: 7 wide x 3 tall x 6 deep
 // Empty. Bed frame. Dust. Trapdoor.
-master:{size:[7,3,6],light:{c:0x1a1510,i:0.15},
+master:{size:[7,3,6],light:{c:0x2a2520,i:0.8},
   build(g){
     // Bare bed frame — no mattress
     const frame=B(1.4,0.18,2,M(0x1a1208));frame.position.set(2,0.09,1);g.add(frame);
@@ -405,8 +413,8 @@ function buildRoom(name){
       const wl=new THREE.Mesh(new THREE.PlaneGeometry(w,sy),mW);wl.position.set(x,y,z);wl.rotation.y=ry;wl.receiveShadow=true;roomGrp.add(wl);
     });
   }
-  roomLight=new THREE.PointLight(r.light.c,r.light.i,12);roomLight.position.set(0,sy-0.3,0);roomLight.castShadow=true;scene.add(roomLight);
-  roomAmb=new THREE.AmbientLight(0x0a0a0a,0.15);scene.add(roomAmb);
+  roomLight=new THREE.PointLight(r.light.c,r.light.i,20);roomLight.position.set(0,sy-0.3,0);roomLight.castShadow=true;scene.add(roomLight);
+  roomAmb=new THREE.AmbientLight(0x151515,0.4);scene.add(roomAmb);
   const built=r.build(roomGrp);
   built.forEach(b=>{b.mesh.userData={name:b.n,msg:b.m,room:name};b.mesh.traverse(c=>{if(c.isMesh){c.castShadow=true;c.receiveShadow=true}});objData.push(b.mesh)});
   r.exits.forEach(ex=>{const m=new THREE.Mesh(new THREE.BoxGeometry(ex.s[0],ex.s[1],ex.s[2]),mE);m.position.set(ex.p[0],ex.p[1],ex.p[2]);m.userData={exit:true,to:ex.to,spawn:ex.sp};roomGrp.add(m);exitMeshes.push(m)});
@@ -432,7 +440,7 @@ document.addEventListener('pointerlockchange',()=>{
   }
 });
 document.addEventListener('mousemove',e=>{if(!locked)return;yaw-=e.movementX*0.002;pitch=Math.max(-1.2,Math.min(1.2,pitch-e.movementY*0.002))});
-document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'&&document.getElementById('home-canvas')){flashOn=!flashOn;flash.intensity=flashOn?3.5:0;const h=document.getElementById('home-flash-hint');if(h)h.textContent=flashOn?'[F] ON':'[F] OFF'}});
+document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'&&document.getElementById('home-canvas')){flashOn=!flashOn;flash.intensity=flashOn?5:0;const h=document.getElementById('home-flash-hint');if(h)h.textContent=flashOn?'[F] ON':'[F] OFF'}});
 document.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false});
 
 function showMsg(t){const el=document.getElementById('home-msg');if(!el)return;el.style.color='#999';el.textContent=t;el.style.opacity='1';clearTimeout(msgTimer);msgTimer=setTimeout(()=>{el.style.opacity='0.3'},5000)}
