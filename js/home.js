@@ -2,7 +2,7 @@
 // All furniture faces TOWARD room center. Built with front at -Z, rotated as needed.
 let _homeLoaded=false;
 const openHomeGame=()=>{
-const h='<div id="home-container" style="width:100%;height:100%;background:#000;position:relative;cursor:crosshair;overflow:hidden"><canvas id="home-canvas" style="width:100%;height:100%;display:block;image-rendering:pixelated"></canvas><div id="home-crosshair" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#555;font-size:18px;pointer-events:none">+</div><div id="home-interact" style="position:absolute;bottom:55px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:16px;color:#888;pointer-events:none;opacity:0;transition:opacity 0.3s;text-align:center;text-shadow:0 0 6px #000"></div><div id="home-msg" style="position:absolute;bottom:15px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:14px;color:#666;pointer-events:none;text-align:center;max-width:90%;text-shadow:0 0 6px #000">WASD move. Mouse look. E interact. F flashlight. Click to start.</div><div id="home-room-name" style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none"></div><div id="home-counter" style="position:absolute;top:10px;right:15px;font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none"></div><div id="home-flash-hint" style="position:absolute;top:30px;right:15px;font-family:VT323,monospace;font-size:11px;color:#444;pointer-events:none">[F] Flashlight</div></div>';
+const h='<div id="home-container" style="width:100%;height:100%;min-height:400px;background:#000;position:relative;cursor:crosshair;overflow:hidden"><canvas id="home-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;display:block;image-rendering:pixelated"></canvas><div id="home-play-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:10;display:flex;align-items:center;justify-content:center;cursor:pointer"><div style="text-align:center"><div style="font-family:VT323,monospace;font-size:24px;color:#cf6a32;margin-bottom:12px">home.exe</div><div style="font-family:VT323,monospace;font-size:14px;color:#666">Click to Play</div><div style="font-family:VT323,monospace;font-size:10px;color:#444;margin-top:8px">WASD move | Mouse look | E interact | F flashlight</div></div></div><div id="home-crosshair" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#555;font-size:18px;pointer-events:none;z-index:5">+</div><div id="home-interact" style="position:absolute;bottom:55px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:16px;color:#888;pointer-events:none;opacity:0;transition:opacity 0.3s;text-align:center;text-shadow:0 0 6px #000;z-index:5"></div><div id="home-msg" style="position:absolute;bottom:15px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:14px;color:#666;pointer-events:none;text-align:center;max-width:90%;text-shadow:0 0 6px #000;z-index:5"></div><div id="home-room-name" style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none;z-index:5"></div><div id="home-counter" style="position:absolute;top:10px;right:15px;font-family:VT323,monospace;font-size:13px;color:#333;pointer-events:none;z-index:5"></div><div id="home-flash-hint" style="position:absolute;top:30px;right:15px;font-family:VT323,monospace;font-size:11px;color:#444;pointer-events:none;z-index:5">[F] Flashlight</div></div>';
 createWindow('home','home.exe',640,480,h);
 setTimeout(()=>{
   if(typeof THREE!=='undefined'){initHome3D()}
@@ -415,9 +415,22 @@ function buildRoom(name){
 }
 buildRoom('hallway');
 
-// Controls
-container.addEventListener('click',()=>{if(!locked)container.requestPointerLock()});
-document.addEventListener('pointerlockchange',()=>{locked=document.pointerLockElement===container});
+// Click to Play overlay handles pointer lock
+const playOverlay=document.getElementById('home-play-overlay');
+if(playOverlay){
+  playOverlay.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    playOverlay.style.display='none';
+    container.requestPointerLock();
+  });
+}
+// Re-show overlay when pointer lock is lost
+document.addEventListener('pointerlockchange',()=>{
+  locked=document.pointerLockElement===container;
+  if(!locked&&!mazeActive&&playOverlay&&document.getElementById('home-canvas')){
+    playOverlay.style.display='flex';
+  }
+});
 document.addEventListener('mousemove',e=>{if(!locked)return;yaw-=e.movementX*0.002;pitch=Math.max(-1.2,Math.min(1.2,pitch-e.movementY*0.002))});
 document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'&&document.getElementById('home-canvas')){flashOn=!flashOn;flash.intensity=flashOn?3.5:0;const h=document.getElementById('home-flash-hint');if(h)h.textContent=flashOn?'[F] ON':'[F] OFF'}});
 document.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false});
