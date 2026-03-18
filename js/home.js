@@ -79,7 +79,7 @@ function mkStove(){
   const g=new THREE.Group();
   const body=B(0.65,0.9,0.5,M(0x222220));body.position.y=0.45;g.add(body);
   for(let bx=-0.13;bx<=0.13;bx+=0.26)for(let bz=-0.08;bz<=0.08;bz+=0.16){
-    g.add(Object.assign(Cy(0.06,0.02,6,M(0x1a1a1a)),{position:new THREE.Vector3(bx,0.91,bz)}));
+    const bur=Cy(0.06,0.02,6,M(0x1a1a1a));bur.position.set(bx,0.91,bz);g.add(bur);
   }
   const door=B(0.5,0.35,0.02,M(0x1a1a18));door.position.set(0,0.3,-0.26);g.add(door);
   const knob=Cy(0.02,0.02,5,M(0x555555));knob.rotation.x=Math.PI/2;knob.position.set(0,0.55,-0.26);g.add(knob);
@@ -99,7 +99,7 @@ function mkChair(){
   const g=new THREE.Group();
   const seat=B(0.4,0.04,0.4,M(0x1a1a1a));seat.position.y=0.45;g.add(seat);
   for(let lx of[-0.16,0.16])for(let lz of[-0.16,0.16]){
-    g.add(Object.assign(B(0.04,0.45,0.04,M(0x151515)),{position:new THREE.Vector3(lx,0.225,lz)}));
+    const leg=B(0.04,0.45,0.04,M(0x151515));leg.position.set(lx,0.225,lz);g.add(leg);
   }
   const back=B(0.36,0.4,0.04,M(0x1a1a1a));back.position.set(0,0.69,0.18);g.add(back);
   return g;
@@ -386,7 +386,7 @@ function buildRoom(name){
   // Floor
   const fl=new THREE.Mesh(new THREE.PlaneGeometry(sx,sz),mF);fl.rotation.x=-Math.PI/2;fl.receiveShadow=true;roomGrp.add(fl);
   if(name!=='outside'){
-    roomGrp.add(Object.assign(new THREE.Mesh(new THREE.PlaneGeometry(sx,sz),mC),{rotation:new THREE.Euler(Math.PI/2,0,0),position:new THREE.Vector3(0,sy,0)}));
+    const ceil=new THREE.Mesh(new THREE.PlaneGeometry(sx,sz),mC);ceil.rotation.x=Math.PI/2;ceil.position.y=sy;roomGrp.add(ceil);
     [[0,sy/2,-sz/2,0,sx],[0,sy/2,sz/2,Math.PI,sx],[-sx/2,sy/2,0,Math.PI/2,sz],[sx/2,sy/2,0,-Math.PI/2,sz]].forEach(([x,y,z,ry,w])=>{
       const wl=new THREE.Mesh(new THREE.PlaneGeometry(w,sy),mW);wl.position.set(x,y,z);wl.rotation.y=ry;wl.receiveShadow=true;roomGrp.add(wl);
     });
