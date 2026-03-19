@@ -5,7 +5,7 @@ createWindow('home','home.exe',640,480,
 '<div id="hHud" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:2">'+
 '<div id="hCross" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#888;font-size:18px">+</div>'+
 '<div id="hInt" style="position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:16px;color:#999;opacity:0;transition:opacity .3s;text-align:center"></div>'+
-'<div id="hMsg" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#888;text-align:center;max-width:90%">Click to play. WASD move. Mouse look. E interact.</div>'+
+'<div id="hMsg" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#888;text-align:center;max-width:90%">Click to play. WASD move. Mouse look. E interact. F flashlight.</div>'+
 '<div id="hRoom" style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:12px;color:#666"></div>'+
 '<div id="hCnt" style="position:absolute;top:8px;right:12px;font-family:VT323,monospace;font-size:12px;color:#666"></div>'+
 '</div></div>');
@@ -35,18 +35,25 @@ cam.position.set(0,1.5,0);
 const ren=new THREE.WebGLRenderer({canvas:cvs,antialias:false});
 ren.setSize(PW,PH);
 
+// === LIGHTING — dark rooms, flashlight is essential ===
+const ambLight=new THREE.AmbientLight(0x111111,0.3);scene.add(ambLight);
+const flash=new THREE.SpotLight(0xffeedd,4,15,0.6,0.5,1);
+flash.castShadow=false;
+scene.add(flash);scene.add(flash.target);
+let flashOn=true;
+
 // NO LIGHTS. All MeshBasicMaterial. Colors ARE the brightness.
 const DS=THREE.DoubleSide;
-function M(c){return new THREE.MeshBasicMaterial({color:c,side:DS})}
+function M(c){return new THREE.MeshLambertMaterial({color:c,side:DS})}
 function BX(x,y,z,m){return new THREE.Mesh(new THREE.BoxGeometry(x,y,z),m)}
 function CY(r,h,s,m){return new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,s||6),m)}
 function PL(w,h,m){return new THREE.Mesh(new THREE.PlaneGeometry(w,h),m)}
 const PI=Math.PI;
 
 // Color palette — everything visible, muted tones
-const cFloor=M(0x2a2822);
-const cWall=M(0x302e2a);
-const cCeil=M(0x1e1e1e);
+const cFloor=M(0x554840);
+const cWall=M(0x555050);
+const cCeil=M(0x3a3a3a);
 const cExit=M(0x080808);
 
 // === FURNITURE ===
@@ -288,12 +295,15 @@ const grp=new THREE.Group();scene.add(grp);
 let curRoom='hallway',locked=false,yaw=0,pitch=0;
 const keys={},seen={};
 let nObj=0,nDone=0,lookAt=null,msgTm=null;
-let objList=[],exitList=[],mazeOn=false,entActive=false;
+let objList=[],exitList=[],mazeOn=false,entActive=false,rLight=null;
 Object.values(rooms).forEach(r=>{const g=new THREE.Group();nObj+=r.build(g).length});
 
 // Build room
 function build(name){
 while(grp.children.length)grp.remove(grp.children[0]);
+if(rLight){scene.remove(rLight);rLight=null}
+// Restore ambient for rooms (maze dims it)
+ambLight.intensity=0.3;ambLight.color.setHex(0x111111);
 objList=[];exitList=[];
 const r=rooms[name],sx=r.sz[0],sy=r.sz[1],sz=r.sz[2];
 const fl=PL(sx,sz,cFloor);fl.rotation.x=-PI/2;grp.add(fl);
@@ -303,6 +313,9 @@ const bk=PL(sx,sy,cWall);bk.position.set(0,sy/2,-sz/2);grp.add(bk);
 const ft=PL(sx,sy,cWall);ft.position.set(0,sy/2,sz/2);ft.rotation.y=PI;grp.add(ft);
 const lt=PL(sz,sy,cWall);lt.position.set(-sx/2,sy/2,0);lt.rotation.y=PI/2;grp.add(lt);
 const rt=PL(sz,sy,cWall);rt.position.set(sx/2,sy/2,0);rt.rotation.y=-PI/2;grp.add(rt);}
+// Dim room point light — gives shape without flashlight
+rLight=new THREE.PointLight(0x443322,0.3,15);
+rLight.position.set(0,sy-.3,0);scene.add(rLight);
 const built=r.build(grp);
 built.forEach(b=>{b.m.userData={name:b.n,msg:b.t,room:name};objList.push(b.m)});
 r.exits.forEach(e=>{
@@ -319,7 +332,7 @@ build('hallway');
 hc.addEventListener('click',()=>{if(!locked)hc.requestPointerLock()});
 document.addEventListener('pointerlockchange',()=>{locked=(document.pointerLockElement===hc)});
 document.addEventListener('mousemove',e=>{if(!locked)return;yaw-=e.movementX*.002;pitch=Math.max(-1.2,Math.min(1.2,pitch-e.movementY*.002))});
-document.addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true});
+document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'){flashOn=!flashOn;flash.intensity=flashOn?4:0}});
 document.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false});
 
 function msg(t){const el=document.getElementById('hMsg');if(!el)return;el.textContent=t;clearTimeout(msgTm);msgTm=setTimeout(()=>{el.textContent=''},5000)}
@@ -353,6 +366,10 @@ const nx=cam.position.x+d.x,nz=cam.position.z+d.z;
 if(mazeOn){if(mzOk(nx,cam.position.z))cam.position.x=nx;if(mzOk(cam.position.x,nz))cam.position.z=nz}
 else{const r=rooms[curRoom];if(r){const hx=r.sz[0]/2-.4,hz=r.sz[2]/2-.4;if(nx>-hx&&nx<hx)cam.position.x=nx;if(nz>-hz&&nz<hz)cam.position.z=nz}}}
 cam.rotation.set(0,0,0);cam.rotateY(yaw);cam.rotateX(pitch);
+// Flashlight follows camera
+flash.position.copy(cam.position);
+const fv=new THREE.Vector3(0,0,-1).applyQuaternion(cam.quaternion);
+flash.target.position.copy(cam.position).add(fv.multiplyScalar(6));
 if(keys.e){doInteract();keys.e=false}
 if(mazeOn){mzEnt();mzExit()}
 if(!mazeOn){
@@ -387,6 +404,9 @@ else{const p=st.pop();cx=p[0];cy=p[1]}}return g;}
 
 function startMaze(){
 mazeOn=true;
+// Make maze pitch black — flashlight only
+ambLight.intensity=0.05;ambLight.color.setHex(0x050505);
+if(rLight){scene.remove(rLight);rLight=null}
 while(grp.children.length)grp.remove(grp.children[0]);
 objList=[];exitList=[];
 mzGrid=mzGen(MN,MN);
