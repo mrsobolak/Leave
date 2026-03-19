@@ -38,7 +38,7 @@ ren.setSize(PW,PH);
 // === LIGHTING — dark, flashlight essential ===
 const ambLight=new THREE.AmbientLight(0x080808,0.15);scene.add(ambLight);
 // Narrow spotlight — cheap flashlight beam
-const flash=new THREE.SpotLight(0xeeddaa,3,20,0.35,0.3,1);
+const flash=new THREE.SpotLight(0xeeddaa,1.5,20,0.7,0.4,1);
 scene.add(flash);scene.add(flash.target);
 let flashOn=true;
 
@@ -332,7 +332,7 @@ build('hallway');
 hc.addEventListener('click',()=>{if(!locked)hc.requestPointerLock()});
 document.addEventListener('pointerlockchange',()=>{locked=(document.pointerLockElement===hc)});
 document.addEventListener('mousemove',e=>{if(!locked)return;yaw-=e.movementX*.002;pitch=Math.max(-1.2,Math.min(1.2,pitch-e.movementY*.002))});
-document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'){flashOn=!flashOn;flash.intensity=flashOn?3:0}});
+document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'){flashOn=!flashOn;flash.intensity=flashOn?1.5:0}});
 document.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false});
 
 function msg(t){const el=document.getElementById('hMsg');if(!el)return;el.textContent=t;clearTimeout(msgTm);msgTm=setTimeout(()=>{el.textContent=''},5000)}
@@ -423,14 +423,49 @@ const em=BX(.5,.1,.5,M(0x00ff00));em.position.set((MN-1)*MC+MC/2,.05,(MN-1)*MC+M
 // Entity
 // Entity - built but hidden, spawns at player start after 5s
 ent=new THREE.Group();
-const eB=BX(.35,2,.25,M(0x050505));eB.position.set(0,1,0);ent.add(eB);
-const eH=BX(.3,.35,.25,M(0x080808));eH.position.set(0,2.15,0);ent.add(eH);
-const eL=BX(.05,.05,.02,M(0xff0000));eL.position.set(-.08,2.2,-.14);ent.add(eL);
-const eR=BX(.05,.05,.02,M(0xff0000));eR.position.set(.08,2.2,-.14);ent.add(eR);
-const aL=BX(.08,1.4,.08,M(0x040404));aL.position.set(-.25,.65,0);ent.add(aL);
-const aR=BX(.08,1.4,.08,M(0x040404));aR.position.set(.25,.65,0);ent.add(aR);
-const lL=BX(.1,1,.1,M(0x050505));lL.position.set(-.1,-.1,0);ent.add(lL);
-const lR=BX(.1,1,.1,M(0x050505));lR.position.set(.1,-.1,0);ent.add(lR);
+const eM=M(0x050505),eDM=M(0x030303),eRM=M(0xff0000);
+// Torso — thin, tall
+const torso=BX(.3,1.6,.18,eM);torso.position.set(0,1.4,0);ent.add(torso);
+// Ribs
+for(let i=0;i<4;i++){const rib=BX(.32,.02,.01,M(0x0a0a0a));rib.position.set(0,1+i*.25,-.1);ent.add(rib);}
+// Spine bumps
+for(let i=0;i<5;i++){const sp=BX(.04,.04,.06,M(0x080808));sp.position.set(0,.9+i*.3,.1);ent.add(sp);}
+// Head — too big, tilted
+const eHead=new THREE.Group();
+const skull=BX(.28,.32,.24,M(0x080808));eHead.add(skull);
+const jaw=BX(.22,.08,.15,M(0x060606));jaw.position.set(0,-.18,-.04);jaw.rotation.x=.15;eHead.add(jaw);
+// Eyes — glowing red, uneven
+const eyeL=BX(.06,.04,.02,eRM);eyeL.position.set(-.07,.05,-.13);eHead.add(eyeL);
+const eyeR=BX(.05,.06,.02,eRM);eyeR.position.set(.08,.03,-.13);eHead.add(eyeR);
+const gL=BX(.1,.08,.01,M(0x330000));gL.position.set(-.07,.05,-.14);eHead.add(gL);
+const gR=BX(.09,.1,.01,M(0x330000));gR.position.set(.08,.03,-.14);eHead.add(gR);
+eHead.position.set(0,2.35,-.05);eHead.rotation.z=.08;ent.add(eHead);
+// Neck
+const neck=BX(.08,.2,.08,eDM);neck.position.set(0,2.15,0);ent.add(neck);
+// Arms — jointed with claws
+const eLArm=new THREE.Group();
+const eLArmUp=BX(.06,1,.06,eDM);eLArmUp.position.set(0,-.5,0);eLArm.add(eLArmUp);
+const eLArmLo=BX(.05,.8,.05,eDM);eLArmLo.position.set(0,-1.1,.1);eLArmLo.rotation.x=-.3;eLArm.add(eLArmLo);
+for(let i=-1;i<=1;i++){const c=BX(.015,.2,.015,M(0x080808));c.position.set(i*.03,-1.55,.15);c.rotation.x=-.4;eLArm.add(c);}
+eLArm.position.set(-.22,1.8,0);ent.add(eLArm);
+const eRArm=new THREE.Group();
+const eRArmUp=BX(.06,1,.06,eDM);eRArmUp.position.set(0,-.5,0);eRArm.add(eRArmUp);
+const eRArmLo=BX(.05,.8,.05,eDM);eRArmLo.position.set(0,-1.1,.1);eRArmLo.rotation.x=-.3;eRArm.add(eRArmLo);
+for(let i=-1;i<=1;i++){const c=BX(.015,.2,.015,M(0x080808));c.position.set(i*.03,-1.55,.15);c.rotation.x=-.4;eRArm.add(c);}
+eRArm.position.set(.22,1.8,0);ent.add(eRArm);
+// Legs — jointed with feet
+const eLLeg=new THREE.Group();
+const eLLegUp=BX(.08,.7,.08,eM);eLLegUp.position.set(0,-.35,0);eLLeg.add(eLLegUp);
+const eLLegLo=BX(.06,.6,.06,eM);eLLegLo.position.set(0,-.8,.08);eLLegLo.rotation.x=.2;eLLeg.add(eLLegLo);
+const eLFoot=BX(.1,.04,.18,eDM);eLFoot.position.set(0,-1.1,.12);eLLeg.add(eLFoot);
+eLLeg.position.set(-.1,.45,0);ent.add(eLLeg);
+const eRLeg=new THREE.Group();
+const eRLegUp=BX(.08,.7,.08,eM);eRLegUp.position.set(0,-.35,0);eRLeg.add(eRLegUp);
+const eRLegLo=BX(.06,.6,.06,eM);eRLegLo.position.set(0,-.8,.08);eRLegLo.rotation.x=.2;eRLeg.add(eRLegLo);
+const eRFoot=BX(.1,.04,.18,eDM);eRFoot.position.set(0,-1.1,.12);eRLeg.add(eRFoot);
+eRLeg.position.set(.1,.45,0);ent.add(eRLeg);
+// Store animation refs
+ent.userData={aL:eLArm,aR:eRArm,lL:eLLeg,lR:eRLeg,hd:eHead,jw:jaw,t:0};
 // Start at player spawn but invisible
 ePos.x=MC/2;ePos.z=MC/2;
 ent.position.set(ePos.x,0,ePos.z);
@@ -456,15 +491,64 @@ if(lx<.3&&mzGrid[cz][cx].w)return false;
 if(lx>MC-.3&&(cx>=MN-1||mzGrid[cz][cx].e))return false;
 return true;}
 
-let eTk=0;
+let eTk=0,ePath=[],ePathTm=0;
+
+// BFS pathfinding through maze grid
+function mzBFS(sx,sz,tx,tz){
+const scx=Math.floor(sx/MC),scz=Math.floor(sz/MC);
+const tcx=Math.floor(tx/MC),tcz=Math.floor(tz/MC);
+if(scx===tcx&&scz===tcz)return[];
+const visited=[];for(let y=0;y<MN;y++){visited[y]=[];for(let x=0;x<MN;x++)visited[y][x]=false}
+const queue=[[scx,scz,[]]];visited[scz][scx]=true;
+while(queue.length){
+const[cx,cz,path]=queue.shift();
+const dirs=[['n',0,-1],['s',0,1],['w',-1,0],['e',1,0]];
+for(const[wall,dx,dz] of dirs){
+const nx=cx+dx,nz=cz+dz;
+if(nx<0||nx>=MN||nz<0||nz>=MN||visited[nz][nx])continue;
+if(mzGrid[cz][cx][wall])continue;// wall blocking
+visited[nz][nx]=true;
+const np=[...path,[nx*MC+MC/2,nz*MC+MC/2]];
+if(nx===tcx&&nz===tcz)return np;
+queue.push([nx,nz,np]);
+}}
+return[];// no path
+}
+
 function mzEnt(){
 if(!ent||!mazeOn||!entActive)return;
-const s=.06,dx=cam.position.x-ePos.x,dz=cam.position.z-ePos.z;
-const dd=Math.sqrt(dx*dx+dz*dz);if(dd<.01)return;
+eTk++;
+const ud=ent.userData;ud.t+=.15;
+
+// Recalculate path every 30 frames
+if(eTk-ePathTm>30){ePathTm=eTk;ePath=mzBFS(ePos.x,ePos.z,cam.position.x,cam.position.z)}
+
+// Move along path
+const s=.055;
+if(ePath.length>0){
+const[tx,tz]=ePath[0];
+const dx=tx-ePos.x,dz=tz-ePos.z;
+const dd=Math.sqrt(dx*dx+dz*dz);
+if(dd<.2){ePath.shift()}// reached waypoint
+else{
 const nx=ePos.x+dx/dd*s,nz=ePos.z+dz/dd*s;
-if(mzOk(nx,ePos.z))ePos.x=nx;else if(mzOk(ePos.x,nz))ePos.z=nz;
+ePos.x=nx;ePos.z=nz;
+}
+}
 ent.position.set(ePos.x,0,ePos.z);
-ent.lookAt(cam.position.x,0,cam.position.z);}
+ent.lookAt(cam.position.x,0,cam.position.z);
+
+// Walk animation — legs swing, arms sway, head bob, jaw clicks
+const swing=Math.sin(ud.t)*0.4;
+if(ud.lL)ud.lL.rotation.x=swing;
+if(ud.lR)ud.lR.rotation.x=-swing;
+if(ud.aL)ud.aL.rotation.x=-swing*.6;
+if(ud.aR)ud.aR.rotation.x=swing*.6;
+// Head slight bob
+if(ud.hd){ud.hd.rotation.x=Math.sin(ud.t*2)*.05;ud.hd.rotation.z=.08+Math.sin(ud.t*.7)*.03}
+// Jaw open/close
+if(ud.jw)ud.jw.rotation.x=.15+Math.abs(Math.sin(ud.t*.5))*.15;
+}
 
 function mzExit(){
 if(!mazeOn)return;
