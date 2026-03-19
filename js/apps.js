@@ -1873,7 +1873,7 @@ snake.unshift(head);
 if(head.x===food.x&&head.y===food.y){
 score++;
 food=spawnFood();
-if(speed>60)speed-=3;
+
 if(score===25){triggerSpoonEnding();return}
 }else{
 snake.pop();
