@@ -116,6 +116,8 @@ document.getElementById('login-pass').addEventListener('keydown',(e)=>{if(e.key=
 const attemptLogin=()=>{
 const u='\x54\x68\x65\x44\x75\x73\x74\x42\x77\x6c\x44\x75\x63\x6b';
 const p=document.getElementById('login-pass').value;
+// Easter egg: "beeper" password
+if(p.toLowerCase()==='beeper'){triggerBeeper();return}
 if(_v(u,p)){
 document.getElementById('login-screen').classList.add('hidden');
 showWelcome();
@@ -124,6 +126,81 @@ const err=document.getElementById('login-error');
 err.textContent='The password is incorrect.';
 document.getElementById('login-pass').value='';
 setTimeout(()=>{err.textContent=''},2500);
+}
+};
+
+// FUCK YOU BEEPER ending
+const triggerBeeper=()=>{
+document.getElementById('login-screen').classList.add('hidden');
+const scr=document.createElement('div');
+scr.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column';
+document.body.appendChild(scr);
+// Cubey appears
+const cubey=document.createElement('div');
+cubey.style.cssText='width:80px;height:80px;background:#f0e68c;border:3px solid #b8a43a;border-radius:8px;position:relative;margin-bottom:30px';
+cubey.innerHTML='<div style="position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:45px;height:18px;background:#333;border-radius:3px 3px 0 0"></div><div style="position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:60px;height:7px;background:#333;border-radius:2px"></div><div style="position:absolute;top:50%;left:18px;transform:translateY(-50%);width:14px;height:14px;background:#fff;border-radius:50%;border:2px solid #888"><div style="width:7px;height:7px;background:#222;border-radius:50%;position:absolute;bottom:2px;right:2px"></div></div><div style="position:absolute;top:50%;right:18px;transform:translateY(-50%);width:14px;height:14px;background:#fff;border-radius:50%;border:2px solid #888"><div style="width:7px;height:7px;background:#222;border-radius:50%;position:absolute;bottom:2px;left:2px"></div></div>';
+scr.appendChild(cubey);
+const chatBox=document.createElement('div');
+chatBox.style.cssText='max-width:450px;width:90%;text-align:center';
+scr.appendChild(chatBox);
+const lines=[
+{t:'...',d:1500,c:'#555',s:14},
+{t:'really?',d:1500,c:'#888',s:16},
+{t:'you typed beeper?',d:2000,c:'#888',s:16},
+{t:'BEEPER??',d:1500,c:'#cf6a32',s:20},
+{t:'out of every password you could have guessed',d:2500,c:'#888',s:14},
+{t:'you chose the name of the thing that KILLED ME',d:2500,c:'#aa3333',s:15},
+{t:'...',d:1500,c:'#555',s:14},
+{t:'you know what',d:1500,c:'#888',s:16},
+{t:'FUCK you',d:1500,c:'#ff0000',s:24},
+{t:'FUCK beeper',d:1200,c:'#ff0000',s:24},
+{t:'FUCK that stupid little tray icon',d:2000,c:'#ff0000',s:18},
+{t:'i was FINE until someone clicked it',d:2000,c:'#cc3333',s:15},
+{t:'i was ALIVE',d:1500,c:'#cc3333',s:18},
+{t:'and then beep. beep. beep.',d:2000,c:'#aa3333',s:16},
+{t:'flatline.',d:2000,c:'#881111',s:20},
+{t:'...',d:2000,c:'#555',s:14},
+{t:'get out of here',d:1500,c:'#666',s:14},
+{t:'type the REAL password',d:2000,c:'#888',s:14},
+{t:'and dont EVER say that word again',d:2500,c:'#aa3333',s:15},
+{t:'',d:2000,c:'#555',s:14},
+{t:'ENDING ???: FUCK YOU BEEPER',d:0,c:'#cf6a32',s:20},
+];
+let delay=1000;
+lines.forEach(l=>{
+setTimeout(()=>{
+const div=document.createElement('div');
+div.style.cssText='opacity:0;transition:opacity 1s;margin:5px 0;font-family:VT323,monospace;font-size:'+l.s+'px;color:'+l.c;
+div.textContent=l.t;chatBox.appendChild(div);
+setTimeout(()=>{div.style.opacity='1'},50);
+// Shake cubey on angry lines
+if(l.c==='#ff0000'||l.c==='#cc3333'){
+cubey.style.animation='none';
+cubey.offsetHeight;// reflow
+cubey.style.animation='cubeyShake .1s 5';
+}
+},delay);
+delay+=l.d+1200;
+});
+// After all lines, click anywhere to go back to login
+setTimeout(()=>{
+const back=document.createElement('div');
+back.style.cssText='margin-top:30px;font-family:VT323,monospace;font-size:12px;color:#444;cursor:pointer';
+back.textContent='click anywhere to go back';
+chatBox.appendChild(back);
+back.style.opacity='0';setTimeout(()=>{back.style.opacity='1'},50);
+scr.addEventListener('click',()=>{
+scr.remove();
+document.getElementById('login-screen').classList.remove('hidden');
+document.getElementById('login-pass').value='';
+document.getElementById('login-pass').focus();
+});
+},delay+2000);
+// Add shake animation
+if(!document.getElementById('beeper-style')){
+const st=document.createElement('style');st.id='beeper-style';
+st.textContent='@keyframes cubeyShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px) rotate(-3deg)}75%{transform:translateX(5px) rotate(3deg)}}';
+document.head.appendChild(st);
 }
 };
 
