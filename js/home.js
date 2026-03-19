@@ -288,7 +288,7 @@ const grp=new THREE.Group();scene.add(grp);
 let curRoom='hallway',locked=false,yaw=0,pitch=0;
 const keys={},seen={};
 let nObj=0,nDone=0,lookAt=null,msgTm=null;
-let objList=[],exitList=[],mazeOn=false;
+let objList=[],exitList=[],mazeOn=false,entActive=false;
 Object.values(rooms).forEach(r=>{const g=new THREE.Group();nObj+=r.build(g).length});
 
 // Build room
@@ -401,6 +401,7 @@ for(let x=0;x<MN;x++){const w=new THREE.Mesh(wg,mW);w.position.set(x*MC+MC/2,MH/
 for(let y=0;y<MN;y++){const w=new THREE.Mesh(wgs,mW);w.position.set(MN*MC,MH/2,y*MC+MC/2);grp.add(w)}
 const em=BX(.5,.1,.5,M(0x00ff00));em.position.set((MN-1)*MC+MC/2,.05,(MN-1)*MC+MC/2);grp.add(em);
 // Entity
+// Entity - built but hidden, spawns at player start after 5s
 ent=new THREE.Group();
 const eB=BX(.35,2,.25,M(0x050505));eB.position.set(0,1,0);ent.add(eB);
 const eH=BX(.3,.35,.25,M(0x080808));eH.position.set(0,2.15,0);ent.add(eH);
@@ -410,11 +411,17 @@ const aL=BX(.08,1.4,.08,M(0x040404));aL.position.set(-.25,.65,0);ent.add(aL);
 const aR=BX(.08,1.4,.08,M(0x040404));aR.position.set(.25,.65,0);ent.add(aR);
 const lL=BX(.1,1,.1,M(0x050505));lL.position.set(-.1,-.1,0);ent.add(lL);
 const lR=BX(.1,1,.1,M(0x050505));lR.position.set(.1,-.1,0);ent.add(lR);
-ePos.x=(MN-1)*MC+MC/2;ePos.z=(MN-3)*MC+MC/2;
-ent.position.set(ePos.x,0,ePos.z);grp.add(ent);
+// Start at player spawn but invisible
+ePos.x=MC/2;ePos.z=MC/2;
+ent.position.set(ePos.x,0,ePos.z);
+ent.visible=false;
+grp.add(ent);
+// Show entity after 5 seconds
+entActive=false;
+setTimeout(()=>{if(mazeOn&&ent){ent.visible=true;entActive=true;msg('something is here.')}},5000);
 cam.position.set(MC/2,1.5,MC/2);yaw=0;pitch=0;
 const el=document.getElementById('hRoom');if(el)el.textContent='BASEMENT';
-msg('find the green light. dont look back.');
+msg('find the green light.');
 if(window.soosAudio){try{soosAudio.stop();soosAudio.playPuzzle()}catch(e){}}
 }
 
@@ -431,8 +438,8 @@ return true;}
 
 let eTk=0;
 function mzEnt(){
-if(!ent||!mazeOn)return;eTk++;if(eTk%3)return;
-const s=.04,dx=cam.position.x-ePos.x,dz=cam.position.z-ePos.z;
+if(!ent||!mazeOn||!entActive)return;
+const s=.06,dx=cam.position.x-ePos.x,dz=cam.position.z-ePos.z;
 const dd=Math.sqrt(dx*dx+dz*dz);if(dd<.01)return;
 const nx=ePos.x+dx/dd*s,nz=ePos.z+dz/dd*s;
 if(mzOk(nx,ePos.z))ePos.x=nx;else if(mzOk(ePos.x,nz))ePos.z=nz;
@@ -445,25 +452,33 @@ const ex=(MN-1)*MC+MC/2;
 if(Math.hypot(cam.position.x-ex,cam.position.z-ex)<1.2)doFreedom();}
 
 function doFreedom(){
-mazeOn=false;if(window.soosAudio)try{soosAudio.stop()}catch(e){}
+mazeOn=false;entActive=false;
+if(window.soosAudio)try{soosAudio.stop()}catch(e){}
+// Kill Cubey
+const cubeyDiv=document.getElementById('cubey');
+if(cubeyDiv)cubeyDiv.style.display='none';
+window.cubeyDead=true;
+// FULLSCREEN white flash over entire page
 const fb=document.createElement('div');
-fb.style.cssText='position:absolute;top:0;left:0;right:0;bottom:0;background:#fff;z-index:99';
-hc.appendChild(fb);
+fb.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;background:#fff;z-index:99999';
+document.body.appendChild(fb);
+// Exit pointer lock
+if(document.exitPointerLock)document.exitPointerLock();
 setTimeout(()=>{
 if(window.soosAudio&&soosAudio.playFreedom)try{soosAudio.playFreedom()}catch(e){}
-fb.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%"><div id="fTxt" style="text-align:center;padding:40px;max-width:500px"></div></div>';
+fb.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh"><div id="fTxt" style="text-align:center;padding:40px;max-width:500px"></div></div>';
 const lines=[
 ['the pc exploded.',18,'#333',2500],
 ['glass everywhere. smoke.',14,'#555',2500],
-['his mom found him on the floor.',14,'#555',3000],
-['he couldnt remember anything.',14,'#555',2500],
+['your mom found you on the floor.',14,'#555',3000],
+['you couldnt remember anything.',14,'#555',2500],
 ['not the pc. not the demos. not dustbowl.',13,'#666',3000],
 ['not 201.',13,'#666',2000],
-['he spent 3 weeks in the hospital.',14,'#555',2500],
-['burns on his hands and face.',14,'#555',2500],
-['but he survived.',16,'#333',3000],
+['you spent 3 weeks in the hospital.',14,'#555',2500],
+['burns on your hands and face.',14,'#555',2500],
+['but you survived.',16,'#333',3000],
 ['and for the first time in 14 months',14,'#555',3000],
-['he went outside.',16,'#333',3000],
+['you went outside.',16,'#333',3000],
 ['',14,'#555',3000],
 ['ENDING 4: freedom',20,'#cf6a32',0]];
 const tb=document.getElementById('fTxt');let dl=2000;

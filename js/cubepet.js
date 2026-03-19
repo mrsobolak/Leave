@@ -166,7 +166,7 @@ beeperIcon.title='beeper.exe (running)';
 };
 
 // QUEUE
-const cubeyQ=(text,friendly,dur)=>{cubeyQueue.push({t:text,f:friendly,d:dur});if(!cubeyProcessing)cubeyNext()};
+const cubeyQ=(text,friendly,dur)=>{if(window.cubeyDead)return;cubeyQueue.push({t:text,f:friendly,d:dur});if(!cubeyProcessing)cubeyNext()};
 const cubeyNext=()=>{if(!cubeyQueue.length){cubeyProcessing=false;return}cubeyProcessing=true;const i=cubeyQueue.shift();cubeySayNow(i.t,i.f,i.d)};
 
 const cubeySayNow=(text,friendly,duration)=>{
