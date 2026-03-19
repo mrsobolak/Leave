@@ -389,7 +389,10 @@ const intensity=Math.max(0,(8-eDist)/8)*.02;
 cam.rotateX((Math.random()-.5)*intensity);
 cam.rotateY((Math.random()-.5)*intensity);
 cam.rotateZ((Math.random()-.5)*intensity*.5);
-}}
+}
+// KILL — entity caught you
+if(eDist<.8){entityKill();return}
+}
 // Flashlight follows camera direction
 flash.position.copy(cam.position);
 const fDir=new THREE.Vector3(0,0,-1).applyQuaternion(cam.quaternion);
@@ -410,6 +413,39 @@ tick();
 
 // Resize - keep PS1 res, stretch canvas
 new ResizeObserver(()=>{cvs.style.width=hc.offsetWidth+'px';cvs.style.height=hc.offsetHeight+'px'}).observe(hc);
+
+// === ENTITY KILL — game over, window closes ===
+let dead=false;
+function entityKill(){
+if(dead)return;dead=true;
+mazeOn=false;entActive=false;
+if(document.exitPointerLock)document.exitPointerLock();
+// Stop music, play death sound
+if(window.soosAudio){
+try{soosAudio.stop()}catch(e){}
+try{
+soosAudio.init();
+// Static burst
+soosAudio._ns(0,.3,.15,8000);
+// Low rumble
+soosAudio._n(40,0,.8,'sawtooth',.08);
+// High screech
+soosAudio._n(3000,.05,.4,'square',.06);
+soosAudio._n(4500,.1,.3,'sawtooth',.04);
+}catch(e){}
+}
+// Red flash over entire page
+const kill=document.createElement('div');
+kill.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(80,0,0,.9);z-index:99999;display:flex;align-items:center;justify-content:center';
+kill.innerHTML='<div style="font-family:VT323,monospace;font-size:24px;color:#ff0000;text-align:center;opacity:0;transition:opacity .5s" id="killTxt"></div>';
+document.body.appendChild(kill);
+setTimeout(()=>{const t=document.getElementById('killTxt');if(t){t.style.opacity='1';t.textContent='you werent fast enough.'}},500);
+// Close the home.exe window after 2.5s
+setTimeout(()=>{
+kill.remove();
+try{closeWindow('home')}catch(e){const w=document.getElementById('win-home');if(w)w.remove()}
+},2500);
+}
 
 // ============ MAZE ============
 let mzGrid=null,ent=null,ePos={x:0,z:0};
