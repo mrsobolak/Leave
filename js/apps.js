@@ -1874,6 +1874,7 @@ if(head.x===food.x&&head.y===food.y){
 score++;
 food=spawnFood();
 if(speed>60)speed-=3;
+if(score===25){triggerSpoonEnding();return}
 }else{
 snake.pop();
 }
@@ -1927,6 +1928,61 @@ ctx.fillText('SPACE to retry',150,190);
 requestAnimationFrame(loop);
 };
 requestAnimationFrame(loop);
+};
+
+// SPOON ENDING
+const triggerSpoonEnding=()=>{
+const scr=document.createElement('div');
+scr.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer';
+document.body.appendChild(scr);
+const box=document.createElement('div');
+box.style.cssText='text-align:center;max-width:600px;padding:40px';
+scr.appendChild(box);
+const lines=[
+{t:'wait.',d:1500,s:16,c:'#888'},
+{t:'25 points?',d:1500,s:18,c:'#aaa'},
+{t:'in SNAKE?',d:1500,s:18,c:'#aaa'},
+{t:'on a dead kids computer?',d:2000,s:14,c:'#666'},
+{t:'...',d:1500,s:14,c:'#555'},
+{t:'you know what you deserve?',d:2000,s:16,c:'#888'},
+{t:'',d:1000,s:14,c:'#555'},
+{t:'spoon',d:800,s:20,c:'#cf6a32'},
+{t:'spoon',d:600,s:22,c:'#cf6a32'},
+{t:'spoon',d:500,s:24,c:'#cf6a32'},
+{t:'spoon',d:400,s:28,c:'#cf6a32'},
+{t:'SPOON',d:400,s:32,c:'#cf6a32'},
+{t:'SPOON',d:300,s:36,c:'#ff6a32'},
+{t:'SPOON',d:300,s:40,c:'#ff6a32'},
+{t:'SPOON SPOON SPOON',d:300,s:28,c:'#ff4444'},
+{t:'SPOON SPOON SPOON SPOON SPOON',d:300,s:22,c:'#ff4444'},
+{t:'SPOOOOOOOOOOOON',d:500,s:36,c:'#ff0000'},
+{t:'',d:2000,s:14,c:'#555'},
+{t:'ENDING: spoon.',d:0,s:20,c:'#cf6a32'},
+];
+let delay=1500;
+lines.forEach(l=>{
+setTimeout(()=>{
+const div=document.createElement('div');
+div.style.cssText='opacity:0;transition:opacity .8s;margin:4px 0;font-family:VT323,monospace;font-size:'+l.s+'px;color:'+l.c;
+div.textContent=l.t;box.appendChild(div);
+setTimeout(()=>{div.style.opacity='1'},50);
+// Shake screen on big spoons
+if(l.s>=28){scr.style.animation='none';scr.offsetHeight;scr.style.animation='spoonShake .08s '+(l.s>32?8:4)}
+},delay);delay+=l.d+800;
+});
+// Click to dismiss
+setTimeout(()=>{
+const back=document.createElement('div');
+back.style.cssText='margin-top:20px;font-family:VT323,monospace;font-size:12px;color:#444;opacity:0;transition:opacity 1s';
+back.textContent='click to go back to your regularly scheduled ARG';
+box.appendChild(back);setTimeout(()=>{back.style.opacity='1'},50);
+scr.addEventListener('click',()=>scr.remove());
+},delay+2000);
+if(!document.getElementById('spoon-style')){
+const st=document.createElement('style');st.id='spoon-style';
+st.textContent='@keyframes spoonShake{0%,100%{transform:translate(0)}25%{transform:translate(-8px,4px)}50%{transform:translate(6px,-6px)}75%{transform:translate(-4px,8px)}}';
+document.head.appendChild(st);
+}
 };
 
 // ============ WEBCAM ============
