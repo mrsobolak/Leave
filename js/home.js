@@ -445,99 +445,121 @@ for(let x=0;x<MN;x++){const w=new THREE.Mesh(wg,mW);w.position.set(x*MC+MC/2,MH/
 for(let y=0;y<MN;y++){const w=new THREE.Mesh(wgs,mW);w.position.set(MN*MC,MH/2,y*MC+MC/2);grp.add(w)}
 const em=BX(.5,.1,.5,M(0x00ff00));em.position.set((MN-1)*MC+MC/2,.05,(MN-1)*MC+MC/2);grp.add(em);
 // Entity
-// Entity — tall, thin, organic. Cylinders + spheres, not boxes.
+// Entity — SKELETON. Exposed bones, visible gaps, skull with hollow sockets.
 ent=new THREE.Group();
-const eM=M(0x050505),eDM=M(0x030303),eRM=M(0xff0000);
+const bone=M(0x1a1815),boneDk=M(0x0e0c0a),eRM=M(0xff0000);
 function SP(r,m){return new THREE.Mesh(new THREE.SphereGeometry(r,6,4),m)}
-// === BODY — hunched, too tall (3m+), impossibly thin ===
-// Pelvis
-const pelvis=SP(.12,eM);pelvis.position.set(0,.55,0);ent.add(pelvis);
-// Spine — chain of spheres curving forward (hunched)
-for(let i=0;i<8;i++){
-const v=SP(.06+(.04-Math.abs(i-4)*.008),eM);
-v.position.set(0,.6+i*.22,-.02-i*.015);ent.add(v);// slight forward lean
+// === SPINE — visible vertebrae, no torso fill ===
+const pelvis=SP(.1,bone);pelvis.position.set(0,.5,0);pelvis.scale.set(1.4,.6,1);ent.add(pelvis);
+// Vertebrae — individual spheres with gaps
+for(let i=0;i<10;i++){
+const vert=SP(.035,bone);
+vert.position.set(0,.55+i*.18,-.01-i*.012);ent.add(vert);
+// Spinous process (little bump on back of each vertebra)
+const proc=CY(.012,.04,3,boneDk);proc.position.set(0,.55+i*.18,.04);ent.add(proc);
 }
-// Ribcage — wider cylinders across torso
-for(let i=0;i<5;i++){
-const rib=CY(.14-i*.01,.03,6,M(0x080808));
-rib.rotation.z=PI/2;rib.position.set(0,1+i*.18,-.04);ent.add(rib);
+// === RIBCAGE — curved ribs with gaps between them ===
+for(let i=0;i<6;i++){
+const ribSize=.12-Math.abs(i-2.5)*.015;
+// Left rib — cylinder curving from spine to front
+const ribL=CY(.012,ribSize*2.5,4,bone);
+ribL.rotation.z=PI/2+.3;ribL.rotation.x=-.15;
+ribL.position.set(-.08,.95+i*.15,-.03-i*.005);ent.add(ribL);
+// Right rib
+const ribR=CY(.012,ribSize*2.5,4,bone);
+ribR.rotation.z=-PI/2-.3;ribR.rotation.x=-.15;
+ribR.position.set(.08,.95+i*.15,-.03-i*.005);ent.add(ribR);
 }
-// Shoulders — bony spheres, too wide
-const shL=SP(.08,eM);shL.position.set(-.25,2.05,-.04);ent.add(shL);
-const shR=SP(.08,eM);shR.position.set(.25,2.05,-.04);ent.add(shR);
-// Neck — long, thin, leaning forward
-const neck=CY(.04,.35,5,eDM);neck.position.set(0,2.3,-.08);neck.rotation.x=.2;ent.add(neck);
-// === HEAD — elongated skull, too big ===
+// Sternum — thin bone down the front
+const sternum=CY(.01,.5,3,boneDk);sternum.position.set(0,1.15,-.12);ent.add(sternum);
+// === SHOULDERS — clavicle bones ===
+const clavL=CY(.015,.25,4,bone);clavL.rotation.z=PI/2;clavL.position.set(-.15,1.85,-.02);ent.add(clavL);
+const clavR=CY(.015,.25,4,bone);clavR.rotation.z=PI/2;clavR.position.set(.15,1.85,-.02);ent.add(clavR);
+// Shoulder joints
+const shL=SP(.04,bone);shL.position.set(-.28,1.85,0);ent.add(shL);
+const shR=SP(.04,bone);shR.position.set(.28,1.85,0);ent.add(shR);
+// === NECK — thin, 3 vertebrae visible ===
+for(let i=0;i<3;i++){
+const nv=SP(.025,bone);nv.position.set(0,2+i*.1,-.04-i*.01);ent.add(nv);
+}
+// === SKULL ===
 const eHead=new THREE.Group();
-const skull=SP(.18,M(0x080808));skull.scale.set(1,1.3,.9);eHead.add(skull);
-// Brow ridge
-const brow=CY(.16,.03,6,M(0x070707));brow.rotation.z=PI/2;brow.position.set(0,.08,-.12);eHead.add(brow);
-// Jaw — hangs open, separate piece
+// Cranium — sphere, slightly elongated
+const cranium=SP(.16,bone);cranium.scale.set(1,1.2,.95);eHead.add(cranium);
+// Cheekbones
+const cheekL=SP(.04,bone);cheekL.position.set(-.1,-.04,-.1);eHead.add(cheekL);
+const cheekR=SP(.04,bone);cheekR.position.set(.1,-.04,-.1);eHead.add(cheekR);
+// Nose hole — dark indent
+const nose=SP(.02,M(0x030303));nose.position.set(0,-.04,-.15);eHead.add(nose);
+// Eye sockets — dark spheres with red glow inside
+const sockL=SP(.055,M(0x030303));sockL.position.set(-.06,.04,-.12);eHead.add(sockL);
+const sockR=SP(.055,M(0x030303));sockR.position.set(.06,.04,-.12);eHead.add(sockR);
+// Eyes — small red dots deep in sockets
+const eyeL=SP(.025,eRM);eyeL.position.set(-.06,.04,-.11);eHead.add(eyeL);
+const eyeR=SP(.025,eRM);eyeR.position.set(.06,.04,-.11);eHead.add(eyeR);
+// Jaw — separate, hangs open
 const jaw=new THREE.Group();
-const jawBone=CY(.1,.04,5,M(0x060606));jawBone.position.set(0,0,0);jaw.add(jawBone);
-// Teeth — tiny spikes
+const jawBone=CY(.08,.03,5,bone);jaw.add(jawBone);
+// Teeth — upper row on skull
 for(let i=-3;i<=3;i++){
-const tooth=CY(.008,.06,3,M(0x1a1a1a));tooth.position.set(i*.025,-.02,-.06);jaw.add(tooth);
+const tu=CY(.006,.04,3,M(0x1e1e1a));tu.position.set(i*.02,-.12,-.12);eHead.add(tu);
 }
-jaw.position.set(0,-.15,-.06);jaw.rotation.x=.2;eHead.add(jaw);
-// Eyes — glowing red, sunken, different sizes
-const eyeL=SP(.035,eRM);eyeL.position.set(-.06,.04,-.15);eHead.add(eyeL);
-const eyeR=SP(.04,eRM);eyeR.position.set(.07,.02,-.15);eHead.add(eyeR);
-// Eye glow halos
-const glL=SP(.06,M(0x220000));glL.position.set(-.06,.04,-.14);eHead.add(glL);
-const glR=SP(.07,M(0x220000));glR.position.set(.07,.02,-.14);eHead.add(glR);
-eHead.position.set(0,2.6,-.12);eHead.rotation.z=.1;// tilted
+// Lower teeth on jaw
+for(let i=-3;i<=3;i++){
+const tl=CY(.006,.04,3,M(0x1e1e1a));tl.position.set(i*.02,.01,-.05);jaw.add(tl);
+}
+jaw.position.set(0,-.14,-.04);jaw.rotation.x=.25;eHead.add(jaw);
+eHead.position.set(0,2.35,-.06);eHead.rotation.z=.06;
 ent.add(eHead);
-// === ARMS — long, thin, reach below knees ===
-const eLArm=new THREE.Group();
-// Upper arm
-const uaL=CY(.03,.9,5,eDM);uaL.position.set(0,-.45,0);eLArm.add(uaL);
-// Elbow joint
-const elbL=SP(.04,eM);elbL.position.set(0,-.9,0);eLArm.add(elbL);
-// Forearm — angled forward
-const faL=CY(.025,.85,5,eDM);faL.position.set(0,-1.15,.12);faL.rotation.x=-.25;eLArm.add(faL);
-// Hand — sphere
-const handL=SP(.04,eDM);handL.position.set(0,-1.55,.2);eLArm.add(handL);
-// Fingers — 4 long thin cylinders splayed out
-for(let i=0;i<4;i++){
-const finger=CY(.008,.2,3,M(0x080808));
-finger.position.set(-.025+i*.017,-1.7,.22+i*.01);
-finger.rotation.x=-.3-i*.1;finger.rotation.z=(i-1.5)*.08;
-eLArm.add(finger);
+// === ARMS — bone thin, exposed joints ===
+function mkBoneArm(){
+const g=new THREE.Group();
+// Humerus
+const hum=CY(.02,.8,4,bone);hum.position.set(0,-.4,0);g.add(hum);
+// Elbow
+const elb=SP(.03,bone);elb.position.set(0,-.8,0);g.add(elb);
+// Radius + ulna (two thin bones)
+const rad=CY(.012,.75,4,bone);rad.position.set(-.01,-1.2,.08);rad.rotation.x=-.2;g.add(rad);
+const uln=CY(.012,.75,4,boneDk);uln.position.set(.01,-1.2,.1);uln.rotation.x=-.22;g.add(uln);
+// Wrist
+const wrist=SP(.02,bone);wrist.position.set(0,-1.55,.16);g.add(wrist);
+// Hand — metacarpals fanning out
+for(let i=0;i<5;i++){
+const mc=CY(.006,.12,3,bone);
+mc.position.set(-.02+i*.01,-1.62,.18+i*.005);
+mc.rotation.x=-.2;mc.rotation.z=(i-2)*.06;g.add(mc);
+// Finger bones
+const ph=CY(.005,.1,3,boneDk);
+ph.position.set(-.02+i*.01,-1.72,.2+i*.008);
+ph.rotation.x=-.35;ph.rotation.z=(i-2)*.08;g.add(ph);
 }
-eLArm.position.set(-.25,2.05,0);ent.add(eLArm);
-const eRArm=new THREE.Group();
-const uaR=CY(.03,.9,5,eDM);uaR.position.set(0,-.45,0);eRArm.add(uaR);
-const elbR=SP(.04,eM);elbR.position.set(0,-.9,0);eRArm.add(elbR);
-const faR=CY(.025,.85,5,eDM);faR.position.set(0,-1.15,.12);faR.rotation.x=-.25;eRArm.add(faR);
-const handR=SP(.04,eDM);handR.position.set(0,-1.55,.2);eRArm.add(handR);
-for(let i=0;i<4;i++){
-const finger=CY(.008,.2,3,M(0x080808));
-finger.position.set(-.025+i*.017,-1.7,.22+i*.01);
-finger.rotation.x=-.3-i*.1;finger.rotation.z=(i-1.5)*.08;
-eRArm.add(finger);
+return g;
 }
-eRArm.position.set(.25,2.05,0);ent.add(eRArm);
-// === LEGS — digitigrade (backward knees like a creature) ===
-const eLLeg=new THREE.Group();
-const thighL=CY(.045,.65,5,eM);thighL.position.set(0,-.33,0);eLLeg.add(thighL);
-const kneeL=SP(.05,eM);kneeL.position.set(0,-.65,.05);eLLeg.add(kneeL);
-// Shin — angled backward (digitigrade)
-const shinL=CY(.035,.6,5,eM);shinL.position.set(0,-.85,-.08);shinL.rotation.x=.35;eLLeg.add(shinL);
+const eLArm=mkBoneArm();eLArm.position.set(-.28,1.85,0);ent.add(eLArm);
+const eRArm=mkBoneArm();eRArm.position.set(.28,1.85,0);ent.add(eRArm);
+// === LEGS — femur/tibia/fibula visible ===
+function mkBoneLeg(){
+const g=new THREE.Group();
+// Femur
+const fem=CY(.025,.6,4,bone);fem.position.set(0,-.3,0);g.add(fem);
+// Knee cap
+const knee=SP(.035,bone);knee.position.set(0,-.6,-.03);g.add(knee);
+// Tibia + fibula
+const tib=CY(.018,.6,4,bone);tib.position.set(-.01,-.9,0);g.add(tib);
+const fib=CY(.012,.55,4,boneDk);fib.position.set(.015,-.88,.01);g.add(fib);
 // Ankle
-const ankL=SP(.035,eDM);ankL.position.set(0,-1.1,-.02);eLLeg.add(ankL);
-// Foot — long, flat, with toes
-const footL=CY(.02,.22,4,eDM);footL.rotation.x=PI/2;footL.position.set(0,-1.15,-.12);eLLeg.add(footL);
-for(let i=-1;i<=1;i++){const toe=CY(.01,.08,3,eDM);toe.rotation.x=PI/2;toe.position.set(i*.03,-1.16,-.24);eLLeg.add(toe);}
-eLLeg.position.set(-.1,.55,0);ent.add(eLLeg);
-const eRLeg=new THREE.Group();
-const thighR=CY(.045,.65,5,eM);thighR.position.set(0,-.33,0);eRLeg.add(thighR);
-const kneeR=SP(.05,eM);kneeR.position.set(0,-.65,.05);eRLeg.add(kneeR);
-const shinR=CY(.035,.6,5,eM);shinR.position.set(0,-.85,-.08);shinR.rotation.x=.35;eRLeg.add(shinR);
-const ankR=SP(.035,eDM);ankR.position.set(0,-1.1,-.02);eRLeg.add(ankR);
-const footR=CY(.02,.22,4,eDM);footR.rotation.x=PI/2;footR.position.set(0,-1.15,-.12);eRLeg.add(footR);
-for(let i=-1;i<=1;i++){const toe=CY(.01,.08,3,eDM);toe.rotation.x=PI/2;toe.position.set(i*.03,-1.16,-.24);eRLeg.add(toe);}
-eRLeg.position.set(.1,.55,0);ent.add(eRLeg);
+const ank=SP(.025,bone);ank.position.set(0,-1.15,0);g.add(ank);
+// Foot — metatarsals
+const foot=CY(.015,.18,4,bone);foot.rotation.x=PI/2;foot.position.set(0,-1.18,-.08);g.add(foot);
+// Toes
+for(let i=-1;i<=1;i++){
+const toe=CY(.008,.06,3,boneDk);toe.rotation.x=PI/2;
+toe.position.set(i*.025,-1.19,-.18);g.add(toe);
+}
+return g;
+}
+const eLLeg=mkBoneLeg();eLLeg.position.set(-.08,.5,0);ent.add(eLLeg);
+const eRLeg=mkBoneLeg();eRLeg.position.set(.08,.5,0);ent.add(eRLeg);
 // Store animation refs
 ent.userData={aL:eLArm,aR:eRArm,lL:eLLeg,lR:eRLeg,hd:eHead,jw:jaw,t:0};
 // Start at player spawn but invisible
@@ -598,7 +620,7 @@ const ud=ent.userData;ud.t+=.15;
 if(eTk-ePathTm>30){ePathTm=eTk;ePath=mzBFS(ePos.x,ePos.z,cam.position.x,cam.position.z)}
 
 // Move along path
-const s=.055;
+const s=.04;
 if(ePath.length>0){
 const[tx,tz]=ePath[0];
 const dx=tx-ePos.x,dz=tz-ePos.z;
