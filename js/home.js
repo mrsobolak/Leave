@@ -35,25 +35,25 @@ cam.position.set(0,1.5,0);
 const ren=new THREE.WebGLRenderer({canvas:cvs,antialias:false});
 ren.setSize(PW,PH);
 
-// === LIGHTING — dark rooms, flashlight is essential ===
-const ambLight=new THREE.AmbientLight(0x111111,0.3);scene.add(ambLight);
-const flash=new THREE.SpotLight(0xffeedd,4,15,0.6,0.5,1);
-flash.castShadow=false;
+// === LIGHTING — dark, flashlight essential ===
+const ambLight=new THREE.AmbientLight(0x080808,0.15);scene.add(ambLight);
+// Narrow spotlight — cheap flashlight beam
+const flash=new THREE.SpotLight(0xeeddaa,3,20,0.35,0.3,1);
 scene.add(flash);scene.add(flash.target);
 let flashOn=true;
 
 // NO LIGHTS. All MeshBasicMaterial. Colors ARE the brightness.
 const DS=THREE.DoubleSide;
-function M(c){return new THREE.MeshLambertMaterial({color:c,side:DS})}
+function M(c){return new THREE.MeshPhongMaterial({color:c,side:DS})}
 function BX(x,y,z,m){return new THREE.Mesh(new THREE.BoxGeometry(x,y,z),m)}
 function CY(r,h,s,m){return new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,s||6),m)}
 function PL(w,h,m){return new THREE.Mesh(new THREE.PlaneGeometry(w,h),m)}
 const PI=Math.PI;
 
 // Color palette — everything visible, muted tones
-const cFloor=M(0x554840);
-const cWall=M(0x555050);
-const cCeil=M(0x3a3a3a);
+const cFloor=M(0x665848);
+const cWall=M(0x666060);
+const cCeil=M(0x444444);
 const cExit=M(0x080808);
 
 // === FURNITURE ===
@@ -303,7 +303,7 @@ function build(name){
 while(grp.children.length)grp.remove(grp.children[0]);
 if(rLight){scene.remove(rLight);rLight=null}
 // Restore ambient for rooms (maze dims it)
-ambLight.intensity=0.3;ambLight.color.setHex(0x111111);
+ambLight.intensity=0.2;ambLight.color.setHex(0x0a0a0a);
 objList=[];exitList=[];
 const r=rooms[name],sx=r.sz[0],sy=r.sz[1],sz=r.sz[2];
 const fl=PL(sx,sz,cFloor);fl.rotation.x=-PI/2;grp.add(fl);
@@ -314,7 +314,7 @@ const ft=PL(sx,sy,cWall);ft.position.set(0,sy/2,sz/2);ft.rotation.y=PI;grp.add(f
 const lt=PL(sz,sy,cWall);lt.position.set(-sx/2,sy/2,0);lt.rotation.y=PI/2;grp.add(lt);
 const rt=PL(sz,sy,cWall);rt.position.set(sx/2,sy/2,0);rt.rotation.y=-PI/2;grp.add(rt);}
 // Dim room point light — gives shape without flashlight
-rLight=new THREE.PointLight(0x443322,0.3,15);
+rLight=new THREE.PointLight(0x332211,0.15,12);
 rLight.position.set(0,sy-.3,0);scene.add(rLight);
 const built=r.build(grp);
 built.forEach(b=>{b.m.userData={name:b.n,msg:b.t,room:name};objList.push(b.m)});
@@ -332,7 +332,7 @@ build('hallway');
 hc.addEventListener('click',()=>{if(!locked)hc.requestPointerLock()});
 document.addEventListener('pointerlockchange',()=>{locked=(document.pointerLockElement===hc)});
 document.addEventListener('mousemove',e=>{if(!locked)return;yaw-=e.movementX*.002;pitch=Math.max(-1.2,Math.min(1.2,pitch-e.movementY*.002))});
-document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'){flashOn=!flashOn;flash.intensity=flashOn?4:0}});
+document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'){flashOn=!flashOn;flash.intensity=flashOn?3:0}});
 document.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false});
 
 function msg(t){const el=document.getElementById('hMsg');if(!el)return;el.textContent=t;clearTimeout(msgTm);msgTm=setTimeout(()=>{el.textContent=''},5000)}
@@ -366,10 +366,10 @@ const nx=cam.position.x+d.x,nz=cam.position.z+d.z;
 if(mazeOn){if(mzOk(nx,cam.position.z))cam.position.x=nx;if(mzOk(cam.position.x,nz))cam.position.z=nz}
 else{const r=rooms[curRoom];if(r){const hx=r.sz[0]/2-.4,hz=r.sz[2]/2-.4;if(nx>-hx&&nx<hx)cam.position.x=nx;if(nz>-hz&&nz<hz)cam.position.z=nz}}}
 cam.rotation.set(0,0,0);cam.rotateY(yaw);cam.rotateX(pitch);
-// Flashlight follows camera
+// Flashlight follows camera direction
 flash.position.copy(cam.position);
-const fv=new THREE.Vector3(0,0,-1).applyQuaternion(cam.quaternion);
-flash.target.position.copy(cam.position).add(fv.multiplyScalar(6));
+const fDir=new THREE.Vector3(0,0,-1).applyQuaternion(cam.quaternion);
+flash.target.position.copy(cam.position).add(fDir.multiplyScalar(5));
 if(keys.e){doInteract();keys.e=false}
 if(mazeOn){mzEnt();mzExit()}
 if(!mazeOn){
@@ -405,7 +405,7 @@ else{const p=st.pop();cx=p[0];cy=p[1]}}return g;}
 function startMaze(){
 mazeOn=true;
 // Make maze pitch black — flashlight only
-ambLight.intensity=0.05;ambLight.color.setHex(0x050505);
+ambLight.intensity=0.02;ambLight.color.setHex(0x030303);
 if(rLight){scene.remove(rLight);rLight=null}
 while(grp.children.length)grp.remove(grp.children[0]);
 objList=[];exitList=[];
