@@ -1931,7 +1931,7 @@ requestAnimationFrame(loop);
 };
 
 // SPOON ENDING
-const triggerSpoonEnding=()=>{
+function triggerSpoonEnding(){
 const scr=document.createElement('div');
 scr.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column;cursor:pointer';
 document.body.appendChild(scr);
