@@ -239,11 +239,8 @@ bedroom:{sz:[7,3,6],
 build(g){
 const pc=mkPC();pc.position.set(-3,0,-.5);pc.rotation.y=-PI/2;g.add(pc);
 const bd=mkBed();bd.position.set(2.3,0,.5);g.add(bd);
-const bp=BX(.35,.35,.3,M(0x2a1a1a));bp.position.set(-1,.18,-2.3);g.add(bp);
-const st=BX(.04,.25,.02,M(0x1a1010));st.position.set(-.88,.35,-2.15);g.add(st);
 return[{m:pc,n:'My PC',t:'Dell XPS 420. birthday present. 2007. this is where it all started.'},
-{m:bd,n:'Bed',t:'i stopped sleeping. the dreams were always dustbowl.'},
-{m:bp,n:'Backpack',t:'i havent been to school in weeks. they stopped calling.'}];},
+{m:bd,n:'Bed',t:'i stopped sleeping. the dreams were always dustbowl.'}];},
 exits:[{p:[0,.9,-2.95],s:[1,1.8,.15],to:'hallway',sp:[-1,1.5,1]}]},
 
 bath:{sz:[4,3,4],
@@ -365,11 +362,7 @@ const ie=document.getElementById('hInt'),ch=document.getElementById('hCross');lo
 if(h.length&&h[0].distance<4){let o=h[0].object;while(o&&!o.userData.name&&!o.userData.exit&&o.parent&&o.parent!==grp)o=o.parent;
 if(o.userData.name||o.userData.exit){lookAt=o;if(ie){ie.textContent=o.userData.exit?'[E] '+o.userData.to:'[E] '+o.userData.name;ie.style.opacity='1'}if(ch)ch.style.color='#cf6a32'}}
 if(!lookAt){if(ie)ie.style.opacity='0';if(ch)ch.style.color='#888'}
-for(let i=0;i<exitList.length;i++){
-const eu=exitList[i].userData;
-if(cam.position.distanceTo(exitList[i].position)<.9){
-if(eu.spawn==='LOCKED'){msg('the door is locked.');cam.position.z-=.3;break}
-curRoom=eu.to;cam.position.set(eu.spawn[0],eu.spawn[1],eu.spawn[2]);build(curRoom);break}}}
+}
 ren.render(scene,cam);
 }
 tick();
