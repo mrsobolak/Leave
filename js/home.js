@@ -5,9 +5,10 @@ createWindow('home','home.exe',640,480,
 '<div id="hHud" style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:2">'+
 '<div id="hCross" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#888;font-size:18px">+</div>'+
 '<div id="hInt" style="position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:16px;color:#999;opacity:0;transition:opacity .3s;text-align:center"></div>'+
-'<div id="hMsg" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#888;text-align:center;max-width:90%">Click to play. WASD move. Mouse look. E interact. F flashlight.</div>'+
+'<div id="hMsg" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:13px;color:#888;text-align:center;max-width:90%">Click to play. WASD move. Mouse look. E interact. F flashlight. Shift sprint.</div>'+
 '<div id="hRoom" style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:VT323,monospace;font-size:12px;color:#666"></div>'+
 '<div id="hCnt" style="position:absolute;top:8px;right:12px;font-family:VT323,monospace;font-size:12px;color:#666"></div>'+
+'<div id="hStamBar" style="position:absolute;bottom:35px;left:50%;transform:translateX(-50%);width:120px;height:4px;background:#222;border-radius:2px;display:none"><div id="hStamFill" style="width:100%;height:100%;background:#888;border-radius:2px;transition:width .1s"></div></div>'+
 '</div></div>');
 setTimeout(()=>{
 if(typeof THREE!=='undefined')return go();
@@ -332,8 +333,8 @@ build('hallway');
 hc.addEventListener('click',()=>{if(!locked)hc.requestPointerLock()});
 document.addEventListener('pointerlockchange',()=>{locked=(document.pointerLockElement===hc)});
 document.addEventListener('mousemove',e=>{if(!locked)return;yaw-=e.movementX*.002;pitch=Math.max(-1.2,Math.min(1.2,pitch-e.movementY*.002))});
-document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(k==='f'){flashOn=!flashOn;flash.intensity=flashOn?1.5:0}});
-document.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false});
+document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();keys[k]=true;if(e.shiftKey)keys.shift=true;if(k==='f'){flashOn=!flashOn;flash.intensity=flashOn?1.5:0}});
+document.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;if(!e.shiftKey)keys.shift=false});
 
 function msg(t){const el=document.getElementById('hMsg');if(!el)return;el.textContent=t;clearTimeout(msgTm);msgTm=setTimeout(()=>{el.textContent=''},5000)}
 
@@ -355,10 +356,23 @@ msg(ud.msg||'...');
 
 const ray=new THREE.Raycaster(),c2=new THREE.Vector2(0,0);
 
+// Sprint state
+let stamina=100,sprinting=false,staminaEmpty=false;
+
 function tick(){
 if(!document.getElementById('hc'))return;
 requestAnimationFrame(tick);
-const spd=.06,d=new THREE.Vector3();
+// Sprint
+sprinting=keys.shift&&stamina>0&&!staminaEmpty;
+if(sprinting){stamina=Math.max(0,stamina-1.2);if(stamina<=0)staminaEmpty=true}
+else{stamina=Math.min(100,stamina+.4);if(stamina>30)staminaEmpty=false}
+// Show bar in maze
+const sBar=document.getElementById('hStamBar'),sFill=document.getElementById('hStamFill');
+if(sBar){sBar.style.display=mazeOn?'block':'none'}
+if(sFill){sFill.style.width=stamina+'%';sFill.style.background=stamina<25?'#aa3333':'#888'}
+
+const spd=sprinting?.11:.06;
+const d=new THREE.Vector3();
 if(keys.w)d.z-=1;if(keys.s)d.z+=1;if(keys.a)d.x-=1;if(keys.d)d.x+=1;
 if(d.lengthSq()>0){
 d.normalize().multiplyScalar(spd);d.applyAxisAngle(new THREE.Vector3(0,1,0),yaw);
@@ -366,6 +380,16 @@ const nx=cam.position.x+d.x,nz=cam.position.z+d.z;
 if(mazeOn){if(mzOk(nx,cam.position.z))cam.position.x=nx;if(mzOk(cam.position.x,nz))cam.position.z=nz}
 else{const r=rooms[curRoom];if(r){const hx=r.sz[0]/2-.4,hz=r.sz[2]/2-.4;if(nx>-hx&&nx<hx)cam.position.x=nx;if(nz>-hz&&nz<hz)cam.position.z=nz}}}
 cam.rotation.set(0,0,0);cam.rotateY(yaw);cam.rotateX(pitch);
+
+// Camera shake — stronger when entity is close
+if(mazeOn&&entActive&&ent){
+const eDist=Math.hypot(cam.position.x-ePos.x,cam.position.z-ePos.z);
+if(eDist<8){
+const intensity=Math.max(0,(8-eDist)/8)*.02;
+cam.rotateX((Math.random()-.5)*intensity);
+cam.rotateY((Math.random()-.5)*intensity);
+cam.rotateZ((Math.random()-.5)*intensity*.5);
+}}
 // Flashlight follows camera direction
 flash.position.copy(cam.position);
 const fDir=new THREE.Vector3(0,0,-1).applyQuaternion(cam.quaternion);
@@ -421,49 +445,99 @@ for(let x=0;x<MN;x++){const w=new THREE.Mesh(wg,mW);w.position.set(x*MC+MC/2,MH/
 for(let y=0;y<MN;y++){const w=new THREE.Mesh(wgs,mW);w.position.set(MN*MC,MH/2,y*MC+MC/2);grp.add(w)}
 const em=BX(.5,.1,.5,M(0x00ff00));em.position.set((MN-1)*MC+MC/2,.05,(MN-1)*MC+MC/2);grp.add(em);
 // Entity
-// Entity - built but hidden, spawns at player start after 5s
+// Entity — tall, thin, organic. Cylinders + spheres, not boxes.
 ent=new THREE.Group();
 const eM=M(0x050505),eDM=M(0x030303),eRM=M(0xff0000);
-// Torso — thin, tall
-const torso=BX(.3,1.6,.18,eM);torso.position.set(0,1.4,0);ent.add(torso);
-// Ribs
-for(let i=0;i<4;i++){const rib=BX(.32,.02,.01,M(0x0a0a0a));rib.position.set(0,1+i*.25,-.1);ent.add(rib);}
-// Spine bumps
-for(let i=0;i<5;i++){const sp=BX(.04,.04,.06,M(0x080808));sp.position.set(0,.9+i*.3,.1);ent.add(sp);}
-// Head — too big, tilted
+function SP(r,m){return new THREE.Mesh(new THREE.SphereGeometry(r,6,4),m)}
+// === BODY — hunched, too tall (3m+), impossibly thin ===
+// Pelvis
+const pelvis=SP(.12,eM);pelvis.position.set(0,.55,0);ent.add(pelvis);
+// Spine — chain of spheres curving forward (hunched)
+for(let i=0;i<8;i++){
+const v=SP(.06+(.04-Math.abs(i-4)*.008),eM);
+v.position.set(0,.6+i*.22,-.02-i*.015);ent.add(v);// slight forward lean
+}
+// Ribcage — wider cylinders across torso
+for(let i=0;i<5;i++){
+const rib=CY(.14-i*.01,.03,6,M(0x080808));
+rib.rotation.z=PI/2;rib.position.set(0,1+i*.18,-.04);ent.add(rib);
+}
+// Shoulders — bony spheres, too wide
+const shL=SP(.08,eM);shL.position.set(-.25,2.05,-.04);ent.add(shL);
+const shR=SP(.08,eM);shR.position.set(.25,2.05,-.04);ent.add(shR);
+// Neck — long, thin, leaning forward
+const neck=CY(.04,.35,5,eDM);neck.position.set(0,2.3,-.08);neck.rotation.x=.2;ent.add(neck);
+// === HEAD — elongated skull, too big ===
 const eHead=new THREE.Group();
-const skull=BX(.28,.32,.24,M(0x080808));eHead.add(skull);
-const jaw=BX(.22,.08,.15,M(0x060606));jaw.position.set(0,-.18,-.04);jaw.rotation.x=.15;eHead.add(jaw);
-// Eyes — glowing red, uneven
-const eyeL=BX(.06,.04,.02,eRM);eyeL.position.set(-.07,.05,-.13);eHead.add(eyeL);
-const eyeR=BX(.05,.06,.02,eRM);eyeR.position.set(.08,.03,-.13);eHead.add(eyeR);
-const gL=BX(.1,.08,.01,M(0x330000));gL.position.set(-.07,.05,-.14);eHead.add(gL);
-const gR=BX(.09,.1,.01,M(0x330000));gR.position.set(.08,.03,-.14);eHead.add(gR);
-eHead.position.set(0,2.35,-.05);eHead.rotation.z=.08;ent.add(eHead);
-// Neck
-const neck=BX(.08,.2,.08,eDM);neck.position.set(0,2.15,0);ent.add(neck);
-// Arms — jointed with claws
+const skull=SP(.18,M(0x080808));skull.scale.set(1,1.3,.9);eHead.add(skull);
+// Brow ridge
+const brow=CY(.16,.03,6,M(0x070707));brow.rotation.z=PI/2;brow.position.set(0,.08,-.12);eHead.add(brow);
+// Jaw — hangs open, separate piece
+const jaw=new THREE.Group();
+const jawBone=CY(.1,.04,5,M(0x060606));jawBone.position.set(0,0,0);jaw.add(jawBone);
+// Teeth — tiny spikes
+for(let i=-3;i<=3;i++){
+const tooth=CY(.008,.06,3,M(0x1a1a1a));tooth.position.set(i*.025,-.02,-.06);jaw.add(tooth);
+}
+jaw.position.set(0,-.15,-.06);jaw.rotation.x=.2;eHead.add(jaw);
+// Eyes — glowing red, sunken, different sizes
+const eyeL=SP(.035,eRM);eyeL.position.set(-.06,.04,-.15);eHead.add(eyeL);
+const eyeR=SP(.04,eRM);eyeR.position.set(.07,.02,-.15);eHead.add(eyeR);
+// Eye glow halos
+const glL=SP(.06,M(0x220000));glL.position.set(-.06,.04,-.14);eHead.add(glL);
+const glR=SP(.07,M(0x220000));glR.position.set(.07,.02,-.14);eHead.add(glR);
+eHead.position.set(0,2.6,-.12);eHead.rotation.z=.1;// tilted
+ent.add(eHead);
+// === ARMS — long, thin, reach below knees ===
 const eLArm=new THREE.Group();
-const eLArmUp=BX(.06,1,.06,eDM);eLArmUp.position.set(0,-.5,0);eLArm.add(eLArmUp);
-const eLArmLo=BX(.05,.8,.05,eDM);eLArmLo.position.set(0,-1.1,.1);eLArmLo.rotation.x=-.3;eLArm.add(eLArmLo);
-for(let i=-1;i<=1;i++){const c=BX(.015,.2,.015,M(0x080808));c.position.set(i*.03,-1.55,.15);c.rotation.x=-.4;eLArm.add(c);}
-eLArm.position.set(-.22,1.8,0);ent.add(eLArm);
+// Upper arm
+const uaL=CY(.03,.9,5,eDM);uaL.position.set(0,-.45,0);eLArm.add(uaL);
+// Elbow joint
+const elbL=SP(.04,eM);elbL.position.set(0,-.9,0);eLArm.add(elbL);
+// Forearm — angled forward
+const faL=CY(.025,.85,5,eDM);faL.position.set(0,-1.15,.12);faL.rotation.x=-.25;eLArm.add(faL);
+// Hand — sphere
+const handL=SP(.04,eDM);handL.position.set(0,-1.55,.2);eLArm.add(handL);
+// Fingers — 4 long thin cylinders splayed out
+for(let i=0;i<4;i++){
+const finger=CY(.008,.2,3,M(0x080808));
+finger.position.set(-.025+i*.017,-1.7,.22+i*.01);
+finger.rotation.x=-.3-i*.1;finger.rotation.z=(i-1.5)*.08;
+eLArm.add(finger);
+}
+eLArm.position.set(-.25,2.05,0);ent.add(eLArm);
 const eRArm=new THREE.Group();
-const eRArmUp=BX(.06,1,.06,eDM);eRArmUp.position.set(0,-.5,0);eRArm.add(eRArmUp);
-const eRArmLo=BX(.05,.8,.05,eDM);eRArmLo.position.set(0,-1.1,.1);eRArmLo.rotation.x=-.3;eRArm.add(eRArmLo);
-for(let i=-1;i<=1;i++){const c=BX(.015,.2,.015,M(0x080808));c.position.set(i*.03,-1.55,.15);c.rotation.x=-.4;eRArm.add(c);}
-eRArm.position.set(.22,1.8,0);ent.add(eRArm);
-// Legs — jointed with feet
+const uaR=CY(.03,.9,5,eDM);uaR.position.set(0,-.45,0);eRArm.add(uaR);
+const elbR=SP(.04,eM);elbR.position.set(0,-.9,0);eRArm.add(elbR);
+const faR=CY(.025,.85,5,eDM);faR.position.set(0,-1.15,.12);faR.rotation.x=-.25;eRArm.add(faR);
+const handR=SP(.04,eDM);handR.position.set(0,-1.55,.2);eRArm.add(handR);
+for(let i=0;i<4;i++){
+const finger=CY(.008,.2,3,M(0x080808));
+finger.position.set(-.025+i*.017,-1.7,.22+i*.01);
+finger.rotation.x=-.3-i*.1;finger.rotation.z=(i-1.5)*.08;
+eRArm.add(finger);
+}
+eRArm.position.set(.25,2.05,0);ent.add(eRArm);
+// === LEGS — digitigrade (backward knees like a creature) ===
 const eLLeg=new THREE.Group();
-const eLLegUp=BX(.08,.7,.08,eM);eLLegUp.position.set(0,-.35,0);eLLeg.add(eLLegUp);
-const eLLegLo=BX(.06,.6,.06,eM);eLLegLo.position.set(0,-.8,.08);eLLegLo.rotation.x=.2;eLLeg.add(eLLegLo);
-const eLFoot=BX(.1,.04,.18,eDM);eLFoot.position.set(0,-1.1,.12);eLLeg.add(eLFoot);
-eLLeg.position.set(-.1,.45,0);ent.add(eLLeg);
+const thighL=CY(.045,.65,5,eM);thighL.position.set(0,-.33,0);eLLeg.add(thighL);
+const kneeL=SP(.05,eM);kneeL.position.set(0,-.65,.05);eLLeg.add(kneeL);
+// Shin — angled backward (digitigrade)
+const shinL=CY(.035,.6,5,eM);shinL.position.set(0,-.85,-.08);shinL.rotation.x=.35;eLLeg.add(shinL);
+// Ankle
+const ankL=SP(.035,eDM);ankL.position.set(0,-1.1,-.02);eLLeg.add(ankL);
+// Foot — long, flat, with toes
+const footL=CY(.02,.22,4,eDM);footL.rotation.x=PI/2;footL.position.set(0,-1.15,-.12);eLLeg.add(footL);
+for(let i=-1;i<=1;i++){const toe=CY(.01,.08,3,eDM);toe.rotation.x=PI/2;toe.position.set(i*.03,-1.16,-.24);eLLeg.add(toe);}
+eLLeg.position.set(-.1,.55,0);ent.add(eLLeg);
 const eRLeg=new THREE.Group();
-const eRLegUp=BX(.08,.7,.08,eM);eRLegUp.position.set(0,-.35,0);eRLeg.add(eRLegUp);
-const eRLegLo=BX(.06,.6,.06,eM);eRLegLo.position.set(0,-.8,.08);eRLegLo.rotation.x=.2;eRLeg.add(eRLegLo);
-const eRFoot=BX(.1,.04,.18,eDM);eRFoot.position.set(0,-1.1,.12);eRLeg.add(eRFoot);
-eRLeg.position.set(.1,.45,0);ent.add(eRLeg);
+const thighR=CY(.045,.65,5,eM);thighR.position.set(0,-.33,0);eRLeg.add(thighR);
+const kneeR=SP(.05,eM);kneeR.position.set(0,-.65,.05);eRLeg.add(kneeR);
+const shinR=CY(.035,.6,5,eM);shinR.position.set(0,-.85,-.08);shinR.rotation.x=.35;eRLeg.add(shinR);
+const ankR=SP(.035,eDM);ankR.position.set(0,-1.1,-.02);eRLeg.add(ankR);
+const footR=CY(.02,.22,4,eDM);footR.rotation.x=PI/2;footR.position.set(0,-1.15,-.12);eRLeg.add(footR);
+for(let i=-1;i<=1;i++){const toe=CY(.01,.08,3,eDM);toe.rotation.x=PI/2;toe.position.set(i*.03,-1.16,-.24);eRLeg.add(toe);}
+eRLeg.position.set(.1,.55,0);ent.add(eRLeg);
 // Store animation refs
 ent.userData={aL:eLArm,aR:eRArm,lL:eLLeg,lR:eRLeg,hd:eHead,jw:jaw,t:0};
 // Start at player spawn but invisible
