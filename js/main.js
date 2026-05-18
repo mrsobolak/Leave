@@ -82,7 +82,10 @@ window.soosAudio&&soosAudio.playMenu();
 const gateBtn=document.getElementById('gate-enter');
 if(gateBtn){gateBtn.addEventListener('mouseenter',()=>{gateBtn.style.color='#fff';gateBtn.style.borderColor='#cf6a32';gateBtn.style.background='rgba(207,106,50,0.1)'});gateBtn.addEventListener('mouseleave',()=>{gateBtn.style.color='#aaa';gateBtn.style.borderColor='#555';gateBtn.style.background='transparent'})}
 
-document.getElementById('menu-new').addEventListener('click',()=>{if(window.soosAudio)soosAudio.stop();startBoot(null)});
+document.getElementById('menu-new').addEventListener('click',()=>{
+  if(window.soosAudio)soosAudio.stop();
+  showDominosPowerScreen();
+});
 
 // Power button
 const powerBtn=document.getElementById('power-btn');
@@ -110,6 +113,64 @@ loadGameFromFile((save)=>{startBoot(save)});
 document.getElementById('menu-about').addEventListener('click',()=>{document.getElementById('menu-about-panel').classList.remove('hidden')});
 document.getElementById('menu-about-back').addEventListener('click',()=>{document.getElementById('menu-about-panel').classList.add('hidden')});
 });
+
+const showPlayerMonologue=(onDone)=>{
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:1010;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.7s ease';
+  const line=document.createElement('div');
+  line.style.cssText='font-family:Tahoma,sans-serif;font-size:17px;color:#777;letter-spacing:3px;opacity:0;transition:opacity 1s ease;font-style:italic';
+  line.textContent=’”Alright, I\’m here”’;
+  ov.appendChild(line);
+  document.body.appendChild(ov);
+  // fade in backdrop
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    ov.style.opacity='1';
+    // fade in text after backdrop settles
+    setTimeout(()=>{
+      line.style.opacity='1';
+      // hold, then fade everything out together
+      setTimeout(()=>{
+        line.style.opacity='0';
+        ov.style.opacity='0';
+        setTimeout(()=>{ov.remove();onDone()},750);
+      },2200);
+    },600);
+  }));
+};
+
+const showDominosPowerScreen=()=>{
+  document.getElementById('main-menu').classList.add('hidden');
+  showPlayerMonologue(()=>{
+  const scr=document.getElementById('dominos-power-screen');
+  scr.style.opacity='0';
+  scr.style.transition='opacity 0.7s ease';
+  scr.classList.remove('hidden');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{scr.style.opacity='1'}));
+  const btn=document.getElementById('dominos-power-btn');
+  const icon=document.getElementById('dominos-power-icon');
+  const hint=document.getElementById('dominos-hint');
+  let clicked=false;
+  btn.addEventListener('click',()=>{
+    if(clicked)return;
+    clicked=true;
+    btn.classList.add('pressed');
+    icon.style.color='#fff';
+    icon.style.textShadow='0 0 24px rgba(255,255,255,0.9)';
+    hint.style.opacity='0';
+    if(window.soosAudio)soosAudio.playClick&&soosAudio.playClick();
+    setTimeout(()=>{
+      scr.style.transition='opacity 0.4s';
+      scr.style.opacity='0';
+      setTimeout(()=>{
+        scr.classList.add('hidden');
+        scr.style.opacity='';
+        scr.style.transition='';
+        startBoot(null);
+      },420);
+    },280);
+  });
+  }); // end monologue callback
+};
 
 const startBoot=(saveData)=>{
 const el=document.documentElement;
