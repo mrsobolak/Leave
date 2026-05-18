@@ -114,10 +114,38 @@ document.getElementById('menu-about').addEventListener('click',()=>{document.get
 document.getElementById('menu-about-back').addEventListener('click',()=>{document.getElementById('menu-about-panel').classList.add('hidden')});
 });
 
+const showPlayerMonologue=(onDone)=>{
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:1010;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.7s ease';
+  const line=document.createElement('div');
+  line.style.cssText='font-family:Tahoma,sans-serif;font-size:17px;color:#777;letter-spacing:3px;opacity:0;transition:opacity 1s ease;font-style:italic';
+  line.textContent=’”Alright, I\’m here”’;
+  ov.appendChild(line);
+  document.body.appendChild(ov);
+  // fade in backdrop
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    ov.style.opacity='1';
+    // fade in text after backdrop settles
+    setTimeout(()=>{
+      line.style.opacity='1';
+      // hold, then fade everything out together
+      setTimeout(()=>{
+        line.style.opacity='0';
+        ov.style.opacity='0';
+        setTimeout(()=>{ov.remove();onDone()},750);
+      },2200);
+    },600);
+  }));
+};
+
 const showDominosPowerScreen=()=>{
   document.getElementById('main-menu').classList.add('hidden');
+  showPlayerMonologue(()=>{
   const scr=document.getElementById('dominos-power-screen');
+  scr.style.opacity='0';
+  scr.style.transition='opacity 0.7s ease';
   scr.classList.remove('hidden');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{scr.style.opacity='1'}));
   const btn=document.getElementById('dominos-power-btn');
   const icon=document.getElementById('dominos-power-icon');
   const hint=document.getElementById('dominos-hint');
@@ -141,6 +169,7 @@ const showDominosPowerScreen=()=>{
       },420);
     },280);
   });
+  }); // end monologue callback
 };
 
 const startBoot=(saveData)=>{
