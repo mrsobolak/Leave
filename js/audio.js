@@ -335,5 +335,8 @@ const play=()=>{
   iter++;
   _lp.push(setTimeout(()=>play(),18*B*1000-50));
 };play()},
+
+// PC power button click — mechanical transient + low thump
+playClick(){this.init();const t=_a.currentTime;const sz=Math.floor(_a.sampleRate*0.018),b=_a.createBuffer(1,sz,_a.sampleRate),da=b.getChannelData(0);for(let i=0;i<sz;i++)da[i]=(Math.random()*2-1)*(1-i/sz);const sr=_a.createBufferSource();sr.buffer=b;const g=_a.createGain(),fl=_a.createBiquadFilter();fl.type='bandpass';fl.frequency.value=1800;fl.Q.value=0.8;g.gain.setValueAtTime(0.6,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.018);sr.connect(fl);fl.connect(g);g.connect(_mg);sr.start(t);sr.stop(t+0.025);const o=_a.createOscillator(),og=_a.createGain();o.type='sine';o.frequency.setValueAtTime(120,t);o.frequency.exponentialRampToValueAtTime(40,t+0.06);og.gain.setValueAtTime(0.35,t);og.gain.exponentialRampToValueAtTime(0.001,t+0.08);o.connect(og);og.connect(_mg);o.start(t);o.stop(t+0.09)},
 };
 window.soosAudio=soosAudio;
