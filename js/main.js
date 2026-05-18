@@ -82,25 +82,33 @@ window.soosAudio&&soosAudio.playMenu();
 const gateBtn=document.getElementById('gate-enter');
 if(gateBtn){gateBtn.addEventListener('mouseenter',()=>{gateBtn.style.color='#fff';gateBtn.style.borderColor='#cf6a32';gateBtn.style.background='rgba(207,106,50,0.1)'});gateBtn.addEventListener('mouseleave',()=>{gateBtn.style.color='#aaa';gateBtn.style.borderColor='#555';gateBtn.style.background='transparent'})}
 
-document.getElementById('menu-new').addEventListener('click',()=>{if(window.soosAudio)soosAudio.stop();startBoot(null)});
+document.getElementById('menu-new').addEventListener('click',()=>{
+  if(window.soosAudio)soosAudio.stop();
+  document.getElementById('main-menu').classList.add('hidden');
+  const ps=document.getElementById('power-screen');
+  ps.classList.remove('hidden');
+  ps.style.display='flex';
+  // fade label in slightly after screen appears
+  setTimeout(()=>{const lbl=document.getElementById('power-label');if(lbl)lbl.style.color='#333'},400);
+});
 
-// Power button
+// Power button screen
 const powerBtn=document.getElementById('power-btn');
 const powerIcon=document.getElementById('power-icon');
 if(powerBtn){
-  powerBtn.addEventListener('mouseenter',()=>{powerBtn.style.boxShadow='0 0 0 4px #222,0 0 22px 6px rgba(0,220,90,0.38),0 4px 12px rgba(0,0,0,0.7)'});
-  powerBtn.addEventListener('mouseleave',()=>{powerBtn.style.boxShadow='0 0 0 4px #222,0 0 12px 2px rgba(0,200,80,0.18),0 4px 12px rgba(0,0,0,0.7)'});
-  powerBtn.addEventListener('mousedown',()=>{powerBtn.style.transform='scale(0.93)';powerBtn.style.boxShadow='0 0 0 4px #222,0 0 8px 2px rgba(0,200,80,0.1),0 2px 6px rgba(0,0,0,0.9)'});
+  powerBtn.addEventListener('mouseenter',()=>{powerBtn.style.boxShadow='0 0 0 5px #1a1a1a,0 0 30px 8px rgba(0,220,90,0.42),0 6px 18px rgba(0,0,0,0.9)'});
+  powerBtn.addEventListener('mouseleave',()=>{powerBtn.style.boxShadow='0 0 0 5px #1a1a1a,0 0 18px 4px rgba(0,200,80,0.22),0 6px 18px rgba(0,0,0,0.9)'});
+  powerBtn.addEventListener('mousedown',()=>{powerBtn.style.transform='scale(0.91)';powerBtn.style.boxShadow='0 0 0 5px #1a1a1a,0 0 8px 2px rgba(0,200,80,0.1),0 3px 8px rgba(0,0,0,0.95)'});
   powerBtn.addEventListener('click',()=>{
-    powerBtn.style.transform='scale(0.93)';
+    powerBtn.style.transform='scale(0.91)';
     powerIcon.style.color='#fff';
-    powerIcon.style.textShadow='0 0 16px rgba(255,255,255,0.9)';
+    powerIcon.style.textShadow='0 0 20px rgba(255,255,255,0.95)';
     if(window.soosAudio)soosAudio.playClick();
     setTimeout(()=>{
       powerBtn.style.transform='';
-      if(window.soosAudio)soosAudio.stop();
+      document.getElementById('power-screen').style.display='none';
       startBoot(null);
-    },220);
+    },230);
   });
 }
 document.getElementById('menu-load').addEventListener('click',()=>{
