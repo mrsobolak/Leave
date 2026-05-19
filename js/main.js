@@ -87,25 +87,6 @@ document.getElementById('menu-new').addEventListener('click',()=>{
   showDominosPowerScreen();
 });
 
-// Power button
-const powerBtn=document.getElementById('power-btn');
-const powerIcon=document.getElementById('power-icon');
-if(powerBtn){
-  powerBtn.addEventListener('mouseenter',()=>{powerBtn.style.boxShadow='0 0 0 4px #222,0 0 22px 6px rgba(0,220,90,0.38),0 4px 12px rgba(0,0,0,0.7)'});
-  powerBtn.addEventListener('mouseleave',()=>{powerBtn.style.boxShadow='0 0 0 4px #222,0 0 12px 2px rgba(0,200,80,0.18),0 4px 12px rgba(0,0,0,0.7)'});
-  powerBtn.addEventListener('mousedown',()=>{powerBtn.style.transform='scale(0.93)';powerBtn.style.boxShadow='0 0 0 4px #222,0 0 8px 2px rgba(0,200,80,0.1),0 2px 6px rgba(0,0,0,0.9)'});
-  powerBtn.addEventListener('click',()=>{
-    powerBtn.style.transform='scale(0.93)';
-    powerIcon.style.color='#fff';
-    powerIcon.style.textShadow='0 0 16px rgba(255,255,255,0.9)';
-    if(window.soosAudio)soosAudio.playClick();
-    setTimeout(()=>{
-      powerBtn.style.transform='';
-      if(window.soosAudio)soosAudio.stop();
-      startBoot(null);
-    },220);
-  });
-}
 document.getElementById('menu-load').addEventListener('click',()=>{
 if(window.soosAudio)soosAudio.stop();
 loadGameFromFile((save)=>{startBoot(save)});
