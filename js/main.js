@@ -147,16 +147,11 @@ const showDominosPowerScreen=()=>{
   scr.classList.remove('hidden');
   requestAnimationFrame(()=>requestAnimationFrame(()=>{scr.style.opacity='1'}));
   const btn=document.getElementById('dominos-power-btn');
-  const icon=document.getElementById('dominos-power-icon');
-  const hint=document.getElementById('dominos-hint');
   let clicked=false;
   btn.addEventListener('click',()=>{
     if(clicked)return;
     clicked=true;
     btn.classList.add('pressed');
-    icon.style.color='#fff';
-    icon.style.textShadow='0 0 24px rgba(255,255,255,0.9)';
-    hint.style.opacity='0';
     if(window.soosAudio)soosAudio.playClick&&soosAudio.playClick();
     setTimeout(()=>{
       scr.style.transition='opacity 0.4s';
