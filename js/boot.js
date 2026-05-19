@@ -140,6 +140,22 @@ w.style.opacity='0';
 setTimeout(()=>{
 w.remove();
 initDesktop();
+// Desktop briefly visible, then glitch into 3D
+const desktop=document.getElementById('desktop');
+setTimeout(()=>{
+desktop.style.transition='opacity 0.07s';
+desktop.style.opacity='0';
+setTimeout(()=>{desktop.style.opacity='1';
+setTimeout(()=>{
+desktop.style.opacity='0';
+setTimeout(()=>{
+desktop.style.transition='';
+desktop.style.opacity='1';
+if(window.startGame3D)window.startGame3D();
+},130);
+},90);
+},130);
+},1400);
 },500);
 },2000);
 };
