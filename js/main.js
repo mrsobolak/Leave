@@ -2,16 +2,8 @@
 const saveGame=()=>{
 const data={
   pcState:window.pcState||1,
-  cubeyIntroDone:window.cubeyIntroDone||false,
-  cubeyUserName:window.cubeyUserName||'',
-  cubeyGamesWon:window.cubeyGamesWon||0,
-  terminalLaunched:window.terminalLaunched||false,
-  mikeAwakened:window.mikeAwakened||false,
-  cubeyKilled:window.cubeyKilled||false,
-  path2Counter:window.path2Counter||0,
-  termStep:window.termStep||0,
   timestamp:Date.now(),
-  version:'2.3'
+  version:'3.0'
 };
 const json=JSON.stringify(data,null,2);
 const blob=new Blob([json],{type:'application/json'});
@@ -159,24 +151,11 @@ document.getElementById('scanlines').style.display='block';
 
 if(saveData){
 window.pcState=saveData.pcState||1;
-window.cubeyIntroDone=saveData.cubeyIntroDone||false;
-window.cubeyUserName=saveData.cubeyUserName||'friend';
-window.cubeyGamesWon=saveData.cubeyGamesWon||0;
-window.terminalLaunched=saveData.terminalLaunched||false;
-window.mikeAwakened=saveData.mikeAwakened||false;
-window.cubeyKilled=saveData.cubeyKilled||false;
-if(saveData.termStep&&window.termStep!==undefined)window.termStep=saveData.termStep;
-if(saveData.path2Counter&&window.path2Counter!==undefined)window.path2Counter=saveData.path2Counter;
 
 setTimeout(()=>{
 if(window.initDesktop)window.initDesktop();
-if(window.initCubey)setTimeout(window.initCubey,500);
-// Start audio for save load
 setTimeout(()=>{
-  if(window.soosAudio){
-    soosAudio.init();
-    window.pcState===2?soosAudio.playCorrupted():soosAudio.playDesktop();
-  }
+  if(window.soosAudio){soosAudio.init();soosAudio.playDesktop()}
 },800);
 },300);
 }else{
