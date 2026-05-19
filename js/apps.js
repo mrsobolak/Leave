@@ -990,7 +990,26 @@ output.innerHTML+='<br>';
 }
 else if(cl==='color'){const colors=['#0f0','#0ff','#ff0','#f0f','#f80'];wrapper.style.color=colors[Math.floor(Math.random()*colors.length)]}
 else if(isC&&(cl==='kill 201'||cl==='taskkill /f /im hl2.exe'||cl==='kill hl2.exe'))output.innerHTML+='<span style="color:#f00">ACCESS DENIED. Process cannot be terminated.</span><br><span style="color:#f00">Nice try.</span><br>';
-else if(cl==='201')output.innerHTML+=(isC?'<span style="color:#f00">you know what that means.</span>':'201? What about it?')+'<br>';
+else if(cl==='201'){
+output.innerHTML+='<span style="color:#0f0">Launching...</span><br>';
+setTimeout(function(){
+  if(window.stopGame3D)window.stopGame3D();
+  var desktop=document.getElementById('desktop');
+  desktop.style.transition='opacity 0.1s';
+  desktop.style.opacity='0';
+  setTimeout(function(){
+    desktop.style.opacity='1';
+    setTimeout(function(){
+      desktop.style.opacity='0';
+      setTimeout(function(){
+        if(window.startGame3D)window.startGame3D();
+        desktop.style.opacity='1';
+        desktop.style.transition='';
+      },150);
+    },80);
+  },150);
+},400);
+}
 else if(cl==='terminal'||cl==='run terminal'){
 if(isC){
 // === SWITCH TO DEV SHELL MODE ===
