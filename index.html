@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/apps.css">
 <link rel="stylesheet" href="css/taskbar.css">
 <link rel="stylesheet" href="css/windows.css">
+<link rel="stylesheet" href="css/game3d.css">
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -118,6 +119,19 @@ Made by Sobo<br>
 <div id="jumpscare-overlay" class="hidden"></div>
 <div id="scanlines"></div>
 <div id="flicker"></div>
+<div id="g3d-wrap">
+  <div id="g3d-canvas"></div>
+  <div id="g3d-cross">+</div>
+  <div id="g3d-prompt">Press E to open</div>
+  <div id="g3d-flashlight-off">[ FLASHLIGHT OFF ]</div>
+  <div id="g3d-textbox" style="display:none">
+    <div class="g3d-tb-name">Dad</div>
+    <div class="g3d-tb-text"></div>
+    <div class="g3d-tb-arrow" id="g3d-tb-arrow">&#9660;</div>
+  </div>
+  <div id="g3d-hint">F &mdash; Flashlight &nbsp;|&nbsp; Click to look</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/boot.js"></script>
 <script src="js/desktop.js"></script>
@@ -126,5 +140,6 @@ Made by Sobo<br>
 <script src="js/state.js"></script>
 <script src="js/audio.js"></script>
 <script src="js/main.js"></script>
+<script src="js/game3d.js"></script>
 </body>
 </html>

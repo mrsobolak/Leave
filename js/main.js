@@ -92,7 +92,7 @@ const showPlayerMonologue=(onDone)=>{
   ov.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:1010;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.7s ease';
   const line=document.createElement('div');
   line.style.cssText='font-family:Tahoma,sans-serif;font-size:17px;color:#777;letter-spacing:3px;opacity:0;transition:opacity 1s ease;font-style:italic';
-  line.textContent=`"Alright, I'm here"`;
+  line.textContent=`"Alright, I'm home son."`;
   ov.appendChild(line);
   document.body.appendChild(ov);
   // fade in backdrop
