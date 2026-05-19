@@ -8,8 +8,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'VT
 @keyframes menuFadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 #menu-title{font-family:'Press Start 2P',monospace;font-size:28px;color:#cf6a32;letter-spacing:2px;text-shadow:0 0 20px rgba(207,106,50,0.3)}
 #menu-subtitle{font-family:Tahoma,sans-serif;font-size:11px;color:#555;margin-top:6px;letter-spacing:3px}
-#menu-cubey{position:absolute;right:12%;top:50%;transform:translateY(-50%);animation:menuCubeyFloat 3s ease-in-out infinite;opacity:0.4;z-index:1}
-@keyframes menuCubeyFloat{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 15px))}}
 #menu-buttons{display:flex;flex-direction:column;gap:0;margin-top:40px}
 .menu-btn{font-family:Tahoma,sans-serif;font-size:16px;color:#888;background:transparent;border:none;padding:10px 0;cursor:pointer;letter-spacing:2px;text-align:left;transition:all 0.2s;position:relative}
 .menu-btn:hover{color:#cf6a32;padding-left:10px}

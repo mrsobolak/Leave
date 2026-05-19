@@ -208,7 +208,6 @@ corrupted:[
 {title:'im sorry',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#888';c.font='12px sans-serif';c.fillText('im sorry mom',w*0.15,h*0.25);c.fillText('im sorry mike',w*0.15,h*0.4);c.fillText('im sorry pyro',w*0.15,h*0.55);c.fillText('im sorry every1',w*0.15,h*0.7);c.fillStyle='#444';c.font='8px sans-serif';c.fillText('i cudnt stop it',w*0.2,h*0.9)}},
 {title:'hands',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#333';for(let i=0;i<6;i++){c.fillRect(w*(0.1+i*0.14),h*0.7,w*0.08,h*0.3);c.fillRect(w*(0.1+i*0.14)+w*0.01,h*0.55,w*0.02,h*0.2);c.fillRect(w*(0.1+i*0.14)+w*0.04,h*0.5,w*0.02,h*0.25)}}},
 {title:'the void',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);for(let i=0;i<3;i++){c.strokeStyle='rgba('+Math.floor(Math.random()*50)+',0,0,0.3)';c.lineWidth=1;c.beginPath();c.arc(w*0.5,h*0.5,w*(0.1+i*0.12),0,Math.PI*2);c.stroke()}}},
-{title:'cubey crying',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#8a7a3a';c.fillRect(w*0.3,h*0.3,w*0.4,h*0.4);c.fillStyle='#fff';c.fillRect(w*0.38,h*0.42,w*0.08,h*0.08);c.fillRect(w*0.55,h*0.42,w*0.08,h*0.08);c.fillStyle='#55f';c.fillRect(w*0.4,h*0.52,w*0.04,h*0.2);c.fillRect(w*0.57,h*0.52,w*0.04,h*0.2);c.fillStyle='#600';c.font='8px sans-serif';c.fillText('he doesnt remember',w*0.15,h*0.9)}},
 {title:'DONT OPEN TF2',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#f00';c.font='bold 12px sans-serif';for(let i=0;i<8;i++)c.fillText('DONT OPEN TF2',w*0.1,h*0.1+i*h*0.11)}},
 {title:'static',draw:(c,w,h)=>{const img=c.createImageData(w,h);for(let i=0;i<img.data.length;i+=4){const v=Math.random()*60;img.data[i]=v*(Math.random()>0.8?3:1);img.data[i+1]=0;img.data[i+2]=0;img.data[i+3]=255}c.putImageData(img,0,0)}},
 {title:'im going home',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#666';c.font='14px sans-serif';c.fillText('im going home',w*0.15,h*0.5);c.fillStyle='#333';c.font='10px sans-serif';c.fillText('5/28/2010 12:06 AM',w*0.15,h*0.7)}},
@@ -216,7 +215,6 @@ corrupted:[
 {title:'figure',draw:(c,w,h)=>{c.fillStyle='#0a0a0a';c.fillRect(0,0,w,h);c.fillStyle='#000';c.fillRect(w*0.42,h*0.15,w*0.16,h*0.65);c.fillRect(w*0.45,h*0.1,w*0.1,h*0.1);c.fillStyle='#f00';c.fillRect(w*0.47,h*0.13,w*0.02,w*0.02);c.fillRect(w*0.52,h*0.13,w*0.02,w*0.02)}},
 {title:'201 201 201',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#f00';c.font='bold 40px monospace';c.fillText('201',w*0.2,h*0.55)}},
 {title:'empty server',draw:(c,w,h)=>{c.fillStyle='#1a1a2a';c.fillRect(0,0,w,h);c.fillStyle='#222';c.fillRect(0,h*0.7,w,h*0.3);c.fillStyle='#888';c.font='10px monospace';c.fillText('Players: 0/24',w*0.1,h*0.15);c.fillText('Map: cp_dustbowl',w*0.1,h*0.3);c.fillText('Server: 0.0.0.0:27015',w*0.1,h*0.45);c.fillStyle='#444';c.font='8px sans-serif';c.fillText('every1 left',w*0.25,h*0.85)}},
-{title:'corrupted cubey',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#4a0a0a';c.fillRect(w*0.3,h*0.3,w*0.4,h*0.4);c.fillStyle='#fcc';c.fillRect(w*0.38,h*0.42,w*0.08,h*0.08);c.fillRect(w*0.55,h*0.42,w*0.08,h*0.08);c.fillStyle='#c00';c.fillRect(w*0.4,h*0.44,w*0.04,h*0.04);c.fillRect(w*0.57,h*0.44,w*0.04,h*0.04);c.fillStyle='#1a0000';c.fillRect(w*0.38,h*0.22,w*0.24,h*0.08);c.fillStyle='#600';c.font='8px sans-serif';c.fillText('he did this to me',w*0.2,h*0.9)}},
 {title:'mike run',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#c00';c.font='bold 18px sans-serif';c.fillText('MIKE',w*0.2,h*0.4);c.fillText('RUN',w*0.3,h*0.6);c.fillStyle='#600';c.font='10px sans-serif';c.fillText('get away from this pc',w*0.1,h*0.8)}},
 {title:'black',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#f00';c.fillRect(w*0.49,h*0.49,w*0.02,h*0.02)}},
 {title:'the demos',draw:(c,w,h)=>{c.fillStyle='#000';c.fillRect(0,0,w,h);c.fillStyle='#888';c.font='9px monospace';c.fillText('demo001.dem',w*0.1,h*0.2);c.fillText('demo002.dem',w*0.1,h*0.3);c.fillText('demo003.dem',w*0.1,h*0.4);c.fillText('demo004.dem',w*0.1,h*0.5);c.fillText('demo005.dem',w*0.1,h*0.6);c.fillStyle='#c00';c.font='8px sans-serif';c.fillText('DO NOT PLAY',w*0.1,h*0.8);c.fillText('THE DEMOS',w*0.15,h*0.9)}},
@@ -791,7 +789,6 @@ const isC=false;
 const procs=isC?[
 {name:'soos.sys',pid:'001',mem:'12,480 K',cpu:'2%',status:'Running'},
 {name:'desktop.exe',pid:'002',mem:'8,192 K',cpu:'1%',status:'Running'},
-{name:'cubey.pet',pid:'003',mem:'2,048 K',cpu:'3%',status:'<span style="color:#ff0">MEMORY RESTORED</span>'},
 {name:'explorer.exe',pid:'047',mem:'6,144 K',cpu:'1%',status:'Running'},
 {name:'hl2.exe',pid:'201',mem:'999,999 K',cpu:'99%',status:'<span style="color:#f00">CANNOT TERMINATE</span>'},
 {name:'hl2.exe',pid:'201',mem:'999,999 K',cpu:'99%',status:'<span style="color:#f00">CANNOT TERMINATE</span>'},
@@ -799,7 +796,6 @@ const procs=isC?[
 ]:[
 {name:'soos.sys',pid:'001',mem:'12,480 K',cpu:'2%',status:'Running'},
 {name:'desktop.exe',pid:'002',mem:'8,192 K',cpu:'1%',status:'Running'},
-{name:'cubey.pet',pid:'003',mem:'2,048 K',cpu:'3%',status:'Running'},
 {name:'explorer.exe',pid:'047',mem:'6,144 K',cpu:'1%',status:'Running'},
 {name:'samjs.dll',pid:'088',mem:'1,024 K',cpu:'0%',status:'Running'},
 {name:'chat.exe',pid:'012',mem:'3,072 K',cpu:'0%',status:'Running'},
@@ -988,39 +984,13 @@ else if(cl==='tasklist'){
 output.innerHTML+='<br>PID   Name            Status<br>';
 output.innerHTML+='001   soos.sys        Running<br>';
 output.innerHTML+='002   desktop.exe     Running<br>';
-output.innerHTML+='003   cubey.pet       Running     (cubey32.exe)<br>';
+output.innerHTML+='047   explorer.exe    Running<br>';
 if(isC){output.innerHTML+='<span style="color:#f00">201   hl2.exe         CANNOT TERMINATE<br>201   hl2.exe         CANNOT TERMINATE<br>201   hl2.exe         CANNOT TERMINATE</span><br>'}
 output.innerHTML+='<br>';
 }
 else if(cl==='color'){const colors=['#0f0','#0ff','#ff0','#f0f','#f80'];wrapper.style.color=colors[Math.floor(Math.random()*colors.length)]}
 else if(isC&&(cl==='kill 201'||cl==='taskkill /f /im hl2.exe'||cl==='kill hl2.exe'))output.innerHTML+='<span style="color:#f00">ACCESS DENIED. Process cannot be terminated.</span><br><span style="color:#f00">Nice try.</span><br>';
 else if(cl==='201')output.innerHTML+=(isC?'<span style="color:#f00">you know what that means.</span>':'201? What about it?')+'<br>';
-else if(cl==='cubey')output.innerHTML+=(isC?'<span style="color:#ff0">His name is Mike.</span>':'<span style="color:#ff0">PAINTING!!</span>')+'<br>';
-else if(cl==='kill cubey32.exe'||cl==='taskkill /f /im cubey32.exe'||cl==='kill cubey.pet'){
-if(isC){
-output.innerHTML+='<span style="color:#ff0">Terminating cubey.pet (PID 003)...</span><br>';
-output.innerHTML+='<span style="color:#ff0">Process terminated.</span><br>';
-setTimeout(()=>{
-const cubey=document.getElementById('cubey');
-if(cubey){cubey.style.transition='opacity 0.5s';cubey.style.opacity='0';setTimeout(()=>{cubey.style.display='none'},500)}
-const bubble=document.getElementById('cubey-bubble');
-if(bubble)bubble.classList.add('cubey-hidden');
-output.innerHTML+='<br><span style="color:#f00">.....</span><br>';
-setTimeout(()=>{
-output.innerHTML+='<span style="color:#f00">you killed the only thing trying to help you.</span><br>';
-setTimeout(()=>{
-output.innerHTML+='<span style="color:#f00">now there\'s nothing between you and me.</span><br>';
-},2000);
-},1500);
-},800);
-}else{
-output.innerHTML+='<span style="color:#ff0">Terminating cubey.pet (PID 003)...</span><br>';
-setTimeout(()=>{
-output.innerHTML+='<span style="color:#f00">ACCESS DENIED. Cubey cannot be killed. He loves you too much.</span><br>';
-if(window.cubeyQ)window.cubeyQ("HEY! Don't do that! That's MEAN!",true);
-},500);
-}
-}
 else if(cl==='terminal'||cl==='run terminal'){
 if(isC){
 // === SWITCH TO DEV SHELL MODE ===
@@ -1028,7 +998,7 @@ devShellMode=true;
 window.terminalLaunched=true;
 output.innerHTML+='<br><span style="color:#0f0">SoOS Dev Shell v0.201</span><br>';
 output.innerHTML+='<span style="color:#0f0">System recovery mode</span><br>';
-output.innerHTML+='<span style="color:#ff0">User: CUBEY.PET [MEMORY RESTORED — ID: MIKE]</span><br><br>';
+output.innerHTML+='<span style="color:#ff0">User: root [MEMORY RESTORED]</span><br><br>';
 promptText.style.color='#0f0';
 promptText.textContent='root@void:~$ ';
 input.style.color='#0f0';
